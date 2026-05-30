@@ -122,16 +122,7 @@ data/last_build.json
 data/user_products.json
 data/cleaning_reports/
 data/colab_output/
-data/component_catalog_report.json
-data/component_candidates.csv
-data/component_candidates.json
-data/data_quality_report.json
-data/dataset_summary.md
-data/products_cleaned.csv
-data/spot_check_notes.md
-data/spot_check_sample.csv
-data/vector_chunks.jsonl
-data/vector_index/
+
 data/raw/
 data/processed/
 data/exports/

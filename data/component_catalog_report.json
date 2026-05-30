@@ -1,0 +1,1581 @@
+{
+  "input": "data\\products_cleaned.csv",
+  "source_rows": 17121,
+  "written_rows": 6476,
+  "curated_rows": 0,
+  "counts": {
+    "case": 1174,
+    "cooler": 1413,
+    "cpu": 267,
+    "gpu": 451,
+    "hdd": 121,
+    "monitor": 698,
+    "motherboard": 634,
+    "psu": 586,
+    "ram": 464,
+    "ssd": 406,
+    "ups": 262
+  },
+  "quality_flags": {
+    "price_outlier_low": 9
+  },
+  "skipped": {
+    "cooler_accessory": 33,
+    "external_ssd": 164,
+    "missing_price": 1,
+    "monitor_accessory": 64,
+    "non_desktop_hdd": 281,
+    "non_desktop_ram": 130,
+    "psu_accessory": 2,
+    "unsupported_category": 9787,
+    "ups_accessory": 183
+  },
+  "validation": {
+    "ok": true,
+    "total": 6476,
+    "counts": {
+      "case": 1174,
+      "cooler": 1413,
+      "cpu": 267,
+      "gpu": 451,
+      "hdd": 121,
+      "monitor": 698,
+      "motherboard": 634,
+      "psu": 586,
+      "ram": 464,
+      "ssd": 406,
+      "ups": 262
+    },
+    "missing_categories": [],
+    "issue_count": 0,
+    "issues": [],
+    "quality": {
+      "required_spec_fields": {
+        "cpu": [
+          "socket",
+          "brand",
+          "cores"
+        ],
+        "motherboard": [
+          "socket",
+          "form_factor",
+          "ram_type"
+        ],
+        "ram": [
+          "type",
+          "capacity_gb",
+          "speed_mhz"
+        ],
+        "gpu": [
+          "vendor",
+          "vram_gb",
+          "recommended_psu_w"
+        ],
+        "ssd": [
+          "capacity_gb",
+          "interface"
+        ],
+        "hdd": [
+          "capacity_gb",
+          "interface"
+        ],
+        "psu": [
+          "wattage_w"
+        ],
+        "cooler": [
+          "type"
+        ],
+        "case": [
+          "max_form_factor"
+        ],
+        "monitor": [
+          "size_inch",
+          "refresh_hz",
+          "resolution"
+        ],
+        "ups": [
+          "capacity_va",
+          "wattage_w"
+        ]
+      },
+      "category_metrics": {
+        "case": {
+          "total": 1174,
+          "images": {
+            "present": 729,
+            "missing": 445,
+            "coverage": 0.621
+          },
+          "marketplace_links": {
+            "present": 1174,
+            "missing": 0,
+            "coverage": 1.0
+          },
+          "required_spec_coverage": {
+            "max_form_factor": {
+              "present": 1174,
+              "missing": 0,
+              "coverage": 1.0
+            }
+          },
+          "price_idr": {
+            "min": 80000,
+            "median": 982500,
+            "max": 57190000
+          },
+          "quality_flags": {},
+          "sample_issues": [
+            {
+              "sku": "194284",
+              "code": "image_missing",
+              "name": "Ace Power Luster G 500W"
+            },
+            {
+              "sku": "194285",
+              "code": "image_missing",
+              "name": "Ace Power Pioner G 500W"
+            },
+            {
+              "sku": "192528",
+              "code": "image_missing",
+              "name": "eMachine Acer U320WM White M-ATX"
+            },
+            {
+              "sku": "177106",
+              "code": "image_missing",
+              "name": "Aerocool Prism ARGB"
+            },
+            {
+              "sku": "172526",
+              "code": "image_missing",
+              "name": "Aerocool Graphite ARGB"
+            },
+            {
+              "sku": "172527",
+              "code": "image_missing",
+              "name": "Aerocool Splinter Duo ARGB"
+            },
+            {
+              "sku": "189277",
+              "code": "image_missing",
+              "name": "Aerocool Tern Mini ARGB"
+            },
+            {
+              "sku": "178696",
+              "code": "image_missing",
+              "name": "Aerocool Atomic ARGB"
+            },
+            {
+              "sku": "190942",
+              "code": "image_missing",
+              "name": "Aigo Darkflash C218M M-ATX Black + PSU 650W"
+            },
+            {
+              "sku": "190943",
+              "code": "image_missing",
+              "name": "Aigo Darkflash C218M M-ATX White + PSU 650W"
+            },
+            {
+              "sku": "192746",
+              "code": "image_missing",
+              "name": "Aigo Darkflash C275P M-ATX Black"
+            },
+            {
+              "sku": "194005",
+              "code": "image_missing",
+              "name": "Aigo Darkflash DB330M Mesh M-ATX Black"
+            },
+            {
+              "sku": "194004",
+              "code": "image_missing",
+              "name": "Aigo Darkflash DB330M Mesh M-ATX White"
+            },
+            {
+              "sku": "188922",
+              "code": "image_missing",
+              "name": "Aigo Darkflash DRX70 Mesh Black"
+            },
+            {
+              "sku": "188923",
+              "code": "image_missing",
+              "name": "Aigo Darkflash DRX70 Mesh White"
+            },
+            {
+              "sku": "188930",
+              "code": "image_missing",
+              "name": "Aigo Darkflash DQX90 Mesh Black"
+            },
+            {
+              "sku": "188929",
+              "code": "image_missing",
+              "name": "Aigo Darkflash DQX90 Mesh White"
+            },
+            {
+              "sku": "197670",
+              "code": "image_missing",
+              "name": "Aigo DarkFlash DY460 ATX Black"
+            },
+            {
+              "sku": "197669",
+              "code": "image_missing",
+              "name": "Aigo DarkFlash DY460 ATX White"
+            },
+            {
+              "sku": "191442",
+              "code": "image_missing",
+              "name": "Aigo DarkFlash TH285M M-ATX Black"
+            }
+          ]
+        },
+        "cooler": {
+          "total": 1413,
+          "images": {
+            "present": 972,
+            "missing": 441,
+            "coverage": 0.6879
+          },
+          "marketplace_links": {
+            "present": 1413,
+            "missing": 0,
+            "coverage": 1.0
+          },
+          "required_spec_coverage": {
+            "type": {
+              "present": 1413,
+              "missing": 0,
+              "coverage": 1.0
+            }
+          },
+          "price_idr": {
+            "min": 20000,
+            "median": 535000,
+            "max": 6270000
+          },
+          "quality_flags": {},
+          "sample_issues": [
+            {
+              "sku": "201437",
+              "code": "image_missing",
+              "name": "Cooler Master MasterLiquid Core Nex Digital 240 ARGB White"
+            },
+            {
+              "sku": "201438",
+              "code": "image_missing",
+              "name": "Cooler Master MasterLiquid Core Nex Digital 240 ARGB Black"
+            },
+            {
+              "sku": "201291",
+              "code": "image_missing",
+              "name": "Asus ROG Ryuo IV 360 ARGB White 6.67-inch AMOLED Curved Screen Liquid Cooler"
+            },
+            {
+              "sku": "201341",
+              "code": "image_missing",
+              "name": "Thermalright Frozen Warframe 360 SE ARGB V2 White AIO Liquid Cooler"
+            },
+            {
+              "sku": "201392",
+              "code": "image_missing",
+              "name": "DeepCool AG400 G2 ARGB Single Tower CPU Cooler"
+            },
+            {
+              "sku": "201393",
+              "code": "image_missing",
+              "name": "DeepCool AG620 G2 Dual-Tower CPU Cooler"
+            },
+            {
+              "sku": "201394",
+              "code": "image_missing",
+              "name": "DeepCool AK700 DIGITAL NYX AI Dynamic Adjustment CPU Cooler with Digital Display"
+            },
+            {
+              "sku": "201395",
+              "code": "image_missing",
+              "name": "DeepCool SPARTACUS 360 Full Customizable 6th Gen Liquid Cooler with Silent Ring Fans"
+            },
+            {
+              "sku": "201396",
+              "code": "image_missing",
+              "name": "DeepCool AK700 DIGITAL NYX White AI Dynamic Adjustment CPU Cooler with Digital Display"
+            },
+            {
+              "sku": "201398",
+              "code": "image_missing",
+              "name": "DeepCool AK620 G2 White Wood Grain Top Cover CPU Cooler"
+            },
+            {
+              "sku": "201399",
+              "code": "image_missing",
+              "name": "DeepCool Assassin VC ELITE White Dual Tower Vapor Chamber Elite CPU Air Cooler"
+            },
+            {
+              "sku": "201176",
+              "code": "image_missing",
+              "name": "Thermalright Peerless Assassin 120 MINI White Dual Tower CPU Cooler"
+            },
+            {
+              "sku": "201177",
+              "code": "image_missing",
+              "name": "Thermalright Peerless Assassin 120 MINI Black Dual Tower CPU Cooler"
+            },
+            {
+              "sku": "201178",
+              "code": "image_missing",
+              "name": "Thermalright Peerless Assassin 120 SE Extrem Black Dual Tower CPU Cooler"
+            },
+            {
+              "sku": "201189",
+              "code": "image_missing",
+              "name": "Cooler Master MasterLiquid Core LCD 360 4-inch Black"
+            },
+            {
+              "sku": "201191",
+              "code": "image_missing",
+              "name": "Cooler Master MasterLiquid Core LCD 360 4-inch White"
+            },
+            {
+              "sku": "201213",
+              "code": "image_missing",
+              "name": "Asus ROG Ryuo IV SLC 360 ARGB White 6.67 AMOLED Curved Screen Liquid Cooler"
+            },
+            {
+              "sku": "192745",
+              "code": "image_missing",
+              "name": "Aigo DarkFlash Wave DH240D - Black Edition"
+            },
+            {
+              "sku": "192744",
+              "code": "image_missing",
+              "name": "Aigo DarkFlash Wave DH240D - White Edition"
+            },
+            {
+              "sku": "192743",
+              "code": "image_missing",
+              "name": "Aigo DarkFlash Wave DH360D - Black Edition"
+            }
+          ]
+        },
+        "cpu": {
+          "total": 267,
+          "images": {
+            "present": 238,
+            "missing": 29,
+            "coverage": 0.8914
+          },
+          "marketplace_links": {
+            "present": 267,
+            "missing": 0,
+            "coverage": 1.0
+          },
+          "required_spec_coverage": {
+            "socket": {
+              "present": 267,
+              "missing": 0,
+              "coverage": 1.0
+            },
+            "brand": {
+              "present": 267,
+              "missing": 0,
+              "coverage": 1.0
+            },
+            "cores": {
+              "present": 267,
+              "missing": 0,
+              "coverage": 1.0
+            }
+          },
+          "price_idr": {
+            "min": 55000,
+            "median": 2695000,
+            "max": 219990000
+          },
+          "quality_flags": {},
+          "sample_issues": [
+            {
+              "sku": "195119",
+              "code": "image_missing",
+              "name": "AMD EPYC 9654 2.4GHz Up To 3.7GHz Cache 384MB 360W SP5 [Tray] - 96 Core - 100-000000789"
+            },
+            {
+              "sku": "201293",
+              "code": "image_missing",
+              "name": "AMD Ryzen 9 9950X3D2 Dual Edition 4.3GHz Up To 5.6GHz Cache 192MB 200W AM5 [Box] - 16 Core - 100-100001978WOF"
+            },
+            {
+              "sku": "197103",
+              "code": "image_missing",
+              "name": "AMD Ryzen Threadripper PRO 9995WX 2.5GHz Up To 5.4GHz Cache 384MB 350W sTR5 [BOX] - 96 Core - 100-100001361WOF"
+            },
+            {
+              "sku": "197110",
+              "code": "image_missing",
+              "name": "AMD Ryzen Threadripper PRO 9955WX 4.5GHz Up To 5.4GHz Cache 64MB 350W sTR5 [BOX] - 16 Core - 100-100000725WOF"
+            },
+            {
+              "sku": "197112",
+              "code": "image_missing",
+              "name": "AMD Ryzen Threadripper 9980X 3.2GHz Up to 5.4 GHz Cache 256MB 350W sTR5 [BOX] - 64 Core - 100-100001593WOF"
+            },
+            {
+              "sku": "197114",
+              "code": "image_missing",
+              "name": "AMD Ryzen Threadripper 9970X 4GHz Up To 5.4GHz Cache 128MB 350W sTR5 [BOX] - 32 Core - 100-100001594WOF"
+            },
+            {
+              "sku": "201294",
+              "code": "image_missing",
+              "name": "AMD Ryzen 5 5500GT 3.6GHz Up To 4.4GHz Cache 16MB 65W AM4 [Tray] - 6 Core - 100-000001489"
+            },
+            {
+              "sku": "197873",
+              "code": "image_missing",
+              "name": "Intel Core i3-13100 3.4GHz Up To 4.5GHz - Cache 12MB [Tray] Socket LGA 1700 - Raptor Lake Series"
+            },
+            {
+              "sku": "201412",
+              "code": "image_missing",
+              "name": "Intel Core i5-10600 3.3Ghz Up To 4.8Ghz - Cache 12MB [Tray] Socket LGA 1200 - Comet Lake Series"
+            },
+            {
+              "sku": "201320",
+              "code": "image_missing",
+              "name": "Intel Core i5-11500 2.7Ghz Up To 4.6Ghz - Cache 12MB [Tray] Socket LGA 1200 - Rocket Lake Series"
+            },
+            {
+              "sku": "201321",
+              "code": "image_missing",
+              "name": "Intel Core i5-11600 2.8Ghz Up To 4.8Ghz - Cache 12MB [Tray] Socket LGA 1200 - Rocket Lake Series"
+            },
+            {
+              "sku": "197647",
+              "code": "image_missing",
+              "name": "Intel Core i5-11400F 2.6Ghz Up To 4.4Ghz - Cache 12MB [Tray] Socket LGA 1200 - Rocket Lake Series"
+            },
+            {
+              "sku": "190476",
+              "code": "image_missing",
+              "name": "Intel Core i5-10500 3.1Ghz Up To 4.5Ghz - Cache 12MB [Tray] Socket LGA 1200 - Comet Lake Series"
+            },
+            {
+              "sku": "190422",
+              "code": "image_missing",
+              "name": "Intel Core i5-12400 2.5GHz Up To 4.4GHz - Cache 18MB [Tray] Socket LGA 1700 - Alder Lake Series"
+            },
+            {
+              "sku": "198434",
+              "code": "image_missing",
+              "name": "Intel Core i5-12400F 2.5GHz Up To 4.4GHz - Cache 18MB [Tray] Socket LGA 1700 - Alder Lake Series"
+            },
+            {
+              "sku": "196147",
+              "code": "image_missing",
+              "name": "Intel Core i7-11700 2.5Ghz Up To 4.9Ghz - Cache 16MB [Tray] Socket LGA 1200 - Rocket Lake Series"
+            },
+            {
+              "sku": "195272",
+              "code": "image_missing",
+              "name": "Intel Core i7-10700F 2.9Ghz Up To 4.8Ghz - Cache 16MB [Tray] Socket LGA 1200 - Comet Lake Series"
+            },
+            {
+              "sku": "198001",
+              "code": "image_missing",
+              "name": "Intel Core i7-12700 2.1GHz Up To 4.9GHz - Cache 25MB [Tray] Socket LGA 1700 - Alder Lake Series"
+            },
+            {
+              "sku": "200770",
+              "code": "image_missing",
+              "name": "Intel Core i7-12700F 2.1GHz Up To 4.9GHz - Cache 25MB [Tray] Socket LGA 1700 - Alder Lake Series"
+            },
+            {
+              "sku": "200112",
+              "code": "image_missing",
+              "name": "Intel Core i9-11900F 2.5Ghz Up To 5.2Ghz - Cache 16MB [Tray] Socket LGA 1200 - Rocket Lake Series"
+            }
+          ]
+        },
+        "gpu": {
+          "total": 451,
+          "images": {
+            "present": 384,
+            "missing": 67,
+            "coverage": 0.8514
+          },
+          "marketplace_links": {
+            "present": 451,
+            "missing": 0,
+            "coverage": 1.0
+          },
+          "required_spec_coverage": {
+            "vendor": {
+              "present": 451,
+              "missing": 0,
+              "coverage": 1.0
+            },
+            "vram_gb": {
+              "present": 450,
+              "missing": 1,
+              "coverage": 0.9978
+            },
+            "recommended_psu_w": {
+              "present": 451,
+              "missing": 0,
+              "coverage": 1.0
+            }
+          },
+          "price_idr": {
+            "min": 440000,
+            "median": 8550000,
+            "max": 223420000
+          },
+          "quality_flags": {},
+          "sample_issues": [
+            {
+              "sku": "199572",
+              "code": "image_missing",
+              "name": "XFX Swift AMD Radeon RX 9060 XT 16GB GDDR6 OC White Gaming Edition - RX-96TSW16WQ"
+            },
+            {
+              "sku": "200009",
+              "code": "image_missing",
+              "name": "ASRock Radeon AI PRO R9700 32GB GDDR6 Creator"
+            },
+            {
+              "sku": "200668",
+              "code": "image_missing",
+              "name": "Asus GeForce RTX 5080 16GB GDDR7 Noctua OC Edition"
+            },
+            {
+              "sku": "199901",
+              "code": "image_missing",
+              "name": "Asus GeForce RTX 5080 16GB GDDR7 ProArt OC Edition"
+            },
+            {
+              "sku": "199903",
+              "code": "image_missing",
+              "name": "Asus GeForce RTX 5070 Ti 16GB GDDR7 ProArt OC Edition"
+            },
+            {
+              "sku": "198228",
+              "code": "image_missing",
+              "name": "Asus GeForce RTX 5060 8GB GDDR7 Dual White OC Edition"
+            },
+            {
+              "sku": "200667",
+              "code": "image_missing",
+              "name": "Asus GeForce RTX 5060 8GB GDDR7 LP BRK OC Edition"
+            },
+            {
+              "sku": "195997",
+              "code": "image_missing",
+              "name": "Asus Radeon RX 9060 XT 16GB GDDR6 TUF Gaming OC Edition"
+            },
+            {
+              "sku": "153322",
+              "code": "image_missing",
+              "name": "Biostar GeForce GT 1030 2GB DDR5 64bit"
+            },
+            {
+              "sku": "175363",
+              "code": "image_missing",
+              "name": "Biostar GeForce GT 1030 4GB DDR4"
+            },
+            {
+              "sku": "194601",
+              "code": "image_missing",
+              "name": "Colorful GeForce RTX 5070 Ti 16GB GDDR7 NB EX 16GB-V"
+            },
+            {
+              "sku": "200000",
+              "code": "image_missing",
+              "name": "Colorful GeForce RTX 5070 12GB GDDR7 Gaming 12GB-V"
+            },
+            {
+              "sku": "195036",
+              "code": "image_missing",
+              "name": "Colorful GeForce RTX 5070 12GB GDDR7 NB EX 12GB-V"
+            },
+            {
+              "sku": "199587",
+              "code": "image_missing",
+              "name": "Colorful GeForce RTX 5060 Ti 16GB GDDR7 Gaming DUO 16GB-V"
+            },
+            {
+              "sku": "199588",
+              "code": "image_missing",
+              "name": "Colorful GeForce RTX 5060 8GB GDDR7 Gaming DUO 8GB-V"
+            },
+            {
+              "sku": "194366",
+              "code": "image_missing",
+              "name": "Colorful GeForce RTX 4060 8GB GDDR6 DUO 8GB V5-V"
+            },
+            {
+              "sku": "199999",
+              "code": "image_missing",
+              "name": "Colorful GeForce RTX 3050 8GB GDDR6 NB DUO V2-V"
+            },
+            {
+              "sku": "193578",
+              "code": "image_missing",
+              "name": "Colorful GeForce RTX 3050 6GB GDDR6 6GB-V"
+            },
+            {
+              "sku": "199998",
+              "code": "image_missing",
+              "name": "iGame GeForce RTX 3050 8GB GDDR6 Ultra W DUO OC V2-V"
+            },
+            {
+              "sku": "200328",
+              "code": "image_missing",
+              "name": "Gainward GeForce RTX 5080 16GB GDDR7 - Phoenix GS"
+            }
+          ]
+        },
+        "hdd": {
+          "total": 121,
+          "images": {
+            "present": 55,
+            "missing": 66,
+            "coverage": 0.4545
+          },
+          "marketplace_links": {
+            "present": 121,
+            "missing": 0,
+            "coverage": 1.0
+          },
+          "required_spec_coverage": {
+            "capacity_gb": {
+              "present": 121,
+              "missing": 0,
+              "coverage": 1.0
+            },
+            "interface": {
+              "present": 121,
+              "missing": 0,
+              "coverage": 1.0
+            }
+          },
+          "price_idr": {
+            "min": 250000,
+            "median": 5650000,
+            "max": 20770000
+          },
+          "quality_flags": {},
+          "sample_issues": [
+            {
+              "sku": "201222",
+              "code": "image_missing",
+              "name": "Toshiba MG11 Cloud-scale 24TB SATA3 7200RPM"
+            },
+            {
+              "sku": "201223",
+              "code": "image_missing",
+              "name": "Toshiba MG11 Cloud-scale 20TB SATA3 7200RPM"
+            },
+            {
+              "sku": "201224",
+              "code": "image_missing",
+              "name": "Toshiba MG11 Cloud-scale 16TB SATA3 7200RPM"
+            },
+            {
+              "sku": "201225",
+              "code": "image_missing",
+              "name": "Toshiba MG09 Cloud-scale 12TB SATA3 7200RPM"
+            },
+            {
+              "sku": "201226",
+              "code": "image_missing",
+              "name": "Toshiba MG10-D Enterprise 10TB SATA3 7200RPM"
+            },
+            {
+              "sku": "201227",
+              "code": "image_missing",
+              "name": "Toshiba MG10-D Enterprise 8TB SATA3 7200RPM"
+            },
+            {
+              "sku": "201228",
+              "code": "image_missing",
+              "name": "Toshiba MG10-D Enterprise 4TB SATA3 7200RPM"
+            },
+            {
+              "sku": "190728",
+              "code": "image_missing",
+              "name": "WDC 1TB SATA3 - Used & Garansi 1 Th"
+            },
+            {
+              "sku": "200524",
+              "code": "image_missing",
+              "name": "WDC 4TB SATA3 128MB - Blue - WD40EZZX - Garansi 2 Th"
+            },
+            {
+              "sku": "200580",
+              "code": "image_missing",
+              "name": "WD Red Plus NAS 4TB SATA3 5400RPM 128MB - WD40EFZZ - Garansi 3 Th"
+            },
+            {
+              "sku": "191664",
+              "code": "image_missing",
+              "name": "WDC 4TB SATA3 256MB - Black - WD4006FZBX - Garansi 5 Th"
+            },
+            {
+              "sku": "185095",
+              "code": "image_missing",
+              "name": "WDC Purple Surveillance 6TB - WD64PURZ - Garansi 3 Th"
+            },
+            {
+              "sku": "165568",
+              "code": "image_missing",
+              "name": "WD Ultrastar DC HC310 6TB SATA 7200RPM 256MB SE - Garansi 5 Tahun"
+            },
+            {
+              "sku": "191156",
+              "code": "image_missing",
+              "name": "WDC Purple Pro Surveillance 8TB - WD8002PURP - Garansi 5 Th"
+            },
+            {
+              "sku": "196373",
+              "code": "image_missing",
+              "name": "WDC Purple Pro Surveillance 10TB - WD102PURP - Garansi 5 Th"
+            },
+            {
+              "sku": "187295",
+              "code": "image_missing",
+              "name": "WD Ultrastar DC HC330 10TB SATA 7200RPM 256MB SE - Garansi 5 Tahun"
+            },
+            {
+              "sku": "200583",
+              "code": "image_missing",
+              "name": "WD Purple Pro Surveillance 12TB SATA3 7200RPM 512MB - WD122PURP - Garansi 5 Th"
+            },
+            {
+              "sku": "198923",
+              "code": "image_missing",
+              "name": "WDC 12TB SATA3 512MB - Red Plus - WD120EFGX - Garansi 3 Th (For NAS)"
+            },
+            {
+              "sku": "188946",
+              "code": "image_missing",
+              "name": "WDC Purple Pro Surveillance 14TB - WD142PURP - Garansi 5 Th"
+            },
+            {
+              "sku": "171676",
+              "code": "image_missing",
+              "name": "WD Ultrastar DC HC550 16TB SATA 7200RPM 512MB SE - Garansi 5 Tahun"
+            }
+          ]
+        },
+        "monitor": {
+          "total": 698,
+          "images": {
+            "present": 347,
+            "missing": 351,
+            "coverage": 0.4971
+          },
+          "marketplace_links": {
+            "present": 698,
+            "missing": 0,
+            "coverage": 1.0
+          },
+          "required_spec_coverage": {
+            "size_inch": {
+              "present": 675,
+              "missing": 23,
+              "coverage": 0.967
+            },
+            "refresh_hz": {
+              "present": 698,
+              "missing": 0,
+              "coverage": 1.0
+            },
+            "resolution": {
+              "present": 641,
+              "missing": 57,
+              "coverage": 0.9183
+            }
+          },
+          "price_idr": {
+            "min": 100000,
+            "median": 2832500,
+            "max": 134665000
+          },
+          "quality_flags": {},
+          "sample_issues": [
+            {
+              "sku": "201324",
+              "code": "image_missing",
+              "name": "Acer EK221Q H3 21.5-inch FHD 100Hz Monitor"
+            },
+            {
+              "sku": "201325",
+              "code": "image_missing",
+              "name": "Acer 16PD3Q 15.6-inch FHD IPS Portable Dual Monitor Built-in Speakers"
+            },
+            {
+              "sku": "197297",
+              "code": "image_missing",
+              "name": "Acer PM161QJ 15.6 FHD IPS Portable Monitor"
+            },
+            {
+              "sku": "191887",
+              "code": "image_missing",
+              "name": "Acer EK221Q HBI 21.5 FHD 100Hz Monitor"
+            },
+            {
+              "sku": "197296",
+              "code": "image_missing",
+              "name": "Acer SA243Y G0 23.8 FHD IPS 120Hz Monitor"
+            },
+            {
+              "sku": "191246",
+              "code": "image_missing",
+              "name": "Acer EK241Y 23.8 FHD IPS 75Hz Monitor"
+            },
+            {
+              "sku": "193766",
+              "code": "image_missing",
+              "name": "Acer Nitro VG240Y X1 23.8 FHD IPS 200Hz Gaming Monitor"
+            },
+            {
+              "sku": "176440",
+              "code": "image_missing",
+              "name": "ACER Nitro 23.8 XV242Y Gaming Monitor 165Hz"
+            },
+            {
+              "sku": "197292",
+              "code": "image_missing",
+              "name": "Acer Nitro XV242 F 24.1 FHD TN 540Hz HDR400 Gaming Monitor"
+            },
+            {
+              "sku": "184518",
+              "code": "image_missing",
+              "name": "Acer 24.5 Nitro VG252Q Z FHD IPS 280Hz Gaming Monitor"
+            },
+            {
+              "sku": "194220",
+              "code": "image_missing",
+              "name": "Acer Nitro XF253Q Z 24.5 FHD IPS 250Hz Gaming Monitor"
+            },
+            {
+              "sku": "197316",
+              "code": "image_missing",
+              "name": "Acer Nitro XF253Q Z1 24.5 FHD 250Hz HDR10 Gaming Monitor"
+            },
+            {
+              "sku": "193762",
+              "code": "image_missing",
+              "name": "Acer Nitro XV250Q F 24.5 FHD IPS 300Hz HDR10 Gaming Monitor"
+            },
+            {
+              "sku": "184514",
+              "code": "image_missing",
+              "name": "Acer Nitro XV252Q F 24.5 FHD IPS 390Hz HDR400 Gaming Monitor"
+            },
+            {
+              "sku": "184523",
+              "code": "image_missing",
+              "name": "Acer 26.5 Predator X27U WQHD OLED 240Hz Gaming Monitor"
+            },
+            {
+              "sku": "193763",
+              "code": "image_missing",
+              "name": "Acer EK271G 27 FHD IPS 120Hz Monitor"
+            },
+            {
+              "sku": "197295",
+              "code": "image_missing",
+              "name": "Acer SA273 P1 27 FHD IPS 144Hz Monitor"
+            },
+            {
+              "sku": "197293",
+              "code": "image_missing",
+              "name": "Acer Nitro ED273U P2 27 QHD 180Hz HDR10 Curved Gaming Monitor"
+            },
+            {
+              "sku": "184520",
+              "code": "image_missing",
+              "name": "Acer 27 Nitro VG270 M3 FHD IPS 180Hz Gaming Monitor"
+            },
+            {
+              "sku": "197294",
+              "code": "image_missing",
+              "name": "Acer Nitro VG270 X1 27 FHD IPS 200Hz HDR10 Gaming Monitor"
+            }
+          ]
+        },
+        "motherboard": {
+          "total": 634,
+          "images": {
+            "present": 557,
+            "missing": 77,
+            "coverage": 0.8785
+          },
+          "marketplace_links": {
+            "present": 634,
+            "missing": 0,
+            "coverage": 1.0
+          },
+          "required_spec_coverage": {
+            "socket": {
+              "present": 634,
+              "missing": 0,
+              "coverage": 1.0
+            },
+            "form_factor": {
+              "present": 634,
+              "missing": 0,
+              "coverage": 1.0
+            },
+            "ram_type": {
+              "present": 634,
+              "missing": 0,
+              "coverage": 1.0
+            }
+          },
+          "price_idr": {
+            "min": 270000,
+            "median": 2696500,
+            "max": 23212000
+          },
+          "quality_flags": {},
+          "sample_issues": [
+            {
+              "sku": "201439",
+              "code": "image_missing",
+              "name": "Asus ROG CROSSHAIR X870E DARK HERO (AM5, AMD X870E, DDR5, USB3.2 Type-C, SATA3)"
+            },
+            {
+              "sku": "201368",
+              "code": "image_missing",
+              "name": "AFOX Intel H81 (LGA1150, Intel H81, DDR3)"
+            },
+            {
+              "sku": "198864",
+              "code": "image_missing",
+              "name": "ASRock H810M-H (LGA1851, H810, DDR5 USB3.2, SATA3)"
+            },
+            {
+              "sku": "195619",
+              "code": "image_missing",
+              "name": "ASRock B760M-HDV/M.2 (LGA1700, B760, DDR5, USB3.2, SATA3) (Bulk Package)"
+            },
+            {
+              "sku": "193445",
+              "code": "image_missing",
+              "name": "ASRock H610M/ac (LGA1700, H610, DDR4, USB3.2, SATA3)"
+            },
+            {
+              "sku": "197199",
+              "code": "image_missing",
+              "name": "Asus ROG STRIX Z890-H GAMING WIFI (LGA1851, Z890, DDR5, USB3.2 Gen2x2 Type-C, SATA3)"
+            },
+            {
+              "sku": "197201",
+              "code": "image_missing",
+              "name": "Asus TUF GAMING B860-PLUS WIFI (LGA1851, B860, DDR5, USB3.2 Gen2 Type-C, SATA3)"
+            },
+            {
+              "sku": "197200",
+              "code": "image_missing",
+              "name": "Asus PRIME Z890M-PLUS WIFI-CSM (LGA1851, Z890, DDR5, USB3.2 Gen2 Type-C, SATA3)"
+            },
+            {
+              "sku": "197202",
+              "code": "image_missing",
+              "name": "Asus B860M AYW GAMING WIFI (LGA1851, B860, DDR5, USB3.2 Gen2 Type-C, SATA3)"
+            },
+            {
+              "sku": "197211",
+              "code": "image_missing",
+              "name": "Asus PRIME H810M-A-CSM (LGA1851, H810, DDR5, USB3.2 Type-C, SATA3)"
+            },
+            {
+              "sku": "197204",
+              "code": "image_missing",
+              "name": "Asus PRIME H810M-E (LGA1851, H810, DDR5, USB3.2 Type-C, SATA3)"
+            },
+            {
+              "sku": "199899",
+              "code": "image_missing",
+              "name": "Asus PRIME H610M-A WIFI (LGA1700, H610, DDR5, USB3.2 Type-C, SATA3)"
+            },
+            {
+              "sku": "193988",
+              "code": "image_missing",
+              "name": "Asus PRIME H610M-K D4 (LGA1700, H610, DDR4, USB3.2, SATA3) Bundling Include Windows 11 Home"
+            },
+            {
+              "sku": "184430",
+              "code": "image_missing",
+              "name": "Asus H110M-K (LGA1151,H110,DDR4) - Garansi Distributor"
+            },
+            {
+              "sku": "183643",
+              "code": "image_missing",
+              "name": "Asus H81M-K (LGA1150, Intel H81, DDR3) - Garansi Distributor"
+            },
+            {
+              "sku": "183189",
+              "code": "image_missing",
+              "name": "Asus H61M-K (LGA1155, Intel H61, DDR3) - Garansi Distributor"
+            },
+            {
+              "sku": "197128",
+              "code": "image_missing",
+              "name": "Biostar H610MHD D5 (LGA1700, H610, DDR5, USB3.2, SATA3)"
+            },
+            {
+              "sku": "184063",
+              "code": "image_missing",
+              "name": "Biostar B760MX2-E (LGA1700, B760, DDR5, USB3.2 Type-C, SATA3)"
+            },
+            {
+              "sku": "184979",
+              "code": "image_missing",
+              "name": "Biostar H610MH D5 (LGA1700, H610, DDR5, USB3.2, SATA3)"
+            },
+            {
+              "sku": "187227",
+              "code": "image_missing",
+              "name": "Biostar H610MX2-E D5 (LGA1700, H610, DDR5, USB3.2, SATA3)"
+            }
+          ]
+        },
+        "psu": {
+          "total": 586,
+          "images": {
+            "present": 421,
+            "missing": 165,
+            "coverage": 0.7184
+          },
+          "marketplace_links": {
+            "present": 586,
+            "missing": 0,
+            "coverage": 1.0
+          },
+          "required_spec_coverage": {
+            "wattage_w": {
+              "present": 586,
+              "missing": 0,
+              "coverage": 1.0
+            }
+          },
+          "price_idr": {
+            "min": 100000,
+            "median": 1639500,
+            "max": 11755000
+          },
+          "quality_flags": {},
+          "sample_issues": [
+            {
+              "sku": "199229",
+              "code": "image_missing",
+              "name": "CUBE GAMING CG-500 500W (OEM Package) - Garansi 1Thn"
+            },
+            {
+              "sku": "198325",
+              "code": "image_missing",
+              "name": "GALAX OMEGA GL500S 500W 80+ Cybenetics Bronze Non-Modular - 5 Years Warranty"
+            },
+            {
+              "sku": "198329",
+              "code": "image_missing",
+              "name": "GALAX OMEGA GLX1200 1200W 80+ Gold - Fully Modular - ATX3.0 and PCIe 5.0 Ready - Japanese Main Capacitors - 5 Years Warranty"
+            },
+            {
+              "sku": "198328",
+              "code": "image_missing",
+              "name": "GALAX OMEGA GLX1000 1000W 80+ Gold - Fully Modular - ATX3.0 and PCIe 5.0 Ready - Japanese Main Capacitors - 5 Years Warranty"
+            },
+            {
+              "sku": "198327",
+              "code": "image_missing",
+              "name": "GALAX OMEGA GLX850 850W 80+ Gold - Fully Modular - ATX3.0 and PCIe 5.0 Ready - Japanese Main Capacitors - 5 Years Warranty"
+            },
+            {
+              "sku": "198326",
+              "code": "image_missing",
+              "name": "GALAX OMEGA GL650S 650W 80+ Cybenetics Bronze Non-Modular - 5 Years Warranty"
+            },
+            {
+              "sku": "197701",
+              "code": "image_missing",
+              "name": "ADATA XPG PYLON 750W 80+ Bronze Non-Modular - 5 Years Warranty"
+            },
+            {
+              "sku": "199621",
+              "code": "image_missing",
+              "name": "ADATA XPG KYBER II 650W 80+ Gold Modular - 5 Years Warranty"
+            },
+            {
+              "sku": "199884",
+              "code": "image_missing",
+              "name": "ADATA XPG KYBER II 750W 80+ Gold Modular - 5 Years Warranty"
+            },
+            {
+              "sku": "197703",
+              "code": "image_missing",
+              "name": "ADATA XPG CORE REACTOR II VE 750W 80+ Gold ATX 3.1 Fully Modular - 7 Years Warranty"
+            },
+            {
+              "sku": "197704",
+              "code": "image_missing",
+              "name": "ADATA XPG CORE REACTOR II VE 850W 80+ Gold ATX 3.1 Fully Modular - 7 Years Warranty"
+            },
+            {
+              "sku": "197702",
+              "code": "image_missing",
+              "name": "ADATA XPG CORE REACTOR II WHITE 850W 80+ Gold ATX 3.1 Fully Modular - 10 Years Warranty"
+            },
+            {
+              "sku": "199413",
+              "code": "image_missing",
+              "name": "ADATA XPG CORE REACTOR II 1200W 80+ Gold ATX 3.1 Fully Modular - 10 Years Warranty"
+            },
+            {
+              "sku": "197705",
+              "code": "image_missing",
+              "name": "ADATA XPG CYBERCORE II 1000W 80+ Platinum ATX 3.1 Fully Modular - 10 Years Warranty"
+            },
+            {
+              "sku": "197706",
+              "code": "image_missing",
+              "name": "ADATA XPG CYBERCORE II 1300W 80+ Platinum ATX 3.1 Fully Modular - 10 Years Warranty"
+            },
+            {
+              "sku": "201349",
+              "code": "image_missing",
+              "name": "Seasonic PRIME TX-1600 Noctua Edition 1600W 80+ Titanium ATX 3.1 PCIe 5.1 Fully Modular"
+            },
+            {
+              "sku": "193424",
+              "code": "image_missing",
+              "name": "Aigo ID400 400W Non-Modular"
+            },
+            {
+              "sku": "176568",
+              "code": "image_missing",
+              "name": "Aigo Warrior AK600 600W Non Modular"
+            },
+            {
+              "sku": "193554",
+              "code": "image_missing",
+              "name": "Aigo AT550 550W 80 PLUS Bronze Non-Modular"
+            },
+            {
+              "sku": "193553",
+              "code": "image_missing",
+              "name": "Aigo AT650 650W 80 PLUS Bronze Non-Modular"
+            }
+          ]
+        },
+        "ram": {
+          "total": 464,
+          "images": {
+            "present": 328,
+            "missing": 136,
+            "coverage": 0.7069
+          },
+          "marketplace_links": {
+            "present": 464,
+            "missing": 0,
+            "coverage": 1.0
+          },
+          "required_spec_coverage": {
+            "type": {
+              "present": 464,
+              "missing": 0,
+              "coverage": 1.0
+            },
+            "capacity_gb": {
+              "present": 464,
+              "missing": 0,
+              "coverage": 1.0
+            },
+            "speed_mhz": {
+              "present": 464,
+              "missing": 0,
+              "coverage": 1.0
+            }
+          },
+          "price_idr": {
+            "min": 163000,
+            "median": 7160000,
+            "max": 52490000
+          },
+          "quality_flags": {
+            "price_outlier_low": 9
+          },
+          "sample_issues": [
+            {
+              "sku": "201425",
+              "code": "image_missing",
+              "name": "Apacer NOX Gaming DDR5 PC48000 6000MHz 16GB (1x16GB) 38-48-48-96 - AH5U16G60C622MBAA-1"
+            },
+            {
+              "sku": "201251",
+              "code": "image_missing",
+              "name": "ADATA XPG LANCER BLADE RGB Black Edition DDR5 PC44800 5600MHz 16GB (2x8GB) CL 46-45-45 - AX5U5600C468G-DTLABRBK"
+            },
+            {
+              "sku": "201252",
+              "code": "image_missing",
+              "name": "ADATA XPG LANCER BLADE RGB Black Edition DDR5 PC44800 5600MHz 32GB (2x16GB) CL 46-45-45 - AX5U5600C4616G-DTLABRBK"
+            },
+            {
+              "sku": "201323",
+              "code": "image_missing",
+              "name": "Gskil Flare X5 Black DDR5 PC48000 6000MHz 16GB (1x16GB) 36-36-36-96 - F5-6000J3636F16GX1-FX5"
+            },
+            {
+              "sku": "201355",
+              "code": "image_missing",
+              "name": "ADATA XPG LANCER BLADE RGB White Edition DDR5 PC44800 5600MHz 16GB (1x16GB) CL46-45-45 - AX5U5600C4616G-SLABRWH"
+            },
+            {
+              "sku": "199098",
+              "code": "image_missing",
+              "name": "SSTC DDR4 PC25600 3200MHz 8GB (1x8GB) 22-22-22-52 - U3200A-C22-8G Support AMD & INTEL - Chipset By Samsung (Bulk Package)"
+            },
+            {
+              "sku": "189837",
+              "code": "image_missing",
+              "name": "Acer HT100 Silver DDR4 PC25600 3200MHz 16GB (1x16GB)"
+            },
+            {
+              "sku": "189835",
+              "code": "image_missing",
+              "name": "Acer HT100 Silver DDR4 PC28800 3600MHz 8GB (1x8GB)"
+            },
+            {
+              "sku": "189831",
+              "code": "image_missing",
+              "name": "Acer HT100 Silver DDR4 PC28800 3600MHz 16GB (1x16GB)"
+            },
+            {
+              "sku": "192469",
+              "code": "image_missing",
+              "name": "Corsair Vengeance Black DDR5 PC44800 5600MHz 32GB (1x32GB) 40-40-40-77 - CMK32GX5M1B5600C40"
+            },
+            {
+              "sku": "192695",
+              "code": "image_missing",
+              "name": "Corsair Vengeance Black DDR5 PC44800 5600MHz 16GB (1x16GB) 40-40-40-77 - CMK16GX5M1B5600Z40"
+            },
+            {
+              "sku": "194351",
+              "code": "image_missing",
+              "name": "Corsair Vengeance White DDR5 PC48000 6000MHz 32GB (2x16GB) 36-44-44-96 - CMK32GX5M2E6000Z36W"
+            },
+            {
+              "sku": "193572",
+              "code": "image_missing",
+              "name": "Corsair Vengeance White DDR5 PC48000 6000MHz 32GB (2x16GB) 30-36-36-76 - CMK32GX5M2B6000Z30W"
+            },
+            {
+              "sku": "193575",
+              "code": "image_missing",
+              "name": "Corsair Vengeance White DDR5 PC48000 6000MHz 64GB (2x32GB) 30-36-36-76 - CMK64GX5M2B6000Z30W"
+            },
+            {
+              "sku": "195950",
+              "code": "image_missing",
+              "name": "Corsair Vengeance Grey DDR5 PC48000 6000MHz 96GB (2x48GB) 36-44-44-96 - CMK96GX5M2E6000Z36"
+            },
+            {
+              "sku": "193546",
+              "code": "image_missing",
+              "name": "Corsair Vengeance RGB Grey DDR5 PC41600 5200MHz 32GB (2x16GB) 40-40-40-77 - CMH32GX5M2B5200Z40K"
+            },
+            {
+              "sku": "190349",
+              "code": "image_missing",
+              "name": "Corsair Vengeance RGB Grey DDR5 PC41600 5200MHz 64GB (2x32GB) 40-40-40-77 - CMH64GX5M2B5200Z40K"
+            },
+            {
+              "sku": "193564",
+              "code": "image_missing",
+              "name": "Corsair Vengeance RGB White DDR5 PC48000 6000MHz 64GB (2x32GB) 30-36-36-76  - CMH64GX5M2B6000Z30W"
+            },
+            {
+              "sku": "193565",
+              "code": "image_missing",
+              "name": "Corsair Vengeance RGB Grey DDR5 PC48000 6000MHz 64GB (2x32GB) 30-36-36-76 - CMH64GX5M2B6000Z30"
+            },
+            {
+              "sku": "195949",
+              "code": "image_missing",
+              "name": "Corsair Vengeance RGB Grey DDR5 PC48000 6000MHz 96GB (2x48GB) 36-44-44-96 - CMH96GX5M2E6000Z36"
+            }
+          ]
+        },
+        "ssd": {
+          "total": 406,
+          "images": {
+            "present": 253,
+            "missing": 153,
+            "coverage": 0.6232
+          },
+          "marketplace_links": {
+            "present": 406,
+            "missing": 0,
+            "coverage": 1.0
+          },
+          "required_spec_coverage": {
+            "capacity_gb": {
+              "present": 405,
+              "missing": 1,
+              "coverage": 0.9975
+            },
+            "interface": {
+              "present": 406,
+              "missing": 0,
+              "coverage": 1.0
+            }
+          },
+          "price_idr": {
+            "min": 425000,
+            "median": 3652500,
+            "max": 62850000
+          },
+          "quality_flags": {},
+          "sample_issues": [
+            {
+              "sku": "200226",
+              "code": "image_missing",
+              "name": "ADATA XPG MARS 970 PLUS 1TB PCIe Gen5 x4 - R 11000MB/s W 10000MB/s - SMAR-970PL-1TCS"
+            },
+            {
+              "sku": "196065",
+              "code": "image_missing",
+              "name": "ADATA XPG MARS 980 PRO 4TB PCIe Gen5 x4 - R 14000MB/S W 13000MB/S - SMAR-980P-4TCI"
+            },
+            {
+              "sku": "193768",
+              "code": "image_missing",
+              "name": "ADATA XPG GAMMIX S70 BLADE 8TB PCIe Gen4x4 - R 7300MB/S W 6300MB/S - AGAMMIXS70B-8000G-CS"
+            },
+            {
+              "sku": "191475",
+              "code": "image_missing",
+              "name": "Corsair MP700 PRO 2TB with Air Cooler M.2 NVMe PCIe Gen5 x4 - CSSD-F2000GBMP700PRO"
+            },
+            {
+              "sku": "190351",
+              "code": "image_missing",
+              "name": "Corsair MP700 PRO 1TB with Air Cooler M.2 NVMe PCIe Gen5 x4 - CSSD-F1000GBMP700PRO"
+            },
+            {
+              "sku": "191476",
+              "code": "image_missing",
+              "name": "Corsair MP700 PRO 2TB M.2 NVMe PCIe Gen5 x4 - CSSD-F2000GBMP700PNH"
+            },
+            {
+              "sku": "192814",
+              "code": "image_missing",
+              "name": "Corsair MP700 ELITE 1TB M.2 NVMe PCIe Gen5 x4 - CSSD-F1000GBMP700ENH"
+            },
+            {
+              "sku": "194586",
+              "code": "image_missing",
+              "name": "Corsair MP600 CORE XT 1TB M.2 NVMe PCIe Gen4 x4 - CSSD-F1000GBMP600CXTR2"
+            },
+            {
+              "sku": "191576",
+              "code": "image_missing",
+              "name": "Crucial P310 SSD 1TB M.2 2230 PCIe Gen4 x4 - CT1000P310SSD2 - R7100MB/s W6000MB/s"
+            },
+            {
+              "sku": "191191",
+              "code": "image_missing",
+              "name": "Crucial P310 SSD 2TB M.2 2230 PCIe Gen4 x4 - CT2000P310SSD2 - R7100MB/s W6000MB/s"
+            },
+            {
+              "sku": "192491",
+              "code": "image_missing",
+              "name": "Crucial P310 SSD 1TB M.2 2280 PCIe Gen4 x4 - CT1000P310SSD8 - R7100MB/s W6000MB/s"
+            },
+            {
+              "sku": "191577",
+              "code": "image_missing",
+              "name": "Crucial T705 SSD 4TB M.2 2280 PCIe Gen5 x4 - CT4000T705SSD3 - R14100MB/s W12600MB/s"
+            },
+            {
+              "sku": "177402",
+              "code": "image_missing",
+              "name": "Intel SSD 670p 2TB M.2 2280 PCIe 3.0 x4"
+            },
+            {
+              "sku": "177404",
+              "code": "image_missing",
+              "name": "Intel SSD 670p 512GB M.2 2280 PCIe 3.0 x4"
+            },
+            {
+              "sku": "177400",
+              "code": "image_missing",
+              "name": "Intel SSD DC-P4510 1TB 2.5 U.2 15mm PCIe 3.1 x4"
+            },
+            {
+              "sku": "195356",
+              "code": "image_missing",
+              "name": "Kingston Fury Renegade G5 PCIe 5.0 NVMe M.2 SSD 1TB"
+            },
+            {
+              "sku": "195357",
+              "code": "image_missing",
+              "name": "Kingston Fury Renegade G5 PCIe 5.0 NVMe M.2 SSD 2TB"
+            },
+            {
+              "sku": "191295",
+              "code": "image_missing",
+              "name": "Kingston SSD NV3 2TB M.2 NVMe PCIe Gen 4.0 x4"
+            },
+            {
+              "sku": "198242",
+              "code": "image_missing",
+              "name": "Kingston SSD NV3 4TB M.2 NVMe PCIe Gen 4.0 x4"
+            },
+            {
+              "sku": "198618",
+              "code": "image_missing",
+              "name": "Kingston DC600M 2.5 SATA Enterprise SSD 960GB - SEDC600M/960G - R 560MB/s & W 530MB/s"
+            }
+          ]
+        },
+        "ups": {
+          "total": 262,
+          "images": {
+            "present": 47,
+            "missing": 215,
+            "coverage": 0.1794
+          },
+          "marketplace_links": {
+            "present": 262,
+            "missing": 0,
+            "coverage": 1.0
+          },
+          "required_spec_coverage": {
+            "capacity_va": {
+              "present": 246,
+              "missing": 16,
+              "coverage": 0.9389
+            },
+            "wattage_w": {
+              "present": 246,
+              "missing": 16,
+              "coverage": 0.9389
+            }
+          },
+          "price_idr": {
+            "min": 195000,
+            "median": 8997500,
+            "max": 153321000
+          },
+          "quality_flags": {},
+          "sample_issues": [
+            {
+              "sku": "191661",
+              "code": "image_missing",
+              "name": "APC Easy UPS On-Line, 2000VA/1800W 230V - SRV2KI-E"
+            },
+            {
+              "sku": "160563",
+              "code": "image_missing",
+              "name": "APC Easy UPS BV 800VA, AVR, Universal Outlet, 230V - BV800i-MS"
+            },
+            {
+              "sku": "160564",
+              "code": "image_missing",
+              "name": "APC Easy UPS BV 1000VA, AVR, Universal Outlet, 230V - BV1000i-MS"
+            },
+            {
+              "sku": "171709",
+              "code": "image_missing",
+              "name": "APC Back-UPS Pro BR 650VA - BR650Mi"
+            },
+            {
+              "sku": "169733",
+              "code": "image_missing",
+              "name": "APC Back-UPS Pro BR 900VA, 6 Outlets, LCD Interface - BR900MI Weight 10Kg"
+            },
+            {
+              "sku": "173928",
+              "code": "image_missing",
+              "name": "APC Back UPS Pro BR 1300VA, 8 Outlets, AVR, LCD Interface - BR1300MI"
+            },
+            {
+              "sku": "169657",
+              "code": "image_missing",
+              "name": "APC Back-UPS Pro BR 1600VA - BR1600MI"
+            },
+            {
+              "sku": "198599",
+              "code": "image_missing",
+              "name": "APC Easy UPS On-Line 1000VA/900W, 230V, Intelligent Card Slot, LCD - SRV1KRIRK-E"
+            },
+            {
+              "sku": "190883",
+              "code": "image_missing",
+              "name": "APC Easy UPS On-Line 1000VA, 230V, Intelligent Card Slot, LCD - SRV1KI-E"
+            },
+            {
+              "sku": "189951",
+              "code": "image_missing",
+              "name": "APC Easy UPS On-Line, 3kVA/2700W - SRV3KIL-E"
+            },
+            {
+              "sku": "126169",
+              "code": "image_missing",
+              "name": "APC Smart UPS 420VA - SC420i - Weight 11Kg"
+            },
+            {
+              "sku": "126170",
+              "code": "image_missing",
+              "name": "APC Smart UPS SC 450VA - SC450RMI1U - Weight 12Kg"
+            },
+            {
+              "sku": "126171",
+              "code": "image_missing",
+              "name": "APC Smart UPS 620VA - SC620i - Weight 14Kg"
+            },
+            {
+              "sku": "163888",
+              "code": "image_missing",
+              "name": "APC Smart-UPS C 1000VA LCD 230V - SMC1000IC - Weight 20Kg"
+            },
+            {
+              "sku": "163719",
+              "code": "image_missing",
+              "name": "APC Smart UPS 1000VA 2UC Rackmount LCD 230V - SMC1000i-2UC - Weight 23Kg"
+            },
+            {
+              "sku": "162182",
+              "code": "image_missing",
+              "name": "APC Smart UPS C 1500VA LCD 230V- SMC1500iC - Weight 28Kg"
+            },
+            {
+              "sku": "162916",
+              "code": "image_missing",
+              "name": "APC Smart UPS C 1500VA 2U Rackmount LCD 230V with SmartConnect - SMC1500i-2UC"
+            },
+            {
+              "sku": "126178",
+              "code": "image_missing",
+              "name": "APC Smart UPS 2000VA LCD 230V - SMC2000i"
+            },
+            {
+              "sku": "126179",
+              "code": "image_missing",
+              "name": "APC Smart UPS 2000VA LCD 230V 2U Rackmount - SMC2000i-2U"
+            },
+            {
+              "sku": "126181",
+              "code": "image_missing",
+              "name": "APC Smart UPS 3000VA LCD 230V 2U Rackmount - SMC3000RMi-2U"
+            }
+          ]
+        }
+      },
+      "action_items": []
+    }
+  }
+}
