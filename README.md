@@ -67,41 +67,70 @@ The backend can call the Gemini API for focused PC build reasoning where configu
 - Data: Local JSON component catalog and EnterKomputer product URLs
 - Market: Indonesia, IDR pricing, id-ID formatting
 
-## Quick Start
+## Quick Start Guide
 
-### 1. Install
+Follow these steps to get your Kompare development environment up and running.
+
+### 1. Installation
+
+First, install the required dependencies for both the Python backend and the Next.js frontend.
 
 ```powershell
+# Install Python backend requirements
 pip install -r requirements.txt
+
+# Install Next.js frontend requirements
 cd frontend
 npm install
 cd ..
 ```
 
-### 2. Configure
+### 2. Configure Cloud AI (Gemini API)
 
-```powershell
-Copy-Item .env.example .env
-```
+To use Google Gemini for AI-assisted recommendations and cart audits, you need to configure your API key.
 
-Set `GEMINI_API_KEY` in `.env` if you want AI-assisted advisor and screenshot audit behavior. You can also set `GEMINI_API_KEY_1` through `GEMINI_API_KEY_4` for quota rotation and `GEMINI_MODEL` to choose the runtime model.
+1. Copy the example environment file:
+   ```powershell
+   Copy-Item .env.example .env
+   ```
+2. Open the `.env` file in your text editor and find `GEMINI_API_KEY`.
+3. Replace the placeholder with your actual Google Gemini API key. 
+   *(Optional: You can also set `GEMINI_API_KEY_1` through `GEMINI_API_KEY_4` if you want to rotate through multiple keys to bypass quota limits.)*
 
-### 3. Run Both Servers
+### 3. Configure Local AI (LM Studio + Qdrant)
+
+If you prefer to run the AI completely locally (without using Gemini), you need to set up the **Local Qwen + Qdrant** profile.
+
+1. **Start Qdrant (Vector Database):** We provide a `docker-compose.yml` file for a hassle-free setup.
+   ```powershell
+   docker-compose up -d
+   ```
+2. **Start LM Studio:** 
+   - Open LM Studio.
+   - Load the `qwen/qwen3.6-27b` model and the `text-embedding-qwen3-embedding-4b` model.
+   - Start the **Local Server** (usually runs on port `1234`).
+3. **Sync the Database:** Populate the Qdrant database with the PC component catalog by running this script:
+   ```powershell
+   $env:PYTHONPATH="."
+   python backend/utils/qdrant_sync.py --profile local_qwen
+   ```
+
+### 4. Run the Application
+
+The easiest way to start the application is using our unified PowerShell script. It automatically boots up the FastAPI backend and Next.js frontend, links them together, and opens your browser.
 
 ```powershell
 .\dev.ps1
 ```
 
-The helper starts FastAPI and Next.js together, then opens the frontend at the configured `FrontendPort` from `dev.ps1` (`5173` by default). The API rewrite points at the backend port selected by the script.
+*(Note: The frontend will default to port `5173`. You can stop both servers anytime by pressing `Ctrl+C` in the terminal).*
 
-### 4. Run The Frontend Directly
-
+**Running Manually (Optional):**
+If you prefer to run the Next.js frontend directly using its default port (3000):
 ```powershell
 cd frontend
 npm run dev
 ```
-
-Open `http://localhost:3000` when running Next.js directly with its default port.
 
 ## API Surface
 
