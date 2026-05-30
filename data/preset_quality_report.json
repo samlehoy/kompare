@@ -1,0 +1,1297 @@
+{
+  "generated_at": "2026-05-24T05:06:45.721595+00:00",
+  "catalog": "data/components.json",
+  "core_tower_only": true,
+  "optional_addons_excluded": [
+    "hdd",
+    "monitor",
+    "ups"
+  ],
+  "allocation_profiles": {
+    "value": {
+      "cpu": 19,
+      "gpu": 35,
+      "ram": 8,
+      "motherboard": 9,
+      "ssd": 10,
+      "psu": 9,
+      "case": 5,
+      "cpu_cooler": 4,
+      "fan_cooler": 1
+    },
+    "balanced": {
+      "cpu": 20,
+      "gpu": 37,
+      "ram": 7,
+      "motherboard": 9,
+      "ssd": 8,
+      "psu": 8,
+      "case": 5,
+      "cpu_cooler": 5,
+      "fan_cooler": 1
+    },
+    "maximize": {
+      "cpu": 22,
+      "gpu": 40,
+      "ram": 6,
+      "motherboard": 8,
+      "ssd": 6,
+      "psu": 8,
+      "case": 3,
+      "cpu_cooler": 6,
+      "fan_cooler": 1
+    }
+  },
+  "rows": [
+    {
+      "budget_idr": 5000000,
+      "use_case": "gaming",
+      "budget_strategy": "value",
+      "performance_priority": "gaming",
+      "total_idr": 4974000,
+      "remaining_idr": 26000,
+      "budget_band": "below_entry",
+      "budget_usage": {
+        "strategy": "value",
+        "used_percent": 99.5,
+        "target_min_percent": 0.0,
+        "target_max_percent": 90.0,
+        "status": "value_preserved"
+      },
+      "budget_warning_codes": [],
+      "compatibility_warning_count": 0,
+      "compatibility_error_count": 0,
+      "missing_required_slots": [],
+      "upgrade_suggestion_slots": [],
+      "selected_skus": {
+        "cpu": "168471",
+        "motherboard": "184651",
+        "ram": "196472",
+        "gpu": "183836",
+        "ssd": "177404",
+        "psu": "195054",
+        "cpu_cooler": "171499",
+        "fan_cooler": "196098",
+        "case": "187942"
+      },
+      "selected_labels": {
+        "cpu": "Intel Core i7-3770 3.4Ghz - Cache 8MB [Tray] Socket LGA 1155 - Ivy Bridg...",
+        "motherboard": "Gigabyte GA-H61M-DS2 (LGA1155, H61, DDR3) - Garansi Distributor",
+        "ram": "Team Elite Black DDR3 PC12800 1600MHz 8GB (1x8GB) 11-11-11-28 - TED38G16...",
+        "gpu": "Arktek Radeon RX 580 8GB GDDR5 Cyclops - Garansi 1Thn",
+        "ssd": "Intel SSD 670p 512GB M.2 2280 PCIe 3.0 x4",
+        "psu": "VenomRX Nirvana 700W 85+ Bronze Flat Cable",
+        "cpu_cooler": "PCCooler GI-X6B V2 CPU Cooler",
+        "fan_cooler": "Arctic P8 Max 8CM High Speed PWM Case Fan",
+        "case": "Fractal USB-C 10Gbps Cable – Model D for POP Series or FOCUS 2 Case"
+      },
+      "quality_flags": [],
+      "used_percent": 99.5,
+      "status": "value_preserved"
+    },
+    {
+      "budget_idr": 5000000,
+      "use_case": "gaming",
+      "budget_strategy": "balanced",
+      "performance_priority": "gaming",
+      "total_idr": 4959000,
+      "remaining_idr": 41000,
+      "budget_band": "below_entry",
+      "budget_usage": {
+        "strategy": "balanced",
+        "used_percent": 99.2,
+        "target_min_percent": 85.0,
+        "target_max_percent": 97.0,
+        "status": "target_met"
+      },
+      "budget_warning_codes": [],
+      "compatibility_warning_count": 0,
+      "compatibility_error_count": 0,
+      "missing_required_slots": [],
+      "upgrade_suggestion_slots": [],
+      "selected_skus": {
+        "cpu": "168471",
+        "motherboard": "184651",
+        "ram": "196472",
+        "gpu": "183836",
+        "ssd": "177404",
+        "psu": "194509",
+        "cpu_cooler": "194252",
+        "fan_cooler": "196098",
+        "case": "11856"
+      },
+      "selected_labels": {
+        "cpu": "Intel Core i7-3770 3.4Ghz - Cache 8MB [Tray] Socket LGA 1155 - Ivy Bridg...",
+        "motherboard": "Gigabyte GA-H61M-DS2 (LGA1155, H61, DDR3) - Garansi Distributor",
+        "ram": "Team Elite Black DDR3 PC12800 1600MHz 8GB (1x8GB) 11-11-11-28 - TED38G16...",
+        "gpu": "Arktek Radeon RX 580 8GB GDDR5 Cyclops - Garansi 1Thn",
+        "ssd": "Intel SSD 670p 512GB M.2 2280 PCIe 3.0 x4",
+        "psu": "VenomRX Nirvana 550W 85+ Bronze Flat Cable - Black",
+        "cpu_cooler": "PCCooler RT400 Black Tower CPU Cooler",
+        "fan_cooler": "Arctic P8 Max 8CM High Speed PWM Case Fan",
+        "case": "Simbadda SIM V - Tanpa PSU"
+      },
+      "quality_flags": [],
+      "used_percent": 99.2,
+      "status": "target_met"
+    },
+    {
+      "budget_idr": 5000000,
+      "use_case": "gaming",
+      "budget_strategy": "maximize",
+      "performance_priority": "gaming",
+      "total_idr": 4959000,
+      "remaining_idr": 41000,
+      "budget_band": "below_entry",
+      "budget_usage": {
+        "strategy": "maximize",
+        "used_percent": 99.2,
+        "target_min_percent": 95.0,
+        "target_max_percent": 100.0,
+        "status": "target_met"
+      },
+      "budget_warning_codes": [],
+      "compatibility_warning_count": 0,
+      "compatibility_error_count": 0,
+      "missing_required_slots": [],
+      "upgrade_suggestion_slots": [],
+      "selected_skus": {
+        "cpu": "24223",
+        "motherboard": "183643",
+        "ram": "122891",
+        "gpu": "183836",
+        "ssd": "177404",
+        "psu": "195054",
+        "cpu_cooler": "180141",
+        "fan_cooler": "196098",
+        "case": "177816"
+      },
+      "selected_labels": {
+        "cpu": "Intel Core i7-4790 3.6Ghz - Cache 8MB [Tray] Socket LGA 1150 - Haswell R...",
+        "motherboard": "Asus H81M-K (LGA1150, Intel H81, DDR3) - Garansi Distributor",
+        "ram": "VenomRX DDR3 PC12800 8GB",
+        "gpu": "Arktek Radeon RX 580 8GB GDDR5 Cyclops - Garansi 1Thn",
+        "ssd": "Intel SSD 670p 512GB M.2 2280 PCIe 3.0 x4",
+        "psu": "VenomRX Nirvana 700W 85+ Bronze Flat Cable",
+        "cpu_cooler": "CUBE GAMING STORM V2 - SINGLE FAN 12CM ARGB - Universal Socket (AM5 Read...",
+        "fan_cooler": "Arctic P8 Max 8CM High Speed PWM Case Fan",
+        "case": "LIAN LI GRAPHIC CARD ANTI-SAG BRACKET (Multi-Ways) - GB-002"
+      },
+      "quality_flags": [],
+      "used_percent": 99.2,
+      "status": "target_met"
+    },
+    {
+      "budget_idr": 10000000,
+      "use_case": "gaming",
+      "budget_strategy": "value",
+      "performance_priority": "gaming",
+      "total_idr": 9923000,
+      "remaining_idr": 77000,
+      "budget_band": "entry_level",
+      "budget_usage": {
+        "strategy": "value",
+        "used_percent": 99.2,
+        "target_min_percent": 0.0,
+        "target_max_percent": 90.0,
+        "status": "value_preserved"
+      },
+      "budget_warning_codes": [],
+      "compatibility_warning_count": 0,
+      "compatibility_error_count": 0,
+      "missing_required_slots": [],
+      "upgrade_suggestion_slots": [],
+      "selected_skus": {
+        "cpu": "24224",
+        "motherboard": "10824",
+        "ram": "154628",
+        "gpu": "197697",
+        "ssd": "177404",
+        "psu": "175609",
+        "cpu_cooler": "191077",
+        "fan_cooler": "183305",
+        "case": "172526"
+      },
+      "selected_labels": {
+        "cpu": "Intel Core i7-4770 3.4Ghz - Cache 8MB [Tray] Socket LGA 1150 - Haswell R...",
+        "motherboard": "Gigabyte GA-H81M-S2PH (LGA1150, H81, DDR3, SATA3, USB3)",
+        "ram": "V-GeN Rescue DDR3 8GB PC12800",
+        "gpu": "Manli GeForce RTX 5050 8GB GDDR6 Nebula Dual Fan",
+        "ssd": "Intel SSD 670p 512GB M.2 2280 PCIe 3.0 x4",
+        "psu": "Aerocool Mirage Gold 850W 80 Plus Gold Fully Modular",
+        "cpu_cooler": "Corsair iCUE LINK CapSwap Module – VRM Fan - White",
+        "fan_cooler": "Arctic P14 PWM PST A-RGB 14CM Case Fan - White",
+        "case": "Aerocool Graphite ARGB"
+      },
+      "quality_flags": [],
+      "used_percent": 99.2,
+      "status": "value_preserved"
+    },
+    {
+      "budget_idr": 10000000,
+      "use_case": "gaming",
+      "budget_strategy": "balanced",
+      "performance_priority": "gaming",
+      "total_idr": 9914000,
+      "remaining_idr": 86000,
+      "budget_band": "entry_level",
+      "budget_usage": {
+        "strategy": "balanced",
+        "used_percent": 99.1,
+        "target_min_percent": 85.0,
+        "target_max_percent": 97.0,
+        "status": "target_met"
+      },
+      "budget_warning_codes": [],
+      "compatibility_warning_count": 0,
+      "compatibility_error_count": 0,
+      "missing_required_slots": [],
+      "upgrade_suggestion_slots": [
+        "fan_cooler"
+      ],
+      "selected_skus": {
+        "cpu": "196033",
+        "motherboard": "184651",
+        "ram": "154628",
+        "gpu": "193943",
+        "ssd": "159730",
+        "psu": "175609",
+        "cpu_cooler": "182439",
+        "fan_cooler": "179724",
+        "case": "163086"
+      },
+      "selected_labels": {
+        "cpu": "Intel Core i7-9700F 3.0Ghz Up To 4.7Ghz - Cache 12MB [Tray] Socket LGA 1...",
+        "motherboard": "Gigabyte GA-H61M-DS2 (LGA1155, H61, DDR3) - Garansi Distributor",
+        "ram": "V-GeN Rescue DDR3 8GB PC12800",
+        "gpu": "SPARKLE Intel ARC B570 10GB GDDR6 Guardian OC - BLUE BREATHING LIGHT - D...",
+        "ssd": "Transcend TS512GMTE220S NVMe PCIe Gen3 x4 M.2 512GB",
+        "psu": "Aerocool Mirage Gold 850W 80 Plus Gold Fully Modular",
+        "cpu_cooler": "PCCooler GI-CL120VC Pro Liquid Cooler",
+        "fan_cooler": "Fractal Dynamic X2 GP-14 PWM White Fan",
+        "case": "Enlight EN-120 With PSU 300W - Slim Case"
+      },
+      "quality_flags": [],
+      "used_percent": 99.1,
+      "status": "target_met"
+    },
+    {
+      "budget_idr": 10000000,
+      "use_case": "gaming",
+      "budget_strategy": "maximize",
+      "performance_priority": "gaming",
+      "total_idr": 9975000,
+      "remaining_idr": 25000,
+      "budget_band": "entry_level",
+      "budget_usage": {
+        "strategy": "maximize",
+        "used_percent": 99.8,
+        "target_min_percent": 95.0,
+        "target_max_percent": 100.0,
+        "status": "target_met"
+      },
+      "budget_warning_codes": [],
+      "compatibility_warning_count": 0,
+      "compatibility_error_count": 0,
+      "missing_required_slots": [],
+      "upgrade_suggestion_slots": [],
+      "selected_skus": {
+        "cpu": "179221",
+        "motherboard": "186571",
+        "ram": "184243",
+        "gpu": "180027",
+        "ssd": "159730",
+        "psu": "175609",
+        "cpu_cooler": "200991",
+        "fan_cooler": "196098",
+        "case": "195366"
+      },
+      "selected_labels": {
+        "cpu": "Intel Core i5-12400F 2.5GHz Up To 4.4GHz - Cache 18MB [Tray] Socket LGA ...",
+        "motherboard": "Arktek Alpha Force AK-H610MB EG (LGA1700, H610, DDR4, USB3.0, SATA3, M.2...",
+        "ram": "CUBE GAMING Saber DDR4 3200MHz PC25600 Single Channel 16GB (1x16GB) - Ch...",
+        "gpu": "ASRock Intel ARC A380 6GB GDDR6 - Challenger ITX 6GB OC",
+        "ssd": "Transcend TS512GMTE220S NVMe PCIe Gen3 x4 M.2 512GB",
+        "psu": "Aerocool Mirage Gold 850W 80 Plus Gold Fully Modular",
+        "cpu_cooler": "DeepCool LE240 V2 ZERO DARK 240mm Silent Liquid CPU Cooler",
+        "fan_cooler": "Arctic P8 Max 8CM High Speed PWM Case Fan",
+        "case": "CUBE GAMING LORUS - ATX Gaming Case - Front Mesh Panel Design - Left Sid..."
+      },
+      "quality_flags": [],
+      "used_percent": 99.8,
+      "status": "target_met"
+    },
+    {
+      "budget_idr": 15000000,
+      "use_case": "gaming",
+      "budget_strategy": "value",
+      "performance_priority": "gaming",
+      "total_idr": 14926000,
+      "remaining_idr": 74000,
+      "budget_band": "mid_range",
+      "budget_usage": {
+        "strategy": "value",
+        "used_percent": 99.5,
+        "target_min_percent": 0.0,
+        "target_max_percent": 90.0,
+        "status": "value_preserved"
+      },
+      "budget_warning_codes": [],
+      "compatibility_warning_count": 0,
+      "compatibility_error_count": 0,
+      "missing_required_slots": [],
+      "upgrade_suggestion_slots": [
+        "psu"
+      ],
+      "selected_skus": {
+        "cpu": "176938",
+        "motherboard": "197092",
+        "ram": "184243",
+        "gpu": "197697",
+        "ssd": "177402",
+        "psu": "182152",
+        "cpu_cooler": "187589",
+        "fan_cooler": "196098",
+        "case": "195588"
+      },
+      "selected_labels": {
+        "cpu": "Intel Core i5-12400 2.5GHz Up To 4.4GHz - Cache 18MB [Tray] Socket LGA 1...",
+        "motherboard": "MAXSUN B760M GAMING WIFI ICE (LGA1700, B760, DDR4, USB3.2, SATA3)",
+        "ram": "CUBE GAMING Saber DDR4 3200MHz PC25600 Single Channel 16GB (1x16GB) - Ch...",
+        "gpu": "Manli GeForce RTX 5050 8GB GDDR6 Nebula Dual Fan",
+        "ssd": "Intel SSD 670p 2TB M.2 2280 PCIe 3.0 x4",
+        "psu": "Fractal Ion+ 2 860W 80+ Platinum - Fully Modular",
+        "cpu_cooler": "Enermax LIQMAXFLO 360mm Liquid CPU Cooler - 38mm Thick Radiator - ELC-LM...",
+        "fan_cooler": "Arctic P8 Max 8CM High Speed PWM Case Fan",
+        "case": "CUBE GAMING ROCCU WHITE - ATX Gaming Case - All White Inside - Panoramic..."
+      },
+      "quality_flags": [],
+      "used_percent": 99.5,
+      "status": "value_preserved"
+    },
+    {
+      "budget_idr": 15000000,
+      "use_case": "gaming",
+      "budget_strategy": "balanced",
+      "performance_priority": "gaming",
+      "total_idr": 14920000,
+      "remaining_idr": 80000,
+      "budget_band": "mid_range",
+      "budget_usage": {
+        "strategy": "balanced",
+        "used_percent": 99.5,
+        "target_min_percent": 85.0,
+        "target_max_percent": 97.0,
+        "status": "target_met"
+      },
+      "budget_warning_codes": [],
+      "compatibility_warning_count": 0,
+      "compatibility_error_count": 0,
+      "missing_required_slots": [],
+      "upgrade_suggestion_slots": [
+        "psu"
+      ],
+      "selected_skus": {
+        "cpu": "195905",
+        "motherboard": "200842",
+        "ram": "188480",
+        "gpu": "193943",
+        "ssd": "159730",
+        "psu": "182150",
+        "cpu_cooler": "187589",
+        "fan_cooler": "183305",
+        "case": "197095"
+      },
+      "selected_labels": {
+        "cpu": "Intel Core Ultra 5 225F 3.3GHz Up To 4.9GHz - Cache 20MB [Tray] Socket L...",
+        "motherboard": "MAXSUN Challenger H810M-K (LGA1851, H810, DDR5, USB3.2, SATA3)",
+        "ram": "VenomRX DDR5 PC38400 4800MHz 16GB",
+        "gpu": "SPARKLE Intel ARC B570 10GB GDDR6 Guardian OC - BLUE BREATHING LIGHT - D...",
+        "ssd": "Transcend TS512GMTE220S NVMe PCIe Gen3 x4 M.2 512GB",
+        "psu": "Fractal Ion+ 2 660W 80+ Platinum - Fully Modular",
+        "cpu_cooler": "Enermax LIQMAXFLO 360mm Liquid CPU Cooler - 38mm Thick Radiator - ELC-LM...",
+        "fan_cooler": "Arctic P14 PWM PST A-RGB 14CM Case Fan - White",
+        "case": "Aigo Darkflash DS900WD ATX Black"
+      },
+      "quality_flags": [],
+      "used_percent": 99.5,
+      "status": "target_met"
+    },
+    {
+      "budget_idr": 15000000,
+      "use_case": "gaming",
+      "budget_strategy": "maximize",
+      "performance_priority": "gaming",
+      "total_idr": 14915000,
+      "remaining_idr": 85000,
+      "budget_band": "mid_range",
+      "budget_usage": {
+        "strategy": "maximize",
+        "used_percent": 99.4,
+        "target_min_percent": 95.0,
+        "target_max_percent": 100.0,
+        "status": "target_met"
+      },
+      "budget_warning_codes": [],
+      "compatibility_warning_count": 0,
+      "compatibility_error_count": 0,
+      "missing_required_slots": [],
+      "upgrade_suggestion_slots": [
+        "psu"
+      ],
+      "selected_skus": {
+        "cpu": "195905",
+        "motherboard": "200842",
+        "ram": "188480",
+        "gpu": "193943",
+        "ssd": "182330",
+        "psu": "182150",
+        "cpu_cooler": "187589",
+        "fan_cooler": "165991",
+        "case": "186252"
+      },
+      "selected_labels": {
+        "cpu": "Intel Core Ultra 5 225F 3.3GHz Up To 4.9GHz - Cache 20MB [Tray] Socket L...",
+        "motherboard": "MAXSUN Challenger H810M-K (LGA1851, H810, DDR5, USB3.2, SATA3)",
+        "ram": "VenomRX DDR5 PC38400 4800MHz 16GB",
+        "gpu": "SPARKLE Intel ARC B570 10GB GDDR6 Guardian OC - BLUE BREATHING LIGHT - D...",
+        "ssd": "CUBE GAMING Phoenix SSD 512GB M.2 NVME PCIe Gen3x4 (Up to - R 3500MB/s W...",
+        "psu": "Fractal Ion+ 2 660W 80+ Platinum - Fully Modular",
+        "cpu_cooler": "Enermax LIQMAXFLO 360mm Liquid CPU Cooler - 38mm Thick Radiator - ELC-LM...",
+        "fan_cooler": "Corsair iCUE SP140 RGB Pro (Single Pack) - 14CM Fan",
+        "case": "CUBE GAMING STARK WHITE - ATX - SIDE TEMPERED GLASS - FRONT MESH PANEL -..."
+      },
+      "quality_flags": [],
+      "used_percent": 99.4,
+      "status": "target_met"
+    },
+    {
+      "budget_idr": 20000000,
+      "use_case": "gaming",
+      "budget_strategy": "value",
+      "performance_priority": "gaming",
+      "total_idr": 19885000,
+      "remaining_idr": 115000,
+      "budget_band": "mid_range",
+      "budget_usage": {
+        "strategy": "value",
+        "used_percent": 99.4,
+        "target_min_percent": 0.0,
+        "target_max_percent": 90.0,
+        "status": "value_preserved"
+      },
+      "budget_warning_codes": [],
+      "compatibility_warning_count": 0,
+      "compatibility_error_count": 0,
+      "missing_required_slots": [],
+      "upgrade_suggestion_slots": [
+        "psu"
+      ],
+      "selected_skus": {
+        "cpu": "195905",
+        "motherboard": "200840",
+        "ram": "195958",
+        "gpu": "197697",
+        "ssd": "197214",
+        "psu": "186989",
+        "cpu_cooler": "187589",
+        "fan_cooler": "125759",
+        "case": "194708"
+      },
+      "selected_labels": {
+        "cpu": "Intel Core Ultra 5 225F 3.3GHz Up To 4.9GHz - Cache 20MB [Tray] Socket L...",
+        "motherboard": "MAXSUN B860M I-CAFE 5G (LGA1851, B860, DDR5, USB3.2, SATA3) (Bulk Packag...",
+        "ram": "Gskill Ripjaws S5 White DDR5 PC48000 6000MHz 32GB (2x16GB) 36-48-48-96 -...",
+        "gpu": "Manli GeForce RTX 5050 8GB GDDR6 Nebula Dual Fan",
+        "ssd": "Patriot P410 2TB M.2 2280 PCIe Gen4 x4 - R5000MB/s W4500MB/s",
+        "psu": "1STPLAYER NGDP ATX 3.0 1000W HA-1000BA3 80+ Platinum Certified - Full Mo...",
+        "cpu_cooler": "Enermax LIQMAXFLO 360mm Liquid CPU Cooler - 38mm Thick Radiator - ELC-LM...",
+        "fan_cooler": "Noctua Premium Fan 14CM 1200RPM - NF-A14 PWM",
+        "case": "Cooler Master MasterBox Q300L V2 White"
+      },
+      "quality_flags": [],
+      "used_percent": 99.4,
+      "status": "value_preserved"
+    },
+    {
+      "budget_idr": 20000000,
+      "use_case": "gaming",
+      "budget_strategy": "balanced",
+      "performance_priority": "gaming",
+      "total_idr": 19827000,
+      "remaining_idr": 173000,
+      "budget_band": "mid_range",
+      "budget_usage": {
+        "strategy": "balanced",
+        "used_percent": 99.1,
+        "target_min_percent": 85.0,
+        "target_max_percent": 97.0,
+        "status": "target_met"
+      },
+      "budget_warning_codes": [],
+      "compatibility_warning_count": 0,
+      "compatibility_error_count": 0,
+      "missing_required_slots": [],
+      "upgrade_suggestion_slots": [
+        "psu",
+        "fan_cooler"
+      ],
+      "selected_skus": {
+        "cpu": "195905",
+        "motherboard": "197203",
+        "ram": "195958",
+        "gpu": "197697",
+        "ssd": "177402",
+        "psu": "184293",
+        "cpu_cooler": "195664",
+        "fan_cooler": "183897",
+        "case": "163740"
+      },
+      "selected_labels": {
+        "cpu": "Intel Core Ultra 5 225F 3.3GHz Up To 4.9GHz - Cache 20MB [Tray] Socket L...",
+        "motherboard": "Asus H810M AYW GAMING WIFI (LGA1851, H810, DDR5, USB3.2 Type-C, SATA3)",
+        "ram": "Gskill Ripjaws S5 White DDR5 PC48000 6000MHz 32GB (2x16GB) 36-48-48-96 -...",
+        "gpu": "Manli GeForce RTX 5050 8GB GDDR6 Nebula Dual Fan",
+        "ssd": "Intel SSD 670p 2TB M.2 2280 PCIe 3.0 x4",
+        "psu": "Super Flower Leadex VII XG 850W ATX3.1 -SF-850F14XG ATX3.1(BK) - PCIe 5....",
+        "cpu_cooler": "DeepCool LE360 V2 360mm Liquid CPU Cooler",
+        "fan_cooler": "LIAN LI UNI FAN SL-INFINITY 140 BLACK - 14CM ARGB FAN - Infinity Mirror ...",
+        "case": "LIAN LI O11DXL-1X (FOR LIAN LI O11DXL ROG) Premium PCI-E x16 3.0 Black E..."
+      },
+      "quality_flags": [],
+      "used_percent": 99.1,
+      "status": "target_met"
+    },
+    {
+      "budget_idr": 20000000,
+      "use_case": "gaming",
+      "budget_strategy": "maximize",
+      "performance_priority": "gaming",
+      "total_idr": 19851000,
+      "remaining_idr": 149000,
+      "budget_band": "mid_range",
+      "budget_usage": {
+        "strategy": "maximize",
+        "used_percent": 99.3,
+        "target_min_percent": 95.0,
+        "target_max_percent": 100.0,
+        "status": "target_met"
+      },
+      "budget_warning_codes": [],
+      "compatibility_warning_count": 0,
+      "compatibility_error_count": 0,
+      "missing_required_slots": [],
+      "upgrade_suggestion_slots": [
+        "psu",
+        "fan_cooler"
+      ],
+      "selected_skus": {
+        "cpu": "200281",
+        "motherboard": "195458",
+        "ram": "195958",
+        "gpu": "197697",
+        "ssd": "177402",
+        "psu": "182152",
+        "cpu_cooler": "188255",
+        "fan_cooler": "192713",
+        "case": "171066"
+      },
+      "selected_labels": {
+        "cpu": "AMD Ryzen 5 7500X3D 4.0GHz Up To 4.5GHz Cache 96MB 65W AM5 [Tray] - 6 Co...",
+        "motherboard": "Biostar A620MS (AM5, A620, DDR5, USB3.2, SATA3)",
+        "ram": "Gskill Ripjaws S5 White DDR5 PC48000 6000MHz 32GB (2x16GB) 36-48-48-96 -...",
+        "gpu": "Manli GeForce RTX 5050 8GB GDDR6 Nebula Dual Fan",
+        "ssd": "Intel SSD 670p 2TB M.2 2280 PCIe 3.0 x4",
+        "psu": "Fractal Ion+ 2 860W 80+ Platinum - Fully Modular",
+        "cpu_cooler": "Zalman Alpha2 A36 White 360mm Liquid Cooler",
+        "fan_cooler": "TRYX ROTA PRO 140 WHITE LCP Performance Fan",
+        "case": "LIAN LI O11DMINI-1 BLACK (FOR LIAN LI O11 DYNAMIC MINI) Premium PCI-E x1..."
+      },
+      "quality_flags": [],
+      "used_percent": 99.3,
+      "status": "target_met"
+    },
+    {
+      "budget_idr": 30000000,
+      "use_case": "gaming",
+      "budget_strategy": "value",
+      "performance_priority": "gaming",
+      "total_idr": 29804000,
+      "remaining_idr": 196000,
+      "budget_band": "high_end",
+      "budget_usage": {
+        "strategy": "value",
+        "used_percent": 99.3,
+        "target_min_percent": 0.0,
+        "target_max_percent": 90.0,
+        "status": "value_preserved"
+      },
+      "budget_warning_codes": [],
+      "compatibility_warning_count": 0,
+      "compatibility_error_count": 0,
+      "missing_required_slots": [],
+      "upgrade_suggestion_slots": [
+        "psu",
+        "fan_cooler"
+      ],
+      "selected_skus": {
+        "cpu": "197406",
+        "motherboard": "199128",
+        "ram": "195958",
+        "gpu": "197127",
+        "ssd": "162246",
+        "psu": "184301",
+        "cpu_cooler": "188255",
+        "fan_cooler": "199790",
+        "case": "185250"
+      },
+      "selected_labels": {
+        "cpu": "AMD Ryzen 7 7800X3D 4.2GHz Up To 5.0GHz Cache 96MB 120W AM5 [Tray] - 8 C...",
+        "motherboard": "MAXSUN Terminator B850M DARK WIFI (AM5, AMD B850, DDR5, USB3.2 Type-C, S...",
+        "ram": "Gskill Ripjaws S5 White DDR5 PC48000 6000MHz 32GB (2x16GB) 36-48-48-96 -...",
+        "gpu": "XFX Swift AMD Radeon RX 9060 XT 16GB GDDR6 OC Gaming Edition - RX-96TSW1...",
+        "ssd": "Team MS30 M.2 2280 SATA SSD 2TB - TM8PS7002T0C101 - R 550MB/s & W 500MB/...",
+        "psu": "be quiet! DARK POWER 13 850W - Fully Modular - ATX 3.0 PCIe 5.0 - 80+ Ti...",
+        "cpu_cooler": "Zalman Alpha2 A36 White 360mm Liquid Cooler",
+        "fan_cooler": "Noctua Next-gen Black 14CM Premium Fan - NF-A14X25 G2 PWM CH.BK",
+        "case": "Antec P20C WHITE - Mid-Tower E-ATX Gaming Case - Massive Metal Mesh Fron..."
+      },
+      "quality_flags": [],
+      "used_percent": 99.3,
+      "status": "value_preserved"
+    },
+    {
+      "budget_idr": 30000000,
+      "use_case": "gaming",
+      "budget_strategy": "balanced",
+      "performance_priority": "gaming",
+      "total_idr": 29709000,
+      "remaining_idr": 291000,
+      "budget_band": "high_end",
+      "budget_usage": {
+        "strategy": "balanced",
+        "used_percent": 99.0,
+        "target_min_percent": 85.0,
+        "target_max_percent": 97.0,
+        "status": "target_met"
+      },
+      "budget_warning_codes": [],
+      "compatibility_warning_count": 0,
+      "compatibility_error_count": 0,
+      "missing_required_slots": [],
+      "upgrade_suggestion_slots": [
+        "psu"
+      ],
+      "selected_skus": {
+        "cpu": "197406",
+        "motherboard": "201288",
+        "ram": "195958",
+        "gpu": "197127",
+        "ssd": "198877",
+        "psu": "184302",
+        "cpu_cooler": "187040",
+        "fan_cooler": "183307",
+        "case": "195304"
+      },
+      "selected_labels": {
+        "cpu": "AMD Ryzen 7 7800X3D 4.2GHz Up To 5.0GHz Cache 96MB 120W AM5 [Tray] - 8 C...",
+        "motherboard": "ASRock B850M Challenger (AM5, AMD B850, DDR5, USB3.2 Type-C, SATA3)",
+        "ram": "Gskill Ripjaws S5 White DDR5 PC48000 6000MHz 32GB (2x16GB) 36-48-48-96 -...",
+        "gpu": "XFX Swift AMD Radeon RX 9060 XT 16GB GDDR6 OC Gaming Edition - RX-96TSW1...",
+        "ssd": "WD Red SN700 NVMe SSD 2TB M.2 2280-S3-M PCIe Gen3 x4 - R 3400MB/s W 2900...",
+        "psu": "be quiet! DARK POWER 13 750W - Fully Modular - ATX 3.0 PCIe 5.0 - 80+ Ti...",
+        "cpu_cooler": "Zalman Reserator5 Z36 ARGB White 360mm Liquid Cooler",
+        "fan_cooler": "Arctic P14 PWM PST A-RGB 0dB 14CM Value Pack Case Fan (3 Pack)",
+        "case": "Phanteks NV5 MKII Satin Black D-RGB Near-seamless Glass View Full Tower ..."
+      },
+      "quality_flags": [],
+      "used_percent": 99.0,
+      "status": "target_met"
+    },
+    {
+      "budget_idr": 30000000,
+      "use_case": "gaming",
+      "budget_strategy": "maximize",
+      "performance_priority": "gaming",
+      "total_idr": 29753000,
+      "remaining_idr": 247000,
+      "budget_band": "high_end",
+      "budget_usage": {
+        "strategy": "maximize",
+        "used_percent": 99.2,
+        "target_min_percent": 95.0,
+        "target_max_percent": 100.0,
+        "status": "target_met"
+      },
+      "budget_warning_codes": [],
+      "compatibility_warning_count": 0,
+      "compatibility_error_count": 0,
+      "missing_required_slots": [],
+      "upgrade_suggestion_slots": [
+        "psu"
+      ],
+      "selected_skus": {
+        "cpu": "197406",
+        "motherboard": "187179",
+        "ram": "195958",
+        "gpu": "196005",
+        "ssd": "166264",
+        "psu": "186990",
+        "cpu_cooler": "197626",
+        "fan_cooler": "183307",
+        "case": "186886"
+      },
+      "selected_labels": {
+        "cpu": "AMD Ryzen 7 7800X3D 4.2GHz Up To 5.0GHz Cache 96MB 120W AM5 [Tray] - 8 C...",
+        "motherboard": "ASRock Phantom Gaming A620I Lightning WIFI (AM5, AMD A620, DDR5, USB3.2 ...",
+        "ram": "Gskill Ripjaws S5 White DDR5 PC48000 6000MHz 32GB (2x16GB) 36-48-48-96 -...",
+        "gpu": "XFX Swift Radeon RX 9060 XT 16GB GDDR6 OC White Triple Fan Gaming Editio...",
+        "ssd": "Transcend TS2TMTE220S NVMe PCIe Gen3 x4 M.2 2TB",
+        "psu": "1STPLAYER NGDP ATX 3.0 1000W WHITE HA-1000BA3 80+ Platinum Certified - F...",
+        "cpu_cooler": "Ocypus Sigma L36 PRO White 3.5 IPS Display 360mm ARGB Liquid Cooler",
+        "fan_cooler": "Arctic P14 PWM PST A-RGB 0dB 14CM Value Pack Case Fan (3 Pack)",
+        "case": "PCCooler C3 T500 ARGB Black - Panoramic Window Case"
+      },
+      "quality_flags": [],
+      "used_percent": 99.2,
+      "status": "target_met"
+    },
+    {
+      "budget_idr": 45000000,
+      "use_case": "gaming",
+      "budget_strategy": "value",
+      "performance_priority": "gaming",
+      "total_idr": 44642000,
+      "remaining_idr": 358000,
+      "budget_band": "custom_high",
+      "budget_usage": {
+        "strategy": "value",
+        "used_percent": 99.2,
+        "target_min_percent": 0.0,
+        "target_max_percent": 90.0,
+        "status": "value_preserved"
+      },
+      "budget_warning_codes": [],
+      "compatibility_warning_count": 0,
+      "compatibility_error_count": 0,
+      "missing_required_slots": [],
+      "upgrade_suggestion_slots": [
+        "psu",
+        "fan_cooler"
+      ],
+      "selected_skus": {
+        "cpu": "197405",
+        "motherboard": "193535",
+        "ram": "195958",
+        "gpu": "195076",
+        "ssd": "184867",
+        "psu": "184301",
+        "cpu_cooler": "195561",
+        "fan_cooler": "164140",
+        "case": "195302"
+      },
+      "selected_labels": {
+        "cpu": "AMD Ryzen 7 9800X3D 4.7GHz Up To 5.2GHz Cache 96MB 120W AM5 [Tray] - 8 C...",
+        "motherboard": "ASRock B850 LiveMixer WiFi (AM5, AMD B850, DDR5, USB3.2 Type-C, SATA3)",
+        "ram": "Gskill Ripjaws S5 White DDR5 PC48000 6000MHz 32GB (2x16GB) 36-48-48-96 -...",
+        "gpu": "XFX Swift Radeon RX 9070 XT 16GB GDDR6 Triple Fan Gaming Edition - RX-97...",
+        "ssd": "PNY XLR8 Gaming CS3140 M.2 2280 NVME PCIe Gen4x4 4TB - Grs 5th - R 7500M...",
+        "psu": "be quiet! DARK POWER 13 850W - Fully Modular - ATX 3.0 PCIe 5.0 - 80+ Ti...",
+        "cpu_cooler": "be quiet! LIGHT LOOP 360mm - Peak Performance and lighting - Impressivel...",
+        "fan_cooler": "Corsair iCUE QL140 RGB (Twin Pack) - With Lighting Node CORE - 14CM Fan",
+        "case": "Phanteks NV9 MKII Matte White D-RGB Near-seamless Glass View Full Tower ..."
+      },
+      "quality_flags": [],
+      "used_percent": 99.2,
+      "status": "value_preserved"
+    },
+    {
+      "budget_idr": 45000000,
+      "use_case": "gaming",
+      "budget_strategy": "balanced",
+      "performance_priority": "gaming",
+      "total_idr": 44670000,
+      "remaining_idr": 330000,
+      "budget_band": "custom_high",
+      "budget_usage": {
+        "strategy": "balanced",
+        "used_percent": 99.3,
+        "target_min_percent": 85.0,
+        "target_max_percent": 97.0,
+        "status": "target_met"
+      },
+      "budget_warning_codes": [],
+      "compatibility_warning_count": 0,
+      "compatibility_error_count": 0,
+      "missing_required_slots": [],
+      "upgrade_suggestion_slots": [
+        "psu",
+        "fan_cooler"
+      ],
+      "selected_skus": {
+        "cpu": "197405",
+        "motherboard": "197959",
+        "ram": "195958",
+        "gpu": "195076",
+        "ssd": "184867",
+        "psu": "184301",
+        "cpu_cooler": "195561",
+        "fan_cooler": "189997",
+        "case": "191596"
+      },
+      "selected_labels": {
+        "cpu": "AMD Ryzen 7 9800X3D 4.7GHz Up To 5.2GHz Cache 96MB 120W AM5 [Tray] - 8 C...",
+        "motherboard": "Asus TUF GAMING B850M-PLUS WIFI7 (AM5, AMD B850, DDR5, USB3.2 Type-C, SA...",
+        "ram": "Gskill Ripjaws S5 White DDR5 PC48000 6000MHz 32GB (2x16GB) 36-48-48-96 -...",
+        "gpu": "XFX Swift Radeon RX 9070 XT 16GB GDDR6 Triple Fan Gaming Edition - RX-97...",
+        "ssd": "PNY XLR8 Gaming CS3140 M.2 2280 NVME PCIe Gen4x4 4TB - Grs 5th - R 7500M...",
+        "psu": "be quiet! DARK POWER 13 850W - Fully Modular - ATX 3.0 PCIe 5.0 - 80+ Ti...",
+        "cpu_cooler": "be quiet! LIGHT LOOP 360mm - Peak Performance and lighting - Impressivel...",
+        "fan_cooler": "LIAN LI UNI FAN TL LCD140 BLACK Single Pack with 1.6” LCD SCREEN - Dual ...",
+        "case": "be quiet! Gaming Case LIGHT BASE 900DX White - E-ATX Support - Impressiv..."
+      },
+      "quality_flags": [],
+      "used_percent": 99.3,
+      "status": "target_met"
+    },
+    {
+      "budget_idr": 45000000,
+      "use_case": "gaming",
+      "budget_strategy": "maximize",
+      "performance_priority": "gaming",
+      "total_idr": 44580000,
+      "remaining_idr": 420000,
+      "budget_band": "custom_high",
+      "budget_usage": {
+        "strategy": "maximize",
+        "used_percent": 99.1,
+        "target_min_percent": 95.0,
+        "target_max_percent": 100.0,
+        "status": "target_met"
+      },
+      "budget_warning_codes": [],
+      "compatibility_warning_count": 0,
+      "compatibility_error_count": 0,
+      "missing_required_slots": [],
+      "upgrade_suggestion_slots": [
+        "psu",
+        "fan_cooler"
+      ],
+      "selected_skus": {
+        "cpu": "197405",
+        "motherboard": "195345",
+        "ram": "195958",
+        "gpu": "195875",
+        "ssd": "184867",
+        "psu": "184301",
+        "cpu_cooler": "195561",
+        "fan_cooler": "199792",
+        "case": "192237"
+      },
+      "selected_labels": {
+        "cpu": "AMD Ryzen 7 9800X3D 4.7GHz Up To 5.2GHz Cache 96MB 120W AM5 [Tray] - 8 C...",
+        "motherboard": "Gigabyte B850 Aorus Elite WIFI7 (AM5, AMD B850, DDR5, USB3.2 Type-C, SAT...",
+        "ram": "Gskill Ripjaws S5 White DDR5 PC48000 6000MHz 32GB (2x16GB) 36-48-48-96 -...",
+        "gpu": "XFX Swift Radeon RX 9070 XT 16GB GDDR6 White Triple Fan Gaming Edition -...",
+        "ssd": "PNY XLR8 Gaming CS3140 M.2 2280 NVME PCIe Gen4x4 4TB - Grs 5th - R 7500M...",
+        "psu": "be quiet! DARK POWER 13 850W - Fully Modular - ATX 3.0 PCIe 5.0 - 80+ Ti...",
+        "cpu_cooler": "be quiet! LIGHT LOOP 360mm - Peak Performance and lighting - Impressivel...",
+        "fan_cooler": "Noctua Push-pull Set Next-Gen Black 14CM Premium Fan - NF-A14x25 G2 PWM ...",
+        "case": "Antec CONSTELLATION C8 CURVE WOOD - Full-Tower E-ATX Gaming Case - Dual ..."
+      },
+      "quality_flags": [],
+      "used_percent": 99.1,
+      "status": "target_met"
+    },
+    {
+      "budget_idr": 60000000,
+      "use_case": "gaming",
+      "budget_strategy": "value",
+      "performance_priority": "gaming",
+      "total_idr": 59050000,
+      "remaining_idr": 950000,
+      "budget_band": "custom_high",
+      "budget_usage": {
+        "strategy": "value",
+        "used_percent": 98.4,
+        "target_min_percent": 0.0,
+        "target_max_percent": 90.0,
+        "status": "value_preserved"
+      },
+      "budget_warning_codes": [],
+      "compatibility_warning_count": 0,
+      "compatibility_error_count": 0,
+      "missing_required_slots": [],
+      "upgrade_suggestion_slots": [
+        "psu"
+      ],
+      "selected_skus": {
+        "cpu": "195954",
+        "motherboard": "191482",
+        "ram": "197111",
+        "gpu": "200126",
+        "ssd": "190213",
+        "psu": "184301",
+        "cpu_cooler": "196208",
+        "fan_cooler": "200333",
+        "case": "195302"
+      },
+      "selected_labels": {
+        "cpu": "AMD Ryzen 7 9800X3D 4.7GHz Up To 5.2GHz Cache 96MB 120W AM5 [Tray] - 8 C...",
+        "motherboard": "Gigabyte X870 AORUS ELITE WIFI7 ICE (AM5, AMD X870, DDR5, USB3.2 Type-C,...",
+        "ram": "Kingston FURY Beast Black DDR5 PC51200 6400MHz 32GB (2x16GB) 32-39-39 - ...",
+        "gpu": "ASRock Radeon RX 9070 XT 16GB GDDR6 Taichi White OC",
+        "ssd": "KLEVV SSD CRAS C910 4TB M.2 2280 NVMe PCle Gen4 x4 - K04TBM2SP0-C91 - R5...",
+        "psu": "be quiet! DARK POWER 13 850W - Fully Modular - ATX 3.0 PCIe 5.0 - 80+ Ti...",
+        "cpu_cooler": "NZXT Kraken Elite 420 RGB Black 420mm AIO Liquid Cooler with 2.72 IPS LC...",
+        "fan_cooler": "Phanteks T30-140 Premium LCP 6-Pole Performance Fan - Triple Pack",
+        "case": "Phanteks NV9 MKII Matte White D-RGB Near-seamless Glass View Full Tower ..."
+      },
+      "quality_flags": [],
+      "used_percent": 98.4,
+      "status": "value_preserved"
+    },
+    {
+      "budget_idr": 60000000,
+      "use_case": "gaming",
+      "budget_strategy": "balanced",
+      "performance_priority": "gaming",
+      "total_idr": 58164000,
+      "remaining_idr": 1836000,
+      "budget_band": "custom_high",
+      "budget_usage": {
+        "strategy": "balanced",
+        "used_percent": 96.9,
+        "target_min_percent": 85.0,
+        "target_max_percent": 97.0,
+        "status": "target_met"
+      },
+      "budget_warning_codes": [],
+      "compatibility_warning_count": 0,
+      "compatibility_error_count": 0,
+      "missing_required_slots": [],
+      "upgrade_suggestion_slots": [
+        "ram",
+        "psu"
+      ],
+      "selected_skus": {
+        "cpu": "192263",
+        "motherboard": "200127",
+        "ram": "195958",
+        "gpu": "200126",
+        "ssd": "197270",
+        "psu": "184301",
+        "cpu_cooler": "196208",
+        "fan_cooler": "200333",
+        "case": "195302"
+      },
+      "selected_labels": {
+        "cpu": "AMD Ryzen 7 9800X3D 4.7GHz Up To 5.2GHz Cache 96MB 120W AM5 [Box] - 8 Co...",
+        "motherboard": "MSI MAG X870E TOMAHAWK MAX WIFI (AM5, AMD X870E, DDR5, USB3.2 Type-C, SA...",
+        "ram": "Gskill Ripjaws S5 White DDR5 PC48000 6000MHz 32GB (2x16GB) 36-48-48-96 -...",
+        "gpu": "ASRock Radeon RX 9070 XT 16GB GDDR6 Taichi White OC",
+        "ssd": "V-GeN SSD M.2 NVMe PCIe Gen4 x4 4TB - Tsunami Series with Heatsink",
+        "psu": "be quiet! DARK POWER 13 850W - Fully Modular - ATX 3.0 PCIe 5.0 - 80+ Ti...",
+        "cpu_cooler": "NZXT Kraken Elite 420 RGB Black 420mm AIO Liquid Cooler with 2.72 IPS LC...",
+        "fan_cooler": "Phanteks T30-140 Premium LCP 6-Pole Performance Fan - Triple Pack",
+        "case": "Phanteks NV9 MKII Matte White D-RGB Near-seamless Glass View Full Tower ..."
+      },
+      "quality_flags": [],
+      "used_percent": 96.9,
+      "status": "target_met"
+    },
+    {
+      "budget_idr": 60000000,
+      "use_case": "gaming",
+      "budget_strategy": "maximize",
+      "performance_priority": "gaming",
+      "total_idr": 58898000,
+      "remaining_idr": 1102000,
+      "budget_band": "custom_high",
+      "budget_usage": {
+        "strategy": "maximize",
+        "used_percent": 98.2,
+        "target_min_percent": 95.0,
+        "target_max_percent": 100.0,
+        "status": "target_met"
+      },
+      "budget_warning_codes": [],
+      "compatibility_warning_count": 0,
+      "compatibility_error_count": 0,
+      "missing_required_slots": [],
+      "upgrade_suggestion_slots": [
+        "cpu",
+        "psu"
+      ],
+      "selected_skus": {
+        "cpu": "196726",
+        "motherboard": "198909",
+        "ram": "195958",
+        "gpu": "200126",
+        "ssd": "183230",
+        "psu": "184301",
+        "cpu_cooler": "196208",
+        "fan_cooler": "200333",
+        "case": "195302"
+      },
+      "selected_labels": {
+        "cpu": "AMD Ryzen 9 9950X3D 4.3GHz Up To 5.7GHz Cache 128MB 170W AM5 [Tray] - 16...",
+        "motherboard": "Asus ROG STRIX B850-G GAMING WIFI (AM5, AMD B850, DDR5, USB3.2 Type-C, S...",
+        "ram": "Gskill Ripjaws S5 White DDR5 PC48000 6000MHz 32GB (2x16GB) 36-48-48-96 -...",
+        "gpu": "ASRock Radeon RX 9070 XT 16GB GDDR6 Taichi White OC",
+        "ssd": "Kingston KC3000 SKC3000D/4096G PCIe 4.0 NVMe M.2 4096GB",
+        "psu": "be quiet! DARK POWER 13 850W - Fully Modular - ATX 3.0 PCIe 5.0 - 80+ Ti...",
+        "cpu_cooler": "NZXT Kraken Elite 420 RGB Black 420mm AIO Liquid Cooler with 2.72 IPS LC...",
+        "fan_cooler": "Phanteks T30-140 Premium LCP 6-Pole Performance Fan - Triple Pack",
+        "case": "Phanteks NV9 MKII Matte White D-RGB Near-seamless Glass View Full Tower ..."
+      },
+      "quality_flags": [],
+      "used_percent": 98.2,
+      "status": "target_met"
+    }
+  ],
+  "priority_spot_checks": [
+    {
+      "budget_idr": 30000000,
+      "use_case": "gaming",
+      "budget_strategy": "balanced",
+      "performance_priority": "gaming",
+      "total_idr": 29709000,
+      "remaining_idr": 291000,
+      "budget_band": "high_end",
+      "budget_usage": {
+        "strategy": "balanced",
+        "used_percent": 99.0,
+        "target_min_percent": 85.0,
+        "target_max_percent": 97.0,
+        "status": "target_met"
+      },
+      "budget_warning_codes": [],
+      "compatibility_warning_count": 0,
+      "compatibility_error_count": 0,
+      "missing_required_slots": [],
+      "upgrade_suggestion_slots": [
+        "psu"
+      ],
+      "selected_skus": {
+        "cpu": "197406",
+        "motherboard": "201288",
+        "ram": "195958",
+        "gpu": "197127",
+        "ssd": "198877",
+        "psu": "184302",
+        "cpu_cooler": "187040",
+        "fan_cooler": "183307",
+        "case": "195304"
+      },
+      "selected_labels": {
+        "cpu": "AMD Ryzen 7 7800X3D 4.2GHz Up To 5.0GHz Cache 96MB 120W AM5 [Tray] - 8 C...",
+        "motherboard": "ASRock B850M Challenger (AM5, AMD B850, DDR5, USB3.2 Type-C, SATA3)",
+        "ram": "Gskill Ripjaws S5 White DDR5 PC48000 6000MHz 32GB (2x16GB) 36-48-48-96 -...",
+        "gpu": "XFX Swift AMD Radeon RX 9060 XT 16GB GDDR6 OC Gaming Edition - RX-96TSW1...",
+        "ssd": "WD Red SN700 NVMe SSD 2TB M.2 2280-S3-M PCIe Gen3 x4 - R 3400MB/s W 2900...",
+        "psu": "be quiet! DARK POWER 13 750W - Fully Modular - ATX 3.0 PCIe 5.0 - 80+ Ti...",
+        "cpu_cooler": "Zalman Reserator5 Z36 ARGB White 360mm Liquid Cooler",
+        "fan_cooler": "Arctic P14 PWM PST A-RGB 0dB 14CM Value Pack Case Fan (3 Pack)",
+        "case": "Phanteks NV5 MKII Satin Black D-RGB Near-seamless Glass View Full Tower ..."
+      },
+      "quality_flags": [],
+      "used_percent": 99.0,
+      "status": "target_met"
+    },
+    {
+      "budget_idr": 30000000,
+      "use_case": "gaming",
+      "budget_strategy": "balanced",
+      "performance_priority": "productivity",
+      "total_idr": 29884000,
+      "remaining_idr": 116000,
+      "budget_band": "high_end",
+      "budget_usage": {
+        "strategy": "balanced",
+        "used_percent": 99.6,
+        "target_min_percent": 85.0,
+        "target_max_percent": 97.0,
+        "status": "target_met"
+      },
+      "budget_warning_codes": [],
+      "compatibility_warning_count": 0,
+      "compatibility_error_count": 0,
+      "missing_required_slots": [],
+      "upgrade_suggestion_slots": [
+        "psu"
+      ],
+      "selected_skus": {
+        "cpu": "194148",
+        "motherboard": "194074",
+        "ram": "195958",
+        "gpu": "197127",
+        "ssd": "198877",
+        "psu": "184302",
+        "cpu_cooler": "188255",
+        "fan_cooler": "125759",
+        "case": "185250"
+      },
+      "selected_labels": {
+        "cpu": "Intel Core Ultra 7 265F 2.4GHz Up To 5.3GHz - Cache 30MB [Box] Socket LG...",
+        "motherboard": "Gigabyte B860M Aorus Elite WIFI6E ICE (LGA1851, B860, DDR5, USB3.2 Gen2 ...",
+        "ram": "Gskill Ripjaws S5 White DDR5 PC48000 6000MHz 32GB (2x16GB) 36-48-48-96 -...",
+        "gpu": "XFX Swift AMD Radeon RX 9060 XT 16GB GDDR6 OC Gaming Edition - RX-96TSW1...",
+        "ssd": "WD Red SN700 NVMe SSD 2TB M.2 2280-S3-M PCIe Gen3 x4 - R 3400MB/s W 2900...",
+        "psu": "be quiet! DARK POWER 13 750W - Fully Modular - ATX 3.0 PCIe 5.0 - 80+ Ti...",
+        "cpu_cooler": "Zalman Alpha2 A36 White 360mm Liquid Cooler",
+        "fan_cooler": "Noctua Premium Fan 14CM 1200RPM - NF-A14 PWM",
+        "case": "Antec P20C WHITE - Mid-Tower E-ATX Gaming Case - Massive Metal Mesh Fron..."
+      },
+      "quality_flags": [],
+      "used_percent": 99.6,
+      "status": "target_met"
+    },
+    {
+      "budget_idr": 30000000,
+      "use_case": "gaming",
+      "budget_strategy": "balanced",
+      "performance_priority": "best_value",
+      "total_idr": 29754000,
+      "remaining_idr": 246000,
+      "budget_band": "high_end",
+      "budget_usage": {
+        "strategy": "balanced",
+        "used_percent": 99.2,
+        "target_min_percent": 85.0,
+        "target_max_percent": 97.0,
+        "status": "target_met"
+      },
+      "budget_warning_codes": [],
+      "compatibility_warning_count": 0,
+      "compatibility_error_count": 0,
+      "missing_required_slots": [],
+      "upgrade_suggestion_slots": [
+        "psu",
+        "fan_cooler"
+      ],
+      "selected_skus": {
+        "cpu": "199043",
+        "motherboard": "195792",
+        "ram": "195958",
+        "gpu": "197127",
+        "ssd": "175951",
+        "psu": "184301",
+        "cpu_cooler": "187040",
+        "fan_cooler": "196883",
+        "case": "192239"
+      },
+      "selected_labels": {
+        "cpu": "Intel Core Ultra 7 265KF 3.3GHz Up To 5.5GHz - Cache 30MB [Tray] Socket ...",
+        "motherboard": "ASRock B860 Pro RS (LGA1851, B860, DDR5, USB3.2 Gen2 Type-C, SATA3)",
+        "ram": "Gskill Ripjaws S5 White DDR5 PC48000 6000MHz 32GB (2x16GB) 36-48-48-96 -...",
+        "gpu": "XFX Swift AMD Radeon RX 9060 XT 16GB GDDR6 OC Gaming Edition - RX-96TSW1...",
+        "ssd": "Kingston KC3000 SKC3000D/2048G PCIe 4.0 NVMe M.2 2048GB",
+        "psu": "be quiet! DARK POWER 13 850W - Fully Modular - ATX 3.0 PCIe 5.0 - 80+ Ti...",
+        "cpu_cooler": "Zalman Reserator5 Z36 ARGB White 360mm Liquid Cooler",
+        "fan_cooler": "Arctic P14 Max 14CM PWM Case Fan (5 Pack)",
+        "case": "Antec CONSTELLATION C8 ALUMINUM WHITE - Full-Tower E-ATX Gaming Case - D..."
+      },
+      "quality_flags": [],
+      "used_percent": 99.2,
+      "status": "target_met"
+    },
+    {
+      "budget_idr": 30000000,
+      "use_case": "gaming",
+      "budget_strategy": "balanced",
+      "performance_priority": "balanced",
+      "total_idr": 29682000,
+      "remaining_idr": 318000,
+      "budget_band": "high_end",
+      "budget_usage": {
+        "strategy": "balanced",
+        "used_percent": 98.9,
+        "target_min_percent": 85.0,
+        "target_max_percent": 97.0,
+        "status": "target_met"
+      },
+      "budget_warning_codes": [],
+      "compatibility_warning_count": 0,
+      "compatibility_error_count": 0,
+      "missing_required_slots": [],
+      "upgrade_suggestion_slots": [
+        "psu",
+        "fan_cooler"
+      ],
+      "selected_skus": {
+        "cpu": "199043",
+        "motherboard": "193860",
+        "ram": "195958",
+        "gpu": "197127",
+        "ssd": "166264",
+        "psu": "184650",
+        "cpu_cooler": "193457",
+        "fan_cooler": "183012",
+        "case": "192238"
+      },
+      "selected_labels": {
+        "cpu": "Intel Core Ultra 7 265KF 3.3GHz Up To 5.5GHz - Cache 30MB [Tray] Socket ...",
+        "motherboard": "MAXSUN Challenger Z890M WIFI ICE (LGA1851, Z890, DDR5, USB3.2 Gen2 Type-...",
+        "ram": "Gskill Ripjaws S5 White DDR5 PC48000 6000MHz 32GB (2x16GB) 36-48-48-96 -...",
+        "gpu": "XFX Swift AMD Radeon RX 9060 XT 16GB GDDR6 OC Gaming Edition - RX-96TSW1...",
+        "ssd": "Transcend TS2TMTE220S NVMe PCIe Gen3 x4 M.2 2TB",
+        "psu": "FSP Hydro Ti PRO 1000W ATX3.0(PCIe5.0) 80+ Titanium - Full Modular",
+        "cpu_cooler": "DeepCool LQ360 360mm Liquid Cooler with A Dashboard Display",
+        "fan_cooler": "NZXT F140 RGB Duo Twin Pack - Matte Black (2 x 140mm RGB Fans & Controll...",
+        "case": "Antec CONSTELLATION C8 WOOD - Full-Tower E-ATX Gaming Case - Dual Chambe..."
+      },
+      "quality_flags": [],
+      "used_percent": 98.9,
+      "status": "target_met"
+    },
+    {
+      "budget_idr": 30000000,
+      "use_case": "gaming",
+      "budget_strategy": "balanced",
+      "performance_priority": "upgrade_friendly",
+      "total_idr": 29684000,
+      "remaining_idr": 316000,
+      "budget_band": "high_end",
+      "budget_usage": {
+        "strategy": "balanced",
+        "used_percent": 98.9,
+        "target_min_percent": 85.0,
+        "target_max_percent": 97.0,
+        "status": "target_met"
+      },
+      "budget_warning_codes": [],
+      "compatibility_warning_count": 0,
+      "compatibility_error_count": 0,
+      "missing_required_slots": [],
+      "upgrade_suggestion_slots": [
+        "psu"
+      ],
+      "selected_skus": {
+        "cpu": "199043",
+        "motherboard": "194074",
+        "ram": "195958",
+        "gpu": "185819",
+        "ssd": "198877",
+        "psu": "184301",
+        "cpu_cooler": "185785",
+        "fan_cooler": "183307",
+        "case": "195302"
+      },
+      "selected_labels": {
+        "cpu": "Intel Core Ultra 7 265KF 3.3GHz Up To 5.5GHz - Cache 30MB [Tray] Socket ...",
+        "motherboard": "Gigabyte B860M Aorus Elite WIFI6E ICE (LGA1851, B860, DDR5, USB3.2 Gen2 ...",
+        "ram": "Gskill Ripjaws S5 White DDR5 PC48000 6000MHz 32GB (2x16GB) 36-48-48-96 -...",
+        "gpu": "MAXSUN GeForce RTX 3060 12GB GDDR6 Terminator 12G S1 - DUAL FAN - Garans...",
+        "ssd": "WD Red SN700 NVMe SSD 2TB M.2 2280-S3-M PCIe Gen3 x4 - R 3400MB/s W 2900...",
+        "psu": "be quiet! DARK POWER 13 850W - Fully Modular - ATX 3.0 PCIe 5.0 - 80+ Ti...",
+        "cpu_cooler": "Enermax Liqtech TR4 II 360mm Liquid CPU Cooler - LGA 4677 Ready - ELC-LT...",
+        "fan_cooler": "Arctic P14 PWM PST A-RGB 0dB 14CM Value Pack Case Fan (3 Pack)",
+        "case": "Phanteks NV9 MKII Matte White D-RGB Near-seamless Glass View Full Tower ..."
+      },
+      "quality_flags": [],
+      "used_percent": 98.9,
+      "status": "target_met"
+    }
+  ]
+}

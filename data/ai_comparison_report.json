@@ -1,0 +1,428 @@
+{
+  "generated_at": "2026-05-22T05:15:29.497846+00:00",
+  "profile": "local_qwen",
+  "catalog_hash": "792398a45e2d2a1b9a0e02ef12456b9a8d5d01ded6347075f393dadf070745cb",
+  "scenario_count": 4,
+  "scenarios": [
+    {
+      "key": "entry_level",
+      "label": "Entry-level",
+      "budget_idr": 9500000,
+      "use_case": "gaming",
+      "deterministic": {
+        "budget_idr": 9500000,
+        "use_case": "gaming",
+        "total_idr": 9388000,
+        "remaining_idr": 112000,
+        "selected_skus": {
+          "cpu": "24224",
+          "motherboard": "10824",
+          "ram": "154628",
+          "gpu": "200882",
+          "ssd": "177404",
+          "hdd": "165415",
+          "psu": "175609",
+          "cpu_cooler": "168105",
+          "fan_cooler": "192058",
+          "case": "188922"
+        },
+        "warning_ids": [],
+        "error_warning_ids": [],
+        "validation_source": "deterministic"
+      },
+      "ai": {
+        "budget_idr": 9500000,
+        "use_case": "gaming",
+        "total_idr": 9399000,
+        "remaining_idr": 101000,
+        "selected_skus": {
+          "cpu": "24224",
+          "motherboard": "10824",
+          "ram": "154628",
+          "gpu": "200882",
+          "ssd": "160240",
+          "hdd": "165415",
+          "psu": "188919",
+          "cpu_cooler": "168105",
+          "fan_cooler": "192058",
+          "case": "195591"
+        },
+        "warning_ids": [],
+        "error_warning_ids": [],
+        "validation_source": "deterministic",
+        "ai_assisted": true,
+        "fallback": false,
+        "fallback_reason": null,
+        "retrieval": {
+          "profile": "local_qwen",
+          "llm_model": "qwen/qwen3.6-27b",
+          "embedding_model": "text-embedding-qwen3-embedding-4b",
+          "vector_backend": "qdrant",
+          "vector_collection": "kompare_components_qwen",
+          "ranker_mode": "json_ranker",
+          "top_k_per_slot": 12,
+          "chunk_count_considered": null,
+          "catalog_hash": "792398a45e2d2a1b9a0e02ef12456b9a8d5d01ded6347075f393dadf070745cb",
+          "required_slots": [
+            "cpu",
+            "motherboard",
+            "ram",
+            "gpu",
+            "ssd",
+            "psu",
+            "case"
+          ],
+          "candidate_counts": {
+            "cpu": 1,
+            "motherboard": 1,
+            "ram": 1,
+            "gpu": 1,
+            "ssd": 4,
+            "psu": 4,
+            "case": 4
+          },
+          "selected_skus": {
+            "cpu": "24224",
+            "motherboard": "10824",
+            "ram": "154628",
+            "gpu": "200882",
+            "ssd": "160240",
+            "psu": "188919",
+            "case": "195591"
+          }
+        },
+        "ai_rationale": {
+          "summary": "Local Qwen selected one grounded SKU per required slot.",
+          "tradeoffs": [
+            "Human-readable rationale was generated deterministically because local Qwen uses a constrained SKU-only schema."
+          ],
+          "slot_rationales": {
+            "cpu": "Selected by local Qwen from constrained SKU choices.",
+            "motherboard": "Selected by local Qwen from constrained SKU choices.",
+            "ram": "Selected by local Qwen from constrained SKU choices.",
+            "gpu": "Selected by local Qwen from constrained SKU choices.",
+            "ssd": "Selected by local Qwen from constrained SKU choices.",
+            "psu": "Selected by local Qwen from constrained SKU choices.",
+            "case": "Selected by local Qwen from constrained SKU choices."
+          }
+        }
+      },
+      "delta_total_idr": 11000
+    },
+    {
+      "key": "mid_range",
+      "label": "Mid-range",
+      "budget_idr": 17000000,
+      "use_case": "gaming",
+      "deterministic": {
+        "budget_idr": 17000000,
+        "use_case": "gaming",
+        "total_idr": 16815000,
+        "remaining_idr": 185000,
+        "selected_skus": {
+          "cpu": "195905",
+          "motherboard": "200842",
+          "ram": "188480",
+          "gpu": "200882",
+          "ssd": "177402",
+          "hdd": "190728",
+          "psu": "198611",
+          "cpu_cooler": "187589",
+          "fan_cooler": "183893",
+          "case": "161382"
+        },
+        "warning_ids": [],
+        "error_warning_ids": [],
+        "validation_source": "deterministic"
+      },
+      "ai": {
+        "budget_idr": 17000000,
+        "use_case": "gaming",
+        "total_idr": 16030000,
+        "remaining_idr": 970000,
+        "selected_skus": {
+          "cpu": "195905",
+          "motherboard": "200842",
+          "ram": "188480",
+          "gpu": "200882",
+          "ssd": "185213",
+          "hdd": "190728",
+          "psu": "190763",
+          "cpu_cooler": "187589",
+          "fan_cooler": "183893",
+          "case": "195591"
+        },
+        "warning_ids": [],
+        "error_warning_ids": [],
+        "validation_source": "deterministic",
+        "ai_assisted": true,
+        "fallback": false,
+        "fallback_reason": null,
+        "retrieval": {
+          "profile": "local_qwen",
+          "llm_model": "qwen/qwen3.6-27b",
+          "embedding_model": "text-embedding-qwen3-embedding-4b",
+          "vector_backend": "qdrant",
+          "vector_collection": "kompare_components_qwen",
+          "ranker_mode": "json_ranker",
+          "top_k_per_slot": 12,
+          "chunk_count_considered": null,
+          "catalog_hash": "792398a45e2d2a1b9a0e02ef12456b9a8d5d01ded6347075f393dadf070745cb",
+          "required_slots": [
+            "cpu",
+            "motherboard",
+            "ram",
+            "gpu",
+            "ssd",
+            "psu",
+            "case"
+          ],
+          "candidate_counts": {
+            "cpu": 1,
+            "motherboard": 1,
+            "ram": 1,
+            "gpu": 4,
+            "ssd": 4,
+            "psu": 4,
+            "case": 4
+          },
+          "selected_skus": {
+            "cpu": "195905",
+            "motherboard": "200842",
+            "ram": "188480",
+            "gpu": "200882",
+            "ssd": "185213",
+            "psu": "190763",
+            "case": "195591"
+          }
+        },
+        "ai_rationale": {
+          "summary": "Local Qwen selected one grounded SKU per required slot.",
+          "tradeoffs": [
+            "Human-readable rationale was generated deterministically because local Qwen uses a constrained SKU-only schema."
+          ],
+          "slot_rationales": {
+            "cpu": "Selected by local Qwen from constrained SKU choices.",
+            "motherboard": "Selected by local Qwen from constrained SKU choices.",
+            "ram": "Selected by local Qwen from constrained SKU choices.",
+            "gpu": "Selected by local Qwen from constrained SKU choices.",
+            "ssd": "Selected by local Qwen from constrained SKU choices.",
+            "psu": "Selected by local Qwen from constrained SKU choices.",
+            "case": "Selected by local Qwen from constrained SKU choices."
+          }
+        }
+      },
+      "delta_total_idr": -785000
+    },
+    {
+      "key": "high_end",
+      "label": "High-end",
+      "budget_idr": 31000000,
+      "use_case": "gaming",
+      "deterministic": {
+        "budget_idr": 31000000,
+        "use_case": "gaming",
+        "total_idr": 30679000,
+        "remaining_idr": 321000,
+        "selected_skus": {
+          "cpu": "199043",
+          "motherboard": "194073",
+          "ram": "195958",
+          "gpu": "197127",
+          "ssd": "166264",
+          "hdd": "178729",
+          "psu": "186990",
+          "cpu_cooler": "193457",
+          "fan_cooler": "191605",
+          "case": "192239"
+        },
+        "warning_ids": [],
+        "error_warning_ids": [],
+        "validation_source": "deterministic"
+      },
+      "ai": {
+        "budget_idr": 31000000,
+        "use_case": "gaming",
+        "total_idr": 30990000,
+        "remaining_idr": 10000,
+        "selected_skus": {
+          "cpu": "197207",
+          "motherboard": "195619",
+          "ram": "195958",
+          "gpu": "201170",
+          "ssd": "166264",
+          "hdd": "178729",
+          "psu": "186990",
+          "cpu_cooler": "193457",
+          "fan_cooler": "191605",
+          "case": "195591"
+        },
+        "warning_ids": [],
+        "error_warning_ids": [],
+        "validation_source": "deterministic",
+        "ai_assisted": true,
+        "fallback": false,
+        "fallback_reason": null,
+        "retrieval": {
+          "profile": "local_qwen",
+          "llm_model": "qwen/qwen3.6-27b",
+          "embedding_model": "text-embedding-qwen3-embedding-4b",
+          "vector_backend": "qdrant",
+          "vector_collection": "kompare_components_qwen",
+          "ranker_mode": "json_ranker",
+          "top_k_per_slot": 12,
+          "chunk_count_considered": null,
+          "catalog_hash": "792398a45e2d2a1b9a0e02ef12456b9a8d5d01ded6347075f393dadf070745cb",
+          "required_slots": [
+            "cpu",
+            "motherboard",
+            "ram",
+            "gpu",
+            "ssd",
+            "psu",
+            "case"
+          ],
+          "candidate_counts": {
+            "cpu": 1,
+            "motherboard": 1,
+            "ram": 1,
+            "gpu": 4,
+            "ssd": 4,
+            "psu": 4,
+            "case": 4
+          },
+          "selected_skus": {
+            "cpu": "197207",
+            "motherboard": "195619",
+            "ram": "195958",
+            "gpu": "201170",
+            "ssd": "166264",
+            "psu": "186990",
+            "case": "195591"
+          }
+        },
+        "ai_rationale": {
+          "summary": "Local Qwen selected one grounded SKU per required slot.",
+          "tradeoffs": [
+            "Human-readable rationale was generated deterministically because local Qwen uses a constrained SKU-only schema."
+          ],
+          "slot_rationales": {
+            "cpu": "Adjusted to keep the full build within budget while preserving compatibility.",
+            "motherboard": "Adjusted to keep the full build within budget while preserving compatibility.",
+            "ram": "Selected by local Qwen from constrained SKU choices.",
+            "gpu": "Selected by local Qwen from constrained SKU choices.",
+            "ssd": "Selected by local Qwen from constrained SKU choices.",
+            "psu": "Selected by local Qwen from constrained SKU choices.",
+            "case": "Selected by local Qwen from constrained SKU choices."
+          }
+        }
+      },
+      "delta_total_idr": 311000
+    },
+    {
+      "key": "custom_budget",
+      "label": "Custom budget",
+      "budget_idr": 20000000,
+      "use_case": "gaming",
+      "deterministic": {
+        "budget_idr": 20000000,
+        "use_case": "gaming",
+        "total_idr": 19795000,
+        "remaining_idr": 205000,
+        "selected_skus": {
+          "cpu": "195905",
+          "motherboard": "200840",
+          "ram": "195958",
+          "gpu": "200882",
+          "ssd": "177402",
+          "hdd": "168212",
+          "psu": "195284",
+          "cpu_cooler": "195664",
+          "fan_cooler": "170041",
+          "case": "185250"
+        },
+        "warning_ids": [],
+        "error_warning_ids": [],
+        "validation_source": "deterministic"
+      },
+      "ai": {
+        "budget_idr": 20000000,
+        "use_case": "gaming",
+        "total_idr": 18720000,
+        "remaining_idr": 1280000,
+        "selected_skus": {
+          "cpu": "195905",
+          "motherboard": "200840",
+          "ram": "195958",
+          "gpu": "200882",
+          "ssd": "187875",
+          "hdd": "168212",
+          "psu": "190763",
+          "cpu_cooler": "195664",
+          "fan_cooler": "170041",
+          "case": "195591"
+        },
+        "warning_ids": [],
+        "error_warning_ids": [],
+        "validation_source": "deterministic",
+        "ai_assisted": true,
+        "fallback": false,
+        "fallback_reason": null,
+        "retrieval": {
+          "profile": "local_qwen",
+          "llm_model": "qwen/qwen3.6-27b",
+          "embedding_model": "text-embedding-qwen3-embedding-4b",
+          "vector_backend": "qdrant",
+          "vector_collection": "kompare_components_qwen",
+          "ranker_mode": "json_ranker",
+          "top_k_per_slot": 12,
+          "chunk_count_considered": null,
+          "catalog_hash": "792398a45e2d2a1b9a0e02ef12456b9a8d5d01ded6347075f393dadf070745cb",
+          "required_slots": [
+            "cpu",
+            "motherboard",
+            "ram",
+            "gpu",
+            "ssd",
+            "psu",
+            "case"
+          ],
+          "candidate_counts": {
+            "cpu": 1,
+            "motherboard": 1,
+            "ram": 1,
+            "gpu": 4,
+            "ssd": 4,
+            "psu": 4,
+            "case": 4
+          },
+          "selected_skus": {
+            "cpu": "195905",
+            "motherboard": "200840",
+            "ram": "195958",
+            "gpu": "200882",
+            "ssd": "187875",
+            "psu": "190763",
+            "case": "195591"
+          }
+        },
+        "ai_rationale": {
+          "summary": "Local Qwen selected one grounded SKU per required slot.",
+          "tradeoffs": [
+            "Human-readable rationale was generated deterministically because local Qwen uses a constrained SKU-only schema."
+          ],
+          "slot_rationales": {
+            "cpu": "Selected by local Qwen from constrained SKU choices.",
+            "motherboard": "Selected by local Qwen from constrained SKU choices.",
+            "ram": "Selected by local Qwen from constrained SKU choices.",
+            "gpu": "Selected by local Qwen from constrained SKU choices.",
+            "ssd": "Selected by local Qwen from constrained SKU choices.",
+            "psu": "Selected by local Qwen from constrained SKU choices.",
+            "case": "Selected by local Qwen from constrained SKU choices."
+          }
+        }
+      },
+      "delta_total_idr": -1075000
+    }
+  ]
+}

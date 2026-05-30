@@ -1,0 +1,7 @@
+{
+  "_doc": "Map of SKU -> price_idr (integer). Applied at runtime over both products and components, mtime-watched (no restart needed). Use this for quick market-price tweaks without re-seeding the big datasets. Remove a key here to fall back to the source dataset's price. Keys starting with '_' are ignored by the loader.",
+  "_example": {
+    "asus-vivobook-15-x1504za-nj581ws": 6750000,
+    "amd-ryzen-7-7800x3d": 5450000
+  }
+}
