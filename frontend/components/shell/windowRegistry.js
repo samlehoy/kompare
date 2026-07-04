@@ -4,6 +4,7 @@ import BuildAudit from '@/components/audit/BuildAudit.jsx';
 import UpgradePlanner from '@/components/upgrade/UpgradePlanner.jsx';
 import ReadmeContent from '@/components/readme/ReadmeContent.jsx';
 import Marketplace from '@/components/marketplace/Marketplace.jsx';
+import ApiKeySettings from '@/components/shell/ApiKeySettings.jsx';
 
 export const WINDOW_REGISTRY = {
   'control-panel': {
@@ -34,6 +35,11 @@ export const WINDOW_REGISTRY = {
   'marketplace': {
     title: 'MARKETPLACE.EXE',
     component: Marketplace,
+    defaultWidth: '500px'
+  },
+  'settings': {
+    title: 'GEMINI_SETTINGS.EXE',
+    component: ApiKeySettings,
     defaultWidth: '500px'
   }
 };

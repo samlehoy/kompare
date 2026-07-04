@@ -9,6 +9,7 @@ const DESKTOP_ICONS = [
   { id: 'builder', label: 'Build PC', icon: <img src="/icons/Computer3_32x32_4.png" alt="Build PC" width="32" height="32" /> },
   { id: 'upgrade', label: 'Upgrade', icon: <img src="/icons/HardwareDiag_32x32_4.png" alt="Upgrade" width="32" height="32" /> },
   { id: 'audit', label: 'Audit', icon: <img src="/icons/ComputerFind_32x32_4.png" alt="Audit" width="32" height="32" /> },
+  { id: 'settings', label: 'Settings', icon: <img src="/icons/Folder_32x32_4.png" alt="Settings" width="32" height="32" /> },
   { id: 'marketplace', label: 'Marketplace', icon: <img src="/icons/Explorer100_32x32_4.png" alt="Marketplace" width="32" height="32" /> },
   { id: 'readme', label: 'Readme', icon: <img src="/icons/HelpBook_32x32_4.png" alt="Readme" width="32" height="32" /> },
 ];

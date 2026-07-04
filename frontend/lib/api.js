@@ -51,13 +51,23 @@ export async function request(path, options = {}) {
   const { headers, body, ...rest } = options;
   const hasBody = body !== undefined;
   const isFormData = isFormDataBody(body);
+  
+  const userKey = typeof window !== 'undefined' && typeof localStorage !== 'undefined' && typeof localStorage.getItem === 'function'
+    ? localStorage.getItem('kompare_user_gemini_key')
+    : null;
+  const authHeaders = userKey ? { 'X-Gemini-Api-Key': userKey } : {};
+
   const requestHeaders = hasBody && !isFormData
     ? { 'Content-Type': 'application/json', ...(headers || {}) }
     : headers;
 
+  const finalHeaders = (userKey || requestHeaders)
+    ? { ...requestHeaders, ...authHeaders }
+    : undefined;
+
   const init = { ...rest };
   if (hasBody) init.body = body;
-  if (requestHeaders !== undefined) init.headers = requestHeaders;
+  if (finalHeaders !== undefined) init.headers = finalHeaders;
 
   const response = await fetch(apiUrl(path), init);
   if (!response.ok) {
