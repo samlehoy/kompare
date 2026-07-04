@@ -7,7 +7,7 @@
 
 **Kompare** is your intelligent companion for PC building and upgrading in Indonesia. We keep the focus on practical builder workflows: whether you're assembling a balanced PC from a budget, upgrading an existing rig, auditing a cart or parts list, or asking grounded follow-up questions about the active recommendation, Kompare has you covered.
 
-Built with a fast **Next.js (App Router)** frontend and a robust local-first **FastAPI** backend, Kompare uses a curated component catalog for deterministic recommendations, compatibility checks, and AI-assisted decision-making powered by Gemini or Local LLMs.
+Built with a fast **Next.js (App Router)** frontend deployed on **Cloudflare Pages** and a serverless **Cloudflare Worker** backend, Kompare uses a curated component catalog (cached in Cloudflare KV) for deterministic recommendations, compatibility checks, and AI-assisted decision-making powered by Gemini or Local LLMs.
 
 ---
 
@@ -50,54 +50,41 @@ Kompare fulfills all core capstone requirements for an intelligent shopping assi
 ```mermaid
 graph TD
     %% Frontend Subgraph
-    subgraph Frontend [Next.js Frontend]
+    subgraph Frontend [Cloudflare Pages]
         A["Kompare 95 Desktop Console"]
         B["/builder"] --> A
         C["/upgrade"] --> A
         D["/audit"] --> A
     end
 
-    %% API Rewrite Node
-    E("Next.js /api rewrite")
-
-    %% Backend Subgraph
-    subgraph Backend [FastAPI Backend]
-        F["/components"]
-        G["/build/use-cases"]
-        H["/build/budget-tiers"]
-        I["/build/recommend"]
-        J["/build/upgrade"]
-        K["/build/swap-candidates"]
-        L["/build/swap"]
-        M["/build/audit"]
-        N["/build/advisor"]
-    end
+    %% Worker Node
+    E("Cloudflare Worker Backend")
 
     %% Database Subgraph
-    subgraph Data [Local JSON Data]
-        O["data/components.json"]
-        P["data/component_catalog_report.json"]
-        Q["data/products_cleaned.csv"]
-        R["data/curated_ram.json"]
-        S["data/price_overrides.json"]
+    subgraph Data [Cloud Database & Services]
+        O["Cloudflare KV (Catalog Cache)"]
+        P["Qdrant Cloud (Vector Index)"]
+        Q["Gemini API (LLM Agent)"]
     end
 
     %% Connections
-    Frontend --> E
-    E --> Backend
-    Backend --> Data
+    Frontend -->|REST API| E
+    E -->|Lookup| O
+    E -->|Vector Search| P
+    E -->|Ranking & Audit| Q
 ```
 
-> **Note:** The backend can call the Gemini API for focused PC build reasoning where configured. Without Gemini, deterministic compatibility checks, typed-list audit fallback, and advisor fallback still run reliably from local component data.
+> **Note:** The backend uses Cloudflare Workers AI for query embeddings, Qdrant Cloud for vector searches, and Google Gemini API (with key rotation) for build reasoning. Deterministic compatibility checks always run on the Edge Worker to validate candidate parts.
 
 ---
 
 ## Tech Stack
 
-- **Backend**: Python, FastAPI, Pydantic, pytest
-- **Frontend**: Next.js, React, Playwright, Vitest
-- **AI**: Google Gemini API, Local Qwen + Qdrant (Optional)
-- **Data**: Local JSON component catalog and EnterKomputer product URLs
+- **Backend**: Cloudflare Worker (JavaScript ES Modules, Wrangler CLI)
+- **Frontend**: Next.js App Router, React 19, Zustand
+- **Vector DB**: Qdrant Cloud (Managed)
+- **AI**: Cloudflare Workers AI (bge embeddings), Google Gemini API (key rotation)
+- **Data**: Cloudflare KV (component catalog)
 - **Market**: Indonesia, IDR pricing, id-ID formatting
 
 ---
@@ -108,115 +95,99 @@ Follow these steps to get your Kompare development environment up and running.
 
 ### 1. Installation
 
-Install the required dependencies for both the Python backend and the Next.js frontend.
+Install the required dependencies for the Next.js frontend and standalone Worker.
 
 ```powershell
-# Install Python backend requirements
-pip install -r requirements.txt
-
-# Install Next.js frontend requirements
+# Install Next.js frontend dependencies
 cd frontend
+npm install
+cd ..
+
+# Install Worker backend dependencies
+cd backend_worker
 npm install
 cd ..
 ```
 
-### 2. Configure Cloud AI (Gemini API)
+### 2. Configure Local Reference Environment (.env)
 
-To use Google Gemini for AI-assisted recommendations and cart audits:
-
-1. Copy the example environment file:
-   ```powershell
-   Copy-Item .env.example .env
-   ```
-2. Open the `.env` file in your text editor and find `GEMINI_API_KEY`.
-3. Replace the placeholder with your actual Google Gemini API key. 
-   > **Tip:** You can optionally set `GEMINI_API_KEY_1` through `GEMINI_API_KEY_4` to rotate through multiple keys and bypass quota limits.
-
-### 3. Configure Local AI (LM Studio + Qdrant) - *Optional*
-
-If you prefer to run the AI completely locally (without using Gemini), set up the **Local Qwen + Qdrant** profile:
-
-1. **Start Qdrant (Vector Database):** We provide a `docker-compose.yml` file for a hassle-free setup.
-   ```powershell
-   docker-compose up -d
-   ```
-2. **Start LM Studio:** 
-   - Open LM Studio.
-   - Load the `qwen/qwen3.6-27b` model and the `text-embedding-qwen3-embedding-4b` model.
-   - Start the **Local Server** (usually runs on port `1234`).
-3. **Sync the Database:** Populate the Qdrant database with the PC component catalog by running this script:
-   ```powershell
-   $env:PYTHONPATH="."
-   python backend/utils/qdrant_sync.py --profile local_qwen
-   ```
-
-### 4. Run the Application
-
-The easiest way to start the application is using our unified PowerShell script. It automatically boots up the FastAPI backend and Next.js frontend, links them together, and opens your browser.
+To reference API keys locally, copy the example environment file at the root:
 
 ```powershell
-.\dev.ps1
+Copy-Item .env.example .env
 ```
 
-> **Note:** The frontend will default to port `5173`. You can stop both servers anytime by pressing `Ctrl+C` in the terminal.
+Open `.env` and fill in:
+* `QDRANT_URL` & `QDRANT_API_KEY` (Qdrant Cloud endpoint & access key)
+* `GEMINI_API_KEY` (along with `GEMINI_API_KEY_1` to `GEMINI_API_KEY_4` rotation keys)
 
-#### Running Manually (Alternative)
-If you prefer to run the Next.js frontend directly using its default port (3000):
+### 3. Deploy and Set Secrets on Cloudflare Workers
+
+Secrets must be registered in Cloudflare Workers securely via Wrangler so they are not committed to Git:
+
+```powershell
+# Set Qdrant API credentials
+echo "your_qdrant_api_key" | npx wrangler secret put QDRANT_API_KEY --cwd backend_worker
+
+# Set Gemini API key rotation pool
+echo "key_primary" | npx wrangler secret put GEMINI_API_KEY --cwd backend_worker
+echo "key_rot_1" | npx wrangler secret put GEMINI_API_KEY_1 --cwd backend_worker
+echo "key_rot_2" | npx wrangler secret put GEMINI_API_KEY_2 --cwd backend_worker
+echo "key_rot_3" | npx wrangler secret put GEMINI_API_KEY_3 --cwd backend_worker
+echo "key_rot_4" | npx wrangler secret put GEMINI_API_KEY_4 --cwd backend_worker
+```
+
+Deploy the Worker to production:
+```powershell
+npx wrangler deploy --cwd backend_worker
+```
+
+### 4. Running the Application Locally
+
+Run the Next.js frontend development server locally:
+
 ```powershell
 cd frontend
 npm run dev
 ```
 
+*Note: By default, the local frontend will use the environment variable `NEXT_PUBLIC_API_BASE_URL` to route API calls to the deployed Cloudflare Worker.*
+
 ---
 
 ## API Surface
 
+All API endpoints are hosted at `/api/...` on the Edge Worker:
+
 | Route | Method | Description |
 |---|---|---|
-| `/health` | `GET` | Liveness and catalog counts |
-| `/components` | `GET` | PC component catalog filtered by category, query, and max price |
-| `/build/use-cases` | `GET` | Builder use-case profiles and budget allocation weights |
-| `/build/budget-tiers` | `GET` | Entry-level, mid-range, high-end, and custom-budget guidance |
-| `/build/recommend` | `POST` | Compose a full PC build from budget, use case, and soft brand preferences |
-| `/build/upgrade` | `POST` | Accept manually typed existing parts and recommend upgrade or missing components |
-| `/build/swap-candidates` | `POST` | List compatible replacement candidates for one component slot |
-| `/build/swap` | `POST` | Replace one component slot and re-check compatibility |
-| `/build/audit` | `POST` | Audit a cart screenshot and/or typed parts list for compatibility risks |
-| `/build/advisor` | `POST` | Ask grounded follow-up questions about a build or upgrade result |
-
----
-
-## Required Build Slots
-
-A complete build consists of the following components:
-
-- Processor / CPU
-- Motherboard
-- RAM
-- VGA / GPU
-- SSD
-- Hard Drive / HDD
-- PSU
-- CPU Cooler
-- Fan Cooler
-- Casing
-
-> **Optional Add-ons:** Monitor and UPS are available for build-from-zero users.
+| `/health` | `GET` | Liveness, catalog counts, and KV cache status |
+| `/components` | `GET` | Catalog retrieval with search, category, and price filtering |
+| `/build/use-cases` | `GET` | Budget allocation weights per use case |
+| `/build/budget-tiers` | `GET` | Guided budget tier suggestions |
+| `/build/recommend` | `POST` | Deterministic PC build recommendation generator |
+| `/build/upgrade` | `POST` | Compatible upgrade suggestions from existing parts |
+| `/build/swap-candidates` | `POST` | Find compatible replacement parts for a component slot |
+| `/build/swap` | `POST` | Hot-swap component slot and recalculate overall compatibility |
+| `/build/ai-recommend` | `POST` | AI-assisted PC build recommendation (Qdrant + Workers AI + Gemini) |
+| `/build/audit` | `POST` | Audit screenshot or pasted parts lists for compatibility checks |
+| `/build/advisor` | `POST` | Grounded multi-turn conversational build advisor |
 
 ---
 
 ## Testing
 
-Run tests across the full stack with the following commands:
+Run tests across the frontend using the following commands:
 
 ```powershell
-# Run backend tests
-python -m pytest backend/tests -q
-
-# Run frontend tests and build
+# Run frontend unit/integration tests
 cd frontend
 npm run test
+
+# Run UI flow tests (Playwright)
 npm run test:ui
+
+# Verify Next.js production build
 npm run build
 ```
 
@@ -224,9 +195,10 @@ npm run build
 
 ## Documentation
 
-For more in-depth information, please refer to the following documents:
+For more detailed guides and architecture playbooks, refer to:
 
-- [Project Brief](docs/BRIEF.md)
+- [AI/RAG Architecture (Phase 2)](docs/AI_RAG_PHASE2.md)
 - [Product Requirements (PRD)](docs/PRD.md)
 - [UI Specification](docs/UI_SPEC.md)
-- [Demo Script](docs/DEMO.md)
+- [Price & Catalog Playbook](docs/PRICE_UPDATES.md)
+- [Project Brief](docs/BRIEF.md)
