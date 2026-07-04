@@ -14,7 +14,7 @@ def test_build_audit_returns_multimodal_cart_audit(monkeypatch):
         captured["raw"] = raw
         return b"prepared-jpeg", {"processed_bytes": len(raw), "width": 320, "height": 240}
 
-    def fake_multimodal(prompt, image_bytes, *, mime_type="image/jpeg", temperature=0.2):
+    def fake_multimodal(prompt, image_bytes, *, mime_type="image/jpeg", temperature=0.2, api_key_override=None):
         captured["prompt"] = prompt
         captured["image_bytes"] = image_bytes
         captured["mime_type"] = mime_type

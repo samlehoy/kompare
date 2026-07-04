@@ -14,7 +14,7 @@ import re
 from typing import Optional
 from typing import Literal
 
-from fastapi import FastAPI, File, Form, HTTPException, Query, UploadFile
+from fastapi import FastAPI, File, Form, HTTPException, Query, UploadFile, Header
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
@@ -65,6 +65,7 @@ app.add_middleware(
         "http://127.0.0.1:5173",
         "http://localhost:3000",
     ],
+    allow_origin_regex="https://.*\\.pages\\.dev",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -571,7 +572,7 @@ def recommend_build(req: BuildRequest):
 
 
 @app.post("/build/ai-recommend")
-def recommend_ai_build(req: BuildRequest):
+def recommend_ai_build(req: BuildRequest, x_gemini_api_key: Optional[str] = Header(None)):
     if req.use_case not in USE_CASE_PROFILES:
         raise HTTPException(
             status_code=400,
@@ -595,6 +596,7 @@ def recommend_ai_build(req: BuildRequest):
         budget_strategy=req.budget_strategy,
         performance_priority=req.performance_priority,
         allocation_overrides=req.allocation_overrides,
+        api_key_override=x_gemini_api_key,
     )
 
 
@@ -629,6 +631,7 @@ async def audit_pc_build(
     image: Optional[UploadFile] = File(None, description="Optional cart or quote screenshot (JPEG/PNG/WebP)"),
     goal: Optional[str] = Form(None, description="Budget and performance goal, such as Gaming 1080p under 12 juta"),
     parts_list: Optional[str] = Form(None, description="Typed cart or PC parts list"),
+    x_gemini_api_key: Optional[str] = Header(None),
 ):
     """Audit a full PC parts list or cart screenshot before the user buys.
 
@@ -657,7 +660,13 @@ async def audit_pc_build(
 
         prompt = build_build_audit_prompt(goal=clean_goal, parts_list=clean_parts)
         try:
-            result = generate_multimodal_json(prompt, jpeg_bytes, mime_type="image/jpeg", temperature=0.2)
+            result = generate_multimodal_json(
+                prompt,
+                jpeg_bytes,
+                mime_type="image/jpeg",
+                temperature=0.2,
+                api_key_override=x_gemini_api_key,
+            )
             audit = normalize_build_audit(result)
         except GeminiError:
             if not clean_parts:
@@ -676,7 +685,7 @@ async def audit_pc_build(
 
 
 @app.post("/build/advisor")
-def build_advisor(req: BuildAdvisorRequest):
+def build_advisor(req: BuildAdvisorRequest, x_gemini_api_key: Optional[str] = Header(None)):
     """Constrained multi-turn advisor for the active PC build or upgrade.
 
     The frontend owns conversation memory and sends recent turns each request.
@@ -695,6 +704,7 @@ def build_advisor(req: BuildAdvisorRequest):
             messages,
             system_instruction=system,
             temperature=0.3,
+            api_key_override=x_gemini_api_key,
         )
         fallback = False
     except GeminiError:

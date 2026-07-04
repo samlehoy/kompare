@@ -104,12 +104,12 @@ def install_happy_path(monkeypatch, ai_module, catalog, *, candidates=None, sele
             }
         ),
     )
-    monkeypatch.setattr(ai_module, "embed_texts", lambda texts: [[1.0, 0.0] for _ in texts])
+    monkeypatch.setattr(ai_module, "embed_texts", lambda texts, api_key_override=None: [[1.0, 0.0] for _ in texts])
     monkeypatch.setattr(ai_module, "retrieve_build_candidates", lambda *args, **kwargs: candidates)
     monkeypatch.setattr(
         ai_module,
         "generate_json",
-        lambda prompt, temperature=0.2: {
+        lambda prompt, temperature=0.2, api_key_override=None: {
             "selected_skus": selected,
             "slot_rationales": {slot: f"Reason for {slot}" for slot in selected},
             "summary": "Balanced AI-ranked build.",

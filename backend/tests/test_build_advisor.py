@@ -150,7 +150,7 @@ def test_build_advisor_stays_scoped_to_pc_builder_topics(monkeypatch):
 def test_build_advisor_uses_grounded_gemini_prompt_when_available(monkeypatch):
     captured = {}
 
-    def fake_chat(messages, *, system_instruction=None, temperature=0.6):
+    def fake_chat(messages, *, system_instruction=None, temperature=0.6, api_key_override=None):
         captured["messages"] = messages
         captured["system_instruction"] = system_instruction
         captured["temperature"] = temperature

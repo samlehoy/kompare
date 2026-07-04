@@ -169,6 +169,7 @@ def test_ai_recommend_uses_experimental_composer(monkeypatch):
         budget_strategy=None,
         performance_priority=None,
         allocation_overrides=None,
+        api_key_override=None,
     ):
         assert components_by_category is by_cat
         assert budget_idr == 15_000_000
@@ -224,3 +225,47 @@ def test_ai_recommend_rejects_unknown_use_case():
 
     assert response.status_code == 400
     assert "Unknown use_case" in response.json()["detail"]
+
+
+def test_ai_recommend_forwards_gemini_api_key_header(monkeypatch):
+    by_cat = {"cpu": [{"id": "cpu-1"}]}
+    captured_override = None
+
+    def fake_components_by_category():
+        return by_cat
+
+    def fake_compose_ai_build(
+        components_by_category,
+        budget_idr,
+        use_case,
+        *,
+        cpu_brand=None,
+        gpu_vendor=None,
+        include_optional_addons=False,
+        optional_addon_slots=None,
+        profile_name=None,
+        budget_strategy=None,
+        performance_priority=None,
+        allocation_overrides=None,
+        api_key_override=None,
+    ):
+        nonlocal captured_override
+        captured_override = api_key_override
+        return {"components": {"cpu": {"id": "cpu-1"}}}
+
+    monkeypatch.setattr("backend.app.services.components_by_category", fake_components_by_category)
+    monkeypatch.setattr("backend.app.compose_ai_build", fake_compose_ai_build)
+
+    headers = {"X-Gemini-Api-Key": "my-secret-user-key"}
+    response = client.post(
+        "/build/ai-recommend",
+        json={
+            "budget_idr": 15_000_000,
+            "use_case": "gaming",
+        },
+        headers=headers,
+    )
+
+    assert response.status_code == 200
+    assert captured_override == "my-secret-user-key"
+

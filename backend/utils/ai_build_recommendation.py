@@ -753,6 +753,7 @@ def compose_ai_build(
     budget_strategy: str | None = None,
     performance_priority: str | None = None,
     allocation_overrides: dict[str, int] | None = None,
+    api_key_override: Optional[str] = None,
 ) -> dict:
     deterministic_kwargs = {
         "cpu_brand": cpu_brand,
@@ -816,7 +817,7 @@ def compose_ai_build(
         }
         query_texts = [slot_queries[slot] for slot in AI_REQUIRED_SLOTS]
         try:
-            vectors = embed_texts(query_texts)
+            vectors = embed_texts(query_texts, api_key_override=api_key_override)
         except GeminiError:
             return _fallback(
                 by_category,
@@ -835,7 +836,7 @@ def compose_ai_build(
             use_case=use_case,
             top_k=12,
         )
-        ranker = generate_json
+        ranker = lambda prompt, temperature=0.2: generate_json(prompt, temperature=temperature, api_key_override=api_key_override)
         ranker_prompt_builder = build_ai_ranker_prompt
         manifest = index.manifest
     elif profile.vector_backend == "qdrant":
