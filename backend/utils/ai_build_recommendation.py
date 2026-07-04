@@ -873,12 +873,20 @@ def compose_ai_build(
                 use_case=use_case,
                 top_k=12,
             )
-            ranker = lambda prompt, temperature=0.2: local_client.generate_json(
-                prompt,
-                temperature=temperature,
-                schema=AI_RANKER_JSON_SCHEMA,
-            )
-            ranker_prompt_builder = build_local_sku_choice_prompt
+            if profile.llm_provider == "lmstudio":
+                ranker = lambda prompt, temperature=0.2: local_client.generate_json(
+                    prompt,
+                    temperature=temperature,
+                    schema=AI_RANKER_JSON_SCHEMA,
+                )
+                ranker_prompt_builder = build_local_sku_choice_prompt
+            else:
+                ranker = lambda prompt, temperature=0.2: generate_json(
+                    prompt,
+                    temperature=temperature,
+                    api_key_override=api_key_override,
+                )
+                ranker_prompt_builder = build_ai_ranker_prompt
         except AIProviderError:
             return _fallback(
                 by_category,
@@ -938,7 +946,7 @@ def compose_ai_build(
     ranker_error = None
     selection_candidates_by_slot = ranker_candidates_by_slot
     try:
-        if profile.vector_backend == "qdrant":
+        if profile.vector_backend == "qdrant" and profile.llm_provider == "lmstudio":
             sku_choice_payload = local_client.generate_json(
                 prompt,
                 temperature=0.0,

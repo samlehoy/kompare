@@ -965,3 +965,57 @@ def test_falls_back_when_gemini_errors(monkeypatch):
 
     assert result["fallback"] is True
     assert result["fallback_reason"] == "ai_ranker_rejected"
+
+
+def test_gemini_free_profile_with_qdrant_and_fastembed_passes(monkeypatch):
+    from backend.utils import ai_build_recommendation as ai_module
+    from backend.ai_providers import AIProviderProfile
+
+    catalog = sample_components()
+    selected = selected_skus()
+    profile = AIProviderProfile(
+        name="gemini_free",
+        llm_provider="gemini",
+        embedding_provider="fastembed",
+        vector_backend="qdrant",
+        llm_model="gemini-2.5-flash",
+        embedding_model="BAAI/bge-small-en-v1.5",
+        embedding_dimension=384,
+        vector_url="https://fake-qdrant:6333",
+        vector_collection="kompare_components_gemini",
+    )
+
+    class FakeQdrantStore:
+        def query(self, vector, *, top_k=12, category=None):
+            return [{"sku": selected[category], "category": category, "score": 0.98}]
+
+    import backend.ai_providers as ai_providers_module
+    monkeypatch.setattr(ai_module, "get_ai_profile", lambda name=None: profile)
+    monkeypatch.setattr(ai_module.QdrantVectorStore, "from_profile", lambda selected_profile: FakeQdrantStore())
+    monkeypatch.setattr(
+        ai_providers_module,
+        "embed_texts_for_profile",
+        lambda selected_profile, texts, api_key_override=None: [[1.0] * 384 for _ in texts],
+    )
+    monkeypatch.setattr(
+        ai_module,
+        "generate_json",
+        lambda prompt, temperature=0.2, api_key_override=None: {
+            "selected_skus": selected,
+            "slot_rationales": {slot: f"Reason for {slot}" for slot in selected},
+            "summary": "Balanced AI-ranked build.",
+            "tradeoffs": ["Costs more for stronger GPU and SSD."],
+        },
+    )
+
+    result = ai_module.compose_ai_build(
+        catalog,
+        15_000_000,
+        "gaming",
+        profile_name="gemini_free",
+    )
+
+    assert result["ai_assisted"] is True
+    assert result["fallback"] is False
+    assert result["components"]["gpu"]["sku"] == "gpu-ai"
+
