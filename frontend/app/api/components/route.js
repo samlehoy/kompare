@@ -1,4 +1,6 @@
-import { loadComponents } from './pc-builder-core.js';
+export const runtime = 'edge';
+
+import { loadComponents } from '../pc-builder-core.js';
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
@@ -7,13 +9,13 @@ const CORS_HEADERS = {
   "Content-Type": "application/json"
 };
 
-export async function onRequestOptions() {
+export async function OPTIONS() {
   return new Response(null, { status: 204, headers: CORS_HEADERS });
 }
 
-export async function onRequestGet(context) {
+export async function GET(request) {
   try {
-    const { request } = context;
+    
     const url = new URL(request.url);
     const category = url.searchParams.get("category");
     const q = url.searchParams.get("q");

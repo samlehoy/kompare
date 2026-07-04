@@ -1,6 +1,6 @@
-import rawComponents from '../../../data/components.json' with { type: 'json' };
-import rawCuratedRam from '../../../data/curated_ram.json' with { type: 'json' };
-import rawPriceOverrides from '../../../data/price_overrides.json' with { type: 'json' };
+import rawComponents from '../../data/components.json' with { type: 'json' };
+import rawCuratedRam from '../../data/curated_ram.json' with { type: 'json' };
+import rawPriceOverrides from '../../data/price_overrides.json' with { type: 'json' };
 
 // Constants
 export const USE_CASE_PROFILES = {

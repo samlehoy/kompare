@@ -1,0 +1,188 @@
+{
+  "generated_at": "2026-05-11T08:35:09.898846+00:00",
+  "source_file": "output\\products.csv",
+  "cleaning_rules": [
+    "Keep output/products.csv as raw acquisition data.",
+    "Write cleaned rows to output/products_cleaned.csv.",
+    "Use product_url as the canonical deduplication key.",
+    "Preserve rows that share the same SKU when product_url differs.",
+    "Trim whitespace from string fields.",
+    "Convert invalid price_idr values to 0.",
+    "Clear the known site-wide generic description.",
+    "Replace malformed or non-object specifications JSON with {}.",
+    "Report, but do not drop, rows with empty image_url or price_idr = 0."
+  ],
+  "schema": {
+    "expected_columns": [
+      "sku",
+      "name",
+      "category",
+      "subcategory",
+      "price_idr",
+      "stock_status",
+      "description",
+      "specifications",
+      "image_url",
+      "product_url",
+      "tokopedia_url",
+      "shopee_url",
+      "scraped_at"
+    ],
+    "input_columns": [
+      "sku",
+      "name",
+      "category",
+      "subcategory",
+      "price_idr",
+      "stock_status",
+      "description",
+      "specifications",
+      "image_url",
+      "product_url",
+      "tokopedia_url",
+      "shopee_url",
+      "scraped_at"
+    ],
+    "header_matches_expected": true
+  },
+  "totals": {
+    "raw_rows": 17121,
+    "cleaned_rows": 17121,
+    "unique_product_urls": 17121,
+    "duplicate_product_urls_after_cleaning": 0,
+    "categories": 30
+  },
+  "issues": {
+    "duplicate_rows_removed": 0,
+    "generic_descriptions_cleared": 15001,
+    "invalid_specifications_json": 0,
+    "non_object_specifications": 0,
+    "zero_price_rows": 3,
+    "missing_sku_rows": 0,
+    "missing_image_url_rows": 9952,
+    "missing_description_rows": 15001,
+    "invalid_stock_status_rows": 0,
+    "external_product_url_rows": 0
+  },
+  "field_completeness": {
+    "sku": {
+      "present": 17121,
+      "missing": 0
+    },
+    "name": {
+      "present": 17121,
+      "missing": 0
+    },
+    "category": {
+      "present": 17121,
+      "missing": 0
+    },
+    "subcategory": {
+      "present": 13158,
+      "missing": 3963
+    },
+    "price_idr": {
+      "present": 17121,
+      "missing": 0
+    },
+    "stock_status": {
+      "present": 17121,
+      "missing": 0
+    },
+    "description": {
+      "present": 2120,
+      "missing": 15001
+    },
+    "specifications": {
+      "present": 17121,
+      "missing": 0
+    },
+    "image_url": {
+      "present": 7169,
+      "missing": 9952
+    },
+    "product_url": {
+      "present": 17121,
+      "missing": 0
+    },
+    "tokopedia_url": {
+      "present": 7447,
+      "missing": 9674
+    },
+    "shopee_url": {
+      "present": 7406,
+      "missing": 9715
+    },
+    "scraped_at": {
+      "present": 17121,
+      "missing": 0
+    }
+  },
+  "category_counts": {
+    "Accessories": 1874,
+    "All In One": 588,
+    "Casing": 1174,
+    "Cooler": 1446,
+    "Drawer": 69,
+    "Flash Drive": 212,
+    "Gadget": 374,
+    "Gaming Chair": 115,
+    "Hard Drive": 402,
+    "Headset": 486,
+    "Keyboard": 1606,
+    "LCD": 762,
+    "Memory Card": 214,
+    "Motherboard": 634,
+    "Networking": 1212,
+    "Notebook": 982,
+    "Notebook Accessories": 660,
+    "Optical": 10,
+    "PSU": 588,
+    "Printer": 771,
+    "Processor": 267,
+    "Projector": 179,
+    "RAM": 595,
+    "SSD": 570,
+    "Server": 268,
+    "Software": 31,
+    "Soundcard": 2,
+    "Speaker": 134,
+    "UPS": 445,
+    "VGA": 451
+  },
+  "stock_status_counts": {
+    "in_stock": 17121
+  },
+  "top_subcategories": {
+    "(missing)": 3963,
+    "Keyboard": 803,
+    "Fan Casing 12CM Fan Case": 554,
+    "Mouse": 483,
+    "PC - Desktop": 466,
+    "Internal SSD (SOLID STATE DISK)": 406,
+    "Liquid Cooler / Water Cooler": 401,
+    "Others": 393,
+    "Cartridge and Toner": 382,
+    "Gaming Accessories": 381,
+    "nvidia": 348,
+    "Air Cooler / Heatsink Cooler": 312,
+    "Notebook Battery": 293,
+    "AIO PC": 290,
+    "Printer": 240,
+    "Motherboard AMD AM5": 222,
+    "Branded PC": 204,
+    "Phone and Accessories": 183,
+    "Cable Accessories Kabel USB": 183,
+    "Motherboard Intel LGA 1700": 172,
+    "Networking Cable and Accessories": 167,
+    "External SSD (SOLID STATE DISK)": 165,
+    "Notebook Adaptor": 155,
+    "NAS": 145,
+    "Motherboard Intel LGA 1851": 134
+  },
+  "price_summary": {
+    "min": 0,
+    "max": 612500000,
+    "nonzero_min": 5000
+  }
+}
