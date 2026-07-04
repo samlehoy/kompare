@@ -69,8 +69,7 @@ def sync_qdrant_profile(
                 def embed_texts(self, texts: list[str]) -> list[list[float]]:
                     for attempt in range(6):
                         try:
-                            # Forward the key from profile or environment override
-                            key_override = profile.vector_api_key or os.getenv("GEMINI_API_KEY")
+                            key_override = os.getenv("GEMINI_API_KEY")
                             return embed_texts(texts, model=profile.embedding_model, api_key_override=key_override)
                         except Exception as e:
                             err_msg = str(e)
