@@ -4,9 +4,6 @@ import { fileURLToPath } from 'node:url';
 const rootDir = fileURLToPath(new URL('.', import.meta.url));
 
 export default defineConfig({
-  define: {
-    'process.env.NEXT_PUBLIC_API_BASE_URL': JSON.stringify('/api'),
-  },
   test: {
     environment: 'jsdom',
     environmentOptions: {

@@ -1,5 +1,5 @@
 const configuredBase = process.env.NEXT_PUBLIC_API_BASE_URL?.trim();
-const BASE = configuredBase ? configuredBase.replace(/\/+$/, '') : 'https://kompare-backend-api.muttaqien0111.workers.dev/api';
+const BASE = configuredBase ? configuredBase.replace(/\/+$/, '') : '/api';
 
 function apiUrl(path) {
   const normalizedPath = path.startsWith('/') ? path : `/${path}`;
