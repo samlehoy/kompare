@@ -9,10 +9,7 @@ services:
         value: gemini_free
       - key: QDRANT_URL
         sync: false
-        placeholder: "Enter Qdrant Cloud Cluster URL (e.g., https://xyz.qdrant.io:6333)"
       - key: QDRANT_API_KEY
         sync: false
-        placeholder: "Enter Qdrant Cloud API Key"
       - key: GEMINI_API_KEY
         sync: false
-        placeholder: "Enter Default Server Gemini API Key (Optional)"
