@@ -51,35 +51,35 @@ Kompare fulfills all core capstone requirements for an intelligent shopping assi
 graph TD
     %% Frontend Subgraph
     subgraph Frontend [Next.js Frontend]
-        A[Kompare 95 Desktop Console]
-        B[/builder] --> A
-        C[/upgrade] --> A
-        D[/audit] --> A
+        A["Kompare 95 Desktop Console"]
+        B["/builder"] --> A
+        C["/upgrade"] --> A
+        D["/audit"] --> A
     end
 
     %% API Rewrite Node
-    E(Next.js /api rewrite)
+    E("Next.js /api rewrite")
 
     %% Backend Subgraph
     subgraph Backend [FastAPI Backend]
-        F[/components]
-        G[/build/use-cases]
-        H[/build/budget-tiers]
-        I[/build/recommend]
-        J[/build/upgrade]
-        K[/build/swap-candidates]
-        L[/build/swap]
-        M[/build/audit]
-        N[/build/advisor]
+        F["/components"]
+        G["/build/use-cases"]
+        H["/build/budget-tiers"]
+        I["/build/recommend"]
+        J["/build/upgrade"]
+        K["/build/swap-candidates"]
+        L["/build/swap"]
+        M["/build/audit"]
+        N["/build/advisor"]
     end
 
     %% Database Subgraph
     subgraph Data [Local JSON Data]
-        O[data/components.json]
-        P[data/component_catalog_report.json]
-        Q[data/products_cleaned.csv]
-        R[data/curated_ram.json]
-        S[data/price_overrides.json]
+        O["data/components.json"]
+        P["data/component_catalog_report.json"]
+        Q["data/products_cleaned.csv"]
+        R["data/curated_ram.json"]
+        S["data/price_overrides.json"]
     end
 
     %% Connections
