@@ -82,7 +82,7 @@ def _gemini_free_profile() -> AIProviderProfile:
             vector_url=qdrant_url,
             vector_collection=_env("QDRANT_COLLECTION_GEMINI", "kompare_components_gemini"),
             vector_api_key=_env("QDRANT_API_KEY") or None,
-            embedding_dimension=_env_int("GEMINI_EMBEDDING_DIMENSION", 768),
+            embedding_dimension=_env_int("GEMINI_EMBEDDING_DIMENSION", 3072),
         )
     return AIProviderProfile(
         name="gemini_free",
