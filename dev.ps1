@@ -4,12 +4,11 @@
     Start, stop, or inspect the local Kompare dev stack.
 
 .DESCRIPTION
-    Runs the FastAPI backend and Next.js frontend together with a few first-run
+    Runs the Cloudflare Worker backend and Next.js frontend together with a few first-run
     conveniences:
 
     - Creates .env from .env.example when needed.
-    - Installs frontend packages when node_modules is missing.
-    - Installs Python requirements when FastAPI/Uvicorn is missing.
+    - Installs frontend and worker packages when node_modules is missing.
     - Remembers child process IDs in .dev-logs/dev-state.json.
     - Stops stale listeners on the requested ports by default.
     - Supports easy status, stop, and detached workflows.
@@ -40,10 +39,10 @@
 [CmdletBinding(DefaultParameterSetName = 'Start')]
 param(
     [Parameter(ParameterSetName = 'Start')]
-    [int]$BackendPort = 8000,
+    [int]$BackendPort = 8787,
 
     [Parameter(ParameterSetName = 'Start')]
-    [int]$FrontendPort = 5173,
+    [int]$FrontendPort = 3000,
 
     [Parameter(ParameterSetName = 'Start')]
     [switch]$NoBrowser,
@@ -71,6 +70,7 @@ $ErrorActionPreference = 'Stop'
 
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
 $frontendDir = Join-Path $root 'frontend'
+$backendDir = Join-Path $root 'backend_worker'
 $logDir = Join-Path $root '.dev-logs'
 $statePath = Join-Path $logDir 'dev-state.json'
 
@@ -193,7 +193,6 @@ function Save-State {
         frontendPort = $FrontendPort
         backendUrl = "http://127.0.0.1:$BackendPort"
         frontendUrl = "http://127.0.0.1:$FrontendPort"
-        apiProxyTarget = "http://127.0.0.1:$BackendPort"
         logs = @{
             backendOut = (Join-Path $logDir "backend-$script:sessionId.out")
             backendErr = (Join-Path $logDir "backend-$script:sessionId.err")
@@ -241,9 +240,8 @@ function Show-Status {
     Write-Host ""
     Write-Host "Kompare dev stack" -ForegroundColor White
     Write-Host "  Root:        $($state.root)"
-    Write-Host "  Backend:     $($state.backendUrl)  pid=$($state.backendPid) alive=$backendAlive port=$backendPortOpen"
+    Write-Host "  Backend Worker: $($state.backendUrl)  pid=$($state.backendPid) alive=$backendAlive port=$backendPortOpen"
     Write-Host "  Frontend:    $($state.frontendUrl)  pid=$($state.frontendPid) alive=$frontendAlive port=$frontendPortOpen"
-    Write-Host "  API proxy:   $($state.apiProxyTarget)"
     Write-Host "  Started at:  $($state.startedAt)"
     if ($state.logs) {
         Write-Host "  Backend log: $($state.logs.backendErr)"
@@ -264,33 +262,14 @@ function Ensure-DotEnv {
     Write-Ok "Created .env from .env.example"
 }
 
-function Ensure-PythonDependencies {
-    if ($NoInstall) { return }
-
-    if (-not (Test-Command 'python')) {
-        throw "python was not found on PATH. Install Python 3.11+ first, then run .\dev.ps1 again."
-    }
-
-    & python -c "import fastapi, uvicorn" 2>$null
-    if ($LASTEXITCODE -eq 0) { return }
-
-    Write-Step "Installing Python dependencies..."
-    $install = Start-Process -PassThru -Wait -NoNewWindow `
-        -FilePath python `
-        -ArgumentList "-m", "pip", "install", "-r", "requirements.txt" `
-        -WorkingDirectory $root
-
-    if ($install.ExitCode -ne 0) {
-        throw "Python dependency install failed with exit code $($install.ExitCode)."
+function Ensure-NodeInstalled {
+    if (-not (Test-Command 'npm') -or -not (Test-Command 'npx')) {
+        throw "npm/npx was not found on PATH. Install Node.js first, then run .\dev.ps1 again."
     }
 }
 
 function Ensure-FrontendDependencies {
     if ($NoInstall) { return }
-
-    if (-not (Test-Command 'npm')) {
-        throw "npm was not found on PATH. Install Node.js first, then run .\dev.ps1 again."
-    }
 
     $nextPackage = Join-Path $frontendDir 'node_modules\next\package.json'
     if (Test-Path $nextPackage) { return }
@@ -306,6 +285,26 @@ function Ensure-FrontendDependencies {
 
     if ($install.ExitCode -ne 0) {
         throw "Frontend dependency install failed with exit code $($install.ExitCode)."
+    }
+}
+
+function Ensure-BackendDependencies {
+    if ($NoInstall) { return }
+
+    $wranglerPackage = Join-Path $backendDir 'node_modules\wrangler\package.json'
+    if (Test-Path $wranglerPackage) { return }
+
+    $packageLock = Join-Path $backendDir 'package-lock.json'
+    $npmArgs = if (Test-Path $packageLock) { @('ci') } else { @('install') }
+
+    Write-Step "Installing backend worker dependencies with npm $($npmArgs -join ' ')..."
+    $install = Start-Process -PassThru -Wait -NoNewWindow `
+        -FilePath cmd.exe `
+        -ArgumentList @('/c', "npm $($npmArgs -join ' ')") `
+        -WorkingDirectory $backendDir
+
+    if ($install.ExitCode -ne 0) {
+        throw "Backend Worker dependency install failed with exit code $($install.ExitCode)."
     }
 }
 
@@ -353,8 +352,9 @@ if ($Status) {
 }
 
 Ensure-DotEnv
-Ensure-PythonDependencies
+Ensure-NodeInstalled
 Ensure-FrontendDependencies
+Ensure-BackendDependencies
 
 $existingState = Read-State
 if ($existingState) {
@@ -395,19 +395,16 @@ New-Item -ItemType File -Force -Path $backendErr | Out-Null
 New-Item -ItemType File -Force -Path $frontendOut | Out-Null
 New-Item -ItemType File -Force -Path $frontendErr | Out-Null
 
-$proxyTarget = "http://127.0.0.1:$actualBackendPort"
+$backendUrl = "http://127.0.0.1:$actualBackendPort"
 
-Write-Step "Starting backend (FastAPI :$actualBackendPort)..."
-$env:PYTHONPATH = $root
+Write-Step "Starting backend Cloudflare Worker (wrangler dev :$actualBackendPort)..."
 $backend = Start-Process -PassThru -WindowStyle Hidden `
-    -FilePath python `
-    -ArgumentList "-m", "uvicorn", "backend.app:app", "--reload", "--host", "127.0.0.1", "--port", "$actualBackendPort" `
-    -WorkingDirectory $root `
-    -RedirectStandardOutput $backendOut `
-    -RedirectStandardError $backendErr
+    -FilePath cmd.exe `
+    -ArgumentList "/c", "npx wrangler dev --port $actualBackendPort > `"$backendOut`" 2> `"$backendErr`"" `
+    -WorkingDirectory $backendDir
 
 Write-Step "Starting frontend (Next.js :$actualFrontendPort)..."
-$frontendCommand = "set `"NEXT_PUBLIC_API_PROXY_TARGET=$proxyTarget`" && set `"NEXT_PUBLIC_API_BASE_URL=$proxyTarget`" && npm run dev -- --hostname 127.0.0.1 --port $actualFrontendPort"
+$frontendCommand = "set `"NEXT_PUBLIC_API_BASE_URL=$backendUrl`" && npm run dev -- --hostname 127.0.0.1 --port $actualFrontendPort"
 $frontend = Start-Process -PassThru -WindowStyle Hidden `
     -FilePath cmd.exe `
     -ArgumentList "/c", "$frontendCommand > `"$frontendOut`" 2> `"$frontendErr`"" `
@@ -440,9 +437,8 @@ if (-not ($backendReady -and $frontendReady)) {
 }
 
 Write-Host ""
-Write-Ok "Backend  -> http://127.0.0.1:$actualBackendPort  (docs at /docs)"
-Write-Ok "Frontend -> http://127.0.0.1:$actualFrontendPort"
-Write-Ok "API proxy -> $proxyTarget"
+Write-Ok "Backend Worker -> $backendUrl"
+Write-Ok "Frontend       -> http://127.0.0.1:$actualFrontendPort"
 Write-Host ""
 Write-Host "Logs:   $logDir" -ForegroundColor DarkGray
 Write-Host "Status: .\dev.ps1 -Status" -ForegroundColor DarkGray
