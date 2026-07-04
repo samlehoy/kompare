@@ -256,10 +256,15 @@ function Ensure-DotEnv {
     $envPath = Join-Path $root '.env'
     $examplePath = Join-Path $root '.env.example'
 
-    if ((Test-Path $envPath) -or -not (Test-Path $examplePath)) { return }
+    if (-not (Test-Path $envPath) -and (Test-Path $examplePath)) {
+        Copy-Item -LiteralPath $examplePath -Destination $envPath
+        Write-Ok "Created .env from .env.example"
+    }
 
-    Copy-Item -LiteralPath $examplePath -Destination $envPath
-    Write-Ok "Created .env from .env.example"
+    if (Test-Path $envPath) {
+        $devVarsPath = Join-Path $backendDir '.dev.vars'
+        Copy-Item -LiteralPath $envPath -Destination $devVarsPath -Force
+    }
 }
 
 function Load-DotEnv {
