@@ -149,3 +149,5 @@ frontend.err
 # Next.js
 .next/
 out/
+.wrangler/
+

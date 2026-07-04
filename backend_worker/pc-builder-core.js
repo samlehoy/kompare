@@ -1,7 +1,3 @@
-import rawComponents from '../../data/components.json' with { type: 'json' };
-import rawCuratedRam from '../../data/curated_ram.json' with { type: 'json' };
-import rawPriceOverrides from '../../data/price_overrides.json' with { type: 'json' };
-
 // Constants
 export const USE_CASE_PROFILES = {
   gaming:           { cpu: 18, gpu: 33, ram: 7,  motherboard: 10, ssd: 10, psu: 8, case: 7, cpu_cooler: 5, fan_cooler: 2 },
@@ -2083,36 +2079,113 @@ export function recommendUpgrade(components, budget, useCase, existingComponents
 }
 
 // Pre-process and apply price overrides
-const priceOverrides = {};
-for (const [k, v] of Object.entries(rawPriceOverrides)) {
-  if (k && !k.startsWith("_")) priceOverrides[k] = parseInt(v, 10);
-}
+const rawPriceOverrides = {};
 
-const processedComponents = rawComponents.map(c => {
-  const sku = c.sku || c.id;
-  return { ...c, price_idr: (sku && sku in priceOverrides) ? priceOverrides[sku] : c.price_idr };
-});
+const rawCuratedRam = [
+  {
+    "sku": "RAM-DDR4-16-3200-VAL",
+    "name": "Team T-Force Vulcan Z 16GB (2x8GB) DDR4-3200",
+    "brand": "Team",
+    "price_idr": 900000,
+    "specs": { "type": "DDR4", "capacity_gb": 16, "speed_mhz": 3200, "modules": 2 }
+  },
+  {
+    "sku": "RAM-DDR4-32-3200-VAL",
+    "name": "Team T-Force Vulcan Z 32GB (2x16GB) DDR4-3200",
+    "brand": "Team",
+    "price_idr": 1700000,
+    "specs": { "type": "DDR4", "capacity_gb": 32, "speed_mhz": 3200, "modules": 2 }
+  },
+  {
+    "sku": "RAM-DDR4-16-3600-PERF",
+    "name": "Klevv Bolt XR 16GB (2x8GB) DDR4-3600",
+    "brand": "Klevv",
+    "price_idr": 1100000,
+    "specs": { "type": "DDR4", "capacity_gb": 16, "speed_mhz": 3600, "modules": 2 }
+  },
+  {
+    "sku": "RAM-DDR4-32-3600-PERF",
+    "name": "Klevv Bolt XR 32GB (2x16GB) DDR4-3600",
+    "brand": "Klevv",
+    "price_idr": 2100000,
+    "specs": { "type": "DDR4", "capacity_gb": 32, "speed_mhz": 3600, "modules": 2 }
+  },
+  {
+    "sku": "RAM-DDR5-16-5600-VAL",
+    "name": "Team T-Force Vulcan 16GB (2x8GB) DDR5-5600",
+    "brand": "Team",
+    "price_idr": 1250000,
+    "specs": { "type": "DDR5", "capacity_gb": 16, "speed_mhz": 5600, "modules": 2 }
+  },
+  {
+    "sku": "RAM-DDR5-32-5600-VAL",
+    "name": "Team T-Force Vulcan 32GB (2x16GB) DDR5-5600",
+    "brand": "Team",
+    "price_idr": 2250000,
+    "specs": { "type": "DDR5", "capacity_gb": 32, "speed_mhz": 5600, "modules": 2 }
+  },
+  {
+    "sku": "RAM-DDR5-32-6000-PERF",
+    "name": "G.Skill Trident Z5 32GB (2x16GB) DDR5-6000",
+    "brand": "G.Skill",
+    "price_idr": 2950000,
+    "specs": { "type": "DDR5", "capacity_gb": 32, "speed_mhz": 6000, "modules": 2 }
+  },
+  {
+    "sku": "RAM-DDR5-32-6400-PERF",
+    "name": "G.Skill Trident Z5 RGB 32GB (2x16GB) DDR5-6400",
+    "brand": "G.Skill",
+    "price_idr": 3400000,
+    "specs": { "type": "DDR5", "capacity_gb": 32, "speed_mhz": 6400, "modules": 2 }
+  },
+  {
+    "sku": "RAM-DDR5-64-6000-HEDT",
+    "name": "G.Skill Trident Z5 64GB (2x32GB) DDR5-6000",
+    "brand": "G.Skill",
+    "price_idr": 5800000,
+    "specs": { "type": "DDR5", "capacity_gb": 64, "speed_mhz": 6000, "modules": 2 }
+  }
+];
 
+let processedComponents = [];
 const componentMap = new Map();
 const componentsByCategory = {};
 
-for (const c of processedComponents) {
-  const sku = c.sku || c.id;
-  if (sku) componentMap.set(sku, c);
-  const cat = c.category;
-  if (!componentsByCategory[cat]) componentsByCategory[cat] = [];
-  componentsByCategory[cat].push(c);
-}
+export function initCatalog(rawComponents) {
+  processedComponents = [];
+  componentMap.clear();
+  for (const k of Object.keys(componentsByCategory)) {
+    delete componentsByCategory[k];
+  }
 
-if (!componentsByCategory["ram"]) componentsByCategory["ram"] = [];
-const curatedRamCatalog = rawCuratedRam.map(r => ({
-  sku: r.sku, name: r.name, brand: r.brand, category: "ram", subcategory: r.specs.type,
-  price_idr: r.price_idr, image_path: null, product_url: null, specs: r.specs, source: "curated"
-}));
-for (const r of curatedRamCatalog) {
-  if (!componentMap.has(r.sku)) {
-    componentMap.set(r.sku, r);
-    componentsByCategory["ram"].push(r);
+  const priceOverrides = {};
+  for (const [k, v] of Object.entries(rawPriceOverrides)) {
+    if (k && !k.startsWith("_")) priceOverrides[k] = parseInt(v, 10);
+  }
+
+  processedComponents = rawComponents.map(c => {
+    const sku = c.sku || c.id;
+    return { ...c, price_idr: (sku && sku in priceOverrides) ? priceOverrides[sku] : c.price_idr };
+  });
+
+  for (const c of processedComponents) {
+    const sku = c.sku || c.id;
+    if (sku) componentMap.set(sku, c);
+    const cat = c.category;
+    if (!componentsByCategory[cat]) componentsByCategory[cat] = [];
+    componentsByCategory[cat].push(c);
+  }
+
+  if (!componentsByCategory["ram"]) componentsByCategory["ram"] = [];
+  const curatedRamCatalog = rawCuratedRam.map(r => ({
+    sku: r.sku, name: r.name, brand: r.brand, category: "ram", subcategory: r.specs.type,
+    price_idr: r.price_idr, image_path: null, product_url: null, specs: r.specs, source: "curated"
+  }));
+  for (const r of curatedRamCatalog) {
+    if (!componentMap.has(r.sku)) {
+      componentMap.set(r.sku, r);
+      componentsByCategory["ram"].push(r);
+    }
   }
 }
 

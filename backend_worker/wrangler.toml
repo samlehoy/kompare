@@ -1,0 +1,7 @@
+name = "kompare-backend-api"
+main = "index.js"
+compatibility_date = "2024-04-01"
+
+[[kv_namespaces]]
+binding = "KOMPARE_DATA"
+id = "7950801f54ab42f2b07dfe0cc5b4f029"
