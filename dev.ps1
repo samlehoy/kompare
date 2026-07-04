@@ -288,25 +288,7 @@ function Ensure-FrontendDependencies {
     }
 }
 
-function Ensure-BackendDependencies {
-    if ($NoInstall) { return }
 
-    $wranglerPackage = Join-Path $backendDir 'node_modules\wrangler\package.json'
-    if (Test-Path $wranglerPackage) { return }
-
-    $packageLock = Join-Path $backendDir 'package-lock.json'
-    $npmArgs = if (Test-Path $packageLock) { @('ci') } else { @('install') }
-
-    Write-Step "Installing backend worker dependencies with npm $($npmArgs -join ' ')..."
-    $install = Start-Process -PassThru -Wait -NoNewWindow `
-        -FilePath cmd.exe `
-        -ArgumentList @('/c', "npm $($npmArgs -join ' ')") `
-        -WorkingDirectory $backendDir
-
-    if ($install.ExitCode -ne 0) {
-        throw "Backend Worker dependency install failed with exit code $($install.ExitCode)."
-    }
-}
 
 function Tail-LogsUntilExit {
     param(
@@ -354,7 +336,6 @@ if ($Status) {
 Ensure-DotEnv
 Ensure-NodeInstalled
 Ensure-FrontendDependencies
-Ensure-BackendDependencies
 
 $existingState = Read-State
 if ($existingState) {
