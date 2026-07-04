@@ -61,30 +61,30 @@ def sync_qdrant_profile(
         }
 
     if embedder is None:
-        if profile.embedding_provider == "gemini":
-            from backend.gemini_client import embed_texts
-            import time
-            import os
-            class GeminiEmbedderWrapper:
-                def __init__(self):
-                    # Dynamically collect keys from environment to avoid hardcoding secrets
-                    self.keys = []
-                    k_main = os.getenv("GEMINI_API_KEY")
-                    if k_main:
-                        self.keys.append(k_main)
-                    for i in range(1, 10): # support more keys in env if provided
-                        k_rot = os.getenv(f"GEMINI_API_KEY_{i}")
-                        if k_rot:
-                            self.keys.append(k_rot)
-                    if not self.keys:
-                        self.keys = [""]
-                    self.current_key_idx = 0
+        from backend.ai_providers import embed_texts_for_profile
+        import time
+        import os
+        class DynamicEmbedderWrapper:
+            def __init__(self):
+                # Dynamically collect keys from environment to avoid hardcoding secrets
+                self.keys = []
+                k_main = os.getenv("GEMINI_API_KEY")
+                if k_main:
+                    self.keys.append(k_main)
+                for i in range(1, 10): # support more keys in env if provided
+                    k_rot = os.getenv(f"GEMINI_API_KEY_{i}")
+                    if k_rot:
+                        self.keys.append(k_rot)
+                if not self.keys:
+                    self.keys = [""]
+                self.current_key_idx = 0
 
-                def embed_texts(self, texts: list[str]) -> list[list[float]]:
+            def embed_texts(self, texts: list[str]) -> list[list[float]]:
+                if profile.embedding_provider == "gemini":
                     for attempt in range(40):
                         try:
                             key_override = self.keys[self.current_key_idx]
-                            return embed_texts(texts, model=profile.embedding_model, api_key_override=key_override)
+                            return embed_texts_for_profile(profile, texts, api_key_override=key_override)
                         except Exception as e:
                             err_msg = str(e)
                             if "429" in err_msg or "quota" in err_msg.lower() or "resource_exhausted" in err_msg.lower():
@@ -102,9 +102,9 @@ def sync_qdrant_profile(
                                 continue
                             raise
                     raise RuntimeError("Failed to generate embeddings after 40 attempts across all keys.")
-            selected_embedder = GeminiEmbedderWrapper()
-        else:
-            selected_embedder = lmstudio_client_from_profile(profile)
+                else:
+                    return embed_texts_for_profile(profile, texts)
+        selected_embedder = DynamicEmbedderWrapper()
     else:
         selected_embedder = embedder
 

@@ -75,14 +75,14 @@ def _gemini_free_profile() -> AIProviderProfile:
         return AIProviderProfile(
             name="gemini_free",
             llm_provider="gemini",
-            embedding_provider="gemini",
+            embedding_provider="fastembed",
             vector_backend="qdrant",
             llm_model=_env("GEMINI_MODEL", DEFAULT_GEMINI_LLM_MODEL),
-            embedding_model=_env("GEMINI_EMBEDDING_MODEL", DEFAULT_GEMINI_EMBEDDING_MODEL),
+            embedding_model=_env("GEMINI_EMBEDDING_MODEL", "BAAI/bge-small-en-v1.5"),
             vector_url=qdrant_url,
             vector_collection=_env("QDRANT_COLLECTION_GEMINI", "kompare_components_gemini"),
             vector_api_key=_env("QDRANT_API_KEY") or None,
-            embedding_dimension=_env_int("GEMINI_EMBEDDING_DIMENSION", 3072),
+            embedding_dimension=_env_int("GEMINI_EMBEDDING_DIMENSION", 384),
         )
     return AIProviderProfile(
         name="gemini_free",
@@ -311,3 +311,29 @@ def lmstudio_client_from_profile(
         transport=transport,
         timeout=selected.timeout_seconds,
     )
+
+
+_fastembed_model: Any = None
+
+def embed_texts_for_profile(
+    profile: AIProviderProfile,
+    texts: list[str],
+    *,
+    api_key_override: str | None = None,
+) -> list[list[float]]:
+    if profile.embedding_provider == "gemini":
+        from backend.gemini_client import embed_texts
+        return embed_texts(texts, model=profile.embedding_model, api_key_override=api_key_override)
+    elif profile.embedding_provider == "fastembed":
+        global _fastembed_model
+        if _fastembed_model is None:
+            from fastembed import TextEmbedding
+            _fastembed_model = TextEmbedding(model_name=profile.embedding_model or "BAAI/bge-small-en-v1.5")
+        embeddings = list(_fastembed_model.embed(texts))
+        return [list(map(float, vec)) for vec in embeddings]
+    elif profile.embedding_provider == "lmstudio":
+        client = lmstudio_client_from_profile(profile)
+        return client.embed_texts(texts)
+    else:
+        raise AIProviderError(f"Unsupported embedding provider: {profile.embedding_provider}")
+

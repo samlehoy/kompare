@@ -841,7 +841,7 @@ def compose_ai_build(
         manifest = index.manifest
     elif profile.vector_backend == "qdrant":
         try:
-            local_client = lmstudio_client_from_profile(profile)
+            from backend.ai_providers import embed_texts_for_profile
             store = QdrantVectorStore.from_profile(profile)
             slot_queries = build_slot_query_texts(budget, use_case)
             slot_queries = {
@@ -851,11 +851,19 @@ def compose_ai_build(
                 )
                 for slot, text in slot_queries.items()
             }
-            query_texts = [
-                f"{LOCAL_QUERY_PREFIX}{slot_queries[slot]}"
-                for slot in AI_REQUIRED_SLOTS
-            ]
-            vectors = local_client.embed_texts(query_texts)
+            if profile.embedding_provider == "lmstudio":
+                query_texts = [
+                    f"{LOCAL_QUERY_PREFIX}{slot_queries[slot]}"
+                    for slot in AI_REQUIRED_SLOTS
+                ]
+            else:
+                query_texts = [slot_queries[slot] for slot in AI_REQUIRED_SLOTS]
+            
+            if profile.embedding_provider == "lmstudio":
+                local_client = lmstudio_client_from_profile(profile)
+                vectors = local_client.embed_texts(query_texts)
+            else:
+                vectors = embed_texts_for_profile(profile, query_texts, api_key_override=api_key_override)
             query_vectors = dict(zip(AI_REQUIRED_SLOTS, vectors))
             candidates_by_slot = _build_qdrant_candidates(
                 components=flat,
