@@ -63,9 +63,21 @@ def sync_qdrant_profile(
     if embedder is None:
         if profile.embedding_provider == "gemini":
             from backend.gemini_client import embed_texts
+            import time
             class GeminiEmbedderWrapper:
                 def embed_texts(self, texts: list[str]) -> list[list[float]]:
-                    return embed_texts(texts, model=profile.embedding_model)
+                    for attempt in range(6):
+                        try:
+                            return embed_texts(texts, model=profile.embedding_model)
+                        except Exception as e:
+                            err_msg = str(e)
+                            if "429" in err_msg or "quota" in err_msg.lower() or "resource_exhausted" in err_msg.lower():
+                                wait_sec = 12 * (attempt + 1)
+                                print(f"Rate limit hit. Waiting {wait_sec}s before retry (attempt {attempt + 1}/6)...")
+                                time.sleep(wait_sec)
+                                continue
+                            raise
+                    raise RuntimeError("Failed to generate embeddings after 6 attempts due to Gemini rate limits.")
             selected_embedder = GeminiEmbedderWrapper()
         else:
             selected_embedder = lmstudio_client_from_profile(profile)
@@ -80,12 +92,20 @@ def sync_qdrant_profile(
 
     vector_count = 0
     upserted_count = 0
-    for start in range(0, len(chunks), batch_size):
+    total_batches = (len(chunks) + batch_size - 1) // batch_size
+    
+    for i, start in enumerate(range(0, len(chunks), batch_size)):
+        batch_idx = i + 1
+        print(f"Processing batch {batch_idx}/{total_batches} ({len(chunks[start:start + batch_size])} chunks)...")
         batch_chunks = chunks[start:start + batch_size]
         vectors = selected_embedder.embed_texts([chunk["text"] for chunk in batch_chunks])
         vector_count += len(vectors)
         result = selected_store.upsert_chunks(batch_chunks, vectors, batch_size=batch_size)
         upserted_count += int(result.get("upserted_count") or 0)
+        
+        # Rate-limiting sleep between batches for Gemini API
+        if profile.embedding_provider == "gemini" and batch_idx < total_batches:
+            time.sleep(4)
 
     return {
         "profile": profile.name,
