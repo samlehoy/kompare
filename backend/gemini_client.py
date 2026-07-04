@@ -155,7 +155,17 @@ def _run_with_key_rotation(
     *,
     quota_message: str,
     failure_prefix: str,
+    api_key_override: Optional[str] = None,
 ) -> Any:
+    if api_key_override:
+        model = _get_model()
+        client = _get_client(api_key_override, model)
+        try:
+            return operation(client, model)
+        except Exception as exc:
+            msg = str(exc)
+            raise GeminiError(f"{failure_prefix}: {msg}") from exc
+
     settings = _get_settings()
     keys, model = settings
     candidates = _candidate_keys(settings)
@@ -173,6 +183,7 @@ def _run_with_key_rotation(
             last_quota_exc = exc
             retry_seconds = _retry_after_seconds(msg) or retry_seconds
             _mark_key_quota_exhausted(api_key, settings)
+
 
     friendly = quota_message
     if len(keys) > 1:
@@ -204,7 +215,7 @@ def _embedding_values(embedding: Any) -> Any:
     return None
 
 
-def embed_texts(texts: list[str], *, model: Optional[str] = None) -> list[list[float]]:
+def embed_texts(texts: list[str], *, model: Optional[str] = None, api_key_override: Optional[str] = None) -> list[list[float]]:
     """Embed non-empty text chunks and return one float vector per clean text."""
     clean_texts = [text.strip() for text in texts if text.strip()]
     if not clean_texts:
@@ -226,6 +237,7 @@ def embed_texts(texts: list[str], *, model: Optional[str] = None) -> list[list[f
             operation,
             quota_message="Gemini free-tier quota exceeded for embedding request.",
             failure_prefix="Gemini embedding call failed",
+            api_key_override=api_key_override,
         )
 
         embeddings = response.get("embeddings") if isinstance(response, dict) else getattr(response, "embeddings", None)
@@ -257,6 +269,7 @@ def generate_chat_reply(
     *,
     system_instruction: Optional[str] = None,
     temperature: float = 0.6,
+    api_key_override: Optional[str] = None,
 ) -> str:
     """Multi-turn chat completion. Returns plain assistant text.
 
@@ -298,6 +311,7 @@ def generate_chat_reply(
             "Wait for the daily reset, switch GEMINI_MODEL, or use keys from a different GCP project."
         ),
         failure_prefix="Gemini API call failed",
+        api_key_override=api_key_override,
     )
 
     text = (getattr(response, "text", None) or "").strip()
@@ -312,6 +326,7 @@ def generate_multimodal_json(
     *,
     mime_type: str = "image/jpeg",
     temperature: float = 0.2,
+    api_key_override: Optional[str] = None,
 ) -> dict[str, Any]:
     """JSON-mode generation with one image attached. Returns parsed dict."""
     if not image_bytes:
@@ -341,6 +356,7 @@ def generate_multimodal_json(
         operation,
         quota_message="Gemini free-tier quota exceeded for multimodal request.",
         failure_prefix="Gemini multimodal call failed",
+        api_key_override=api_key_override,
     )
 
     text = (getattr(response, "text", None) or "").strip()
@@ -358,7 +374,7 @@ def generate_multimodal_json(
         ) from exc
 
 
-def generate_json(prompt: str, *, temperature: float = 0.2) -> dict[str, Any]:
+def generate_json(prompt: str, *, temperature: float = 0.2, api_key_override: Optional[str] = None) -> dict[str, Any]:
     """Run prompt through Gemini in JSON mode and return parsed dict.
 
     Raises GeminiError if the response can't be parsed or the API call fails.
@@ -388,6 +404,7 @@ def generate_json(prompt: str, *, temperature: float = 0.2) -> dict[str, Any]:
             "in .env (higher free-tier RPD), or use a different Google Cloud project."
         ),
         failure_prefix="Gemini API call failed",
+        api_key_override=api_key_override,
     )
 
     text = (getattr(response, "text", None) or "").strip()

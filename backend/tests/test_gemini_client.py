@@ -220,5 +220,63 @@ class GeminiClientSettingsTests(unittest.TestCase):
 
         self.assertTrue(gemini_client._is_quota_error("503 service unavailable"))
 
+    def test_generate_chat_reply_with_api_key_override(self):
+        attempts = []
+
+        class FakeChat:
+            def __init__(self, api_key):
+                self.api_key = api_key
+
+            def send_message(self, message):
+                attempts.append((self.api_key, message))
+                if self.api_key == "override-fail-key":
+                    raise RuntimeError("some custom error")
+                return types.SimpleNamespace(text=f"ok from {self.api_key}")
+
+        class FakeChats:
+            def __init__(self, client):
+                self.client = client
+
+            def create(self, **_kwargs):
+                return FakeChat(self.client.api_key)
+
+        class FakeClient:
+            def __init__(self, api_key):
+                self.api_key = api_key
+                self.chats = FakeChats(self)
+
+        with patch.dict(sys.modules, install_fake_google(FakeClient)):
+            import backend.gemini_client as gemini_client
+
+            gemini_client = importlib.reload(gemini_client)
+            gemini_client._load_dotenv_once = lambda: None
+
+            # 1. Success case with api_key_override
+            env = {
+                "GEMINI_API_KEY_1": "config-key-1",
+                "GEMINI_MODEL": "gemini-2.5-flash-lite",
+            }
+            with patch.dict(os.environ, env, clear=True):
+                reply = gemini_client.generate_chat_reply(
+                    [{"role": "user", "content": "Say ok."}],
+                    api_key_override="override-key"
+                )
+
+            self.assertEqual(reply, "ok from override-key")
+            self.assertEqual(attempts, [("override-key", "Say ok.")])
+
+            # 2. Failure case with api_key_override (must not rotate to config-key-1)
+            attempts.clear()
+            with patch.dict(os.environ, env, clear=True):
+                with self.assertRaises(gemini_client.GeminiError) as context:
+                    gemini_client.generate_chat_reply(
+                        [{"role": "user", "content": "Say ok."}],
+                        api_key_override="override-fail-key"
+                    )
+            self.assertIn("some custom error", str(context.exception))
+            self.assertEqual(attempts, [("override-fail-key", "Say ok.")])
+
+
 if __name__ == "__main__":
     unittest.main()
+
