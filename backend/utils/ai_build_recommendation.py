@@ -102,16 +102,20 @@ def _fallback(
     budget: int,
     use_case: str,
     reason: str,
+    error: Optional[Exception] = None,
     **kwargs: Any,
 ) -> dict:
     result = compose_build(by_category, budget, use_case, **kwargs)
-    return {
+    res = {
         **result,
         "ai_assisted": False,
         "fallback": True,
         "fallback_reason": reason,
         "validation_source": "deterministic",
     }
+    if error is not None:
+        res["error_detail"] = str(error)
+    return res
 
 
 def _component_sku(component: dict | None) -> str:
@@ -792,12 +796,13 @@ def compose_ai_build(
         
         if profile_updates:
             profile = dataclasses.replace(profile, **profile_updates)
-    except AIProviderError:
+    except AIProviderError as exc:
         return _fallback(
             by_category,
             budget,
             use_case,
             "ai_provider_unavailable",
+            error=exc,
             **deterministic_kwargs,
         )
 
@@ -903,12 +908,13 @@ def compose_ai_build(
                     api_key_override=api_key_override,
                 )
                 ranker_prompt_builder = build_ai_ranker_prompt
-        except AIProviderError:
+        except AIProviderError as exc:
             return _fallback(
                 by_category,
                 budget,
                 use_case,
                 "ai_provider_unavailable",
+                error=exc,
                 **deterministic_kwargs,
             )
     else:
