@@ -1019,3 +1019,79 @@ def test_gemini_free_profile_with_qdrant_and_fastembed_passes(monkeypatch):
     assert result["fallback"] is False
     assert result["components"]["gpu"]["sku"] == "gpu-ai"
 
+
+def test_custom_local_endpoint_overrides_apply_at_runtime(monkeypatch):
+    from backend.utils import ai_build_recommendation as ai_module
+    from backend.ai_providers import AIProviderProfile
+
+    catalog = sample_components()
+    selected = selected_skus()
+    profile = AIProviderProfile(
+        name="local_qwen",
+        llm_provider="lmstudio",
+        embedding_provider="lmstudio",
+        vector_backend="qdrant",
+        llm_model="qwen-test",
+        embedding_model="qwen-embed-test",
+        embedding_dimension=3,
+        llm_base_url="http://localhost:1234/v1",
+        embedding_base_url="http://localhost:1234/v1",
+        vector_url="http://localhost:6333",
+        vector_collection="kompare_components_qwen",
+    )
+
+    captured_url = None
+    captured_apikey = None
+
+    class FakeQdrantStore:
+        def __init__(self, url, collection, vector_size, distance, api_key, **kwargs):
+            nonlocal captured_url, captured_apikey
+            captured_url = url
+            captured_apikey = api_key
+
+        @classmethod
+        def from_profile(cls, profile, **kwargs):
+            return cls(
+                url=profile.vector_url,
+                collection=profile.vector_collection,
+                vector_size=profile.embedding_dimension,
+                distance=profile.vector_distance,
+                api_key=profile.vector_api_key,
+            )
+
+        def query(self, vector, *, top_k=12, category=None):
+            return [{"sku": selected[category], "category": category, "score": 0.98}]
+
+    captured_lmstudio_url = None
+
+    class FakeLMStudioClient:
+        def __init__(self, base_url, **kwargs):
+            nonlocal captured_lmstudio_url
+            captured_lmstudio_url = base_url
+
+        def embed_texts(self, texts):
+            return [[1.0, 0.0, 0.0] for _ in texts]
+
+        def generate_json(self, prompt, temperature=0.2, schema=None):
+            return selected
+
+    monkeypatch.setattr(ai_module, "get_ai_profile", lambda name=None: profile)
+    monkeypatch.setattr(ai_module, "QdrantVectorStore", FakeQdrantStore)
+    monkeypatch.setattr(ai_module, "lmstudio_client_from_profile", lambda p: FakeLMStudioClient(p.llm_base_url))
+
+    result = ai_module.compose_ai_build(
+        catalog,
+        15_000_000,
+        "gaming",
+        profile_name="local_qwen",
+        lmstudio_base_url_override="https://my-tunnel.ngrok-free.app/v1",
+        qdrant_url_override="https://my-qdrant-tunnel.ngrok-free.app",
+        qdrant_api_key_override="tunnel-secret-token",
+    )
+
+    assert result["ai_assisted"] is True
+    assert captured_lmstudio_url == "https://my-tunnel.ngrok-free.app/v1"
+    assert captured_url == "https://my-qdrant-tunnel.ngrok-free.app"
+    assert captured_apikey == "tunnel-secret-token"
+
+

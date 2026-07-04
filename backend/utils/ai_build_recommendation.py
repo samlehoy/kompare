@@ -754,6 +754,9 @@ def compose_ai_build(
     performance_priority: str | None = None,
     allocation_overrides: dict[str, int] | None = None,
     api_key_override: Optional[str] = None,
+    lmstudio_base_url_override: Optional[str] = None,
+    qdrant_url_override: Optional[str] = None,
+    qdrant_api_key_override: Optional[str] = None,
 ) -> dict:
     deterministic_kwargs = {
         "cpu_brand": cpu_brand,
@@ -776,6 +779,19 @@ def compose_ai_build(
 
     try:
         profile = get_ai_profile(profile_name)
+        
+        import dataclasses
+        profile_updates = {}
+        if lmstudio_base_url_override:
+            profile_updates["llm_base_url"] = lmstudio_base_url_override
+            profile_updates["embedding_base_url"] = lmstudio_base_url_override
+        if qdrant_url_override:
+            profile_updates["vector_url"] = qdrant_url_override
+        if qdrant_api_key_override:
+            profile_updates["vector_api_key"] = qdrant_api_key_override
+        
+        if profile_updates:
+            profile = dataclasses.replace(profile, **profile_updates)
     except AIProviderError:
         return _fallback(
             by_category,

@@ -55,14 +55,28 @@ export async function request(path, options = {}) {
   const userKey = typeof window !== 'undefined' && typeof localStorage !== 'undefined' && typeof localStorage.getItem === 'function'
     ? localStorage.getItem('kompare_user_gemini_key')
     : null;
-  const authHeaders = userKey ? { 'X-Gemini-Api-Key': userKey } : {};
+  const userLMStudioUrl = typeof window !== 'undefined' && typeof localStorage !== 'undefined' && typeof localStorage.getItem === 'function'
+    ? localStorage.getItem('kompare_user_lmstudio_url')
+    : null;
+  const userQdrantUrl = typeof window !== 'undefined' && typeof localStorage !== 'undefined' && typeof localStorage.getItem === 'function'
+    ? localStorage.getItem('kompare_user_qdrant_url')
+    : null;
+  const userQdrantKey = typeof window !== 'undefined' && typeof localStorage !== 'undefined' && typeof localStorage.getItem === 'function'
+    ? localStorage.getItem('kompare_user_qdrant_key')
+    : null;
+
+  const extraHeaders = {};
+  if (userKey) extraHeaders['X-Gemini-Api-Key'] = userKey;
+  if (userLMStudioUrl) extraHeaders['X-LMStudio-Base-Url'] = userLMStudioUrl;
+  if (userQdrantUrl) extraHeaders['X-Qdrant-Url'] = userQdrantUrl;
+  if (userQdrantKey) extraHeaders['X-Qdrant-Api-Key'] = userQdrantKey;
 
   const requestHeaders = hasBody && !isFormData
     ? { 'Content-Type': 'application/json', ...(headers || {}) }
     : headers;
 
-  const finalHeaders = (userKey || requestHeaders)
-    ? { ...requestHeaders, ...authHeaders }
+  const finalHeaders = (Object.keys(extraHeaders).length > 0 || requestHeaders)
+    ? { ...requestHeaders, ...extraHeaders }
     : undefined;
 
   const init = { ...rest };

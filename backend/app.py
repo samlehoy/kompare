@@ -572,7 +572,13 @@ def recommend_build(req: BuildRequest):
 
 
 @app.post("/build/ai-recommend")
-def recommend_ai_build(req: BuildRequest, x_gemini_api_key: Optional[str] = Header(None)):
+def recommend_ai_build(
+    req: BuildRequest,
+    x_gemini_api_key: Optional[str] = Header(None),
+    x_lmstudio_base_url: Optional[str] = Header(None),
+    x_qdrant_url: Optional[str] = Header(None),
+    x_qdrant_api_key: Optional[str] = Header(None),
+):
     if req.use_case not in USE_CASE_PROFILES:
         raise HTTPException(
             status_code=400,
@@ -597,6 +603,9 @@ def recommend_ai_build(req: BuildRequest, x_gemini_api_key: Optional[str] = Head
         performance_priority=req.performance_priority,
         allocation_overrides=req.allocation_overrides,
         api_key_override=x_gemini_api_key,
+        lmstudio_base_url_override=x_lmstudio_base_url,
+        qdrant_url_override=x_qdrant_url,
+        qdrant_api_key_override=x_qdrant_api_key,
     )
 
 

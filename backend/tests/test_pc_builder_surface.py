@@ -170,6 +170,7 @@ def test_ai_recommend_uses_experimental_composer(monkeypatch):
         performance_priority=None,
         allocation_overrides=None,
         api_key_override=None,
+        **kwargs,
     ):
         assert components_by_category is by_cat
         assert budget_idr == 15_000_000
@@ -248,6 +249,7 @@ def test_ai_recommend_forwards_gemini_api_key_header(monkeypatch):
         performance_priority=None,
         allocation_overrides=None,
         api_key_override=None,
+        **kwargs,
     ):
         nonlocal captured_override
         captured_override = api_key_override
