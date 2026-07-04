@@ -72,17 +72,16 @@ def sync_qdrant_profile(
                     k_main = os.getenv("GEMINI_API_KEY")
                     if k_main:
                         self.keys.append(k_main)
-                    for i in range(1, 5):
+                    for i in range(1, 10): # support more keys in env if provided
                         k_rot = os.getenv(f"GEMINI_API_KEY_{i}")
                         if k_rot:
                             self.keys.append(k_rot)
                     if not self.keys:
-                        # Fallback to default
                         self.keys = [""]
                     self.current_key_idx = 0
 
                 def embed_texts(self, texts: list[str]) -> list[list[float]]:
-                    for attempt in range(15):
+                    for attempt in range(40):
                         try:
                             key_override = self.keys[self.current_key_idx]
                             return embed_texts(texts, model=profile.embedding_model, api_key_override=key_override)
@@ -92,11 +91,17 @@ def sync_qdrant_profile(
                                 old_key = self.keys[self.current_key_idx][:12] if self.keys[self.current_key_idx] else "None"
                                 self.current_key_idx = (self.current_key_idx + 1) % len(self.keys)
                                 new_key = self.keys[self.current_key_idx][:12] if self.keys[self.current_key_idx] else "None"
-                                print(f"Rate limit hit on key {old_key}... Rotating to key {new_key}... (attempt {attempt + 1}/15)")
-                                time.sleep(4)
+                                
+                                # If we cycled back to the first key, do a long cooldown to let rate limits reset
+                                if self.current_key_idx == 0:
+                                    print(f"Rate limit hit on key {old_key}. Cycled through all keys. Performing 45s cooldown... (attempt {attempt + 1}/40)")
+                                    time.sleep(45)
+                                else:
+                                    print(f"Rate limit hit on key {old_key}... Rotating to key {new_key}... (attempt {attempt + 1}/40)")
+                                    time.sleep(6)
                                 continue
                             raise
-                    raise RuntimeError("Failed to generate embeddings after 15 attempts across all keys.")
+                    raise RuntimeError("Failed to generate embeddings after 40 attempts across all keys.")
             selected_embedder = GeminiEmbedderWrapper()
         else:
             selected_embedder = lmstudio_client_from_profile(profile)
