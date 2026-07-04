@@ -1536,8 +1536,13 @@ def _best_gpu_upgrade(gpus: list[dict], budget: int, detected_gpu: Optional[dict
     pool = better or candidates
     if not pool:
         return None
+    
+    # Prioritize in-stock candidates
+    in_stock = [g for g in pool if str(g.get("stock_status") or "").strip().lower() in {"in_stock", "instock", "ready", "available", "stock"}]
+    final_pool = in_stock if in_stock else pool
+    
     return _best_ranked_component(
-        pool,
+        final_pool,
         "gpu",
         budget,
         {"current_vram_gb": current_vram, "use_case": use_case},
