@@ -64,11 +64,14 @@ def sync_qdrant_profile(
         if profile.embedding_provider == "gemini":
             from backend.gemini_client import embed_texts
             import time
+            import os
             class GeminiEmbedderWrapper:
                 def embed_texts(self, texts: list[str]) -> list[list[float]]:
                     for attempt in range(6):
                         try:
-                            return embed_texts(texts, model=profile.embedding_model)
+                            # Forward the key from profile or environment override
+                            key_override = profile.vector_api_key or os.getenv("GEMINI_API_KEY")
+                            return embed_texts(texts, model=profile.embedding_model, api_key_override=key_override)
                         except Exception as e:
                             err_msg = str(e)
                             if "429" in err_msg or "quota" in err_msg.lower() or "resource_exhausted" in err_msg.lower():
@@ -123,7 +126,7 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument("--profile", default="local_qwen", help="AI provider profile name.")
     parser.add_argument("--components", type=Path, default=DEFAULT_COMPONENTS_PATH)
-    parser.add_argument("--batch-size", type=int, default=128)
+    parser.add_argument("--batch-size", type=int, default=80)
     parser.add_argument("--recreate", action="store_true", help="Recreate the Qdrant collection before upsert.")
     parser.add_argument("--dry-run", action="store_true", help="Validate chunk count without embedding or upserting.")
     args = parser.parse_args(argv)
