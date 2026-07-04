@@ -60,7 +60,18 @@ def sync_qdrant_profile(
             "dry_run": True,
         }
 
-    selected_embedder = embedder or lmstudio_client_from_profile(profile)
+    if embedder is None:
+        if profile.embedding_provider == "gemini":
+            from backend.gemini_client import embed_texts
+            class GeminiEmbedderWrapper:
+                def embed_texts(self, texts: list[str]) -> list[list[float]]:
+                    return embed_texts(texts, model=profile.embedding_model)
+            selected_embedder = GeminiEmbedderWrapper()
+        else:
+            selected_embedder = lmstudio_client_from_profile(profile)
+    else:
+        selected_embedder = embedder
+
     selected_store = store or QdrantVectorStore.from_profile(profile)
     selected_store.ensure_collection(recreate=recreate)
 
