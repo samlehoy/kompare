@@ -38,8 +38,10 @@ class AIProviderProfile:
     vector_index_path: str | None = None
     vector_url: str | None = None
     vector_collection: str | None = None
+    vector_api_key: str | None = None
     vector_distance: str = "cosine"
     timeout_seconds: int = 120
+
 
 
 Transport = Callable[[str, dict, int], dict]
@@ -68,6 +70,20 @@ def _env_int(name: str, default: int | None = None) -> int | None:
 
 
 def _gemini_free_profile() -> AIProviderProfile:
+    qdrant_url = _env("QDRANT_URL")
+    if qdrant_url:
+        return AIProviderProfile(
+            name="gemini_free",
+            llm_provider="gemini",
+            embedding_provider="gemini",
+            vector_backend="qdrant",
+            llm_model=_env("GEMINI_MODEL", DEFAULT_GEMINI_LLM_MODEL),
+            embedding_model=_env("GEMINI_EMBEDDING_MODEL", DEFAULT_GEMINI_EMBEDDING_MODEL),
+            vector_url=qdrant_url,
+            vector_collection=_env("QDRANT_COLLECTION_GEMINI", "kompare_components_gemini"),
+            vector_api_key=_env("QDRANT_API_KEY") or None,
+            embedding_dimension=_env_int("GEMINI_EMBEDDING_DIMENSION", 768),
+        )
     return AIProviderProfile(
         name="gemini_free",
         llm_provider="gemini",
@@ -93,9 +109,11 @@ def _local_qwen_profile() -> AIProviderProfile:
         embedding_dimension=_env_int("QDRANT_VECTOR_SIZE", 2560),
         vector_url=_env("QDRANT_URL", DEFAULT_QDRANT_URL),
         vector_collection=_env("QDRANT_COLLECTION_QWEN", DEFAULT_QWEN_COLLECTION),
+        vector_api_key=_env("QDRANT_API_KEY") or None,
         vector_distance=_env("QDRANT_DISTANCE", "cosine").lower(),
         timeout_seconds=_env_int("LMSTUDIO_TIMEOUT_SECONDS", DEFAULT_LMSTUDIO_TIMEOUT_SECONDS) or DEFAULT_LMSTUDIO_TIMEOUT_SECONDS,
     )
+
 
 
 def get_ai_profile(name: str | None = None) -> AIProviderProfile:

@@ -25,6 +25,7 @@ def test_local_qwen_profile_reads_lmstudio_and_qdrant_settings(monkeypatch):
     monkeypatch.setenv("QDRANT_VECTOR_SIZE", "2560")
     monkeypatch.setenv("QDRANT_DISTANCE", "cosine")
     monkeypatch.setenv("LMSTUDIO_TIMEOUT_SECONDS", "45")
+    monkeypatch.setenv("QDRANT_API_KEY", "local-qdrant-key")
 
     profile = ai_providers.active_ai_profile()
 
@@ -39,6 +40,7 @@ def test_local_qwen_profile_reads_lmstudio_and_qdrant_settings(monkeypatch):
     assert profile.vector_collection == "kompare_components_qwen"
     assert profile.vector_distance == "cosine"
     assert profile.timeout_seconds == 45
+    assert profile.vector_api_key == "local-qdrant-key"
 
 
 def test_local_qwen_profile_default_timeout_allows_slow_local_ranker(monkeypatch):
@@ -55,3 +57,22 @@ def test_unknown_ai_profile_is_rejected(monkeypatch):
 
     with pytest.raises(ai_providers.AIProviderError, match="Unknown AI provider profile"):
         ai_providers.active_ai_profile()
+
+
+def test_gemini_free_profile_dynamic_qdrant(monkeypatch):
+    monkeypatch.setenv("KOMPARE_AI_PROFILE", "gemini_free")
+    monkeypatch.setenv("QDRANT_URL", "http://qdrant-cloud.com")
+    monkeypatch.setenv("QDRANT_COLLECTION_GEMINI", "cloud_collection")
+    monkeypatch.setenv("QDRANT_API_KEY", "cloud-api-key")
+    monkeypatch.setenv("GEMINI_EMBEDDING_DIMENSION", "1536")
+
+    profile = ai_providers.active_ai_profile()
+
+    assert profile.name == "gemini_free"
+    assert profile.vector_backend == "qdrant"
+    assert profile.vector_url == "http://qdrant-cloud.com"
+    assert profile.vector_collection == "cloud_collection"
+    assert profile.vector_api_key == "cloud-api-key"
+    assert profile.embedding_dimension == 1536
+    assert profile.vector_index_path is None
+
