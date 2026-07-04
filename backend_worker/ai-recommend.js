@@ -632,7 +632,7 @@ async function embedTexts(env, texts) {
   if (!env.AI) {
     throw new Error("Cloudflare Workers AI (env.AI) is not bound or configured.");
   }
-  const response = await env.AI.run("@cf/baai/bge-small-en-v1.5", {
+  const response = await env.AI.run("@cf/baai/bge-m3", {
     text: texts
   });
   if (!response || !response.data) {
@@ -1018,4 +1018,236 @@ export async function handleAiRecommend(request, env) {
     JSON.stringify(finalBuildResult),
     { status: 200, headers: CORS_HEADERS }
   );
+}
+
+// =========================================================================
+// Qdrant Cloud Reseeding Utility for BGE-M3 (1024 dimensions)
+// =========================================================================
+
+function formatPriceIdr(price) {
+  return "IDR " + String(price).replace(/\B(?=(\d{3})+(?!\n))/g, ".");
+}
+
+function specsText(specs) {
+  if (!specs || typeof specs !== 'object') return "";
+  const parts = [];
+  const keys = Object.keys(specs).sort();
+  for (const key of keys) {
+    const value = specs[key];
+    if (value === null || value === undefined || value === "" || (Array.isArray(value) && value.length === 0)) continue;
+    const label = String(key).replace(/_/g, " ");
+    parts.push(`${label} ${value}`);
+    if (parts.length >= 8) break;
+  }
+  return parts.join(", ");
+}
+
+function marketplaceNames(component) {
+  const names = [];
+  for (const link of (component.marketplace_links || [])) {
+    if (typeof link === 'object' && link !== null) {
+      const name = link.marketplace || link.name;
+      if (name) names.push(String(name).trim());
+    } else if (link) {
+      names.push(String(link).trim());
+    }
+  }
+  const directFields = {
+    product_url: "enterkomputer",
+    tokopedia_url: "tokopedia",
+    shopee_url: "shopee"
+  };
+  for (const [field, name] of Object.entries(directFields)) {
+    if (component[field]) names.push(name);
+  }
+  const seen = new Set();
+  const deduped = [];
+  for (const name of names) {
+    const key = name.toLowerCase();
+    if (key && !seen.has(key)) {
+      deduped.push(name);
+      seen.add(key);
+    }
+  }
+  return deduped;
+}
+
+function componentToChunk(component) {
+  const sku = String(component.sku || component.id || "").trim();
+  const category = String(component.category || "").trim().toLowerCase();
+  const brand = String(component.brand || "").trim();
+  const name = String(component.name || sku).trim();
+  const priceIdr = parseInt(component.price_idr, 10) || 0;
+  const stockStatus = String(component.stock_status || "").trim();
+
+  const textParts = [
+    `${category} component: ${name}`,
+    brand ? `brand ${brand}` : "",
+    `price ${formatPriceIdr(priceIdr)}`,
+    stockStatus ? `stock ${stockStatus}` : ""
+  ];
+
+  const specs = specsText(component.specs);
+  if (specs) textParts.push(`specs: ${specs}`);
+
+  const rationale = component.selection_rationale || component.rationale;
+  if (rationale) textParts.push(`rationale: ${String(rationale).trim()}`);
+
+  const marketplaces = marketplaceNames(component);
+  if (marketplaces.length > 0) textParts.push(`marketplaces: ${marketplaces.join(", ")}`);
+
+  return {
+    chunk_id: `component:${sku}`,
+    sku: sku,
+    category: category,
+    text: textParts.filter(Boolean).join(". "),
+    metadata: {
+      price_idr: priceIdr,
+      stock_status: stockStatus,
+      brand: brand
+    }
+  };
+}
+
+async function qdrantRequest(env, method, path, body = null) {
+  const url = `${env.QDRANT_URL.replace(/\/$/, "")}${path}`;
+  const headers = {
+    "Content-Type": "application/json"
+  };
+  const apiKey = env.QDRANT_API_KEY;
+  if (apiKey) {
+    headers["api-key"] = apiKey;
+  }
+  const init = {
+    method,
+    headers
+  };
+  if (body) {
+    init.body = JSON.stringify(body);
+  }
+  const res = await fetch(url, init);
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`Qdrant request failed: ${res.status} ${text}`);
+  }
+  return await res.json();
+}
+
+export async function handleSeedQdrant(request, env) {
+  try {
+    // 1. Authenticate check (support simple admin check or token check via query)
+    const urlObj = new URL(request.url);
+    const secretToken = urlObj.searchParams.get("token");
+    const expectedToken = env.GEMINI_API_KEY || "kompare-admin-token";
+    if (secretToken !== expectedToken) {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401, headers: CORS_HEADERS });
+    }
+
+    // 2. Load catalog from KV
+    const raw = await env.KOMPARE_DATA.get("components");
+    if (!raw) {
+      return new Response(JSON.stringify({ error: "Catalog not found in KV. Please seed KV first." }), { status: 404, headers: CORS_HEADERS });
+    }
+    const components = JSON.parse(raw);
+    if (!Array.isArray(components) || components.length === 0) {
+      return new Response(JSON.stringify({ error: "Catalog is empty in KV" }), { status: 400, headers: CORS_HEADERS });
+    }
+
+    const collectionName = env.QDRANT_COLLECTION || "kompare_components_gemini";
+
+    // 3. Recreate collection on Qdrant Cloud for 1024-dimensional BGE-M3 vectors
+    await qdrantRequest(env, "DELETE", `/collections/${collectionName}`).catch(() => {});
+    await qdrantRequest(env, "PUT", `/collections/${collectionName}`, {
+      vectors: {
+        dense: {
+          size: 1024,
+          distance: "Cosine"
+        }
+      }
+    });
+    await qdrantRequest(env, "PUT", `/collections/${collectionName}/index`, {
+      field_name: "category",
+      field_schema: "keyword"
+    });
+
+    // 4. Batch & seed
+    const batchSize = 32;
+    const batches = [];
+    for (let i = 0; i < components.length; i += batchSize) {
+      batches.push(components.slice(i, i + batchSize));
+    }
+
+    let processedCount = 0;
+    const concurrency = 4;
+
+    for (let i = 0; i < batches.length; i += concurrency) {
+      const slice = batches.slice(i, i + concurrency);
+      await Promise.all(slice.map(async (batch) => {
+        const chunks = batch.map(c => componentToChunk(c));
+        const texts = chunks.map(chunk => chunk.text);
+        
+        // Generate embeddings using Workers AI
+        const embeddings = await embedTexts(env, texts);
+
+        const points = [];
+        for (let idx = 0; idx < chunks.length; idx++) {
+          const chunk = chunks[idx];
+          const vector = embeddings[idx];
+
+          // Idempotent point ID via SHA-256 hash of chunk_id
+          const encoder = new TextEncoder();
+          const data = encoder.encode(chunk.chunk_id);
+          const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+          const hashArray = Array.from(new Uint8Array(hashBuffer));
+          const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+          const pointId = `${hashHex.slice(0,8)}-${hashHex.slice(8,12)}-${hashHex.slice(12,16)}-${hashHex.slice(16,20)}-${hashHex.slice(20,32)}`;
+
+          points.push({
+            id: pointId,
+            vector: {
+              dense: vector
+            },
+            payload: {
+              chunk_id: chunk.chunk_id,
+              sku: chunk.sku,
+              category: chunk.category,
+              text: chunk.text,
+              metadata: chunk.metadata
+            }
+          });
+        }
+
+        // Upload to Qdrant Cloud
+        await qdrantRequest(env, "PUT", `/collections/${collectionName}/points?wait=true`, { points });
+        processedCount += points.length;
+      }));
+    }
+
+    return new Response(JSON.stringify({ status: "success", message: `Successfully seeded ${processedCount} components to Qdrant Cloud collection ${collectionName}` }), { status: 200, headers: CORS_HEADERS });
+
+  } catch (error) {
+    return new Response(JSON.stringify({ error: error.message }), { status: 500, headers: CORS_HEADERS });
+  }
+}
+
+export async function handleEmbed(request, env) {
+  try {
+    const urlObj = new URL(request.url);
+    const secretToken = urlObj.searchParams.get("token");
+    const expectedToken = env.GEMINI_API_KEY || "kompare-admin-token";
+    if (secretToken !== expectedToken) {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401, headers: CORS_HEADERS });
+    }
+
+    const reqData = await request.json().catch(() => ({}));
+    const { texts } = reqData;
+    if (!Array.isArray(texts) || texts.length === 0) {
+      return new Response(JSON.stringify({ error: "texts array is required" }), { status: 400, headers: CORS_HEADERS });
+    }
+
+    const embeddings = await embedTexts(env, texts);
+    return new Response(JSON.stringify({ embeddings }), { status: 200, headers: CORS_HEADERS });
+  } catch (error) {
+    return new Response(JSON.stringify({ error: error.message }), { status: 500, headers: CORS_HEADERS });
+  }
 }

@@ -1,7 +1,7 @@
 import * as core from './pc-builder-core.js';
 import { handleAdvisor } from './advisor.js';
 import { handleAudit } from './audit.js';
-import { handleAiRecommend } from './ai-recommend.js';
+import { handleAiRecommend, handleSeedQdrant, handleEmbed } from './ai-recommend.js';
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
@@ -135,6 +135,16 @@ export default {
         if (request.method !== "POST") return makeResponse({ error: "Method not allowed" }, 405);
         await ensureCatalog(env);
         return await handleAiRecommend(request, env);
+      }
+
+      if (path === "/api/build/seed-qdrant") {
+        if (request.method !== "POST") return makeResponse({ error: "Method not allowed" }, 405);
+        return await handleSeedQdrant(request, env);
+      }
+
+      if (path === "/api/build/embed") {
+        if (request.method !== "POST") return makeResponse({ error: "Method not allowed" }, 405);
+        return await handleEmbed(request, env);
       }
 
       if (path === "/api/build/advisor") {
