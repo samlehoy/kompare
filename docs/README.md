@@ -6,7 +6,7 @@ Project documentation for Kompare — a cloud-deployed PC Builder for the Indone
 
 - [AGENTS.md](AGENTS.md) - **Start here.** Universal instructions for AI coding agents (architecture, tech stack, file structure, guidelines).
 - [AI_RAG_PHASE2.md](AI_RAG_PHASE2.md) - AI/RAG recommendation pipeline architecture, embedding strategy, and guardrails.
-- [BRIEF.md](BRIEF.md) - Product brief, capstone criteria mapping, scope, and milestones.
+- [BRIEF.md](BRIEF.md) - Product brief, scope, and milestones.
 - [PRD.md](PRD.md) - Product requirements, API contracts, and response shapes.
 - [UI_SPEC.md](UI_SPEC.md) - UI specification, routes, forms, result cards, and responsive requirements.
 - [LOCAL_MODEL_READY.md](LOCAL_MODEL_READY.md) - Local Qwen/LM Studio setup for development.

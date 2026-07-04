@@ -18,9 +18,9 @@ Built with a fast **Next.js (App Router)** frontend deployed on **Cloudflare Pag
 
 ---
 
-## Capstone AI Features
+## Core AI Features
 
-Kompare fulfills all core capstone requirements for an intelligent shopping assistant:
+Kompare features an intelligent shopping and decision engine for PC building:
 
 - **Context Engineering**: Recommendations are grounded in component compatibility rules, budget constraints, and user-specified use cases.
 - **Multimodal AI (Image + Text)**: The `/audit` flow allows users to upload a screenshot of their cart or a parts list for compatibility verification.

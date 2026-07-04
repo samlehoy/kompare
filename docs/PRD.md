@@ -124,7 +124,7 @@ Gemini remains part of the technical direction, but its role is focused on PC bu
 ### FR-8.1 Phase 2 Retrieval-Augmented Recommendation
 
 - Phase 2 may add a local vector index over chunked `data/components.json` records.
-- The vector index shall be local-file based for capstone alignment, not an external vector database.
+- The vector index can be hosted on a cloud vector database (e.g. Qdrant Cloud) or local-file based for offline development.
 - Retrieval may be used to select candidate components before Gemini comparison or ranking.
 - Gemini shall only rank or explain retrieved candidates and shall not invent SKUs, prices, categories, or marketplace links.
 - The backend shall run deterministic compatibility and budget validation after any AI-assisted recommendation.

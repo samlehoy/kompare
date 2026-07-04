@@ -9,8 +9,8 @@ The goal is to make recommendations feel more AI-powered while preserving the cu
 Phase 2 adds a retrieval-augmented generation flow:
 
 1. Chunk component records from `data/components.json`.
-2. Generate local embeddings for each chunk.
-3. Store vectors in either the capstone-safe local file index or the optional Qdrant collection for local-model experimentation.
+2. Generate embeddings for each chunk.
+3. Store vectors in Qdrant Cloud (or the local file index for offline development).
 4. Retrieve relevant component candidates for a user's budget, use case, owned parts, and preferences.
 5. Ask the selected AI profile to compare and rank only those retrieved candidates.
 6. Validate the AI-proposed build with deterministic compatibility rules.
@@ -23,21 +23,6 @@ This should be presented as:
 > AI-assisted retrieval and reasoning over a deterministic PC compatibility engine.
 
 It should not be presented as unconstrained AI freely choosing parts.
-
-## Capstone Alignment
-
-This phase still follows `CAPSTONE_CRITERIA.md` when implemented locally and safely:
-
-| Capstone Objective | Phase 2 Alignment |
-|---|---|
-| Apply context engineering for product comparison and recommendations. | Retrieval selects only relevant PC component context before Gemini reasons over it. |
-| Design multimodal AI systems. | The existing `/build/audit` image + text flow can feed detected parts into retrieval. |
-| Use structured prompts for consistent outputs. | Gemini should return a fixed build recommendation schema. |
-| Implement context pruning for large product descriptions. | Vector retrieval is a stronger context-pruning mechanism than sending the whole catalog. |
-| Build multi-turn conversational assistants with memory. | Advisor history can retrieve relevant components and previous build context without sending everything. |
-| Integrate AI reasoning into real-world decision-making systems. | Gemini can compare tradeoffs, but deterministic validation confirms compatibility and budget safety. |
-
-To stay aligned with the "without relying on an external database" criterion, the capstone version should keep the Gemini vector index local, for example under `data/vector_index/`. The Qdrant path is an optional Phase 2 enhancement for the local Qwen profile and should be presented separately from the capstone baseline when needed.
 
 ## Recommended Architecture
 
@@ -145,7 +130,6 @@ These are non-negotiable:
 - Do not let Gemini invent SKUs or prices.
 - Do not bypass deterministic compatibility checks.
 - Do not use vector similarity as proof of compatibility.
-- Do not use an external vector database for the capstone version unless the criteria explicitly allow it.
 - Do not reintroduce laptops, desktops, gadgets, or broad electronics recommendations.
 - Do not hide fallback behavior when Gemini is unavailable.
 - Always inject deterministic baseline candidates into the AI candidate list so AI ranking cannot lose the known-safe build path.
@@ -332,7 +316,7 @@ Phase 2 is now implemented as an experimental backend-first path with a complete
   - `AI-assisted` + `local_qwen` + `Generate build`: HTTP 200, `ai_assisted: true`, `fallback: false`, `retrieval.profile: local_qwen`, `ranker_mode: json_ranker`, 0 compatibility warnings, 0 compatibility issues.
   - `AI-assisted` + `gemini_free` + `Generate build`: HTTP 200, `fallback: true`, `fallback_reason: ai_ranker_rejected`, 0 compatibility warnings, 0 compatibility issues.
 
-The deterministic PC Builder remains the primary capstone-ready path. Deterministic fallback behavior is still part of the intended demo story because Gemini quota, API errors, stale indexes, or invalid AI selections should never break the normal builder flow.
+The deterministic PC Builder remains the primary reliable path. Deterministic fallback behavior is still part of the intended safety net because Gemini quota, API errors, stale indexes, or invalid AI selections should never break the normal builder flow.
 
 ## Next Steps
 
@@ -353,5 +337,5 @@ The deterministic PC Builder remains the primary capstone-ready path. Determinis
 6. Rerun the deterministic preset quality audit after allocation, ranking, parser, or catalog changes:
    `python -m backend.utils.preset_quality_audit --output data/preset_quality_report.json`
 7. Decide whether Phase 2 remains an experimental mode or becomes part of the primary Build from zero workflow.
-8. Decide how to present Gemini fallback in the capstone demo: as a safety guardrail, or as an optional path only when Gemini produces an accepted AI-ranked build.
+8. Decide how to present Gemini fallback in the demo: as a safety guardrail, or as an optional path only when Gemini produces an accepted AI-ranked build.
 9. Design `/build/ai-upgrade` only after the Build from zero AI-assisted flow is stable.

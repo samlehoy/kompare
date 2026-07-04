@@ -167,7 +167,7 @@ kompare/
   docs/
     AGENTS.md                        This file - project instructions
     README.md                        Docs index
-    BRIEF.md                         Product brief & capstone criteria
+    BRIEF.md                         Product brief and scope
     PRD.md                           Product requirements document
     UI_SPEC.md                       UI specification
     AI_RAG_PHASE2.md                 AI/RAG architecture details
