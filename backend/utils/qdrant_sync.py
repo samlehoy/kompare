@@ -31,15 +31,9 @@ def _load_components(path: Path) -> list[dict]:
 
 
 def _validate_profile(profile: AIProviderProfile) -> None:
-    if profile.name != "local_qwen":
-        raise AIProviderError(
-            "Qdrant sync currently targets the local_qwen profile only. "
-            "Use --profile local_qwen."
-        )
-    if profile.embedding_provider != "lmstudio":
-        raise AIProviderError("Qdrant sync requires an LM Studio embedding profile.")
     if profile.vector_backend != "qdrant":
         raise AIProviderError("Qdrant sync requires a qdrant vector backend profile.")
+
 
 
 def sync_qdrant_profile(

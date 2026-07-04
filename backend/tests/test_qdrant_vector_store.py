@@ -148,3 +148,22 @@ def test_build_qdrant_points_rejects_chunk_vector_count_mismatch():
         assert "Chunk count must match vector count" in str(exc)
     else:
         raise AssertionError("Expected mismatch to raise ValueError")
+
+
+def test_qdrant_default_transport_injects_api_key_header():
+    from unittest.mock import patch, MagicMock
+    transport = qdrant_store._default_transport("http://localhost:6333", "secret-api-key")
+
+    mock_response = MagicMock()
+    mock_response.__enter__.return_value = mock_response
+    mock_response.read.return_value = b'{"result": "ok"}'
+
+    with patch("urllib.request.urlopen", return_value=mock_response) as mock_urlopen:
+        res = transport("GET", "/collections", None, 10)
+
+        mock_urlopen.assert_called_once()
+        req = mock_urlopen.call_args[0][0]
+        # Request.get_header capitalizes headers like api-key to Api-key
+        assert req.get_header("Api-key") == "secret-api-key"
+        assert res == {"result": "ok"}
+

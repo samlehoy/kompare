@@ -30,15 +30,18 @@ def _point_id(chunk_id: str) -> str:
     return str(uuid.uuid5(uuid.NAMESPACE_URL, chunk_id))
 
 
-def _default_transport(base_url: str) -> Transport:
+def _default_transport(base_url: str, api_key: str | None = None) -> Transport:
     clean_base = base_url.rstrip("/")
 
     def transport(method: str, path: str, payload: dict | None, timeout: int) -> dict:
         data = None if payload is None else json.dumps(payload).encode("utf-8")
+        headers = {"Content-Type": "application/json"}
+        if api_key:
+            headers["api-key"] = api_key
         request = urllib.request.Request(
             f"{clean_base}{path}",
             data=data,
-            headers={"Content-Type": "application/json"},
+            headers=headers,
             method=method,
         )
         try:
@@ -62,6 +65,7 @@ def _default_transport(base_url: str) -> Transport:
     return transport
 
 
+
 def _chunk_payload(chunk: dict) -> dict:
     return {
         "chunk_id": chunk.get("chunk_id"),
@@ -83,6 +87,7 @@ class QdrantVectorStore:
         vector_size: int,
         distance: str = "cosine",
         vector_name: str = "dense",
+        api_key: str | None = None,
         transport: Transport | None = None,
         timeout: int = 60,
     ) -> None:
@@ -95,8 +100,9 @@ class QdrantVectorStore:
         self.vector_size = vector_size
         self.distance = _distance_name(distance)
         self.vector_name = vector_name
+        self.api_key = api_key
         self.timeout = timeout
-        self._transport = transport or _default_transport(self.url)
+        self._transport = transport or _default_transport(self.url, self.api_key)
 
     @classmethod
     def from_profile(
@@ -113,6 +119,7 @@ class QdrantVectorStore:
             collection=profile.vector_collection or "",
             vector_size=int(profile.embedding_dimension or 0),
             distance=profile.vector_distance,
+            api_key=profile.vector_api_key,
             transport=transport,
             timeout=timeout,
         )
