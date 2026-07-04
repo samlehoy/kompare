@@ -15,7 +15,7 @@ from typing import Any, Callable, Optional
 
 # gemini-2.5-flash-lite has a much higher free-tier RPD than -flash, so default
 # runtime endpoints to it. Override with GEMINI_MODEL env var if you have paid quota.
-DEFAULT_MODEL = "gemini-2.5-flash-lite"
+DEFAULT_MODEL = "gemini-2.5-flash"
 DEFAULT_EMBEDDING_MODEL = "gemini-embedding-001"
 EMBEDDING_BATCH_SIZE = 100
 
