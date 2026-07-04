@@ -197,8 +197,8 @@ npm run build
 
 For more detailed guides and architecture playbooks, refer to:
 
-- [AI/RAG Architecture (Phase 2)](docs/AI_RAG_PHASE2.md)
+- [AI Pipeline Architecture](docs/AI_PIPELINE.md)
 - [Product Requirements (PRD)](docs/PRD.md)
 - [UI Specification](docs/UI_SPEC.md)
-- [Price & Catalog Playbook](docs/PRICE_UPDATES.md)
+- [Catalog & Price Playbook](docs/CATALOG_PLAYBOOK.md)
 - [Project Brief](docs/BRIEF.md)

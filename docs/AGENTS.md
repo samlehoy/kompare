@@ -170,9 +170,9 @@ kompare/
     BRIEF.md                         Product brief and scope
     PRD.md                           Product requirements document
     UI_SPEC.md                       UI specification
-    AI_RAG_PHASE2.md                 AI/RAG architecture details
-    LOCAL_MODEL_READY.md             Local Qwen/LM Studio setup
-    PRICE_UPDATES.md                 Price update playbook
+    AI_PIPELINE.md                   AI recommendation pipeline architecture
+    LOCAL_DEV_SETUP.md               Local Qwen/LM Studio development setup
+    CATALOG_PLAYBOOK.md              Catalog update and quality playbook
     unused_docs/                     Historical/archived documents
 ```
 

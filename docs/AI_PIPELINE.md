@@ -290,7 +290,7 @@ Phase 2 is now implemented as an experimental backend-first path with a complete
 - Build results show AI-assisted metadata and deterministic fallback messaging when the response includes it.
 - UI fallback copy now explains safety fallback reasons instead of exposing raw fallback codes.
 - Responsive UI test coverage now includes the AI-assisted badge and Gemini quota fallback copy; a browser run is still needed before calling that coverage fully verified.
-- Local model preparation is documented in `docs/LOCAL_MODEL_READY.md`.
+- Local model preparation is documented in `docs/LOCAL_DEV_SETUP.md`.
 - AI provider profile configuration now exists for `gemini_free` and `local_qwen`.
 - The LM Studio local Qwen adapter foundation can call OpenAI-compatible `/chat/completions` and `/embeddings`, including Qwen's `reasoning_content` fallback behavior.
 - A Qdrant REST adapter, `backend.utils.qdrant_sync`, and `backend.utils.qdrant_smoke` now exist for the `local_qwen` collection.
