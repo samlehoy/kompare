@@ -17,6 +17,7 @@ def test_default_ai_profile_uses_existing_gemini_free_stack(monkeypatch):
 
 def test_local_qwen_profile_reads_lmstudio_and_qdrant_settings(monkeypatch):
     monkeypatch.setenv("KOMPARE_AI_PROFILE", "local_qwen")
+    monkeypatch.setenv("KOMPARE_LOCAL_EMBEDDING_PROVIDER", "lmstudio")
     monkeypatch.setenv("LMSTUDIO_BASE_URL", "http://localhost:1234/v1")
     monkeypatch.setenv("LMSTUDIO_LLM_MODEL", "qwen/qwen3.6-27b")
     monkeypatch.setenv("LMSTUDIO_EMBEDDING_MODEL", "text-embedding-qwen3-embedding-4b")
