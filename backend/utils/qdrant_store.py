@@ -144,6 +144,19 @@ class QdrantVectorStore:
             },
             self.timeout,
         )
+        # Create a payload index on category to support strict filtering on Qdrant Cloud
+        try:
+            self._transport(
+                "PUT",
+                self._collection_path("/index"),
+                {
+                    "field_name": "category",
+                    "field_schema": "keyword",
+                },
+                self.timeout,
+            )
+        except Exception:
+            pass
 
     def upsert_chunks(
         self,

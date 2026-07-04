@@ -57,6 +57,15 @@ def test_qdrant_store_creates_named_dense_collection():
             },
             9,
         ),
+        (
+            "PUT",
+            "/collections/kompare_components_qwen/index",
+            {
+                "field_name": "category",
+                "field_schema": "keyword",
+            },
+            9,
+        ),
     ]
 
 
