@@ -5,3 +5,7 @@ compatibility_date = "2024-04-01"
 [[kv_namespaces]]
 binding = "KOMPARE_DATA"
 id = "7950801f54ab42f2b07dfe0cc5b4f029"
+
+[vars]
+QDRANT_URL = "https://c0224a0e-d76c-49ea-a87e-043a339fc1c9.us-east-1-1.aws.cloud.qdrant.io:6333"
+
