@@ -6,3 +6,4 @@ google-genai>=1.0
 numpy>=1.26,<3.0
 python-multipart>=0.0.9
 Pillow>=10.0
+qdrant-client>=1.8.0
