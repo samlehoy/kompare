@@ -1,6 +1,6 @@
 const configuredBase = process.env.NEXT_PUBLIC_API_BASE_URL?.trim();
 let BASE = configuredBase ? configuredBase.replace(/\/+$/, '') : '/api';
-if (BASE && BASE.startsWith('http') && BASE.includes('.workers.dev') && !BASE.endsWith('/api')) {
+if (BASE && BASE.startsWith('http') && !BASE.endsWith('/api')) {
   BASE = `${BASE}/api`;
 }
 

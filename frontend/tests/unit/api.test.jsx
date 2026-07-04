@@ -79,7 +79,7 @@ describe('api client', () => {
 
       await directApi.health();
 
-      expect(fetch).toHaveBeenCalledWith('http://127.0.0.1:8000/health', expect.any(Object));
+      expect(fetch).toHaveBeenCalledWith('http://127.0.0.1:8000/api/health', expect.any(Object));
     } finally {
       if (originalBase === undefined) {
         delete process.env.NEXT_PUBLIC_API_BASE_URL;

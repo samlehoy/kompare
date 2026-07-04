@@ -380,16 +380,27 @@ $backendUrl = "http://127.0.0.1:$actualBackendPort"
 
 Write-Step "Starting backend Cloudflare Worker (wrangler dev :$actualBackendPort)..."
 $backend = Start-Process -PassThru -WindowStyle Hidden `
-    -FilePath cmd.exe `
-    -ArgumentList "/c", "npx wrangler dev --port $actualBackendPort > `"$backendOut`" 2> `"$backendErr`"" `
+    -FilePath npx.cmd `
+    -ArgumentList "wrangler", "dev", "--port", "$actualBackendPort" `
+    -WorkingDirectory $backendDir `
+    -RedirectStandardOutput $backendOut `
+    -RedirectStandardError $backendErr
+
+Write-Step "Seeding local Worker KV catalog storage..."
+$componentsJsonPath = Join-Path $root 'data\components.json'
+$seed = Start-Process -PassThru -Wait -NoNewWindow `
+    -FilePath npx.cmd `
+    -ArgumentList "wrangler", "kv", "key", "put", "components", "--path", "$componentsJsonPath", "--binding", "KOMPARE_DATA", "--local" `
     -WorkingDirectory $backendDir
 
 Write-Step "Starting frontend (Next.js :$actualFrontendPort)..."
-$frontendCommand = "set `"NEXT_PUBLIC_API_BASE_URL=$backendUrl`" && npm run dev -- --hostname 127.0.0.1 --port $actualFrontendPort"
+$env:NEXT_PUBLIC_API_BASE_URL = $backendUrl
 $frontend = Start-Process -PassThru -WindowStyle Hidden `
-    -FilePath cmd.exe `
-    -ArgumentList "/c", "$frontendCommand > `"$frontendOut`" 2> `"$frontendErr`"" `
-    -WorkingDirectory $frontendDir
+    -FilePath npm.cmd `
+    -ArgumentList "run", "dev", "--", "--hostname", "127.0.0.1", "--port", "$actualFrontendPort" `
+    -WorkingDirectory $frontendDir `
+    -RedirectStandardOutput $frontendOut `
+    -RedirectStandardError $frontendErr
 
 Save-State `
     -BackendPid $backend.Id `
