@@ -13,8 +13,8 @@ Built with a fast **Next.js (App Router)** frontend and a robust local-first **F
 
 ## Screenshot
 
-![Kompare App Screenshot](docs/assets/screenshot.png) 
-*(Note: Please replace `docs/assets/screenshot.png` with the actual path to your screenshot)*
+<img width="1919" height="1079" alt="1" src="https://github.com/user-attachments/assets/10e98a53-4abb-47c7-a6dc-a179006e9448" />
+
 
 ---
 
