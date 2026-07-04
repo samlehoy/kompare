@@ -400,22 +400,26 @@ export default function BuildWizard() {
     setAllocationError('');
   }
 
+  const USE_CASE_TO_PRIORITY = {
+    gaming: 'gaming',
+    productivity: 'productivity',
+    content_creation: 'productivity',
+    office: 'best_value',
+    student: 'best_value',
+  };
+
   function handleUseCaseChange(event) {
     const nextUseCase = event.target.value;
+    const nextPerformancePriority = USE_CASE_TO_PRIORITY[nextUseCase] || 'balanced';
     setUseCase(nextUseCase);
-    syncSuggestedAllocation({ nextUseCase });
+    setPerformancePriority(nextPerformancePriority);
+    syncSuggestedAllocation({ nextUseCase, nextPerformancePriority });
   }
 
   function handleBudgetStrategyChange(event) {
     const nextBudgetStrategy = event.target.value;
     setBudgetStrategy(nextBudgetStrategy);
     syncSuggestedAllocation({ nextBudgetStrategy });
-  }
-
-  function handlePerformancePriorityChange(event) {
-    const nextPerformancePriority = event.target.value;
-    setPerformancePriority(nextPerformancePriority);
-    syncSuggestedAllocation({ nextPerformancePriority });
   }
 
   function toggleAdvancedAllocation(event) {
@@ -548,13 +552,7 @@ export default function BuildWizard() {
           value={budgetStrategy}
           onChange={handleBudgetStrategyChange}
         />
-        <RetroSelect
-          label="Performance priority"
-          name="performance-priority"
-          options={PERFORMANCE_PRIORITY_OPTIONS}
-          value={performancePriority}
-          onChange={handlePerformancePriorityChange}
-        />
+
         <div className="advanced-allocation-control">
           <label className={`retro-checkbox advanced-allocation-toggle ${advancedAllocationEnabled ? 'selected' : ''}`}>
             <input

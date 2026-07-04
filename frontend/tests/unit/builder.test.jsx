@@ -126,12 +126,12 @@ describe('build wizard', () => {
 
     await userEvent.type(screen.getByLabelText('Budget (IDR)'), '30000000');
     await userEvent.selectOptions(screen.getByLabelText('Budget strategy'), 'maximize');
-    await userEvent.selectOptions(screen.getByLabelText('Performance priority'), 'upgrade_friendly');
+    await userEvent.selectOptions(screen.getByLabelText('Use case'), 'office');
     await userEvent.click(screen.getByRole('button', { name: 'Generate build' }));
 
     expect(api.recommendBuild).toHaveBeenCalledWith(expect.objectContaining({
       budgetStrategy: 'maximize',
-      performancePriority: 'upgrade_friendly',
+      performancePriority: 'best_value',
     }));
   });
 
@@ -187,17 +187,17 @@ describe('build wizard', () => {
     expect(screen.getByRole('spinbutton', { name: 'GPU allocation percent' })).toHaveValue(37);
     expect(screen.getByText('Suggested by: Gaming + Balanced spending + Best for gaming')).toBeVisible();
 
-    await userEvent.selectOptions(screen.getByLabelText('Performance priority'), 'productivity');
+    await userEvent.selectOptions(screen.getByLabelText('Use case'), 'productivity');
 
-    expect(screen.getByRole('spinbutton', { name: 'CPU allocation percent' })).toHaveValue(23);
-    expect(screen.getByRole('spinbutton', { name: 'GPU allocation percent' })).toHaveValue(26);
-    expect(screen.getByText('Suggested by: Gaming + Balanced spending + Best for productivity')).toBeVisible();
+    expect(screen.getByRole('spinbutton', { name: 'CPU allocation percent' })).toHaveValue(31);
+    expect(screen.getByRole('spinbutton', { name: 'GPU allocation percent' })).toHaveValue(10);
+    expect(screen.getByText('Suggested by: Productivity + Balanced spending + Best for productivity')).toBeVisible();
 
     await userEvent.selectOptions(screen.getByLabelText('Budget strategy'), 'maximize');
 
-    expect(screen.getByRole('spinbutton', { name: 'CPU allocation percent' })).toHaveValue(25);
-    expect(screen.getByRole('spinbutton', { name: 'GPU allocation percent' })).toHaveValue(29);
-    expect(screen.getByText('Suggested by: Gaming + Maximize budget usage + Best for productivity')).toBeVisible();
+    expect(screen.getByRole('spinbutton', { name: 'CPU allocation percent' })).toHaveValue(33);
+    expect(screen.getByRole('spinbutton', { name: 'GPU allocation percent' })).toHaveValue(13);
+    expect(screen.getByText('Suggested by: Productivity + Maximize budget usage + Best for productivity')).toBeVisible();
   });
 
   test('hydrates advanced allocation presets from backend metadata when available', async () => {
@@ -229,7 +229,7 @@ describe('build wizard', () => {
     await userEvent.click(screen.getByLabelText(/Use advanced allocation/i));
     await userEvent.clear(screen.getByRole('spinbutton', { name: 'CPU allocation percent' }));
     await userEvent.type(screen.getByRole('spinbutton', { name: 'CPU allocation percent' }), '21');
-    await userEvent.selectOptions(screen.getByLabelText('Performance priority'), 'productivity');
+    await userEvent.selectOptions(screen.getByLabelText('Use case'), 'productivity');
 
     expect(screen.getByRole('spinbutton', { name: 'CPU allocation percent' })).toHaveValue(21);
     expect(screen.getByText('Custom allocation')).toBeVisible();
@@ -237,8 +237,8 @@ describe('build wizard', () => {
 
     await userEvent.click(screen.getByRole('button', { name: 'Apply suggested allocation' }));
 
-    expect(screen.getByRole('spinbutton', { name: 'CPU allocation percent' })).toHaveValue(23);
-    expect(screen.getByRole('spinbutton', { name: 'GPU allocation percent' })).toHaveValue(26);
+    expect(screen.getByRole('spinbutton', { name: 'CPU allocation percent' })).toHaveValue(31);
+    expect(screen.getByRole('spinbutton', { name: 'GPU allocation percent' })).toHaveValue(10);
     expect(screen.queryByText('Suggested allocation changed. Apply suggested split?')).not.toBeInTheDocument();
   });
 
