@@ -1309,3 +1309,61 @@ export async function handleEmbed(request, env) {
     return new Response(JSON.stringify({ error: error.message }), { status: 500, headers: CORS_HEADERS });
   }
 }
+
+export async function handleLmStudioDetect(request, env) {
+  const lmStudioUrl = request.headers.get("X-LMStudio-Base-Url") || request.headers.get("x-lmstudio-base-url");
+  if (!lmStudioUrl) {
+    return new Response(
+      JSON.stringify({ error: "X-LMStudio-Base-Url header is required" }),
+      { status: 400, headers: CORS_HEADERS }
+    );
+  }
+
+  try {
+    const modelsUrl = `${lmStudioUrl.replace(/\/$/, "")}/v1/models`;
+    const res = await fetch(modelsUrl, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      signal: AbortSignal.timeout(5000)
+    });
+
+    if (!res.ok) {
+      const errText = await res.text();
+      return new Response(
+        JSON.stringify({ error: `LM Studio responded with ${res.status}: ${errText}` }),
+        { status: 502, headers: CORS_HEADERS }
+      );
+    }
+
+    const data = await res.json();
+    const models = (data.data || []).map(m => ({
+      id: m.id,
+      object: m.object,
+      owned_by: m.owned_by || "local"
+    }));
+
+    return new Response(
+      JSON.stringify({
+        connected: true,
+        models,
+        active_model: models.length > 0 ? models[0].id : null,
+        model_count: models.length
+      }),
+      { status: 200, headers: CORS_HEADERS }
+    );
+  } catch (e) {
+    const isTimeout = e.name === "TimeoutError" || e.name === "AbortError";
+    return new Response(
+      JSON.stringify({
+        connected: false,
+        error: isTimeout
+          ? "Connection timed out. Is LM Studio running?"
+          : `Cannot reach LM Studio: ${e.message}`,
+        models: [],
+        active_model: null,
+        model_count: 0
+      }),
+      { status: 200, headers: CORS_HEADERS }
+    );
+  }
+}

@@ -1,7 +1,7 @@
 import * as core from './pc-builder-core.js';
 import { handleAdvisor } from './advisor.js';
 import { handleAudit } from './audit.js';
-import { handleAiRecommend, handleSeedQdrant, handleEmbed } from './ai-recommend.js';
+import { handleAiRecommend, handleSeedQdrant, handleEmbed, handleLmStudioDetect } from './ai-recommend.js';
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
@@ -145,6 +145,11 @@ export default {
       if (path === "/api/build/embed") {
         if (request.method !== "POST") return makeResponse({ error: "Method not allowed" }, 405);
         return await handleEmbed(request, env);
+      }
+
+      if (path === "/api/lm-studio/detect") {
+        if (request.method !== "GET") return makeResponse({ error: "Method not allowed" }, 405);
+        return await handleLmStudioDetect(request, env);
       }
 
       if (path === "/api/build/advisor") {
