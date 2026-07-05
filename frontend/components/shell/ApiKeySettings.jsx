@@ -87,7 +87,7 @@ export default function ApiKeySettings() {
     setDetectedModel(null);
 
     try {
-      const data = await request('/api/lm-studio/detect', {
+      const data = await request('/lm-studio/detect', {
         method: 'GET',
         headers: { 'X-LMStudio-Base-Url': url },
       });
