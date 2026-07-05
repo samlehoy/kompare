@@ -14,8 +14,8 @@ import {
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type, X-Gemini-Api-Key, X-Qdrant-Url, X-Qdrant-Api-Key",
+  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type, X-Gemini-Api-Key, X-LMStudio-Base-Url, X-Qdrant-Url, X-Qdrant-Api-Key, X-Qdrant-Collection, X-Gemini-Model",
   "Content-Type": "application/json"
 };
 
