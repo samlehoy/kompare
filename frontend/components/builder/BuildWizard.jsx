@@ -545,13 +545,6 @@ export default function BuildWizard() {
           value={gpuVendor}
           onChange={(event) => setGpuVendor(event.target.value)}
         />
-        <RetroSelect
-          label="Budget strategy"
-          name="budget-strategy"
-          options={BUDGET_STRATEGY_OPTIONS}
-          value={budgetStrategy}
-          onChange={handleBudgetStrategyChange}
-        />
 
         <div className="advanced-allocation-control">
           <label className={`retro-checkbox advanced-allocation-toggle ${advancedAllocationEnabled ? 'selected' : ''}`}>
