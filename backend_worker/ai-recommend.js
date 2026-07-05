@@ -643,6 +643,53 @@ async function embedTexts(env, texts) {
 
 async function callGemini(env, headers, payload, modelOverride = null) {
   const model = modelOverride || headers.get("X-Gemini-Model") || env.GEMINI_MODEL || "gemini-2.5-flash";
+  
+  // Check if LM Studio routing is requested
+  const lmStudioUrl = headers.get("X-LMStudio-Base-Url") || headers.get("x-lmstudio-base-url");
+  if (lmStudioUrl) {
+    const lmUrl = `${lmStudioUrl.replace(/\/$/, "")}/v1/chat/completions`;
+    const messages = payload.contents.map(c => ({
+      role: c.role === "model" ? "assistant" : "user",
+      content: c.parts.map(p => p.text).join("\n")
+    }));
+    
+    const lmBody = {
+      model: model,
+      messages: messages,
+      temperature: payload.generationConfig?.temperature ?? 0.2
+    };
+    
+    if (payload.generationConfig?.responseMimeType === "application/json") {
+      lmBody.response_format = { type: "json_object" };
+    }
+
+    const res = await fetch(lmUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(lmBody)
+    });
+
+    if (!res.ok) {
+      const errText = await res.text();
+      throw new Error(`LM Studio request failed status ${res.status}: ${errText}`);
+    }
+
+    const lmData = await res.json();
+    const textResult = lmData.choices?.[0]?.message?.content || "";
+
+    return {
+      candidates: [
+        {
+          content: {
+            parts: [
+              { text: textResult }
+            ]
+          }
+        }
+      ]
+    };
+  }
+
   let keys = [];
   const headerKey = headers.get("X-Gemini-Api-Key") || headers.get("x-gemini-api-key");
   if (headerKey) {
