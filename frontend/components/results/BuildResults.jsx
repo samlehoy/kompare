@@ -30,6 +30,8 @@ function normalizeBuild(build) {
     upgradeSuggestions,
     performanceBalance,
     aiAssisted: Boolean(build?.ai_assisted || recommendation.ai_assisted),
+    modelUsed: build?.model_used || recommendation.model_used || null,
+    isLocalModel: Boolean(build?.is_local_model || recommendation.is_local_model),
     localFallback: Boolean(
       build?.local_fallback
       || recommendation.local_fallback
@@ -221,7 +223,7 @@ export default function BuildResults({
         </dl>
         {(result.aiAssisted || result.localFallback) && (
           <div className="summary-markers" aria-label="Recommendation source">
-            {result.aiAssisted && <span>AI-assisted</span>}
+            {result.aiAssisted && <span>{result.isLocalModel ? `Local AI (${result.modelUsed})` : 'AI-assisted'}</span>}
             {result.localFallback && <span>{fallbackLabel(result.fallbackReason)}</span>}
           </div>
         )}

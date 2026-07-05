@@ -654,7 +654,7 @@ async function callGemini(env, headers, payload, modelOverride = null) {
     }));
     
     const lmBody = {
-      model: model,
+      model: "local-model",
       messages: messages,
       temperature: payload.generationConfig?.temperature ?? 0.2
     };
@@ -675,6 +675,7 @@ async function callGemini(env, headers, payload, modelOverride = null) {
     }
 
     const lmData = await res.json();
+    const actualModel = lmData.model || "local-model";
     const textResult = lmData.choices?.[0]?.message?.content || "";
 
     return {
@@ -686,7 +687,9 @@ async function callGemini(env, headers, payload, modelOverride = null) {
             ]
           }
         }
-      ]
+      ],
+      _lm_studio: true,
+      _model_used: actualModel
     };
   }
 
@@ -942,9 +945,15 @@ export async function handleAiRecommend(request, env) {
   let rankerMode = "json_ranker";
   let rankerError = null;
   let selectionCandidatesBySlot = finalRankerCandidatesBySlot;
+  let modelUsed = "gemini-2.5-flash";
+  let isLocalModel = false;
 
   try {
     const geminiRes = await callGemini(env, request.headers, rankerPayload);
+    if (geminiRes._lm_studio) {
+      isLocalModel = true;
+      modelUsed = geminiRes._model_used || "local-model";
+    }
     let text = geminiRes.candidates?.[0]?.content?.parts?.[0]?.text || "";
     if (!text) throw new Error("Gemini returned empty ranking response");
     text = text.trim();
@@ -1037,6 +1046,8 @@ export async function handleAiRecommend(request, env) {
       ...finalBuild,
       ai_assisted: true,
       fallback: false,
+      model_used: modelUsed,
+      is_local_model: isLocalModel,
       retrieval: _buildMetadata(
         profileName,
         current_hash,
