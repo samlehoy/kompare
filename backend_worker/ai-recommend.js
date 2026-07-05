@@ -949,15 +949,11 @@ export async function handleAiRecommend(request, env) {
   let isLocalModel = false;
 
   try {
-    const lmHeader = request.headers.get("X-LMStudio-Base-Url") || request.headers.get("x-lmstudio-base-url");
-    console.log("[DEBUG] X-LMStudio-Base-Url header:", lmHeader || "(not present)");
     const geminiRes = await callGemini(env, request.headers, rankerPayload);
-    console.log("[DEBUG] geminiRes._lm_studio:", geminiRes._lm_studio, "geminiRes._model_used:", geminiRes._model_used);
     if (geminiRes._lm_studio) {
       isLocalModel = true;
       modelUsed = geminiRes._model_used || "local-model";
     }
-    console.log("[DEBUG] Final -> isLocalModel:", isLocalModel, "modelUsed:", modelUsed);
     let text = geminiRes.candidates?.[0]?.content?.parts?.[0]?.text || "";
     if (!text) throw new Error("Gemini returned empty ranking response");
     text = text.trim();
