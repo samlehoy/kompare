@@ -68,14 +68,13 @@ describe('build results', () => {
     expect(within(optionalSection).getByText('2TB SATA HDD')).toBeVisible();
   });
 
-  test('renders budget strategy warnings, upgrade suggestions, and balance notes', () => {
+  test('renders budget warnings, upgrade suggestions, and balance notes', () => {
     render(
       <BuildResults
         build={build({
           budget_usage: {
-            strategy: 'maximize',
             used_percent: 73.4,
-            target_min_percent: 95,
+            target_min_percent: 96.7,
             target_max_percent: 100,
             status: 'catalog_limited',
           },
@@ -113,5 +112,38 @@ describe('build results', () => {
     expect(screen.getByText('GeForce RTX 5070 Ti')).toBeVisible();
     expect(screen.getByText('Performance balance')).toBeVisible();
     expect(screen.getByText(/primary gaming performance lever/i)).toBeVisible();
+  });
+
+  test('renders near-budget upgrade suggestions when present', () => {
+    render(
+      <BuildResults
+        build={build({
+          near_budget_upgrades: [{
+            slot: 'gpu',
+            current: component('gpu', { name: 'GeForce RTX 4060' }),
+            upgrade: component('gpu', {
+              sku: 'gpu-4060-ti',
+              name: 'GeForce RTX 4060 Ti',
+              price_idr: 7_500_000,
+            }),
+            new_total_idr: 15_500_000,
+            over_budget_idr: 500_000,
+            over_budget_percent: 3.3,
+            reason: 'Higher graphics tier improves gaming frame rate.',
+          }],
+        })}
+      />,
+    );
+
+    const section = screen.getByRole('region', { name: 'Near-budget upgrade options' });
+    expect(within(section).getByText('GeForce RTX 4060 Ti')).toBeVisible();
+    expect(within(section).getByText(/3.3% over budget/i)).toBeVisible();
+    expect(within(section).getByText(/Slightly over budget/i)).toBeVisible();
+  });
+
+  test('does not render near-budget upgrades when empty', () => {
+    render(<BuildResults build={build({ near_budget_upgrades: [] })} />);
+
+    expect(screen.queryByRole('region', { name: 'Near-budget upgrade options' })).not.toBeInTheDocument();
   });
 });

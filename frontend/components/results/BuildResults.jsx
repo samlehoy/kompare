@@ -13,6 +13,7 @@ function normalizeBuild(build) {
   const budgetUsage = build?.budget_usage || recommendation.budget_usage || null;
   const budgetWarnings = build?.budget_warnings || recommendation.budget_warnings || [];
   const upgradeSuggestions = build?.upgrade_suggestions || recommendation.upgrade_suggestions || [];
+  const nearBudgetUpgrades = build?.near_budget_upgrades || recommendation.near_budget_upgrades || [];
   const performanceBalance = build?.performance_balance || recommendation.performance_balance || null;
 
   const fallbackReason = build?.fallback_reason || recommendation.fallback_reason || '';
@@ -28,6 +29,7 @@ function normalizeBuild(build) {
     budgetUsage,
     budgetWarnings,
     upgradeSuggestions,
+    nearBudgetUpgrades,
     performanceBalance,
     aiAssisted: Boolean(build?.ai_assisted || recommendation.ai_assisted),
     modelUsed: build?.model_used || recommendation.model_used || null,
@@ -137,8 +139,6 @@ function BudgetGuidance({ result }) {
           <strong>Budget usage</strong>
           <span>{usage.used_percent}% used</span>
           <small>
-            {usage.strategy?.replace(/_/g, ' ') || 'balanced'}
-            {' '}
             target
             {usage.target_min_percent ? ` ${usage.target_min_percent}%+` : ''}
           </small>
@@ -180,6 +180,46 @@ function BudgetGuidance({ result }) {
         </div>
       )}
     </div>
+  );
+}
+
+function NearBudgetUpgrades({ upgrades }) {
+  if (!upgrades || upgrades.length === 0) return null;
+
+  return (
+    <section className="near-budget-upgrades" aria-label="Near-budget upgrade options">
+      <div className="near-budget-heading">
+        <span className="summary-kicker">Slightly over budget, but worth it?</span>
+        <p>These combos slightly exceed the budget but offer a significant performance boost.</p>
+      </div>
+      <div className="near-budget-list">
+        {upgrades.map((combo) => {
+          const key = `${combo.slot}-${combo.upgrade?.sku || combo.upgrade?.name}`;
+          return (
+            <article key={key} className="near-budget-card">
+              <div className="near-budget-slot">{slotLabel(combo.slot)}</div>
+              <div className="near-budget-body">
+                <div className="near-budget-current">
+                  <small>Current</small>
+                  <span>{combo.current?.name || '-'}</span>
+                </div>
+                <div className="near-budget-arrow" aria-hidden="true">{"→"}</div>
+                <div className="near-budget-upgrade">
+                  <small>Upgrade to</small>
+                  <b>{combo.upgrade?.name || '-'}</b>
+                </div>
+              </div>
+              <div className="near-budget-cost">
+                <span className="near-budget-over">+{formatIDR(combo.over_budget_idr)}</span>
+                <small>Total: {formatIDR(combo.new_total_idr)}</small>
+                <small className="near-budget-percent">({combo.over_budget_percent}% over budget)</small>
+              </div>
+              {combo.reason && <p className="near-budget-reason">{combo.reason}</p>}
+            </article>
+          );
+        })}
+      </div>
+    </section>
   );
 }
 
@@ -288,6 +328,8 @@ export default function BuildResults({
           );
         })}
       </div>
+
+      <NearBudgetUpgrades upgrades={result.nearBudgetUpgrades} />
 
       {optionalAddons.length > 0 && (
         <section className="optional-addon-panel" aria-label="Optional add-ons">

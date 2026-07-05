@@ -11,28 +11,7 @@ export const ALLOCATION_PRESET_SLOTS = [
   "cpu", "gpu", "ram", "motherboard", "ssd", "psu", "case", "cpu_cooler", "fan_cooler"
 ];
 
-export const PERFORMANCE_PRIORITY_ALLOCATION_SHIFTS = {
-  gaming: { cpu: 2, gpu: 4, motherboard: -1, ssd: -2, case: -2, fan_cooler: -1 },
-  productivity: { cpu: 5, gpu: -7, ram: 4, ssd: 4, case: -3, cpu_cooler: -1, fan_cooler: -2 },
-  best_value: { cpu: -1, gpu: -2, ram: 2, ssd: 2, psu: 1, cpu_cooler: -1, fan_cooler: -1 },
-  balanced: {},
-  upgrade_friendly: { cpu: -2, gpu: -6, ram: -1, motherboard: 5, ssd: -2, psu: 4, case: 3, fan_cooler: -1 }
-};
-
-export const BUDGET_STRATEGY_ALLOCATION_SHIFTS = {
-  value: { cpu: -1, gpu: -2, ram: 1, ssd: 2, psu: 1, cpu_cooler: -1 },
-  balanced: {},
-  maximize: { cpu: 2, gpu: 3, ram: -1, motherboard: -1, ssd: -2, case: -2, cpu_cooler: 1 }
-};
-
-export const BUDGET_STRATEGIES = new Set(["value", "balanced", "maximize"]);
-export const PERFORMANCE_PRIORITIES = new Set(["gaming", "productivity", "best_value", "balanced", "upgrade_friendly"]);
-
-export const BUDGET_USAGE_TARGETS = {
-  value: { min: 0.0, max: 0.90 },
-  balanced: { min: 0.85, max: 0.97 },
-  maximize: { min: 0.95, max: 1.0 }
-};
+const BUDGET_USAGE_TARGET = { min: 0.967, max: 1.0 };
 
 export const BUDGET_BANDS = [
   { key: "below_entry", label: "Below entry-level", min_idr: 0, max_idr: 6999999, summary: "Best-effort build; catalog constraints may leave required parts missing." },
@@ -538,16 +517,7 @@ export function budgetBandFor(budget) {
   return { ...BUDGET_BANDS[BUDGET_BANDS.length - 1] };
 }
 
-export function normalizeBudgetStrategy(strategy) {
-  const value = String(strategy || "balanced").trim().toLowerCase();
-  return BUDGET_STRATEGIES.has(value) ? value : "balanced";
-}
-
-export function normalizePerformancePriority(priority, useCase) {
-  const value = String(priority || "").trim().toLowerCase();
-  if (PERFORMANCE_PRIORITIES.has(value)) {
-    return value;
-  }
+function _useCasePriority(useCase) {
   if (useCase === "gaming") return "gaming";
   if (useCase === "productivity" || useCase === "content_creation") return "productivity";
   if (useCase === "office" || useCase === "student") return "best_value";
@@ -559,37 +529,24 @@ function _cleanAllocationPercent(value) {
   return Math.max(0, Math.min(100, Math.round(value)));
 }
 
-function _applyAllocationShift(profile, shift) {
-  const shifted = {};
-  for (const slot of ALLOCATION_PRESET_SLOTS) {
-    shifted[slot] = _cleanAllocationPercent(profile[slot] || 0);
-  }
-  for (const [slot, delta] of Object.entries(shift)) {
-    if (slot in shifted) {
-      shifted[slot] = _cleanAllocationPercent(shifted[slot] + delta);
-    }
-  }
-  return shifted;
-}
-
-function _allocationFillOrder(performancePriority) {
+function _allocationFillOrder(useCase) {
   const preferred = {
     gaming: ["gpu", "cpu"],
     productivity: ["cpu", "ram", "ssd"],
-    best_value: ["gpu", "ssd", "ram"],
-    balanced: ["gpu", "cpu"],
-    upgrade_friendly: ["motherboard", "psu", "case"]
-  }[performancePriority] || ["gpu", "cpu"];
+    content_creation: ["gpu", "cpu", "ram"],
+    office: ["cpu", "ssd", "ram"],
+    student: ["gpu", "ssd", "ram"]
+  }[useCase] || ["gpu", "cpu"];
   return [...preferred, ...ALLOCATION_PRESET_SLOTS.filter(slot => !preferred.includes(slot))];
 }
 
-function _normalizeAllocationProfile(profile, performancePriority) {
+function _normalizeAllocationProfile(profile, useCase) {
   const normalized = {};
   for (const slot of ALLOCATION_PRESET_SLOTS) {
     normalized[slot] = _cleanAllocationPercent(profile[slot] || 0);
   }
   let total = Object.values(normalized).reduce((a, b) => a + b, 0);
-  const fillOrder = _allocationFillOrder(performancePriority);
+  const fillOrder = _allocationFillOrder(useCase);
 
   while (total < 100) {
     const slot = fillOrder.find(candidate => normalized[candidate] < 60) || fillOrder[0];
@@ -609,7 +566,7 @@ function _normalizeAllocationProfile(profile, performancePriority) {
   return normalized;
 }
 
-export function strategyAllocationProfile(useCase, performancePriority, budgetStrategy = "balanced", allocationOverrides = null) {
+export function strategyAllocationProfile(useCase, allocationOverrides = null) {
   let profile = { ...USE_CASE_PROFILES[useCase] };
   if (allocationOverrides) {
     const allowed = new Set(ALLOCATION_PRESET_SLOTS);
@@ -624,12 +581,7 @@ export function strategyAllocationProfile(useCase, performancePriority, budgetSt
       return cleaned;
     }
   }
-
-  const normalizedPriority = normalizePerformancePriority(performancePriority, useCase);
-  const normalizedStrategy = normalizeBudgetStrategy(budgetStrategy);
-  profile = _applyAllocationShift(profile, PERFORMANCE_PRIORITY_ALLOCATION_SHIFTS[normalizedPriority] || {});
-  profile = _applyAllocationShift(profile, BUDGET_STRATEGY_ALLOCATION_SHIFTS[normalizedStrategy] || {});
-  return _normalizeAllocationProfile(profile, normalizedPriority);
+  return _normalizeAllocationProfile(profile, useCase);
 }
 
 export function normalizeMarketplaceLinks(component) {
@@ -1638,35 +1590,28 @@ function _candidateFitsSlot(slot, candidate, build, cpu_brand, gpu_vendor) {
   return true;
 }
 
-function _strategyTargetSpecs(slot, useCase, performancePriority) {
-  const target = { use_case: useCase, performance_priority: performancePriority };
-  if (slot === "ram") target.target_capacity_gb = (performancePriority === "gaming" || performancePriority === "productivity") ? 32 : 16;
+function _strategyTargetSpecs(slot, useCase) {
+  const priority = _useCasePriority(useCase);
+  const target = { use_case: useCase, performance_priority: priority };
+  if (slot === "ram") target.target_capacity_gb = (useCase === "gaming" || useCase === "productivity" || useCase === "content_creation") ? 32 : 16;
   return target;
 }
 
-function _strategyCandidateScore(component, slot, budget, useCase, performancePriority, budgetStrategy) {
+function _strategyCandidateScore(component, slot, budget, useCase) {
   if (!component) return -1000000.0;
-  const target = _strategyTargetSpecs(slot, useCase, performancePriority);
-  let score = _componentScore(component, slot, budget, target);
-  if (budgetStrategy === "maximize") {
-    score += _componentPerformanceUnits(component, slot, target) * 0.65;
-    if (slot === "gpu" || slot === "cpu") score += _componentPrice(component) / 150000;
-  } else if (budgetStrategy === "value") {
-    score += _valueScore(_componentPerformanceUnits(component, slot, target), component);
-    score -= _componentPrice(component) / 1000000;
-  }
-  return score;
+  const target = _strategyTargetSpecs(slot, useCase);
+  return _componentScore(component, slot, budget, target);
 }
 
-function _replacementCandidates(catalog, build, slot, budget, useCase, budgetStrategy, performancePriority, cpu_brand, gpu_vendor) {
+function _replacementCandidates(catalog, build, slot, budget, useCase, cpu_brand, gpu_vendor) {
   const current = build[slot];
   const current_price = _componentPrice(current);
   const total = _buildTotal(build);
   const max_price = current_price + Math.max(0, budget - total);
   const category = _candidateCategory(slot);
   const current_ref = _componentRef(current);
-  const target = _strategyTargetSpecs(slot, useCase, performancePriority);
-  const current_score = _strategyCandidateScore(current, slot, Math.max(current_price, 1), useCase, performancePriority, budgetStrategy);
+  const target = _strategyTargetSpecs(slot, useCase);
+  const current_score = _strategyCandidateScore(current, slot, Math.max(current_price, 1), useCase);
 
   const candidates = [];
   const items = catalog[category] || [];
@@ -1679,19 +1624,19 @@ function _replacementCandidates(catalog, build, slot, budget, useCase, budgetStr
     const next_build = { ...build, [slot]: candidate };
     if (slot === "cpu_cooler") next_build.cooler = candidate;
     if (_hasErrorCompatibility(validateBuild(next_build))) continue;
-    const candidate_score = _strategyCandidateScore(candidate, slot, Math.max(max_price, candidate_price, 1), useCase, performancePriority, budgetStrategy);
+    const candidate_score = _strategyCandidateScore(candidate, slot, Math.max(max_price, candidate_price, 1), useCase);
     if (candidate_score <= current_score + 4 && _componentPerformanceUnits(candidate, slot, target) <= _componentPerformanceUnits(current || {}, slot, target)) continue;
     candidates.push(candidate);
   }
 
   return candidates.sort((a, b) => {
-    const scoreA = _strategyCandidateScore(a, slot, Math.max(max_price, 1), useCase, performancePriority, budgetStrategy);
-    const scoreB = _strategyCandidateScore(b, slot, Math.max(max_price, 1), useCase, performancePriority, budgetStrategy);
+    const scoreA = _strategyCandidateScore(a, slot, Math.max(max_price, 1), useCase);
+    const scoreB = _strategyCandidateScore(b, slot, Math.max(max_price, 1), useCase);
     return scoreB !== scoreA ? scoreB - scoreA : _componentPrice(a) - _componentPrice(b);
   });
 }
 
-function _upgradeReason(slot, performancePriority) {
+function _upgradeReason(slot, useCase) {
   if (slot === "gpu") return "Higher graphics tier improves gaming frame rate and visual settings first.";
   if (slot === "cpu") return "Stronger CPU improves minimum FPS, simulation, streaming, and multitasking headroom.";
   if (slot === "ram") return "More or faster memory improves modern game and workload headroom.";
@@ -1700,39 +1645,35 @@ function _upgradeReason(slot, performancePriority) {
   if (slot === "ssd") return "More NVMe storage improves application and game library flexibility.";
   if (slot === "cpu_cooler") return "More cooling headroom helps sustained boost clocks and noise.";
   if (slot === "case") return "Better case compatibility and airflow keeps future upgrades easier.";
-  return `Improves the ${performancePriority.replace(/_/g, " ")} balance of the build.`;
+  return `Improves the ${useCase.replace(/_/g, " ")} balance of the build.`;
 }
 
-function _makeUpgradeSuggestion(slot, current, candidate, build, performancePriority) {
+function _makeUpgradeSuggestion(slot, current, candidate, build, useCase) {
   const added_cost = _componentPrice(candidate) - _componentPrice(current);
   return {
     slot, current: normalizeMarketplaceLinks(current), candidate: normalizeMarketplaceLinks(candidate),
     added_cost_idr: added_cost, projected_total_idr: _buildTotal(build) + added_cost,
-    reason: _upgradeReason(slot, performancePriority)
+    reason: _upgradeReason(slot, useCase)
   };
 }
 
-function _budgetUsage(total, budget, budgetStrategy, status) {
-  const targets = BUDGET_USAGE_TARGETS[budgetStrategy];
+function _budgetUsage(total, budget, status) {
   return {
-    strategy: budgetStrategy,
     used_percent: budget ? parseFloat(((total / budget) * 100).toFixed(1)) : 0.0,
-    target_min_percent: parseFloat((targets.min * 100).toFixed(1)),
-    target_max_percent: parseFloat((targets.max * 100).toFixed(1)),
+    target_min_percent: parseFloat((BUDGET_USAGE_TARGET.min * 100).toFixed(1)),
+    target_max_percent: parseFloat((BUDGET_USAGE_TARGET.max * 100).toFixed(1)),
     status
   };
 }
 
-function _strategyStatus(total, budget, budgetStrategy, suggestions, applied_count) {
-  if (budgetStrategy === "value") return "value_preserved";
+function _strategyStatus(total, budget, suggestions, applied_count) {
   const used_ratio = budget ? total / budget : 0.0;
-  const target = BUDGET_USAGE_TARGETS[budgetStrategy].min;
-  if (used_ratio >= target) return applied_count ? "optimized" : "target_met";
+  if (used_ratio >= BUDGET_USAGE_TARGET.min) return applied_count ? "optimized" : "target_met";
   return (suggestions.length > 0) ? "under_target" : "catalog_limited";
 }
 
-function _budgetWarnings(total, budget, budgetStrategy, status, suggestions) {
-  if (budgetStrategy === "value" || ["target_met", "optimized", "value_preserved"].includes(status)) return [];
+function _budgetWarnings(total, budget, status, suggestions) {
+  if (["target_met", "optimized"].includes(status)) return [];
   const remaining = Math.max(0, budget - total);
   const used_percent = budget ? parseFloat(((total / budget) * 100).toFixed(1)) : 0.0;
   return [{
@@ -1743,7 +1684,7 @@ function _budgetWarnings(total, budget, budgetStrategy, status, suggestions) {
   }];
 }
 
-function _performanceBalanceSummary(build, useCase, performancePriority) {
+function _performanceBalanceSummary(build, useCase) {
   const cpu = build.cpu;
   const gpu = build.gpu;
   const ram = build.ram;
@@ -1757,62 +1698,48 @@ function _performanceBalanceSummary(build, useCase, performancePriority) {
   if (ram_specs.capacity_gb) notes.push(`${ram_specs.capacity_gb}GB RAM supports the selected workload target.`);
   if (notes.length === 0) notes.push(`CPU (${cpu_name}) and GPU (${gpu_name}) are checked against compatibility and budget balance.`);
 
-  return { priority: performancePriority, summary: notes.join(" "), bottleneck_risk: (cpu && gpu) ? "low" : "review" };
+  return { priority: _useCasePriority(useCase), summary: notes.join(" "), bottleneck_risk: (cpu && gpu) ? "low" : "review" };
 }
 
-function _buildAlternativeOptions(catalog, build, budget, useCase, budgetStrategy, performancePriority, cpu_brand, gpu_vendor) {
+function _buildAlternativeOptions(catalog, build, budget, useCase, cpu_brand, gpu_vendor) {
   const alternatives = {};
   for (const slot of ["cpu", "gpu", "ram", "ssd", "psu"]) {
-    const candidates = _replacementCandidates(catalog, build, slot, budget, useCase, budgetStrategy, performancePriority, cpu_brand, gpu_vendor);
+    const candidates = _replacementCandidates(catalog, build, slot, budget, useCase, cpu_brand, gpu_vendor);
     if (candidates.length > 0) {
-      alternatives[slot] = candidates.slice(0, 3).map(candidate => _makeUpgradeSuggestion(slot, build[slot], candidate, build, performancePriority));
+      alternatives[slot] = candidates.slice(0, 3).map(candidate => _makeUpgradeSuggestion(slot, build[slot], candidate, build, useCase));
     }
   }
   return alternatives;
 }
 
-function _applyBudgetStrategy(catalog, build, budget, useCase, budgetStrategy, performancePriority, cpu_brand, gpu_vendor) {
+function _applyBudgetStrategy(catalog, build, budget, useCase, cpu_brand, gpu_vendor) {
   const optimized = { ...build };
   let applied_count = 0;
   const suggestions = [];
-  const order = PRIORITY_UPGRADE_ORDER[performancePriority] || PRIORITY_UPGRADE_ORDER.balanced;
+  const priority = _useCasePriority(useCase);
+  const order = PRIORITY_UPGRADE_ORDER[priority] || PRIORITY_UPGRADE_ORDER.balanced;
 
   for (const slot of REQUIRED_BUILD_SLOTS) {
     if (optimized[slot] !== null && optimized[slot] !== undefined) continue;
-    const candidates = _replacementCandidates(catalog, optimized, slot, budget, useCase, budgetStrategy, performancePriority, cpu_brand, gpu_vendor);
+    const candidates = _replacementCandidates(catalog, optimized, slot, budget, useCase, cpu_brand, gpu_vendor);
     if (candidates.length === 0) continue;
     const candidate = candidates[0];
-    suggestions.push(_makeUpgradeSuggestion(slot, optimized[slot], candidate, optimized, performancePriority));
+    suggestions.push(_makeUpgradeSuggestion(slot, optimized[slot], candidate, optimized, useCase));
     optimized[slot] = normalizeMarketplaceLinks(candidate);
     if (slot === "cpu_cooler") optimized.cooler = optimized[slot];
     applied_count += 1;
   }
 
-  if (budgetStrategy === "value") {
-    for (const slot of order) {
-      const candidates = _replacementCandidates(catalog, optimized, slot, budget, useCase, budgetStrategy, performancePriority, cpu_brand, gpu_vendor);
-      if (candidates.length > 0) suggestions.push(_makeUpgradeSuggestion(slot, optimized[slot], candidates[0], optimized, performancePriority));
-    }
-    const total = _buildTotal(optimized);
-    const status = _strategyStatus(total, budget, budgetStrategy, suggestions, applied_count);
-    const usage = _budgetUsage(total, budget, budgetStrategy, status);
-    return [
-      optimized, usage, [], suggestions.slice(0, 5),
-      _buildAlternativeOptions(catalog, optimized, budget, useCase, budgetStrategy, performancePriority, cpu_brand, gpu_vendor),
-      _performanceBalanceSummary(optimized, useCase, performancePriority)
-    ];
-  }
-
-  const target = BUDGET_USAGE_TARGETS[budgetStrategy].min;
+  const target = BUDGET_USAGE_TARGET.min;
   for (let pass = 0; pass < 3; pass++) {
     if (budget && _buildTotal(optimized) / budget >= target) break;
     let applied_this_pass = false;
     for (const slot of order) {
       if (budget && _buildTotal(optimized) / budget >= target) break;
-      const candidates = _replacementCandidates(catalog, optimized, slot, budget, useCase, budgetStrategy, performancePriority, cpu_brand, gpu_vendor);
+      const candidates = _replacementCandidates(catalog, optimized, slot, budget, useCase, cpu_brand, gpu_vendor);
       if (candidates.length === 0) continue;
       const candidate = candidates[0];
-      suggestions.push(_makeUpgradeSuggestion(slot, optimized[slot], candidate, optimized, performancePriority));
+      suggestions.push(_makeUpgradeSuggestion(slot, optimized[slot], candidate, optimized, useCase));
       optimized[slot] = normalizeMarketplaceLinks(candidate);
       if (slot === "cpu_cooler") optimized.cooler = optimized[slot];
       applied_count += 1;
@@ -1823,31 +1750,80 @@ function _applyBudgetStrategy(catalog, build, budget, useCase, budgetStrategy, p
 
   const remaining_suggestions = [];
   for (const slot of order) {
-    const candidates = _replacementCandidates(catalog, optimized, slot, budget, useCase, budgetStrategy, performancePriority, cpu_brand, gpu_vendor);
-    if (candidates.length > 0) remaining_suggestions.push(_makeUpgradeSuggestion(slot, optimized[slot], candidates[0], optimized, performancePriority));
+    const candidates = _replacementCandidates(catalog, optimized, slot, budget, useCase, cpu_brand, gpu_vendor);
+    if (candidates.length > 0) remaining_suggestions.push(_makeUpgradeSuggestion(slot, optimized[slot], candidates[0], optimized, useCase));
   }
 
   const total = _buildTotal(optimized);
-  const status = _strategyStatus(total, budget, budgetStrategy, remaining_suggestions, applied_count);
-  const usage = _budgetUsage(total, budget, budgetStrategy, status);
-  const warnings = _budgetWarnings(total, budget, budgetStrategy, status, remaining_suggestions);
+  const status = _strategyStatus(total, budget, remaining_suggestions, applied_count);
+  const usage = _budgetUsage(total, budget, status);
+  const warnings = _budgetWarnings(total, budget, status, remaining_suggestions);
   return [
     optimized, usage, warnings, remaining_suggestions.slice(0, 5),
-    _buildAlternativeOptions(catalog, optimized, budget, useCase, budgetStrategy, performancePriority, cpu_brand, gpu_vendor),
-    _performanceBalanceSummary(optimized, useCase, performancePriority)
+    _buildAlternativeOptions(catalog, optimized, budget, useCase, cpu_brand, gpu_vendor),
+    _performanceBalanceSummary(optimized, useCase)
   ];
+}
+
+function _findNearBudgetUpgradeCombos(catalog, build, budget, useCase, cpu_brand, gpu_vendor) {
+  const combos = [];
+  const maxOverBudget = budget * 0.033;
+  const priority = _useCasePriority(useCase);
+  const order = PRIORITY_UPGRADE_ORDER[priority] || PRIORITY_UPGRADE_ORDER.balanced;
+  const currentTotal = _buildTotal(build);
+
+  for (const slot of order) {
+    const current = build[slot];
+    if (!current) continue;
+    const currentPrice = _componentPrice(current);
+    const category = _candidateCategory(slot);
+    const items = catalog[category] || [];
+    const currentRef = _componentRef(current);
+    const currentTarget = _strategyTargetSpecs(slot, useCase);
+    const currentPerf = _componentPerformanceUnits(current, slot, currentTarget);
+
+    for (const candidate of items) {
+      const candidatePrice = _componentPrice(candidate);
+      if (candidatePrice <= currentPrice) continue;
+      if (_componentRef(candidate) === currentRef) continue;
+      if (!_candidateFitsSlot(slot, candidate, build, cpu_brand, gpu_vendor)) continue;
+
+      const newTotal = currentTotal - currentPrice + candidatePrice;
+      const overBudget = newTotal - budget;
+      if (overBudget <= 0 || overBudget > maxOverBudget) continue;
+
+      const nextBuild = { ...build, [slot]: candidate };
+      if (slot === "cpu_cooler") nextBuild.cooler = candidate;
+      if (_hasErrorCompatibility(validateBuild(nextBuild))) continue;
+
+      const candidatePerf = _componentPerformanceUnits(candidate, slot, currentTarget);
+      if (candidatePerf <= currentPerf) continue;
+
+      combos.push({
+        slot,
+        current: normalizeMarketplaceLinks(current),
+        upgrade: normalizeMarketplaceLinks(candidate),
+        new_total_idr: newTotal,
+        over_budget_idr: overBudget,
+        over_budget_percent: parseFloat(((overBudget / budget) * 100).toFixed(1)),
+        reason: _upgradeReason(slot, useCase),
+        _perf_gain: candidatePerf - currentPerf
+      });
+    }
+  }
+
+  combos.sort((a, b) => b._perf_gain - a._perf_gain);
+  return combos.slice(0, 3).map(({ _perf_gain, ...rest }) => rest);
 }
 
 export function composeBuild(components, budget, useCase, {
   cpu_brand = null, gpu_vendor = null, include_optional_addons = false,
-  optional_addon_slots = null, budget_strategy = null, performance_priority = null,
-  allocation_overrides = null, _apply_budget_optimizer = true
+  optional_addon_slots = null, allocation_overrides = null, _apply_budget_optimizer = true
 } = {}) {
   if (!(useCase in USE_CASE_PROFILES)) throw new Error(`Unknown use case: ${useCase}. Valid: ${Object.keys(USE_CASE_PROFILES)}`);
-  const strategy = normalizeBudgetStrategy(budget_strategy);
-  const priority = normalizePerformancePriority(performance_priority, useCase);
+  const priority = _useCasePriority(useCase);
   const initial_scoring_priority = _apply_budget_optimizer ? priority : null;
-  const profile = strategyAllocationProfile(useCase, priority, strategy, allocation_overrides);
+  const profile = strategyAllocationProfile(useCase, allocation_overrides);
 
   const alloc = {};
   for (const [slot, pct] of Object.entries(profile)) {
@@ -1866,7 +1842,7 @@ export function composeBuild(components, budget, useCase, {
 
   // CPU
   let cpu_budget = alloc.cpu;
-  if (strategy === "maximize" && initial_scoring_priority === "gaming" && budget >= 22000000) cpu_budget = Math.max(cpu_budget, Math.floor(budget * 0.24));
+  if (useCase === "gaming" && budget >= 22000000) cpu_budget = Math.max(cpu_budget, Math.floor(budget * 0.24));
   slot_budgets.cpu = cpu_budget;
   const cpu = pickCpu(components.cpu || [], cpu_budget, cpu_brand, useCase, initial_scoring_priority);
   build.cpu = cpu;
@@ -1898,7 +1874,7 @@ export function composeBuild(components, budget, useCase, {
   // GPU
   const base_gpu_budget = nextSlotBudget("gpu");
   let gpu_budget = base_gpu_budget;
-  if (strategy === "maximize" && initial_scoring_priority === "gaming" && budget >= 22000000) gpu_budget = Math.max(gpu_budget, Math.floor(budget * 0.42));
+  if (useCase === "gaming" && budget >= 22000000) gpu_budget = Math.max(gpu_budget, Math.floor(budget * 0.42));
   slot_budgets.gpu = gpu_budget;
   slot_targets.gpu = { use_case: useCase, performance_priority: initial_scoring_priority };
   if (useCase === "office" && cpu && cpu.specs && cpu.specs.has_igpu) {
@@ -1974,22 +1950,22 @@ export function composeBuild(components, budget, useCase, {
   if (_apply_budget_optimizer) {
     [
       build, budget_usage, budget_warnings, upgrade_suggestions, alternative_options, performance_balance
-    ] = _applyBudgetStrategy(components, normalizedBuild, budget, useCase, strategy, priority, cpu_brand, gpu_vendor);
+    ] = _applyBudgetStrategy(components, normalizedBuild, budget, useCase, cpu_brand, gpu_vendor);
   } else {
     const total_before = _buildTotal(normalizedBuild);
-    const stat = _strategyStatus(total_before, budget, strategy, [], 0);
-    budget_usage = _budgetUsage(total_before, budget, strategy, stat);
-    budget_warnings = _budgetWarnings(total_before, budget, strategy, stat, []);
+    const stat = _strategyStatus(total_before, budget, [], 0);
+    budget_usage = _budgetUsage(total_before, budget, stat);
+    budget_warnings = _budgetWarnings(total_before, budget, stat, []);
     upgrade_suggestions = [];
     alternative_options = {};
-    performance_balance = _performanceBalanceSummary(normalizedBuild, useCase, priority);
+    performance_balance = _performanceBalanceSummary(normalizedBuild, useCase);
     build = normalizedBuild;
   }
 
   for (const slot of REQUIRED_BUILD_SLOTS) {
     const comp = build[slot];
     if (comp !== null && comp !== undefined) {
-      comp.selection_rationale = _selectionRationale(slot, comp, Math.max(slot_budgets[slot] !== undefined ? slot_budgets[slot] : _componentPrice(comp), _componentPrice(comp)), useCase, slot_targets[slot] || _strategyTargetSpecs(slot, useCase, priority));
+      comp.selection_rationale = _selectionRationale(slot, comp, Math.max(slot_budgets[slot] !== undefined ? slot_budgets[slot] : _componentPrice(comp), _componentPrice(comp)), useCase, slot_targets[slot] || _strategyTargetSpecs(slot, useCase));
     }
   }
 
@@ -2022,10 +1998,10 @@ export function composeBuild(components, budget, useCase, {
   }
 
   const total = sumPrices(build);
-  const status = _strategyStatus(total, budget, strategy, upgrade_suggestions, 0);
+  const status = _strategyStatus(total, budget, upgrade_suggestions, 0);
   if (budget_usage.used_percent !== (budget ? parseFloat(((total / budget) * 100).toFixed(1)) : 0.0)) {
-    budget_usage = _budgetUsage(total, budget, strategy, status);
-    budget_warnings = _budgetWarnings(total, budget, strategy, status, upgrade_suggestions);
+    budget_usage = _budgetUsage(total, budget, status);
+    budget_warnings = _budgetWarnings(total, budget, status, upgrade_suggestions);
   }
 
   const compatibility_warnings = validateBuild({
@@ -2033,10 +2009,15 @@ export function composeBuild(components, budget, useCase, {
   });
   const issues = compatibilityMessages(compatibility_warnings);
 
+  const near_budget_upgrades = _apply_budget_optimizer
+    ? _findNearBudgetUpgradeCombos(components, build, budget, useCase, cpu_brand, gpu_vendor)
+    : [];
+
   return {
-    use_case: useCase, budget_idr: budget, total_idr: total, remaining_idr: budget - total, budget_band: budgetBandFor(budget), budget_strategy: strategy,
-    performance_priority: priority, budget_usage, budget_warnings, upgrade_suggestions, alternative_options, performance_balance,
+    use_case: useCase, budget_idr: budget, total_idr: total, remaining_idr: budget - total, budget_band: budgetBandFor(budget),
+    budget_usage, budget_warnings, upgrade_suggestions, alternative_options, performance_balance,
     components: build, optional_addons, missing_slots, unavailable_optional_addons, compatibility_warnings, compatibility_issues: issues,
+    near_budget_upgrades,
     preferences: { cpu_brand, gpu_vendor }, unmet_preferences
   };
 }

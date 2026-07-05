@@ -118,22 +118,6 @@ describe('build wizard', () => {
     expect(api.recommendAiBuild).not.toHaveBeenCalled();
   });
 
-  test('sends budget strategy and performance priority with build requests', async () => {
-    const request = deferred();
-    api.recommendBuild.mockReturnValue(request.promise);
-
-    render(<BuildWizard />);
-
-    await userEvent.type(screen.getByLabelText('Budget (IDR)'), '30000000');
-    await userEvent.selectOptions(screen.getByLabelText('Budget strategy'), 'maximize');
-    await userEvent.selectOptions(screen.getByLabelText('Use case'), 'office');
-    await userEvent.click(screen.getByRole('button', { name: 'Generate build' }));
-
-    expect(api.recommendBuild).toHaveBeenCalledWith(expect.objectContaining({
-      budgetStrategy: 'maximize',
-      performancePriority: 'best_value',
-    }));
-  });
 
   test('sends advanced allocation overrides only when the user opts in', async () => {
     api.recommendBuild.mockResolvedValue({
@@ -178,26 +162,18 @@ describe('build wizard', () => {
     }));
   });
 
-  test('automatically recalculates advanced allocation from strategy and priority presets', async () => {
+  test('automatically recalculates advanced allocation when use case changes', async () => {
     render(<BuildWizard />);
 
     await userEvent.click(screen.getByLabelText(/Use advanced allocation/i));
 
     expect(screen.getByRole('spinbutton', { name: 'CPU allocation percent' })).toHaveValue(20);
     expect(screen.getByRole('spinbutton', { name: 'GPU allocation percent' })).toHaveValue(37);
-    expect(screen.getByText('Suggested by: Gaming + Balanced spending + Best for gaming')).toBeVisible();
 
     await userEvent.selectOptions(screen.getByLabelText('Use case'), 'productivity');
 
     expect(screen.getByRole('spinbutton', { name: 'CPU allocation percent' })).toHaveValue(31);
     expect(screen.getByRole('spinbutton', { name: 'GPU allocation percent' })).toHaveValue(10);
-    expect(screen.getByText('Suggested by: Productivity + Balanced spending + Best for productivity')).toBeVisible();
-
-    await userEvent.selectOptions(screen.getByLabelText('Budget strategy'), 'maximize');
-
-    expect(screen.getByRole('spinbutton', { name: 'CPU allocation percent' })).toHaveValue(33);
-    expect(screen.getByRole('spinbutton', { name: 'GPU allocation percent' })).toHaveValue(13);
-    expect(screen.getByText('Suggested by: Productivity + Maximize budget usage + Best for productivity')).toBeVisible();
   });
 
   test('hydrates advanced allocation presets from backend metadata when available', async () => {

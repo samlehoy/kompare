@@ -5,6 +5,7 @@ Project documentation for Kompare — a cloud-deployed PC Builder for the Indone
 ## Active Docs
 
 - [AGENTS.md](AGENTS.md) - **Start here.** Universal instructions for AI coding agents (architecture, tech stack, file structure, guidelines).
+- [ARCHITECTURE.md](ARCHITECTURE.md) - **System architecture, application flows, API reference, and deployment guide.**
 - [AI_PIPELINE.md](AI_PIPELINE.md) - AI recommendation pipeline architecture, embedding strategy, and guardrails.
 - [BRIEF.md](BRIEF.md) - Product brief, scope, and milestones.
 - [PRD.md](PRD.md) - Product requirements, API contracts, and response shapes.

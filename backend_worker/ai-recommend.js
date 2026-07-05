@@ -154,6 +154,7 @@ Hard rules:
 - Choose only from provided SKUs.
 - Do not invent SKUs, prices, links, specs, stock, stores, or unavailable options.
 - Copy selected SKU values exactly as provided.
+- The total build cost MUST be as close to the budget as possible WITHOUT exceeding it. Aim for 96.7%–100% usage.
 - Return JSON only. Do not wrap the response in markdown.
 - Do not add fields outside the required response schema.
 
@@ -773,16 +774,12 @@ export async function handleAiRecommend(request, env) {
 
   const cpu_brand = reqData.cpu_brand || null;
   const gpu_vendor = reqData.gpu_vendor || null;
-  const budget_strategy = reqData.budget_strategy || "balanced";
-  const performance_priority = reqData.performance_priority || null;
   
   const deterministicKwargs = {
     cpu_brand,
     gpu_vendor,
     include_optional_addons: !!reqData.include_optional_addons,
     optional_addon_slots: reqData.selected_optional_addons || null,
-    budget_strategy,
-    performance_priority,
     allocation_overrides: reqData.allocation_overrides || null
   };
 
@@ -801,12 +798,8 @@ export async function handleAiRecommend(request, env) {
     );
   }
 
-  const normalizedBudgetStrategy = budget_strategy;
-  const normalizedPerformancePriority = performance_priority || (useCase === "gaming" ? "gaming" : "balanced");
-
   const queryTexts = AI_REQUIRED_SLOTS.map(slot => {
-    const text = `${useCase} PC build with budget ${budgetIdr} IDR. Find a balanced ${slot} candidate with compatibility, upgrade flexibility, and good value for the overall build.`;
-    return `${text} Budget strategy: ${normalizedBudgetStrategy}. Performance priority: ${normalizedPerformancePriority}.`;
+    return `${useCase} PC build with budget ${budgetIdr} IDR. Find a balanced ${slot} candidate with compatibility, upgrade flexibility, and good value for the overall build.`;
   });
 
   let vectors;
@@ -1048,6 +1041,7 @@ export async function handleAiRecommend(request, env) {
       fallback: false,
       model_used: modelUsed,
       is_local_model: isLocalModel,
+      near_budget_upgrades: finalBuild.near_budget_upgrades || [],
       retrieval: _buildMetadata(
         profileName,
         current_hash,
