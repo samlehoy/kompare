@@ -122,7 +122,7 @@ function Stop-ProcessTree {
 
     $taskkill = Get-Command taskkill.exe -ErrorAction SilentlyContinue
     if ($taskkill) {
-        & taskkill.exe /PID $ProcessId /T /F 2>$null | Out-Null
+        try { & taskkill.exe /PID $ProcessId /T /F 2>&1 | Out-Null } catch {}
         return
     }
 
