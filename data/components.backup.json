@@ -4544,7 +4544,7 @@
     "source_category": "Processor",
     "subcategory": "AMD Socket AM4",
     "price_idr": 619000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/353b918ab87144b1b29c7779e00c02ae~tplv-aphluv4xwc-origin-jpeg.jpeg?dr=15568&from=520841845&idc=my2&ps=933b5bde&shcp=2c1af732&shp=1f0b6a75&t=555f072d",
     "image_path": "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/353b918ab87144b1b29c7779e00c02ae~tplv-aphluv4xwc-origin-jpeg.jpeg?dr=15568&from=520841845&idc=my2&ps=933b5bde&shcp=2c1af732&shp=1f0b6a75&t=555f072d",
@@ -4575,10 +4575,7 @@
       "has_igpu": true,
       "ram_type": "DDR4"
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "194554",
@@ -4590,7 +4587,7 @@
     "source_category": "Processor",
     "subcategory": "AMD Socket AM4",
     "price_idr": 560000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/661f71aeab444b00be99c2e3e0267dac~tplv-aphluv4xwc-origin-jpeg.jpeg?dr=15568&from=520841845&idc=my2&ps=933b5bde&shcp=2c1af732&shp=1f0b6a75&t=555f072d",
     "image_path": "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/661f71aeab444b00be99c2e3e0267dac~tplv-aphluv4xwc-origin-jpeg.jpeg?dr=15568&from=520841845&idc=my2&ps=933b5bde&shcp=2c1af732&shp=1f0b6a75&t=555f072d",
@@ -4621,10 +4618,7 @@
       "has_igpu": true,
       "ram_type": "DDR4"
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "171594",
@@ -5128,7 +5122,7 @@
     "source_category": "Processor",
     "subcategory": "Intel Core i3 Socket LGA 1700",
     "price_idr": 1360000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://images.tokopedia.net/img/cache/900/VqbcmM/2022/12/7/9eddd286-4942-4bb9-8508-733dbed68078.jpg",
     "image_path": "https://images.tokopedia.net/img/cache/900/VqbcmM/2022/12/7/9eddd286-4942-4bb9-8508-733dbed68078.jpg",
@@ -5159,10 +5153,7 @@
       "has_igpu": false,
       "ram_type": "DDR5"
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "197207",
@@ -5174,7 +5165,7 @@
     "source_category": "Processor",
     "subcategory": "Intel Core i3 Socket LGA 1700",
     "price_idr": 830000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/cc6f0d93c9d2426a9d57929d1a0d3b8c~tplv-aphluv4xwc-origin-jpeg.jpeg?dr=15568&from=520841845&idc=my2&ps=933b5bde&shcp=2c1af732&shp=1f0b6a75&t=555f072d",
     "image_path": "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/cc6f0d93c9d2426a9d57929d1a0d3b8c~tplv-aphluv4xwc-origin-jpeg.jpeg?dr=15568&from=520841845&idc=my2&ps=933b5bde&shcp=2c1af732&shp=1f0b6a75&t=555f072d",
@@ -5205,10 +5196,7 @@
       "has_igpu": false,
       "ram_type": "DDR5"
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "188693",
@@ -8930,7 +8918,7 @@
     "source_category": "Processor",
     "subcategory": "Intel Pentium Socket LGA 1700",
     "price_idr": 1160000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": null,
     "image_path": null,
@@ -8953,10 +8941,7 @@
       "has_igpu": true,
       "ram_type": "DDR5"
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "192829",
@@ -9382,7 +9367,7 @@
     "source_category": "Processor",
     "subcategory": "Intel Core i3  Socket LGA 1151V2",
     "price_idr": 350000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://ecs7.tokopedia.net/img/cache/700/VqbcmM/2021/9/25/21e69430-009d-40e8-a586-816253767ed1.jpg",
     "image_path": "https://ecs7.tokopedia.net/img/cache/700/VqbcmM/2021/9/25/21e69430-009d-40e8-a586-816253767ed1.jpg",
@@ -9413,10 +9398,7 @@
       "has_igpu": true,
       "ram_type": "DDR4"
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "168445",
@@ -9732,7 +9714,7 @@
     "source_category": "Processor",
     "subcategory": "Intel Core i3  Socket LGA 1151",
     "price_idr": 185000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://ecs7.tokopedia.net/img/cache/700/VqbcmM/2021/10/28/5169c21f-8eaa-44cd-a593-e72e0e3209e9.jpg",
     "image_path": "https://ecs7.tokopedia.net/img/cache/700/VqbcmM/2021/10/28/5169c21f-8eaa-44cd-a593-e72e0e3209e9.jpg",
@@ -9763,10 +9745,7 @@
       "has_igpu": true,
       "ram_type": "DDR4"
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "182239",
@@ -9821,7 +9800,7 @@
     "source_category": "Processor",
     "subcategory": "Intel Core i3  Socket LGA 1151",
     "price_idr": 150000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://ecs7.tokopedia.net/img/cache/700/VqbcmM/2021/10/28/04c5ae2b-2840-4501-b0a3-716fa0ddd50c.jpg",
     "image_path": "https://ecs7.tokopedia.net/img/cache/700/VqbcmM/2021/10/28/04c5ae2b-2840-4501-b0a3-716fa0ddd50c.jpg",
@@ -9852,10 +9831,7 @@
       "has_igpu": true,
       "ram_type": "DDR4"
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "152840",
@@ -9867,7 +9843,7 @@
     "source_category": "Processor",
     "subcategory": "Intel Pentium Socket LGA 1151",
     "price_idr": 160000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://ecs7.tokopedia.net/img/cache/700/product-1/2019/10/22/9651507/9651507_8224d33e-9afd-449f-ab36-a3611dd109d6_800_800",
     "image_path": "https://ecs7.tokopedia.net/img/cache/700/product-1/2019/10/22/9651507/9651507_8224d33e-9afd-449f-ab36-a3611dd109d6_800_800",
@@ -9898,10 +9874,7 @@
       "has_igpu": true,
       "ram_type": "DDR4"
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "24223",
@@ -10354,7 +10327,7 @@
     "source_category": "Processor",
     "subcategory": "Intel Pentium Socket LGA 1150",
     "price_idr": 70000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://ecs7.tokopedia.net/img/cache/700/VqbcmM/2021/12/6/9f09537b-50a1-40da-a063-8f17d8aa7363.jpg",
     "image_path": "https://ecs7.tokopedia.net/img/cache/700/VqbcmM/2021/12/6/9f09537b-50a1-40da-a063-8f17d8aa7363.jpg",
@@ -10385,10 +10358,7 @@
       "has_igpu": true,
       "ram_type": "DDR3"
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "157837",
@@ -10400,7 +10370,7 @@
     "source_category": "Processor",
     "subcategory": "Intel Pentium Socket LGA 1150",
     "price_idr": 70000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://ecs7.tokopedia.net/img/cache/700/product-1/2020/8/1/9651507/9651507_5dd3c644-a779-4a68-988c-a4f9ecde0d15_700_700",
     "image_path": "https://ecs7.tokopedia.net/img/cache/700/product-1/2020/8/1/9651507/9651507_5dd3c644-a779-4a68-988c-a4f9ecde0d15_700_700",
@@ -10423,10 +10393,7 @@
       "has_igpu": true,
       "ram_type": "DDR3"
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "24206",
@@ -10438,7 +10405,7 @@
     "source_category": "Processor",
     "subcategory": "Intel Pentium Socket LGA 1150",
     "price_idr": 55000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://ecs7.tokopedia.net/img/cache/700/product-1/2020/8/1/9651507/9651507_4d1dc515-5d3f-4835-8b69-ffc9cd5ea5db_700_700",
     "image_path": "https://ecs7.tokopedia.net/img/cache/700/product-1/2020/8/1/9651507/9651507_4d1dc515-5d3f-4835-8b69-ffc9cd5ea5db_700_700",
@@ -10461,10 +10428,7 @@
       "has_igpu": true,
       "ram_type": "DDR3"
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "196033",
@@ -26112,7 +26076,7 @@
     "source_category": "VGA",
     "subcategory": "radeon",
     "price_idr": 1920000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://images.tokopedia.net/img/cache/900/VqbcmM/2025/1/10/ebda94cd-5876-4f88-bce3-f841fdff02b1.jpg",
     "image_path": "https://images.tokopedia.net/img/cache/900/VqbcmM/2025/1/10/ebda94cd-5876-4f88-bce3-f841fdff02b1.jpg",
@@ -26140,10 +26104,7 @@
       "vram_gb": 8,
       "recommended_psu_w": 550
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "199047",
@@ -26195,7 +26156,7 @@
     "source_category": "VGA",
     "subcategory": "radeon",
     "price_idr": 1650000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://images.tokopedia.net/img/cache/900/VqbcmM/2023/4/14/d374cd8e-091b-4832-9dda-dce9c5e9176c.jpg",
     "image_path": "https://images.tokopedia.net/img/cache/900/VqbcmM/2023/4/14/d374cd8e-091b-4832-9dda-dce9c5e9176c.jpg",
@@ -26223,10 +26184,7 @@
       "vram_gb": 8,
       "recommended_psu_w": 550
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "200882",
@@ -26238,7 +26196,7 @@
     "source_category": "VGA",
     "subcategory": "radeon",
     "price_idr": 3550000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://down-id.img.susercontent.com/file/id-11134207-822wp-mmk7fkc46s5f12.webp",
     "image_path": "https://down-id.img.susercontent.com/file/id-11134207-822wp-mmk7fkc46s5f12.webp",
@@ -26258,10 +26216,7 @@
       "vram_gb": 12,
       "recommended_psu_w": 650
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "200883",
@@ -26497,7 +26452,7 @@
     "source_category": "VGA",
     "subcategory": "radeon",
     "price_idr": 27335000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": null,
     "image_path": null,
@@ -26517,10 +26472,7 @@
       "vram_gb": 32,
       "recommended_psu_w": 500
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "200126",
@@ -37943,7 +37895,7 @@
     "source_category": "VGA",
     "subcategory": "radeon",
     "price_idr": 2050000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://images.tokopedia.net/img/cache/900/VqbcmM/2024/7/4/c440522c-4148-4457-9620-531642e87f1d.jpg",
     "image_path": "https://images.tokopedia.net/img/cache/900/VqbcmM/2024/7/4/c440522c-4148-4457-9620-531642e87f1d.jpg",
@@ -37971,10 +37923,7 @@
       "vram_gb": 8,
       "recommended_psu_w": 550
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "190104",
@@ -40026,7 +39975,7 @@
     "source_category": "VGA",
     "subcategory": "nvidia",
     "price_idr": 610000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://ecs7.tokopedia.net/img/cache/700/product-1/2020/10/28/9651507/9651507_4c1e0c2e-417c-406f-89c5-cb2dc4ddc2de_700_700",
     "image_path": "https://ecs7.tokopedia.net/img/cache/700/product-1/2020/10/28/9651507/9651507_4c1e0c2e-417c-406f-89c5-cb2dc4ddc2de_700_700",
@@ -40054,10 +40003,7 @@
       "vram_gb": 4,
       "recommended_psu_w": 500
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "184587",
@@ -40221,7 +40167,7 @@
     "source_category": "VGA",
     "subcategory": "radeon",
     "price_idr": 2000000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://images.tokopedia.net/img/cache/900/VqbcmM/2023/10/23/2366342e-2350-4c82-94e2-5e1940c9c272.jpg",
     "image_path": "https://images.tokopedia.net/img/cache/900/VqbcmM/2023/10/23/2366342e-2350-4c82-94e2-5e1940c9c272.jpg",
@@ -40249,10 +40195,7 @@
       "vram_gb": 8,
       "recommended_psu_w": 550
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "198896",
@@ -40264,7 +40207,7 @@
     "source_category": "VGA",
     "subcategory": "radeon",
     "price_idr": 2055000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": null,
     "image_path": null,
@@ -40292,10 +40235,7 @@
       "vram_gb": 8,
       "recommended_psu_w": 550
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "188682",
@@ -42475,7 +42415,7 @@
     "source_category": "SSD",
     "subcategory": "Internal SSD (SOLID STATE DISK)",
     "price_idr": 905000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://images.tokopedia.net/img/cache/900/VqbcmM/2022/12/19/7c60b41c-4ba2-4b3a-a82e-047dbba4488e.jpg",
     "image_path": "https://images.tokopedia.net/img/cache/900/VqbcmM/2022/12/19/7c60b41c-4ba2-4b3a-a82e-047dbba4488e.jpg",
@@ -42503,10 +42443,7 @@
       "interface": "SATA",
       "external": false
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "183504",
@@ -44514,7 +44451,7 @@
     "source_category": "SSD",
     "subcategory": "Internal SSD (SOLID STATE DISK)",
     "price_idr": 1850000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": null,
     "image_path": null,
@@ -44534,10 +44471,7 @@
       "interface": "NVMe",
       "external": false
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "177404",
@@ -44549,7 +44483,7 @@
     "source_category": "SSD",
     "subcategory": "Internal SSD (SOLID STATE DISK)",
     "price_idr": 729000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": null,
     "image_path": null,
@@ -44569,10 +44503,7 @@
       "interface": "NVMe",
       "external": false
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "177400",
@@ -46407,7 +46338,7 @@
     "source_category": "SSD",
     "subcategory": "Internal SSD (SOLID STATE DISK)",
     "price_idr": 2750000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://images.tokopedia.net/img/cache/900/VqbcmM/2024/2/20/b7b5c463-9a03-4ad7-9863-547a46a0e0d2.jpg",
     "image_path": "https://images.tokopedia.net/img/cache/900/VqbcmM/2024/2/20/b7b5c463-9a03-4ad7-9863-547a46a0e0d2.jpg",
@@ -46435,10 +46366,7 @@
       "interface": "SATA",
       "external": false
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "201435",
@@ -46930,7 +46858,7 @@
     "source_category": "SSD",
     "subcategory": "Internal SSD (SOLID STATE DISK)",
     "price_idr": 1970000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": null,
     "image_path": null,
@@ -46950,10 +46878,7 @@
       "interface": "NVMe",
       "external": false
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "166298",
@@ -47317,7 +47242,7 @@
     "source_category": "SSD",
     "subcategory": "Internal SSD (SOLID STATE DISK)",
     "price_idr": 930000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://images.tokopedia.net/img/cache/900/VqbcmM/2023/8/21/a439aa19-4896-4030-af42-a7b9feaf09ca.jpg",
     "image_path": "https://images.tokopedia.net/img/cache/900/VqbcmM/2023/8/21/a439aa19-4896-4030-af42-a7b9feaf09ca.jpg",
@@ -47345,10 +47270,7 @@
       "interface": "SATA",
       "external": false
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "170144",
@@ -54228,7 +54150,7 @@
     "source_category": "SSD",
     "subcategory": "Internal SSD (SOLID STATE DISK)",
     "price_idr": 9250000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": null,
     "image_path": null,
@@ -54248,10 +54170,7 @@
       "interface": "SATA",
       "external": false
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "193504",
@@ -54343,7 +54262,7 @@
     "source_category": "SSD",
     "subcategory": "Internal SSD (SOLID STATE DISK)",
     "price_idr": 1100000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": null,
     "image_path": null,
@@ -54363,10 +54282,7 @@
       "interface": "SATA",
       "external": false
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "195178",
@@ -56992,7 +56908,7 @@
     "source_category": "PSU",
     "subcategory": null,
     "price_idr": 180000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://images.tokopedia.net/img/cache/900/VqbcmM/2023/1/30/2129c49d-43ce-43d3-906c-cdb19b57e4f0.jpg",
     "image_path": "https://images.tokopedia.net/img/cache/900/VqbcmM/2023/1/30/2129c49d-43ce-43d3-906c-cdb19b57e4f0.jpg",
@@ -57018,10 +56934,7 @@
     "specs": {
       "wattage_w": 450
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "199229",
@@ -57033,7 +56946,7 @@
     "source_category": "PSU",
     "subcategory": null,
     "price_idr": 100000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": null,
     "image_path": null,
@@ -57051,10 +56964,7 @@
     "specs": {
       "wattage_w": 500
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "184180",
@@ -61745,7 +61655,7 @@
     "source_category": "PSU",
     "subcategory": null,
     "price_idr": 500000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://images.tokopedia.net/img/cache/900/VqbcmM/2022/12/26/7d2ed09b-9cab-4a68-9406-8ce77329a2c2.jpg",
     "image_path": "https://images.tokopedia.net/img/cache/900/VqbcmM/2022/12/26/7d2ed09b-9cab-4a68-9406-8ce77329a2c2.jpg",
@@ -61771,10 +61681,7 @@
     "specs": {
       "wattage_w": 850
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "171605",
@@ -64641,7 +64548,7 @@
     "source_category": "PSU",
     "subcategory": null,
     "price_idr": 155000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": null,
     "image_path": null,
@@ -64668,10 +64575,7 @@
       "wattage_w": 400,
       "modular": "none"
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "193423",
@@ -74315,7 +74219,7 @@
     "source_category": "PSU",
     "subcategory": null,
     "price_idr": 5320000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": null,
     "image_path": null,
@@ -74335,10 +74239,7 @@
       "rating": "Platinum",
       "modular": "full"
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "194135",
@@ -75527,7 +75428,7 @@
     "source_category": "PSU",
     "subcategory": null,
     "price_idr": 138000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": null,
     "image_path": null,
@@ -75545,10 +75446,7 @@
     "specs": {
       "wattage_w": 480
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "124358",
@@ -75560,7 +75458,7 @@
     "source_category": "PSU",
     "subcategory": null,
     "price_idr": 145000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://ecs7.tokopedia.net/img/cache/700/VqbcmM/2021/11/3/93852afd-f008-4f04-94bf-b4921976a52b.jpg",
     "image_path": "https://ecs7.tokopedia.net/img/cache/700/VqbcmM/2021/11/3/93852afd-f008-4f04-94bf-b4921976a52b.jpg",
@@ -75586,10 +75484,7 @@
     "specs": {
       "wattage_w": 500
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "124359",
@@ -75631,7 +75526,7 @@
     "source_category": "PSU",
     "subcategory": null,
     "price_idr": 155000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://images.tokopedia.net/img/cache/900/VqbcmM/2024/1/9/9f60153d-ecf4-44e5-8074-e8c8cf6b7860.jpg",
     "image_path": "https://images.tokopedia.net/img/cache/900/VqbcmM/2024/1/9/9f60153d-ecf4-44e5-8074-e8c8cf6b7860.jpg",
@@ -75657,10 +75552,7 @@
     "specs": {
       "wattage_w": 600
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "159784",
@@ -75931,7 +75823,7 @@
     "source_category": "PSU",
     "subcategory": null,
     "price_idr": 105000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://images.tokopedia.net/img/cache/900/VqbcmM/2022/11/16/c32ec042-2557-4291-90c2-3451fe7fbac0.jpg",
     "image_path": "https://images.tokopedia.net/img/cache/900/VqbcmM/2022/11/16/c32ec042-2557-4291-90c2-3451fe7fbac0.jpg",
@@ -75957,10 +75849,7 @@
     "specs": {
       "wattage_w": 450
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "201413",
@@ -82487,7 +82376,7 @@
     "source_category": "RAM",
     "subcategory": "PC - Desktop",
     "price_idr": 3030000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://images.tokopedia.net/img/cache/900/VqbcmM/2023/5/23/f800111f-aef7-4ab6-a46e-87128c9626bd.jpg",
     "image_path": "https://images.tokopedia.net/img/cache/900/VqbcmM/2023/5/23/f800111f-aef7-4ab6-a46e-87128c9626bd.jpg",
@@ -82519,10 +82408,7 @@
     },
     "source": "enterkomputer",
     "reference_price_idr": 5595000,
-    "price_floor_idr": 2517750,
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "price_floor_idr": 2517750
   },
   {
     "sku": "199098",
@@ -86370,7 +86256,7 @@
     "source_category": "RAM",
     "subcategory": "PC - Desktop",
     "price_idr": 5105000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://ecs7.tokopedia.net/img/cache/700/VqbcmM/2021/4/26/cb40eada-d63f-4076-a98f-25dd380afb88.png",
     "image_path": "https://ecs7.tokopedia.net/img/cache/700/VqbcmM/2021/4/26/cb40eada-d63f-4076-a98f-25dd380afb88.png",
@@ -86402,10 +86288,7 @@
     },
     "source": "enterkomputer",
     "reference_price_idr": 9215000,
-    "price_floor_idr": 4146750,
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "price_floor_idr": 4146750
   },
   {
     "sku": "196166",
@@ -87673,7 +87556,7 @@
     "source_category": "RAM",
     "subcategory": "PC - Desktop",
     "price_idr": 8090000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": null,
     "image_path": null,
@@ -87697,10 +87580,7 @@
     },
     "source": "enterkomputer",
     "reference_price_idr": 10440000,
-    "price_floor_idr": 4698000,
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "price_floor_idr": 4698000
   },
   {
     "sku": "198831",
@@ -88100,7 +87980,7 @@
     "source_category": "RAM",
     "subcategory": "PC - Desktop",
     "price_idr": 12315000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/feda81e91a2541fe9f48058e95322b13~tplv-aphluv4xwc-origin-jpeg.jpeg?dr=15568&from=520841845&idc=my2&ps=933b5bde&shcp=2c1af732&shp=1f0b6a75&t=555f072d",
     "image_path": "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/feda81e91a2541fe9f48058e95322b13~tplv-aphluv4xwc-origin-jpeg.jpeg?dr=15568&from=520841845&idc=my2&ps=933b5bde&shcp=2c1af732&shp=1f0b6a75&t=555f072d",
@@ -88132,10 +88012,7 @@
     },
     "source": "enterkomputer",
     "reference_price_idr": 22820000,
-    "price_floor_idr": 10269000,
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "price_floor_idr": 10269000
   },
   {
     "sku": "198833",
@@ -88235,7 +88112,7 @@
     "source_category": "RAM",
     "subcategory": "PC - Desktop",
     "price_idr": 9920000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/da6d25310c824c32abb54c7d9893379c~tplv-aphluv4xwc-origin-jpeg.jpeg?dr=15568&from=520841845&idc=my2&ps=933b5bde&shcp=2c1af732&shp=1f0b6a75&t=555f072d",
     "image_path": "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/da6d25310c824c32abb54c7d9893379c~tplv-aphluv4xwc-origin-jpeg.jpeg?dr=15568&from=520841845&idc=my2&ps=933b5bde&shcp=2c1af732&shp=1f0b6a75&t=555f072d",
@@ -88502,7 +88379,7 @@
     "source_category": "RAM",
     "subcategory": "PC - Desktop",
     "price_idr": 2250000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": null,
     "image_path": null,
@@ -89197,7 +89074,7 @@
     "source_category": "RAM",
     "subcategory": "PC - Desktop",
     "price_idr": 1555000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": null,
     "image_path": null,
@@ -90174,7 +90051,7 @@
     "source_category": "RAM",
     "subcategory": "PC - Desktop",
     "price_idr": 1050000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": null,
     "image_path": null,
@@ -90206,10 +90083,7 @@
     },
     "source": "enterkomputer",
     "reference_price_idr": 1840000,
-    "price_floor_idr": 828000,
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "price_floor_idr": 828000
   },
   {
     "sku": "198154",
@@ -90221,7 +90095,7 @@
     "source_category": "RAM",
     "subcategory": "PC - Desktop",
     "price_idr": 1050000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": null,
     "image_path": null,
@@ -90245,10 +90119,7 @@
     },
     "source": "enterkomputer",
     "reference_price_idr": 1840000,
-    "price_floor_idr": 828000,
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "price_floor_idr": 828000
   },
   {
     "sku": "196597",
@@ -90340,7 +90211,7 @@
     "source_category": "RAM",
     "subcategory": "PC - Desktop",
     "price_idr": 8110000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://images.tokopedia.net/img/cache/900/VqbcmM/2024/9/3/49bdc1cd-36fb-4b57-a4f9-50570bbb6929.jpg",
     "image_path": "https://images.tokopedia.net/img/cache/900/VqbcmM/2024/9/3/49bdc1cd-36fb-4b57-a4f9-50570bbb6929.jpg",
@@ -90372,10 +90243,7 @@
     },
     "source": "enterkomputer",
     "reference_price_idr": 10440000,
-    "price_floor_idr": 4698000,
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "price_floor_idr": 4698000
   },
   {
     "sku": "185304",
@@ -90387,7 +90255,7 @@
     "source_category": "RAM",
     "subcategory": "PC - Desktop",
     "price_idr": 5630000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://images.tokopedia.net/img/cache/900/VqbcmM/2024/9/3/e6c5e217-1749-4f74-b321-5cecd96ae7b2.jpg",
     "image_path": "https://images.tokopedia.net/img/cache/900/VqbcmM/2024/9/3/e6c5e217-1749-4f74-b321-5cecd96ae7b2.jpg",
@@ -90434,7 +90302,7 @@
     "source_category": "RAM",
     "subcategory": "PC - Desktop",
     "price_idr": 2970000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://images.tokopedia.net/img/cache/900/VqbcmM/2024/9/3/0c2ddece-151a-4c59-88dd-e22ba0719107.jpg",
     "image_path": "https://images.tokopedia.net/img/cache/900/VqbcmM/2024/9/3/0c2ddece-151a-4c59-88dd-e22ba0719107.jpg",
@@ -90481,7 +90349,7 @@
     "source_category": "RAM",
     "subcategory": "PC - Desktop",
     "price_idr": 9350000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://images.tokopedia.net/img/cache/900/VqbcmM/2024/9/3/58e254f6-1b1b-4d06-b183-74b69dbcabda.jpg",
     "image_path": "https://images.tokopedia.net/img/cache/900/VqbcmM/2024/9/3/58e254f6-1b1b-4d06-b183-74b69dbcabda.jpg",
@@ -90513,10 +90381,7 @@
     },
     "source": "enterkomputer",
     "reference_price_idr": 10440000,
-    "price_floor_idr": 4698000,
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "price_floor_idr": 4698000
   },
   {
     "sku": "195263",
@@ -90528,7 +90393,7 @@
     "source_category": "RAM",
     "subcategory": "PC - Desktop",
     "price_idr": 1430000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": null,
     "image_path": null,
@@ -90611,7 +90476,7 @@
     "source_category": "RAM",
     "subcategory": "PC - Desktop",
     "price_idr": 3230000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://images.tokopedia.net/img/cache/900/VqbcmM/2024/9/3/b3d66811-d2cf-4760-a930-d885ce2bb8bc.jpg",
     "image_path": "https://images.tokopedia.net/img/cache/900/VqbcmM/2024/9/3/b3d66811-d2cf-4760-a930-d885ce2bb8bc.jpg",
@@ -90658,7 +90523,7 @@
     "source_category": "RAM",
     "subcategory": "PC - Desktop",
     "price_idr": 4120000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": null,
     "image_path": null,
@@ -90697,7 +90562,7 @@
     "source_category": "RAM",
     "subcategory": "PC - Desktop",
     "price_idr": 910000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": null,
     "image_path": null,
@@ -90721,10 +90586,7 @@
     },
     "source": "enterkomputer",
     "reference_price_idr": 1840000,
-    "price_floor_idr": 828000,
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "price_floor_idr": 828000
   },
   {
     "sku": "186098",
@@ -90736,7 +90598,7 @@
     "source_category": "RAM",
     "subcategory": "PC - Desktop",
     "price_idr": 1620000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://images.tokopedia.net/img/cache/900/VqbcmM/2023/10/5/368236b3-1618-4a4c-8e19-ea1eae9356fe.jpg",
     "image_path": "https://images.tokopedia.net/img/cache/900/VqbcmM/2023/10/5/368236b3-1618-4a4c-8e19-ea1eae9356fe.jpg",
@@ -98415,7 +98277,7 @@
     "source_category": "Motherboard",
     "subcategory": "Motherboard Intel LGA 1851",
     "price_idr": 1350000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/e8da5747400a4d9689a8ae15321bd5a3~tplv-aphluv4xwc-origin-jpeg.jpeg?dr=15568&from=520841845&idc=my3&ps=933b5bde&shcp=2c1af732&shp=1f0b6a75&t=555f072d",
     "image_path": "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/e8da5747400a4d9689a8ae15321bd5a3~tplv-aphluv4xwc-origin-jpeg.jpeg?dr=15568&from=520841845&idc=my3&ps=933b5bde&shcp=2c1af732&shp=1f0b6a75&t=555f072d",
@@ -98435,10 +98297,7 @@
       "form_factor": "ATX",
       "ram_type": "DDR5"
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "186174",
@@ -116678,7 +116537,7 @@
     "source_category": "Motherboard",
     "subcategory": "Motherboard AMD AM5",
     "price_idr": 1090000,
-    "stock_status": "price_outlier",
+    "stock_status": "in_stock",
     "description": null,
     "image_url": null,
     "image_path": null,
@@ -116698,10 +116557,7 @@
       "form_factor": "ATX",
       "ram_type": "DDR5"
     },
-    "source": "enterkomputer",
-    "quality_flags": [
-      "price_outlier_low"
-    ]
+    "source": "enterkomputer"
   },
   {
     "sku": "190701",
@@ -121802,7 +121658,7 @@
     "primary_url": "https://enterkomputer.com/detail/188908/LG-24-24GS60F-B-UltraGear-FHD-IPS-180Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:43:02.933686+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -121884,7 +121740,7 @@
     "primary_url": "https://enterkomputer.com/detail/189618/CUBE-GAMING-CHAMBER-NS27FI-27-FHD-IPS-Frameless-Design-240Hz-Gaming-Monitor-RGB-Light-with-G-SYNC",
     "scraped_at": "2026-05-10T19:43:09.816050+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -121925,7 +121781,7 @@
     "primary_url": "https://enterkomputer.com/detail/188547/Samsung-32-S32CG552-Odyssey-G5-QHD-165Hz-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:43:13.230962+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 165,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -122007,7 +121863,7 @@
     "primary_url": "https://enterkomputer.com/detail/189619/CUBE-GAMING-CHAMBER-NS27QI-27-QHD-IPS-Frameless-Design-240Hz-Gaming-Monitor-RGB-Light-with-G-SYNC",
     "scraped_at": "2026-05-10T19:43:20.069513+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -122048,7 +121904,7 @@
     "primary_url": "https://enterkomputer.com/detail/190877/Samsung-S24DG302-24-Odyssey-G3-FHD-Gaming-Monitor-180Hz",
     "scraped_at": "2026-05-10T19:43:23.498803+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -122089,7 +121945,7 @@
     "primary_url": "https://enterkomputer.com/detail/188546/Samsung-27-S27CG552-Odyssey-G5-QHD-165Hz-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:43:26.915721+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 165,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -122130,7 +121986,7 @@
     "primary_url": "https://enterkomputer.com/detail/190878/Samsung-S27DG302-27-Odyssey-G3-FHD-Gaming-Monitor-180Hz",
     "scraped_at": "2026-05-10T19:43:30.341374+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -122252,7 +122108,7 @@
     "primary_url": "https://enterkomputer.com/detail/179650/CUBE-GAMING-2145-CG22B0W-FHD-Frameless-Design-75Hz-Response-Time-5ms",
     "scraped_at": "2026-05-10T19:43:40.594448+00:00",
     "specs": {
-      "size_inch": 21,
+      "size_inch": 21.0,
       "refresh_hz": 75,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -122367,7 +122223,7 @@
     "primary_url": "https://enterkomputer.com/detail/193463/CUBE-GAMING-RETINA-PRO-F27V10H-27-FHD-IPS-Frameless-100Hz-Gaming-Monitor-Response-Time-5ms",
     "scraped_at": "2026-05-10T19:43:50.892704+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -122408,7 +122264,7 @@
     "primary_url": "https://enterkomputer.com/detail/193465/CUBE-GAMING-IRIS-27GFI200-27-FHD-IPS-Frameless-200Hz-Gaming-Monitor-with-AMD-FreeSync-G-SYNC-HDMI-DP-Response-Time-1ms",
     "scraped_at": "2026-05-10T19:43:54.311556+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 200,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -122449,7 +122305,7 @@
     "primary_url": "https://enterkomputer.com/detail/193466/CUBE-GAMING-IRIS-27GQI180-27-QHD-2K-IPS-Frameless-180Hz-Gaming-Monitor-with-G-SYNC-AMD-FreeSync",
     "scraped_at": "2026-05-10T19:43:57.739170+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -122490,7 +122346,7 @@
     "primary_url": "https://enterkomputer.com/detail/189620/CUBE-GAMING-CHAMBER-NP29QI-29-QHD-IPS-Frameless-Design-200Hz-Gaming-Monitor-with-G-SYNC",
     "scraped_at": "2026-05-10T19:44:01.156289+00:00",
     "specs": {
-      "size_inch": 29,
+      "size_inch": 29.0,
       "refresh_hz": 200,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -122531,7 +122387,7 @@
     "primary_url": "https://enterkomputer.com/detail/189621/CUBE-GAMING-IRIS-PP32QI-32-QHD-IPS-Frameless-Design-180Hz-Gaming-Monitor-RGB-Light-with-G-SYNC",
     "scraped_at": "2026-05-10T19:44:04.563152+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -122572,7 +122428,7 @@
     "primary_url": "https://enterkomputer.com/detail/189622/CUBE-GAMING-IRIS-PS34WQV-34-WQHD-Frameless-Design-144Hz-Curved-Gaming-Monitor-with-G-SYNC",
     "scraped_at": "2026-05-10T19:44:07.965989+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -122613,7 +122469,7 @@
     "primary_url": "https://enterkomputer.com/detail/180163/GALAX-PRISMA-02-27-FHD-Borderless-Design-75Hz-with-G-SYNC-USB-C-Supported",
     "scraped_at": "2026-05-10T19:44:11.419154+00:00",
     "specs": {
-      "size_inch": 2,
+      "size_inch": 2.0,
       "refresh_hz": 75,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -122654,7 +122510,7 @@
     "primary_url": "https://enterkomputer.com/detail/180161/GALAX-VIVANCE-02-24-FHD-IPS-Gaming-Monitor-165Hz-with-G-SYNC-Response-Time-1ms",
     "scraped_at": "2026-05-10T19:44:14.817388+00:00",
     "specs": {
-      "size_inch": 2,
+      "size_inch": 2.0,
       "refresh_hz": 165,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -122695,7 +122551,7 @@
     "primary_url": "https://enterkomputer.com/detail/177399/GALAX-VIVANCE-01-27-QHD-IPS-Gaming-Monitor-165Hz-with-G-SYNC-Response-Time-1ms",
     "scraped_at": "2026-05-10T19:44:18.232402+00:00",
     "specs": {
-      "size_inch": 1,
+      "size_inch": 1.0,
       "refresh_hz": 165,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -122835,7 +122691,7 @@
     "primary_url": "https://enterkomputer.com/detail/185872/Acer-EK221Q-H-22-Inch-FHD-100Hz-Monitor",
     "scraped_at": "2026-05-10T19:44:31.942985+00:00",
     "specs": {
-      "size_inch": 22,
+      "size_inch": 22.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -123451,7 +123307,7 @@
     "primary_url": "https://enterkomputer.com/detail/193763/Acer-EK271G-27-FHD-IPS-120Hz-Monitor",
     "scraped_at": "2026-05-10T19:45:30.404990+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -123484,7 +123340,7 @@
     "primary_url": "https://enterkomputer.com/detail/197295/Acer-SA273-P1-27-FHD-IPS-144Hz-Monitor",
     "scraped_at": "2026-05-10T19:45:33.817765+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -123525,7 +123381,7 @@
     "primary_url": "https://enterkomputer.com/detail/184517/Acer-27-Nitro-ED270U-P2-WQHD-170Hz-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:45:37.231646+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 170,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -123558,7 +123414,7 @@
     "primary_url": "https://enterkomputer.com/detail/197293/Acer-Nitro-ED273U-P2-27-QHD-180Hz-HDR10-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:45:40.656478+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -123591,7 +123447,7 @@
     "primary_url": "https://enterkomputer.com/detail/184520/Acer-27-Nitro-VG270-M3-FHD-IPS-180Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:45:44.068004+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -123624,7 +123480,7 @@
     "primary_url": "https://enterkomputer.com/detail/197294/Acer-Nitro-VG270-X1-27-FHD-IPS-200Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:45:47.501078+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 200,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -123657,7 +123513,7 @@
     "primary_url": "https://enterkomputer.com/detail/184522/Acer-27-Nitro-VG271U-M3-WQHD-IPS-180Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:45:50.922728+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -123690,7 +123546,7 @@
     "primary_url": "https://enterkomputer.com/detail/184524/Acer-27-Nitro-VG272U-W2-WQHD-240Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:45:54.364415+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -123723,7 +123579,7 @@
     "primary_url": "https://enterkomputer.com/detail/197302/Acer-Nitro-XV270U-Z1-27-QHD-IPS-270Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:45:57.773578+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 270,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -123756,7 +123612,7 @@
     "primary_url": "https://enterkomputer.com/detail/193761/Acer-Nitro-XV271U-M3-27-WQHD-IPS-180Hz-HDR1000-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:46:01.261948+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -123789,7 +123645,7 @@
     "primary_url": "https://enterkomputer.com/detail/190085/Acer-27-Nitro-XV273K-V3-4K-UHD-IPS-144Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:46:04.697859+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -123822,7 +123678,7 @@
     "primary_url": "https://enterkomputer.com/detail/197290/Acer-Nitro-XV275K-P5-27-Dual-Mode-4K-UHD-160Hz-or-FHD-320Hz-IPS-MiniLED-HDR1000-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:46:08.134433+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 160,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -123896,7 +123752,7 @@
     "primary_url": "https://enterkomputer.com/detail/184512/Acer-34-Nitro-XZ342CU-S3-UWQHD-180Hz-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:46:14.975881+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -123929,7 +123785,7 @@
     "primary_url": "https://enterkomputer.com/detail/197291/Acer-Nitro-XZ342CU-V3-34-UWQHD-180Hz-HDR400-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:46:18.391116+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -123962,7 +123818,7 @@
     "primary_url": "https://enterkomputer.com/detail/191889/Acer-Predator-X34-V3-34-UWQHD-MiniLED-180Hz-HDR1000-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:46:21.839275+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -123995,7 +123851,7 @@
     "primary_url": "https://enterkomputer.com/detail/191890/Acer-Predator-X34-X-34-UWQHD-OLED-240Hz-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:46:25.258137+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -124028,7 +123884,7 @@
     "primary_url": "https://enterkomputer.com/detail/184515/Acer-4475-Predator-X45-UWQHD-OLED-240Hz-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:46:28.676446+00:00",
     "specs": {
-      "size_inch": 44,
+      "size_inch": 44.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -124127,7 +123983,7 @@
     "primary_url": "https://enterkomputer.com/detail/201159/AOC-Q27G40ZDF-27-inch-QHD-QD-OLED-240Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:46:38.950990+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -124201,7 +124057,7 @@
     "primary_url": "https://enterkomputer.com/detail/194907/AOC-22B20JHN2-2145-3-Sided-Frameless-FHD-100Hz-Monitor",
     "scraped_at": "2026-05-10T19:46:45.812977+00:00",
     "specs": {
-      "size_inch": 21,
+      "size_inch": 21.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -124234,7 +124090,7 @@
     "primary_url": "https://enterkomputer.com/detail/196372/AOC-22B15H2-2145-FHD-IPS-3-Sided-Frameless-100Hz-Monitor",
     "scraped_at": "2026-05-10T19:46:49.243895+00:00",
     "specs": {
-      "size_inch": 21,
+      "size_inch": 21.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -124275,7 +124131,7 @@
     "primary_url": "https://enterkomputer.com/detail/194377/AOC-22B20JH2-2145-FHD-IPS-100Hz-Monitor",
     "scraped_at": "2026-05-10T19:46:52.657463+00:00",
     "specs": {
-      "size_inch": 21,
+      "size_inch": 21.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -124456,7 +124312,7 @@
     "primary_url": "https://enterkomputer.com/detail/170731/AOC-24-Q24P2C-QHD-75Hz-IPS",
     "scraped_at": "2026-05-10T19:47:09.828979+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 75,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -124883,7 +124739,7 @@
     "primary_url": "https://enterkomputer.com/detail/184657/AOC-27-27B1H2-FHD-IPS-100Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:47:48.311012+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -124916,7 +124772,7 @@
     "primary_url": "https://enterkomputer.com/detail/189591/AOC-27-27B2HM2-FHD-100Hz-Frameless-Monitor",
     "scraped_at": "2026-05-10T19:47:51.769444+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -124957,7 +124813,7 @@
     "primary_url": "https://enterkomputer.com/detail/193983/AOC-27B36H-27-FHD-IPS-100Hz-Frameless-Monitor",
     "scraped_at": "2026-05-10T19:47:55.206124+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -124990,7 +124846,7 @@
     "primary_url": "https://enterkomputer.com/detail/198929/AOC-27B36H3-27-FHD-IPS-120Hz-3-Side-Frameless-Monitor",
     "scraped_at": "2026-05-10T19:47:58.638537+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -125023,7 +124879,7 @@
     "primary_url": "https://enterkomputer.com/detail/199922/AOC-27B36X-27-FHD-IPS-144Hz-HDR10-4-sided-Frameless-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:48:02.137029+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -125056,7 +124912,7 @@
     "primary_url": "https://enterkomputer.com/detail/193984/AOC-27B3CA2-27-FHD-IPS-100Hz-Frameless-Monitor",
     "scraped_at": "2026-05-10T19:48:05.569250+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -125089,7 +124945,7 @@
     "primary_url": "https://enterkomputer.com/detail/194219/AOC-Q27B3CF2-27-QHD-IPS-100Hz-Monitor",
     "scraped_at": "2026-05-10T19:48:09.006118+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -125122,7 +124978,7 @@
     "primary_url": "https://enterkomputer.com/detail/200924/AOC-Q27B3CF2-27-inch-QHD-IPS-100Hz-Monitor-Built-in-Speaker",
     "scraped_at": "2026-05-10T19:48:12.461209+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -125155,7 +125011,7 @@
     "primary_url": "https://enterkomputer.com/detail/199928/AOC-Q27B30E-27-QHD-IPS-75Hz-HDR10-3-sided-Frameless-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:48:15.948705+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 75,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -125196,7 +125052,7 @@
     "primary_url": "https://enterkomputer.com/detail/188557/AOC-27-27G15N-FHD-180Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:48:19.374744+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -125237,7 +125093,7 @@
     "primary_url": "https://enterkomputer.com/detail/189433/AOC-27-27G4E-FHD-Fast-IPS-180Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:48:22.847340+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -125278,7 +125134,7 @@
     "primary_url": "https://enterkomputer.com/detail/187360/AOC-27-27G4-FHD-IPS-180Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:48:26.295882+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -125319,7 +125175,7 @@
     "primary_url": "https://enterkomputer.com/detail/195379/AOC-27G10ZE-27-FHD-Fast-IPS-260Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:48:29.723070+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 260,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -125360,7 +125216,7 @@
     "primary_url": "https://enterkomputer.com/detail/195400/AOC-C27G4Z-27-FHD-280Hz-HDR10-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:48:33.186962+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 280,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -125401,7 +125257,7 @@
     "primary_url": "https://enterkomputer.com/detail/172038/AOC-27-C27G2Z-Curved-Gaming-Monitor-240Hz",
     "scraped_at": "2026-05-10T19:48:36.631963+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false
     },
@@ -125441,7 +125297,7 @@
     "primary_url": "https://enterkomputer.com/detail/193985/AOC-27-Q27G4F-QHD-Fast-IPS-180Hz-Gaming-Monitor-with-G-SYNC-Compatible",
     "scraped_at": "2026-05-10T19:48:40.065376+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -125474,7 +125330,7 @@
     "primary_url": "https://enterkomputer.com/detail/199336/AOC-Q27G11E-27-inch-QHD-Fast-IPS-180Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:48:43.494143+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -125515,7 +125371,7 @@
     "primary_url": "https://enterkomputer.com/detail/187897/AOC-27-Q27G4-QHD-Fast-IPS-180Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:48:46.927949+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -125548,7 +125404,7 @@
     "primary_url": "https://enterkomputer.com/detail/189656/AOC-27-U27P2C-4K-UHD-IPS-with-USB-Type-C-Monitor",
     "scraped_at": "2026-05-10T19:48:50.359525+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -125704,7 +125560,7 @@
     "primary_url": "https://enterkomputer.com/detail/177231/AOC-34-U34P2C-WQHD-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:49:04.181363+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": true,
       "resolution": "QHD"
@@ -125737,7 +125593,7 @@
     "primary_url": "https://enterkomputer.com/detail/198914/AOC-AGON-CU34G4-34-WQHD-180Hz-HDR10-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:49:07.646612+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -125778,7 +125634,7 @@
     "primary_url": "https://enterkomputer.com/detail/173920/AOC-34-CU34G3S-WQHD-165Hz-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:49:11.100236+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 165,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -125819,7 +125675,7 @@
     "primary_url": "https://enterkomputer.com/detail/190483/AOC-AGON-PRO-PD49-49-Porsche-Design-5K-DQHD-OLED-240Hz-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:49:14.640228+00:00",
     "specs": {
-      "size_inch": 49,
+      "size_inch": 49.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -125901,7 +125757,7 @@
     "primary_url": "https://enterkomputer.com/detail/193538/ASRock-Challenger-CL27FFA-27-FHD-IPS-120Hz-with-AMD-Freesync-1ms-Response-Time",
     "scraped_at": "2026-05-10T19:49:21.526146+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -125942,7 +125798,7 @@
     "primary_url": "https://enterkomputer.com/detail/190432/ASRock-Phantom-Gaming-PG27FFT1B-27-FHD-IPS-180Hz-Gaming-Monitor-with-AMD-Freesync",
     "scraped_at": "2026-05-10T19:49:24.958637+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -126254,7 +126110,7 @@
     "primary_url": "https://enterkomputer.com/detail/188572/Asus-ZenScreen-MB16AHG-16-FHD-IPS-144Hz-USB-C-Portable-Monitor",
     "scraped_at": "2026-05-10T19:49:52.574783+00:00",
     "specs": {
-      "size_inch": 16,
+      "size_inch": 16.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -126287,7 +126143,7 @@
     "primary_url": "https://enterkomputer.com/detail/188574/Asus-ZenScreen-MB16QHG-16-WQXGA-IPS-120Hz-USB-C-Portable-Monitor",
     "scraped_at": "2026-05-10T19:49:56.045371+00:00",
     "specs": {
-      "size_inch": 16,
+      "size_inch": 16.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false
     },
@@ -126319,7 +126175,7 @@
     "primary_url": "https://enterkomputer.com/detail/200276/Asus-ZenScreen-MB16NCG-16-inch-WQXGA-IPS-155Hz-HDR10-USB-C-Portable-Monitor",
     "scraped_at": "2026-05-10T19:49:59.508385+00:00",
     "specs": {
-      "size_inch": 16,
+      "size_inch": 16.0,
       "refresh_hz": 155,
       "refresh_hz_inferred": false
     },
@@ -126351,7 +126207,7 @@
     "primary_url": "https://enterkomputer.com/detail/200384/Asus-ZenScreen-MB16FC-16-inch-WUXGA-IPS-USB-C-Portable-Monitor",
     "scraped_at": "2026-05-10T19:50:03.202863+00:00",
     "specs": {
-      "size_inch": 16,
+      "size_inch": 16.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true
     },
@@ -126416,7 +126272,7 @@
     "primary_url": "https://enterkomputer.com/detail/198591/Asus-VP227HF-2145-FHD-100Hz-Eye-Care-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:50:10.271196+00:00",
     "specs": {
-      "size_inch": 21,
+      "size_inch": 21.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -126449,7 +126305,7 @@
     "primary_url": "https://enterkomputer.com/detail/194283/ASUS-VP229HF-Eye-Care-22-FHD-IPS-Frameless-100Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:50:13.745692+00:00",
     "specs": {
-      "size_inch": 22,
+      "size_inch": 22.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -126482,7 +126338,7 @@
     "primary_url": "https://enterkomputer.com/detail/200542/Asus-VY229HF-2145-inch-FHD-IPS-100Hz-Eye-Care-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:50:17.232515+00:00",
     "specs": {
-      "size_inch": 21,
+      "size_inch": 21.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -127391,7 +127247,7 @@
     "primary_url": "https://enterkomputer.com/detail/189434/Asus-ROG-Strix-XG259QNS-25-FHD-Fast-IPS-380Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:51:40.496714+00:00",
     "specs": {
-      "size_inch": 25,
+      "size_inch": 25.0,
       "refresh_hz": 380,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -127465,7 +127321,7 @@
     "primary_url": "https://enterkomputer.com/detail/188275/Asus-VY279HF-27-FHD-IPS-100Hz-Eye-Care-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:51:47.443861+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -127506,7 +127362,7 @@
     "primary_url": "https://enterkomputer.com/detail/194184/Asus-VY279HGR-27-FHD-IPS-120Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:51:50.912579+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -127547,7 +127403,7 @@
     "primary_url": "https://enterkomputer.com/detail/187672/Asus-VU279CFE-M-27-FHD-IPS-100Hz-Eye-Care-Gaming-Monitor-with-USB-Type-C",
     "scraped_at": "2026-05-10T19:51:54.356802+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -127580,7 +127436,7 @@
     "primary_url": "https://enterkomputer.com/detail/200382/Asus-TUF-Gaming-VG279QE5A-27-inch-FHD-IPS-146Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:51:57.788535+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 146,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -127613,7 +127469,7 @@
     "primary_url": "https://enterkomputer.com/detail/199816/Asus-TUF-Gaming-VG279Q5R-27-inch-FHD-Fast-IPS-200Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:52:01.318451+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 200,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -127654,7 +127510,7 @@
     "primary_url": "https://enterkomputer.com/detail/167536/ASUS-TUF-Gaming-VG279QL1A-27-IPS-Gaming-Monitor-165Hz",
     "scraped_at": "2026-05-10T19:52:04.790039+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 165,
       "refresh_hz_inferred": false
     },
@@ -127694,7 +127550,7 @@
     "primary_url": "https://enterkomputer.com/detail/197265/Asus-TUF-Gaming-VG279QM5A-27-FHD-Fast-IPS-240Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:52:08.233893+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -127735,7 +127591,7 @@
     "primary_url": "https://enterkomputer.com/detail/186968/Asus-TUF-Gaming-VG27AQL3A-27-QHD-Fast-IPS-180Hz-Gaming-Monitor-with-G-SYNC-Compatible",
     "scraped_at": "2026-05-10T19:52:11.691766+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -127776,7 +127632,7 @@
     "primary_url": "https://enterkomputer.com/detail/187644/Asus-TUF-Gaming-VG27AQL3A-W-White-Edition-27-QHD-Fast-IPS-180Hz-Gaming-Monitor-with-G-SYNC-Compatible",
     "scraped_at": "2026-05-10T19:52:15.155805+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -127817,7 +127673,7 @@
     "primary_url": "https://enterkomputer.com/detail/196581/Asus-TUF-Gaming-VG27AQ5A-27-QHD-Fast-IPS-210Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:52:18.591317+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 210,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -127858,7 +127714,7 @@
     "primary_url": "https://enterkomputer.com/detail/197513/Asus-TUF-Gaming-VG27AQL5A-27-QHD-Fast-IPS-210Hz-HDR400-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:52:22.079385+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 210,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -127899,7 +127755,7 @@
     "primary_url": "https://enterkomputer.com/detail/185655/Asus-TUF-Gaming-VG27AQML1A-27-QHD-Fast-IPS-260Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:52:25.538889+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 260,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -127932,7 +127788,7 @@
     "primary_url": "https://enterkomputer.com/detail/200385/Asus-TUF-Gaming-VG27AQM5A-27-inch-QHD-Fast-IPS-300Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:52:29.002153+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 300,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -127965,7 +127821,7 @@
     "primary_url": "https://enterkomputer.com/detail/200616/Asus-TUF-Gaming-VG27AQML5A-27-Inch-QHD-Fast-IPS-300Hz-HDR400-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:52:32.460142+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 300,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -128006,7 +127862,7 @@
     "primary_url": "https://enterkomputer.com/detail/190481/Asus-ROG-Strix-XG27WCS-27-WQHD-180Hz-USB-Type-C-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:52:35.909846+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -128043,7 +127899,7 @@
     "primary_url": "https://enterkomputer.com/detail/198592/Asus-ROG-Strix-XG27ACMES-27-WQHD-Fast-IPS-255Hz-HDR400-USB-C-PD-15W-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:52:39.354142+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 255,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -128076,7 +127932,7 @@
     "primary_url": "https://enterkomputer.com/detail/200389/Asus-ROG-Strix-XG27ACMES-W-27-inch-WQHD-Fast-IPS-255Hz-HDR400-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:52:42.801414+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 255,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -128117,7 +127973,7 @@
     "primary_url": "https://enterkomputer.com/detail/186570/ASUS-ROG-Strix-XG27AQMR-27-QHD-HDR-Fast-IPS-Gaming-Monitor-300Hz",
     "scraped_at": "2026-05-10T19:52:46.227744+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 300,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -128216,7 +128072,7 @@
     "primary_url": "https://enterkomputer.com/detail/200395/Asus-ROG-Strix-XG27JCG-27-inch-5K-Fast-IPS-180Hz-HDR600-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:52:56.602654+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false
     },
@@ -128248,7 +128104,7 @@
     "primary_url": "https://enterkomputer.com/detail/200393/Asus-ROG-Strix-Pulsar-XG27AQNGV-27-inch-QHD-Ultrafast-IPS-360Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:53:00.066002+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 360,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -128445,7 +128301,7 @@
     "primary_url": "https://enterkomputer.com/detail/195381/Asus-ROG-Strix-XG27UCG-27-4K-UHD-Fast-IPS-160Hz-HDR10-USB-C-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:53:17.432726+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 160,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -128486,7 +128342,7 @@
     "primary_url": "https://enterkomputer.com/detail/191297/Asus-ROG-Strix-XG27UCS-27-4K-UHD-Fast-IPS-160Hz-HDR10-USB-C-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:53:20.878903+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 160,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -128568,7 +128424,7 @@
     "primary_url": "https://enterkomputer.com/detail/183807/ASUS-ROG-Swift-OLED-PG27AQDM-27-QHD-240Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:53:27.782630+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -128609,7 +128465,7 @@
     "primary_url": "https://enterkomputer.com/detail/184039/Asus-ROG-Swift-PG27AQN-27-QHD-Ultrafast-IPS-360Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:53:31.234084+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 360,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -128765,7 +128621,7 @@
     "primary_url": "https://enterkomputer.com/detail/166849/ASUS-ProArt-PA278QV-27-WQHD-IPS-Professional-Monitor",
     "scraped_at": "2026-05-10T19:53:45.010545+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "QHD"
@@ -128798,7 +128654,7 @@
     "primary_url": "https://enterkomputer.com/detail/200277/Asus-ProArt-PA278QGV-27-inch-QHD-IPS-120Hz-HDR10-Professional-Monitor",
     "scraped_at": "2026-05-10T19:53:48.497980+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -128839,7 +128695,7 @@
     "primary_url": "https://enterkomputer.com/detail/190545/Asus-ProArt-PA278CFRV-27-QHD-IPS-100Hz-Professional-Monitor",
     "scraped_at": "2026-05-10T19:53:51.930108+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -128872,7 +128728,7 @@
     "primary_url": "https://enterkomputer.com/detail/200386/Asus-ProArt-PA278CGRV-27-inch-QHD-IPS-144Hz-HDR400-USB-C-PD-96W-Professional-Monitor",
     "scraped_at": "2026-05-10T19:53:55.358833+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -128905,7 +128761,7 @@
     "primary_url": "https://enterkomputer.com/detail/172091/ASUS-ProArt-PA279CV-27-4K-UHD-IPS-Professional-Monitor",
     "scraped_at": "2026-05-10T19:53:58.805469+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -128946,7 +128802,7 @@
     "primary_url": "https://enterkomputer.com/detail/184240/ASUS-ProArt-PA279CRV-27-4K-UHD-IPS-Professional-Monitor",
     "scraped_at": "2026-05-10T19:54:02.230326+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -128987,7 +128843,7 @@
     "primary_url": "https://enterkomputer.com/detail/192973/Asus-ProArt-PA27JCV-27-5K-IPS-HDR500-USB-C-Professional-Monitor",
     "scraped_at": "2026-05-10T19:54:05.671947+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true
     },
@@ -129019,7 +128875,7 @@
     "primary_url": "https://enterkomputer.com/detail/184041/Asus-ROG-Strix-XG309CM-30-WFHD-Fast-IPS-144Hz-220Hz-OC-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:54:09.094128+00:00",
     "specs": {
-      "size_inch": 30,
+      "size_inch": 30.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -129290,7 +129146,7 @@
     "primary_url": "https://enterkomputer.com/detail/189645/Asus-ROG-Swift-OLED-PG32UCDM-32-4K-QD-OLED-240Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:54:33.189712+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -129470,7 +129326,7 @@
     "primary_url": "https://enterkomputer.com/detail/172751/ASUS-ProArt-PA329CV-32-4K-UHD-IPS-Professional-Monitor",
     "scraped_at": "2026-05-10T19:54:50.440122+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -129536,7 +129392,7 @@
     "primary_url": "https://enterkomputer.com/detail/196582/ASUS-ProArt-PA32UCXR-32-4K-UHD-IPS-HDR10-Professional-Monitor",
     "scraped_at": "2026-05-10T19:54:57.347008+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -129569,7 +129425,7 @@
     "primary_url": "https://enterkomputer.com/detail/200388/Asus-ProArt-PA32KCX-32-inch-8K-IPS-Mini-LED-HDR1000-USB-C-PD-96W-Professional-Monitor",
     "scraped_at": "2026-05-10T19:55:00.893017+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true
     },
@@ -129650,7 +129506,7 @@
     "primary_url": "https://enterkomputer.com/detail/185652/Asus-TUF-Gaming-VG34VQL3A-34-WQHD-180Hz-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:55:07.932478+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -129691,7 +129547,7 @@
     "primary_url": "https://enterkomputer.com/detail/191296/Asus-TUF-Gaming-VG34VQ3B-34-WQHD-180Hz-HDR400-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:55:11.367972+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -129732,7 +129588,7 @@
     "primary_url": "https://enterkomputer.com/detail/197263/Asus-TUF-Gaming-VG34WQML5A-34-WQHD-250Hz-HDR400-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:55:14.827467+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 250,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -129773,7 +129629,7 @@
     "primary_url": "https://enterkomputer.com/detail/189643/Asus-ROG-Swift-OLED-PG34WCDM-34-UWQHD-OLED-240Hz-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:55:18.352621+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -129806,7 +129662,7 @@
     "primary_url": "https://enterkomputer.com/detail/200540/Asus-ROG-Swift-OLED-PG34WCDN-34-inch-WQHD-RGB-QD-OLED-360Hz-HDR500-USB-C-PD-90W-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:55:21.795198+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 360,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -129880,7 +129736,7 @@
     "primary_url": "https://enterkomputer.com/detail/186568/ASUS-ProArt-PA348CGV-34-UWQHD-120Hz-Professional-Monitor",
     "scraped_at": "2026-05-10T19:55:28.696609+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -129921,7 +129777,7 @@
     "primary_url": "https://enterkomputer.com/detail/197515/Asus-ROG-Strix-OLED-XG34WCDG-34-WQHD-QD-OLED-175Hz-HDR400-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:55:32.156135+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 175,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -129962,7 +129818,7 @@
     "primary_url": "https://enterkomputer.com/detail/187654/Asus-ROG-Swift-OLED-PG49WCD-49-Curved-Super-Ultrawide-QD-OLED-144Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:55:35.640109+00:00",
     "specs": {
-      "size_inch": 49,
+      "size_inch": 49.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false
     },
@@ -130002,7 +129858,7 @@
     "primary_url": "https://enterkomputer.com/detail/185022/ASUS-ROG-Strix-XG49WCR-49-Super-Ultra-wide-Double-QHD-Curved-Gaming-Monitor-165Hz",
     "scraped_at": "2026-05-10T19:55:39.077189+00:00",
     "specs": {
-      "size_inch": 49,
+      "size_inch": 49.0,
       "refresh_hz": 165,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -130068,7 +129924,7 @@
     "primary_url": "https://enterkomputer.com/detail/192507/BenQ-GW2791-27-FHD-IPS-100Hz-Monitor",
     "scraped_at": "2026-05-10T19:55:46.076058+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -130101,7 +129957,7 @@
     "primary_url": "https://enterkomputer.com/detail/200534/BenQ-MA270U-27-inch-4K-UHD-IPS-HDR10-99-sRGB-Monitor-For-Macbook",
     "scraped_at": "2026-05-10T19:55:49.529518+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -130167,7 +130023,7 @@
     "primary_url": "https://enterkomputer.com/detail/194561/Dahua-LM19-A202F-19-HD-Monitor",
     "scraped_at": "2026-05-10T19:55:56.380821+00:00",
     "specs": {
-      "size_inch": 19,
+      "size_inch": 19.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true
     },
@@ -130239,7 +130095,7 @@
     "primary_url": "https://enterkomputer.com/detail/194562/Dahua-LM22-A200Y-22-FHD-100Hz-Monitor-Built-in-Speaker",
     "scraped_at": "2026-05-10T19:56:03.313203+00:00",
     "specs": {
-      "size_inch": 22,
+      "size_inch": 22.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -130272,7 +130128,7 @@
     "primary_url": "https://enterkomputer.com/detail/193764/Dahua-LM24-A201F-24-FHD-IPS-100Hz-Monitor",
     "scraped_at": "2026-05-10T19:56:06.738284+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -130305,7 +130161,7 @@
     "primary_url": "https://enterkomputer.com/detail/193951/Dahua-LM25-E231B-25-FHD-IPS-Monitor-180Hz",
     "scraped_at": "2026-05-10T19:56:10.200799+00:00",
     "specs": {
-      "size_inch": 25,
+      "size_inch": 25.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -130338,7 +130194,7 @@
     "primary_url": "https://enterkomputer.com/detail/193950/Dahua-LM27-E231B-27-FHD-IPS-Monitor-180Hz",
     "scraped_at": "2026-05-10T19:56:13.747429+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -130371,7 +130227,7 @@
     "primary_url": "https://enterkomputer.com/detail/193765/Dahua-Explorer-LM32-U400P-32-4K-UHD-Movable-Smart-Display-TouchScreen-Monitor",
     "scraped_at": "2026-05-10T19:56:17.202804+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -130608,7 +130464,7 @@
     "primary_url": "https://enterkomputer.com/detail/186090/DELL-24-P2424HT-FHD-IPS-Touch-USB-C-Hub-Monitor",
     "scraped_at": "2026-05-10T19:56:37.887340+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -130690,7 +130546,7 @@
     "primary_url": "https://enterkomputer.com/detail/192235/DELL-Professional-P2425HE-24-FHD-IPS-USB-C-Hub-100Hz-Monitor",
     "scraped_at": "2026-05-10T19:56:44.852841+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -130723,7 +130579,7 @@
     "primary_url": "https://enterkomputer.com/detail/199501/Dell-Pro-24-E2425HSM-238-inch-FHD-IPS-100Hz-Monitor",
     "scraped_at": "2026-05-10T19:56:48.277413+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -130756,7 +130612,7 @@
     "primary_url": "https://enterkomputer.com/detail/199499/Dell-24-Plus-S2425HSM-238-inch-FHD-IPS-144Hz-Monitor",
     "scraped_at": "2026-05-10T19:56:51.705426+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -130789,7 +130645,7 @@
     "primary_url": "https://enterkomputer.com/detail/199505/Dell-Pro-24-Plus-P2425D-238-inch-QHD-IPS-100Hz-Monitor",
     "scraped_at": "2026-05-10T19:56:55.179015+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -130822,7 +130678,7 @@
     "primary_url": "https://enterkomputer.com/detail/199507/Dell-Pro-24-Plus-P2425DE-238-inch-QHD-IPS-100Hz-USB-C-Hub-Monitor",
     "scraped_at": "2026-05-10T19:56:58.714822+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -130929,7 +130785,7 @@
     "primary_url": "https://enterkomputer.com/detail/179078/DELL-27-P2723QE-4K-USB-C-Hub-Monitor",
     "scraped_at": "2026-05-10T19:57:09.197552+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -130962,7 +130818,7 @@
     "primary_url": "https://enterkomputer.com/detail/193973/DELL-27-P2725HE-27-FHD-IPS-100Hz-USB-C-Hub-Monitor",
     "scraped_at": "2026-05-10T19:57:12.638447+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -130995,7 +130851,7 @@
     "primary_url": "https://enterkomputer.com/detail/196576/Dell-SE2725HM-27-FHD-IPS-100Hz-Monitor",
     "scraped_at": "2026-05-10T19:57:16.079283+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -131028,7 +130884,7 @@
     "primary_url": "https://enterkomputer.com/detail/199503/Dell-Pro-27-E2725HM-27-inch-FHD-IPS-100Hz-Monitor",
     "scraped_at": "2026-05-10T19:57:19.523454+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -131061,7 +130917,7 @@
     "primary_url": "https://enterkomputer.com/detail/199498/Dell-27-Plus-S2725HSM-27-inch-FHD-IPS-144Hz-Monitor",
     "scraped_at": "2026-05-10T19:57:22.954312+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -131094,7 +130950,7 @@
     "primary_url": "https://enterkomputer.com/detail/199497/Dell-27-Plus-S2725DSM-27-inch-QHD-IPS-144Hz-Monitor",
     "scraped_at": "2026-05-10T19:57:26.379177+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -131127,7 +130983,7 @@
     "primary_url": "https://enterkomputer.com/detail/199496/Dell-27-Plus-S2725DC-27-inch-QHD-144Hz-IPS-USB-C-Monitor",
     "scraped_at": "2026-05-10T19:57:29.826726+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -131160,7 +131016,7 @@
     "primary_url": "https://enterkomputer.com/detail/199495/Dell-27-Plus-S2725QS-27-inch-4K-UHD-IPS-120Hz-Monitor",
     "scraped_at": "2026-05-10T19:57:33.309286+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -131193,7 +131049,7 @@
     "primary_url": "https://enterkomputer.com/detail/199494/Dell-27-Plus-S2725QC-27-inch-4K-UHD-IPS-120Hz-USB-C-Monitor",
     "scraped_at": "2026-05-10T19:57:36.792543+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -131226,7 +131082,7 @@
     "primary_url": "https://enterkomputer.com/detail/199506/Dell-Pro-27-Plus-P2725D-27-inch-QHD-IPS-100Hz-Monitor",
     "scraped_at": "2026-05-10T19:57:40.226507+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -131259,7 +131115,7 @@
     "primary_url": "https://enterkomputer.com/detail/199504/Dell-Pro-27-Plus-P2725DE-27-inch-QHD-IPS-100Hz-USB-C-Hub-Monitor",
     "scraped_at": "2026-05-10T19:57:43.682297+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -131292,7 +131148,7 @@
     "primary_url": "https://enterkomputer.com/detail/199502/Dell-Pro-27-Plus-P2725QE-27-inch-4K-UHD-IPS-100Hz-USB-C-Hub-Monitor",
     "scraped_at": "2026-05-10T19:57:47.133422+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -131333,7 +131189,7 @@
     "primary_url": "https://enterkomputer.com/detail/189481/DELL-UltraSharp-U2724D-27-QHD-IPS-Black-120Hz-USB-C-Hub-Monitor",
     "scraped_at": "2026-05-10T19:57:50.585947+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -131366,7 +131222,7 @@
     "primary_url": "https://enterkomputer.com/detail/193978/DELL-UltraSharp-U2724DE-27-QHD-IPS-120Hz-Thunderbolt-Hub-Monitor",
     "scraped_at": "2026-05-10T19:57:54.018933+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -131399,7 +131255,7 @@
     "primary_url": "https://enterkomputer.com/detail/199493/Dell-32-Plus-S3225QS-315-inch-4K-UHD-120Hz-Monitor",
     "scraped_at": "2026-05-10T19:57:57.446221+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -131432,7 +131288,7 @@
     "primary_url": "https://enterkomputer.com/detail/199491/Dell-32-Plus-S3225QC-316-inch-4K-UHD-QD-OLED-120Hz-Monitor",
     "scraped_at": "2026-05-10T19:58:01.010415+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -131498,7 +131354,7 @@
     "primary_url": "https://enterkomputer.com/detail/199492/Dell-34-Plus-S3425DW-34-inch-WQHD-120Hz-USB-C-Curved-Monitor",
     "scraped_at": "2026-05-10T19:58:07.945800+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -131531,7 +131387,7 @@
     "primary_url": "https://enterkomputer.com/detail/199500/Dell-Pro-34-Plus-P3425WE-34-inch-WQHD-IPS-100Hz-USB-C-Hub-Curved-Monitor",
     "scraped_at": "2026-05-10T19:58:11.381328+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -131564,7 +131420,7 @@
     "primary_url": "https://enterkomputer.com/detail/191879/DELL-Alienware-AW3423DW-34-WQHD-175Hz-Curved-QD-OLED-Gaming-Monitor-with-NVIDIA-G-SYNC-Ultimate",
     "scraped_at": "2026-05-10T19:58:14.890108+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 175,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -131736,7 +131592,7 @@
     "primary_url": "https://enterkomputer.com/detail/195575/Gigabyte-GS27FC-27-FHD-180Hz-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:58:32.078849+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -131777,7 +131633,7 @@
     "primary_url": "https://enterkomputer.com/detail/190041/Gigabyte-GS27FA-27-FHD-SS-IPS-180Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:58:35.545782+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -131818,7 +131674,7 @@
     "primary_url": "https://enterkomputer.com/detail/186817/Gigabyte-GS27Q-27-QHD-SS-IPS-170Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:58:38.977425+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 170,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -131859,7 +131715,7 @@
     "primary_url": "https://enterkomputer.com/detail/192768/Gigabyte-GS27QA-27-QHD-SS-IPS-180Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:58:42.454479+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -131892,7 +131748,7 @@
     "primary_url": "https://enterkomputer.com/detail/200562/Gigabyte-G27Q20-27-Inch-QHD-SS-IPS-200Hz-HDR10-Gaming-Monitor-with-G-SYNC-Compatible",
     "scraped_at": "2026-05-10T19:58:45.923801+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 200,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -131933,7 +131789,7 @@
     "primary_url": "https://enterkomputer.com/detail/195573/Gigabyte-GS27U-27-UHD-SS-IPS-160Hz-HDR400-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:58:49.377928+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 160,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -132038,7 +131894,7 @@
     "primary_url": "https://enterkomputer.com/detail/186816/Gigabyte-M27Q-X-27-QHD-SS-IPS-240Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:58:59.823431+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -132151,7 +132007,7 @@
     "primary_url": "https://enterkomputer.com/detail/190856/Gigabyte-Aorus-FO27Q2-27-QHD-OLED-240Hz-HDR400-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:59:10.311324+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -132192,7 +132048,7 @@
     "primary_url": "https://enterkomputer.com/detail/189458/Gigabyte-Aorus-FO27Q3-27-QHD-OLED-360Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:59:13.770190+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 360,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -132272,7 +132128,7 @@
     "primary_url": "https://enterkomputer.com/detail/176827/Gigabyte-Aorus-FI32Q-X-32-QHD-IPS-Gaming-Monitor-270Hz",
     "scraped_at": "2026-05-10T19:59:20.670637+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 270,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -132425,7 +132281,7 @@
     "primary_url": "https://enterkomputer.com/detail/188954/Gigabyte-Aorus-CO49DQ-49-Dual-QHD-OLED-144Hz-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:59:34.631689+00:00",
     "specs": {
-      "size_inch": 49,
+      "size_inch": 49.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -132458,7 +132314,7 @@
     "primary_url": "https://enterkomputer.com/detail/196105/HP-Pro-322pe-2145-FHD-IPS-Monitor",
     "scraped_at": "2026-05-10T19:59:38.088687+00:00",
     "specs": {
-      "size_inch": 21,
+      "size_inch": 21.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -132565,7 +132421,7 @@
     "primary_url": "https://enterkomputer.com/detail/201428/Lenovo-Legion-27Q-10-265-inch-QHD-QD-OLED-240Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:59:48.486153+00:00",
     "specs": {
-      "size_inch": 10,
+      "size_inch": 10.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -132598,7 +132454,7 @@
     "primary_url": "https://enterkomputer.com/detail/201427/Lenovo-Legion-27U-10-27-inch-UHD-IPS-160Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:59:51.958571+00:00",
     "specs": {
-      "size_inch": 10,
+      "size_inch": 10.0,
       "refresh_hz": 160,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -132631,7 +132487,7 @@
     "primary_url": "https://enterkomputer.com/detail/201429/Lenovo-LOQ-27-10-27-inch-FHD-Fast-IPS-200Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:59:55.432898+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 200,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -132664,7 +132520,7 @@
     "primary_url": "https://enterkomputer.com/detail/201433/Lenovo-LOQ-27Q-10-27-inch-QHD-Fast-IPS-180Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T19:59:58.869307+00:00",
     "specs": {
-      "size_inch": 10,
+      "size_inch": 10.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -132697,7 +132553,7 @@
     "primary_url": "https://enterkomputer.com/detail/201434/Lenovo-LOQ-24-10-238-inch-FHD-Fast-IPS-200Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:00:03.168584+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 200,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -132730,7 +132586,7 @@
     "primary_url": "https://enterkomputer.com/detail/169616/Lenovo-ThinkVision-M14T-14-USB-C-Touch-Screen",
     "scraped_at": "2026-05-10T20:00:06.989742+00:00",
     "specs": {
-      "size_inch": 14,
+      "size_inch": 14.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true
     },
@@ -132828,7 +132684,7 @@
     "primary_url": "https://enterkomputer.com/detail/162334/Lenovo-D19-10-185-LED",
     "scraped_at": "2026-05-10T20:00:17.817926+00:00",
     "specs": {
-      "size_inch": 10,
+      "size_inch": 10.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true
     },
@@ -132868,7 +132724,7 @@
     "primary_url": "https://enterkomputer.com/detail/180167/Lenovo-D20-30-195-LED-HDMI",
     "scraped_at": "2026-05-10T20:00:21.330150+00:00",
     "specs": {
-      "size_inch": 30,
+      "size_inch": 30.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true
     },
@@ -132974,7 +132830,7 @@
     "primary_url": "https://enterkomputer.com/detail/200927/Lenovo-ThinkVision-S22i-30-215-inch-IPS-75Hz-Monitor",
     "scraped_at": "2026-05-10T20:00:31.786484+00:00",
     "specs": {
-      "size_inch": 30,
+      "size_inch": 30.0,
       "refresh_hz": 75,
       "refresh_hz_inferred": false
     },
@@ -133014,7 +132870,7 @@
     "primary_url": "https://enterkomputer.com/detail/198037/Lenovo-ThinkVision-T22i-30-215-FHD-IPS-Monitor",
     "scraped_at": "2026-05-10T20:00:35.268907+00:00",
     "specs": {
-      "size_inch": 30,
+      "size_inch": 30.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -133055,7 +132911,7 @@
     "primary_url": "https://enterkomputer.com/detail/183744/Lenovo-D24-40-238-FHD-NearEdgeless-Design",
     "scraped_at": "2026-05-10T20:00:38.765959+00:00",
     "specs": {
-      "size_inch": 40,
+      "size_inch": 40.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -133244,7 +133100,7 @@
     "primary_url": "https://enterkomputer.com/detail/185366/Lenovo-L24i-40-238-FHD-IPS-100Hz-NearEdgeless-Design",
     "scraped_at": "2026-05-10T20:00:56.154701+00:00",
     "specs": {
-      "size_inch": 40,
+      "size_inch": 40.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -133277,7 +133133,7 @@
     "primary_url": "https://enterkomputer.com/detail/184101/Lenovo-L24q-35-238-QHD-IPS-75Hz",
     "scraped_at": "2026-05-10T20:00:59.689179+00:00",
     "specs": {
-      "size_inch": 35,
+      "size_inch": 35.0,
       "refresh_hz": 75,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -133310,7 +133166,7 @@
     "primary_url": "https://enterkomputer.com/detail/186608/Lenovo-L24m-40-238-FHD-IPS-100Hz-USB-C-Built-In-Speaker",
     "scraped_at": "2026-05-10T20:01:03.176966+00:00",
     "specs": {
-      "size_inch": 40,
+      "size_inch": 40.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -133384,7 +133240,7 @@
     "primary_url": "https://enterkomputer.com/detail/190912/Lenovo-ThinkVision-S24i-30-238-FHD-IPS-100Hz-Monitor",
     "scraped_at": "2026-05-10T20:01:10.159053+00:00",
     "specs": {
-      "size_inch": 30,
+      "size_inch": 30.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -133425,7 +133281,7 @@
     "primary_url": "https://enterkomputer.com/detail/198038/Lenovo-ThinkVision-T24-40-238-FHD-IPS-120Hz-USB-C-PD-15W-Monitor",
     "scraped_at": "2026-05-10T20:01:13.622500+00:00",
     "specs": {
-      "size_inch": 40,
+      "size_inch": 40.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -133458,7 +133314,7 @@
     "primary_url": "https://enterkomputer.com/detail/189663/Lenovo-ThinkVision-T24i-30-238-FHD-IPS-60Hz-NearEdgeless-Design",
     "scraped_at": "2026-05-10T20:01:17.132400+00:00",
     "specs": {
-      "size_inch": 30,
+      "size_inch": 30.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -133491,7 +133347,7 @@
     "primary_url": "https://enterkomputer.com/detail/190095/Lenovo-ThinkVision-T24m-20-238-FHD-IPS-60Hz-NearEdgeless-Design",
     "scraped_at": "2026-05-10T20:01:20.588406+00:00",
     "specs": {
-      "size_inch": 20,
+      "size_inch": 20.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -133524,7 +133380,7 @@
     "primary_url": "https://enterkomputer.com/detail/189286/Lenovo-ThinkVision-T24t-20-238-FHD-IPS-Touchscreen-Monitor-with-USB-Type-C",
     "scraped_at": "2026-05-10T20:01:24.036531+00:00",
     "specs": {
-      "size_inch": 20,
+      "size_inch": 20.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -133557,7 +133413,7 @@
     "primary_url": "https://enterkomputer.com/detail/199174/Lenovo-ThinkVision-P24QD-40-238-QHD-IPS-120Hz-Monitor",
     "scraped_at": "2026-05-10T20:01:27.559731+00:00",
     "specs": {
-      "size_inch": 40,
+      "size_inch": 40.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -133598,7 +133454,7 @@
     "primary_url": "https://enterkomputer.com/detail/198114/Lenovo-Legion-24-10-238-FHD-IPS-240Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:01:31.053267+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -133680,7 +133536,7 @@
     "primary_url": "https://enterkomputer.com/detail/198041/Lenovo-ThinkVision-P25i-30-245-FHD-IPS-100Hz-Monitor",
     "scraped_at": "2026-05-10T20:01:38.014817+00:00",
     "specs": {
-      "size_inch": 30,
+      "size_inch": 30.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -133721,7 +133577,7 @@
     "primary_url": "https://enterkomputer.com/detail/198113/Lenovo-Legion-25-10-245-FHD-IPS-320Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:01:41.456115+00:00",
     "specs": {
-      "size_inch": 25,
+      "size_inch": 25.0,
       "refresh_hz": 320,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -133762,7 +133618,7 @@
     "primary_url": "https://enterkomputer.com/detail/182164/Lenovo-D27-40-27-FHD-NearEdgeless-Design-75Hz",
     "scraped_at": "2026-05-10T20:01:44.963269+00:00",
     "specs": {
-      "size_inch": 40,
+      "size_inch": 40.0,
       "refresh_hz": 75,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -133803,7 +133659,7 @@
     "primary_url": "https://enterkomputer.com/detail/180034/Lenovo-G27-30-27-165Hz-FHD-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:01:48.405073+00:00",
     "specs": {
-      "size_inch": 30,
+      "size_inch": 30.0,
       "refresh_hz": 165,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -133844,7 +133700,7 @@
     "primary_url": "https://enterkomputer.com/detail/190671/Lenovo-L27i-4A-27-FHD-IPS-100Hz-Monitor",
     "scraped_at": "2026-05-10T20:01:51.888511+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -133885,7 +133741,7 @@
     "primary_url": "https://enterkomputer.com/detail/185365/Lenovo-L27i-40-27-FHD-IPS-100Hz-NearEdgeless-Design",
     "scraped_at": "2026-05-10T20:01:55.331624+00:00",
     "specs": {
-      "size_inch": 40,
+      "size_inch": 40.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -133926,7 +133782,7 @@
     "primary_url": "https://enterkomputer.com/detail/177414/Lenovo-L27m-30-27-FHD-USB-Type-C-Monitor",
     "scraped_at": "2026-05-10T20:01:58.777787+00:00",
     "specs": {
-      "size_inch": 30,
+      "size_inch": 30.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -133967,7 +133823,7 @@
     "primary_url": "https://enterkomputer.com/detail/196595/Lenovo-L27-4e-27-FHD-IPS-100Hz-Monitor",
     "scraped_at": "2026-05-10T20:02:02.259883+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -134000,7 +133856,7 @@
     "primary_url": "https://enterkomputer.com/detail/199193/Lenovo-L27-4C-27-inch-FHD-IPS-144Hz-Monitor-Built-In-Speaker",
     "scraped_at": "2026-05-10T20:02:05.726226+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -134033,7 +133889,7 @@
     "primary_url": "https://enterkomputer.com/detail/195724/Lenovo-L27h-4A-27-QHD-IPS-100Hz-Monitor-Built-in-Speaker",
     "scraped_at": "2026-05-10T20:02:09.216391+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -134074,7 +133930,7 @@
     "primary_url": "https://enterkomputer.com/detail/196594/Lenovo-L27qe-27-QHD-IPS-100Hz-HDR10-Monitor",
     "scraped_at": "2026-05-10T20:02:12.710822+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -134115,7 +133971,7 @@
     "primary_url": "https://enterkomputer.com/detail/191629/Lenovo-L27Q-4A-27-QHD-IPS-100Hz-HDR10-Monitor-Built-in-Speaker",
     "scraped_at": "2026-05-10T20:02:16.176087+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -134148,7 +134004,7 @@
     "primary_url": "https://enterkomputer.com/detail/161261/Lenovo-L27q-10-27-LED",
     "scraped_at": "2026-05-10T20:02:19.672302+00:00",
     "specs": {
-      "size_inch": 10,
+      "size_inch": 10.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true
     },
@@ -134188,7 +134044,7 @@
     "primary_url": "https://enterkomputer.com/detail/190770/Lenovo-N27q-27-QHD-IPS-100Hz-HDR10-Monitor",
     "scraped_at": "2026-05-10T20:02:23.125064+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -134229,7 +134085,7 @@
     "primary_url": "https://enterkomputer.com/detail/190771/Lenovo-N27p-27-UHD-IPS-HD400-USB-C-Monitor",
     "scraped_at": "2026-05-10T20:02:26.627931+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -134262,7 +134118,7 @@
     "primary_url": "https://enterkomputer.com/detail/199175/Lenovo-ThinkVision-P27QD-40-27-QHD-IPS-120Hz-Monitor",
     "scraped_at": "2026-05-10T20:02:30.129347+00:00",
     "specs": {
-      "size_inch": 40,
+      "size_inch": 40.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -134303,7 +134159,7 @@
     "primary_url": "https://enterkomputer.com/detail/198039/Lenovo-ThinkVision-T27h-30-27-QHD-IPS-Monitor",
     "scraped_at": "2026-05-10T20:02:33.584046+00:00",
     "specs": {
-      "size_inch": 30,
+      "size_inch": 30.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "QHD"
@@ -134336,7 +134192,7 @@
     "primary_url": "https://enterkomputer.com/detail/176012/Lenovo-Q27q-1L-27-QHD-IPS-Monitor",
     "scraped_at": "2026-05-10T20:02:37.087039+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "QHD"
@@ -134377,7 +134233,7 @@
     "primary_url": "https://enterkomputer.com/detail/180023/Lenovo-Q27h-20-27-QHD-IPS-NearEdgeless-Design-70Hz-with-USB-Type-C",
     "scraped_at": "2026-05-10T20:02:40.583776+00:00",
     "specs": {
-      "size_inch": 20,
+      "size_inch": 20.0,
       "refresh_hz": 70,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -134410,7 +134266,7 @@
     "primary_url": "https://enterkomputer.com/detail/191524/Lenovo-ThinkVision-S27i-30-27-FHD-IPS-100Hz-3-side-NearEdgeless",
     "scraped_at": "2026-05-10T20:02:44.044430+00:00",
     "specs": {
-      "size_inch": 30,
+      "size_inch": 30.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -134443,7 +134299,7 @@
     "primary_url": "https://enterkomputer.com/detail/189664/Lenovo-ThinkVision-T27i-30-27-FHD-IPS-60Hz-NearEdgeless",
     "scraped_at": "2026-05-10T20:02:47.467219+00:00",
     "specs": {
-      "size_inch": 30,
+      "size_inch": 30.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -134484,7 +134340,7 @@
     "primary_url": "https://enterkomputer.com/detail/196593/Lenovo-Legion-R27s-27-FHD-IPS-144Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:02:50.917666+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -134525,7 +134381,7 @@
     "primary_url": "https://enterkomputer.com/detail/186126/Lenovo-Legion-R27i-30-27-FHD-IPS-165Hz-180Hz-OC-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:02:54.356310+00:00",
     "specs": {
-      "size_inch": 30,
+      "size_inch": 30.0,
       "refresh_hz": 165,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -134566,7 +134422,7 @@
     "primary_url": "https://enterkomputer.com/detail/196681/Lenovo-Legion-27-10-27-FHD-IPS-240Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:02:57.797817+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -134607,7 +134463,7 @@
     "primary_url": "https://enterkomputer.com/detail/187175/Lenovo-Legion-R27q-30-27-IPS-QHD-180Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:03:01.462648+00:00",
     "specs": {
-      "size_inch": 30,
+      "size_inch": 30.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -134640,7 +134496,7 @@
     "primary_url": "https://enterkomputer.com/detail/200325/Lenovo-Legion-27Q-10-27-inch-QHD-IPS-240Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:03:04.911544+00:00",
     "specs": {
-      "size_inch": 10,
+      "size_inch": 10.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -134673,7 +134529,7 @@
     "primary_url": "https://enterkomputer.com/detail/199150/Lenovo-Legion-27Q-11-27-inch-QHD-IPS-300Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:03:08.408796+00:00",
     "specs": {
-      "size_inch": 11,
+      "size_inch": 11.0,
       "refresh_hz": 300,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -134714,7 +134570,7 @@
     "primary_url": "https://enterkomputer.com/detail/197261/Lenovo-Legion-R27qe-G2-27-QHD-IPS-200Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:03:11.870245+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 200,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -134755,7 +134611,7 @@
     "primary_url": "https://enterkomputer.com/detail/191523/Lenovo-Legion-R27qc-30-27-3-Side-NearEdgeless-QHD-180Hz-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:03:15.308514+00:00",
     "specs": {
-      "size_inch": 30,
+      "size_inch": 30.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -134796,7 +134652,7 @@
     "primary_url": "https://enterkomputer.com/detail/192476/Lenovo-Legion-R27fc-30-27-FHD-240Hz-OC-280Hz-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:03:18.748775+00:00",
     "specs": {
-      "size_inch": 30,
+      "size_inch": 30.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -134837,7 +134693,7 @@
     "primary_url": "https://enterkomputer.com/detail/184636/Lenovo-Legion-Y27qf-30-27-QHD-IPS-240Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:03:22.257442+00:00",
     "specs": {
-      "size_inch": 30,
+      "size_inch": 30.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -134870,7 +134726,7 @@
     "primary_url": "https://enterkomputer.com/detail/200324/Lenovo-Legion-27QD-10-27-inch-QHD-IPS-240Hz-HDR10-USB-C-PD-15W-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:03:25.719711+00:00",
     "specs": {
-      "size_inch": 10,
+      "size_inch": 10.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -134911,7 +134767,7 @@
     "primary_url": "https://enterkomputer.com/detail/198112/Lenovo-Legion-Pro-27Q-10-265-QHD-QD-OLED-280Hz-HDR400-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:03:29.253640+00:00",
     "specs": {
-      "size_inch": 10,
+      "size_inch": 10.0,
       "refresh_hz": 280,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -134952,7 +134808,7 @@
     "primary_url": "https://enterkomputer.com/detail/198036/Lenovo-Legion-Pro-27UD-10-265-UHD-QD-OLED-240Hz-HDR400-USB-C-PD-15W-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:03:32.693456+00:00",
     "specs": {
-      "size_inch": 10,
+      "size_inch": 10.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -134993,7 +134849,7 @@
     "primary_url": "https://enterkomputer.com/detail/184432/Lenovo-D32-40-32-FHD-Monitor",
     "scraped_at": "2026-05-10T20:03:36.155013+00:00",
     "specs": {
-      "size_inch": 40,
+      "size_inch": 40.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -135034,7 +134890,7 @@
     "primary_url": "https://enterkomputer.com/detail/177387/Lenovo-L32p-30-315-UHD-IPS-Entertainment-Monitor",
     "scraped_at": "2026-05-10T20:03:39.629257+00:00",
     "specs": {
-      "size_inch": 30,
+      "size_inch": 30.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -135075,7 +134931,7 @@
     "primary_url": "https://enterkomputer.com/detail/198040/Lenovo-ThinkVision-T32p-30-315-UHD-IPS-Monitor",
     "scraped_at": "2026-05-10T20:03:43.079139+00:00",
     "specs": {
-      "size_inch": 30,
+      "size_inch": 30.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -135116,7 +134972,7 @@
     "primary_url": "https://enterkomputer.com/detail/193981/Lenovo-Legion-R32qc-30-315-QHD-180Hz-HDR10-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:03:46.580156+00:00",
     "specs": {
-      "size_inch": 30,
+      "size_inch": 30.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -135157,7 +135013,7 @@
     "primary_url": "https://enterkomputer.com/detail/198111/Lenovo-Legion-Pro-32UD-10-315-UHD-QD-OLED-240Hz-HDR400-USB-C-PD-15W-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:03:50.067169+00:00",
     "specs": {
-      "size_inch": 10,
+      "size_inch": 10.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -135198,7 +135054,7 @@
     "primary_url": "https://enterkomputer.com/detail/180164/Lenovo-G34w-30-34-WQHD-Curved-Gaming-Monitor-170Hz",
     "scraped_at": "2026-05-10T20:03:53.556390+00:00",
     "specs": {
-      "size_inch": 30,
+      "size_inch": 30.0,
       "refresh_hz": 170,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -135239,7 +135095,7 @@
     "primary_url": "https://enterkomputer.com/detail/193742/Lenovo-Legion-R34w-30-34-WQHD-180Hz-HDR10-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:03:57.070455+00:00",
     "specs": {
-      "size_inch": 30,
+      "size_inch": 30.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -135280,7 +135136,7 @@
     "primary_url": "https://enterkomputer.com/detail/195266/Lenovo-Legion-PRO-34WD-10-34-WQHD-OLED-240Hz-HDR400-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:04:00.569431+00:00",
     "specs": {
-      "size_inch": 10,
+      "size_inch": 10.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -135313,7 +135169,7 @@
     "primary_url": "https://enterkomputer.com/detail/201409/LG-55UA7550-55-inch-4K-UHD-AI-HDR10-Smart-TV-with-webOS",
     "scraped_at": "2026-05-10T20:04:04.047413+00:00",
     "specs": {
-      "size_inch": 55,
+      "size_inch": 55.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -135354,7 +135210,7 @@
     "primary_url": "https://enterkomputer.com/detail/188941/LG-17-LED-17BR30T-HD-Touchscreen",
     "scraped_at": "2026-05-10T20:04:07.536356+00:00",
     "specs": {
-      "size_inch": 17,
+      "size_inch": 17.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true
     },
@@ -135394,7 +135250,7 @@
     "primary_url": "https://enterkomputer.com/detail/192430/LG-19-LED-19M38L-B-HDMI",
     "scraped_at": "2026-05-10T20:04:10.996957+00:00",
     "specs": {
-      "size_inch": 19,
+      "size_inch": 19.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true
     },
@@ -135434,7 +135290,7 @@
     "primary_url": "https://enterkomputer.com/detail/176996/LG-2145-22MP410-B-FHD-with-AMD-FreeSync",
     "scraped_at": "2026-05-10T20:04:14.418584+00:00",
     "specs": {
-      "size_inch": 21,
+      "size_inch": 21.0,
       "refresh_hz": 75,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -135475,7 +135331,7 @@
     "primary_url": "https://enterkomputer.com/detail/186527/LG-2145-22MR410-B-FHD-3-Side-Borderless-100Hz-Monitor-with-FreeSync",
     "scraped_at": "2026-05-10T20:04:17.864975+00:00",
     "specs": {
-      "size_inch": 21,
+      "size_inch": 21.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -135680,7 +135536,7 @@
     "primary_url": "https://enterkomputer.com/detail/190446/LG-24-24GS50F-B-UltraGear-FHD-180Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:04:35.206837+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -135803,7 +135659,7 @@
     "primary_url": "https://enterkomputer.com/detail/187177/LG-27-27MR400-B-FHD-3-Side-Borderless-IPS-100Hz-Monitor-with-FreeSync",
     "scraped_at": "2026-05-10T20:04:45.630466+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -135844,7 +135700,7 @@
     "primary_url": "https://enterkomputer.com/detail/190648/LG-27-27MS500-B-FHD-IPS-100Hz-Monitor",
     "scraped_at": "2026-05-10T20:04:49.156494+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -135885,7 +135741,7 @@
     "primary_url": "https://enterkomputer.com/detail/197794/LG-27U411A-B-27-FHD-IPS-120Hz-HDR10-4-side-BorderlessDesignMonitor",
     "scraped_at": "2026-05-10T20:04:52.617199+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -135926,7 +135782,7 @@
     "primary_url": "https://enterkomputer.com/detail/194735/LG-27U421A-B-27-FHD-100Hz-Curved-Monitor-with-USB-C",
     "scraped_at": "2026-05-10T20:04:56.070594+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -135967,7 +135823,7 @@
     "primary_url": "https://enterkomputer.com/detail/190981/LG-27BA550-B-27-FHD-IPS-100Hz-Monitor-Built-in-Speaker",
     "scraped_at": "2026-05-10T20:04:59.525384+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -136008,7 +135864,7 @@
     "primary_url": "https://enterkomputer.com/detail/195745/LG-27U631A-B-27-QHD-IPS-3-Side-Borderless-Design-100Hz-HDR10-Monitor-USB-C",
     "scraped_at": "2026-05-10T20:05:03.183318+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -136041,7 +135897,7 @@
     "primary_url": "https://enterkomputer.com/detail/187655/LG-27-27SR50F-W-FHD-IPS-Smart-Monitor-with-webOS",
     "scraped_at": "2026-05-10T20:05:06.642132+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -136082,7 +135938,7 @@
     "primary_url": "https://enterkomputer.com/detail/195217/LG-27UP600K-W-27-UHD-4K-IPS-HDR400-Monitor",
     "scraped_at": "2026-05-10T20:05:10.123924+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -136115,7 +135971,7 @@
     "primary_url": "https://enterkomputer.com/detail/173702/LG-UltraFine-27UP850K-W-27-4K-UHD-IPS-HDR400-USB-C-Monitor",
     "scraped_at": "2026-05-10T20:05:13.578705+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -136156,7 +136012,7 @@
     "primary_url": "https://enterkomputer.com/detail/195149/LG-UltraFine-27US500-W-27-4K-UHD-IPS-HDR10-Borderless-Design-Monitor",
     "scraped_at": "2026-05-10T20:05:17.048637+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -136197,7 +136053,7 @@
     "primary_url": "https://enterkomputer.com/detail/182847/LG-27-27GN60R-UltraGear-IPS-Gaming-Monitor-144Hz",
     "scraped_at": "2026-05-10T20:05:20.496308+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false
     },
@@ -136229,7 +136085,7 @@
     "primary_url": "https://enterkomputer.com/detail/198096/LG-UltraGear-G4-27G411A-B-27-FHD-IPS-144Hz-OC-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:05:23.998251+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -136270,7 +136126,7 @@
     "primary_url": "https://enterkomputer.com/detail/190447/LG-27-27GS50F-B-UltraGear-FHD-180Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:05:27.431002+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -136311,7 +136167,7 @@
     "primary_url": "https://enterkomputer.com/detail/189016/LG-27-27GS60F-B-UltraGear-FHD-IPS-180Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:05:30.986848+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -136352,7 +136208,7 @@
     "primary_url": "https://enterkomputer.com/detail/190611/LG-UltraGear-27GS60QC-B-27-QHD-180Hz-HDR10-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:05:34.441026+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -136393,7 +136249,7 @@
     "primary_url": "https://enterkomputer.com/detail/191060/LG-UltraGear-27GS75Q-B-27-QHD-IPS-180Hz-OC-200Hz-HDR10-GamingMonitor",
     "scraped_at": "2026-05-10T20:05:37.907284+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -136434,7 +136290,7 @@
     "primary_url": "https://enterkomputer.com/detail/198097/LG-UltraGear-G6-27G610A-B-27-QHD-IPS-200Hz-HDR400-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:05:41.405762+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 200,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -136467,7 +136323,7 @@
     "primary_url": "https://enterkomputer.com/detail/200055/LG-UltraGear-27G810A-B-27-inch-Dual-Mode-4K-UHD-180Hz-or-FHD-360Hz-IPS-HDR400-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:05:44.856462+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -136508,7 +136364,7 @@
     "primary_url": "https://enterkomputer.com/detail/195677/LG-UltraGear-27G850A-B-27-UHD-4K-Nano-IPS-240Hz-HDR600-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:05:48.301238+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -136549,7 +136405,7 @@
     "primary_url": "https://enterkomputer.com/detail/197952/LG-UltraGear-G6-27G640A-B-27-QHD-IPS-300Hz-HDR400-USB-C-PD-15W-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:05:51.745401+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 300,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -136590,7 +136446,7 @@
     "primary_url": "https://enterkomputer.com/detail/195666/LG-UltraGear-27GR83Q-B-27-QHD-IPS-240Hz-HDR400-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:05:55.178626+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -136631,7 +136487,7 @@
     "primary_url": "https://enterkomputer.com/detail/188751/LG-27-27GR95QE-B-UltraGear-QHD-OLED-Gaming-Monitor-240Hz-with-G-SYNC-Compatible",
     "scraped_at": "2026-05-10T20:05:58.649458+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -136672,7 +136528,7 @@
     "primary_url": "https://enterkomputer.com/detail/191857/LG-UltraGear-27GS95QE-B-27-QHD-OLED-HDR400-True-Black-Gaming-Monitor-240Hz-with-G-SYNC-Compatible",
     "scraped_at": "2026-05-10T20:06:02.165383+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -136828,7 +136684,7 @@
     "primary_url": "https://enterkomputer.com/detail/191858/LG-27GK750F-27-FHD-240Hz-Gaming-Monitor-with-AMD-FreeSync",
     "scraped_at": "2026-05-10T20:06:15.928575+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -136869,7 +136725,7 @@
     "primary_url": "https://enterkomputer.com/detail/171977/LG-27-27GP850-B-UltraGear-QHD-165Hz-Nano-IPS-Gaming-Monitor-with-G-SYNC-Compatible",
     "scraped_at": "2026-05-10T20:06:19.461672+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 165,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -136910,7 +136766,7 @@
     "primary_url": "https://enterkomputer.com/detail/179462/LG-27-27GP95R-B-UltraGear-UHD-4K-IPS-144Hz-160Hz-Overclock-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:06:22.885571+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -136992,7 +136848,7 @@
     "primary_url": "https://enterkomputer.com/detail/198229/LG-29U511A-B-29-WFHD-IPS-3-Side-Virtually-Borderless-Design-100Hz-HDR10-Monitor-USB-C",
     "scraped_at": "2026-05-10T20:06:29.754446+00:00",
     "specs": {
-      "size_inch": 29,
+      "size_inch": 29.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -137025,7 +136881,7 @@
     "primary_url": "https://enterkomputer.com/detail/199342/LG-UltraWide-29U531A-W-29-inch-WFHD-100Hz-HDR10-Monitor",
     "scraped_at": "2026-05-10T20:06:33.199275+00:00",
     "specs": {
-      "size_inch": 29,
+      "size_inch": 29.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -137066,7 +136922,7 @@
     "primary_url": "https://enterkomputer.com/detail/171523/LG-29-LED-29WP500B-UltraWide-IPS-Gaming-Monitor-With-AMD-FreeSync",
     "scraped_at": "2026-05-10T20:06:36.635994+00:00",
     "specs": {
-      "size_inch": 29,
+      "size_inch": 29.0,
       "refresh_hz": 75,
       "refresh_hz_inferred": true
     },
@@ -137106,7 +136962,7 @@
     "primary_url": "https://enterkomputer.com/detail/188775/LG-UltraWide-29WQ500-B-29-FHD-IPS-100Hz-HDR10-Gaming-Monitor-with-AMD-FreeSync",
     "scraped_at": "2026-05-10T20:06:40.085897+00:00",
     "specs": {
-      "size_inch": 29,
+      "size_inch": 29.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -137147,7 +137003,7 @@
     "primary_url": "https://enterkomputer.com/detail/191609/LG-UltraWide-29WQ600-W-29-WFHD-IPS-100Hz-HDR10Monitor",
     "scraped_at": "2026-05-10T20:06:43.513828+00:00",
     "specs": {
-      "size_inch": 29,
+      "size_inch": 29.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -137188,7 +137044,7 @@
     "primary_url": "https://enterkomputer.com/detail/195678/LG-32U631A-B-32-QHD-IPS-100Hz-HDR10-USB-C-Monitor",
     "scraped_at": "2026-05-10T20:06:46.949849+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -137418,7 +137274,7 @@
     "primary_url": "https://enterkomputer.com/detail/194538/LG-UltraGear-32GS75Q-B-32-QHD-IPS-180Hz-HDR400-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:07:07.864044+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -137492,7 +137348,7 @@
     "primary_url": "https://enterkomputer.com/detail/191581/LG-UltraGear-32GS95UE-B-3146-Dual-Mode-4K-UHD-240Hz-or-FHD-480Hz-OLED-HDR400-Gaming-Monitor-with-Pixel-Sound",
     "scraped_at": "2026-05-10T20:07:14.751361+00:00",
     "specs": {
-      "size_inch": 31,
+      "size_inch": 31.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -137714,7 +137570,7 @@
     "primary_url": "https://enterkomputer.com/detail/194539/LG-UltraFine-32UR500K-B-32-4K-UHD-HDR10-Monitor-Built-In-Speakers",
     "scraped_at": "2026-05-10T20:07:35.382171+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -137788,7 +137644,7 @@
     "primary_url": "https://enterkomputer.com/detail/198098/LG-UltraWide-34U511A-B-34-WFHD-IPS-100HzHDR400Monitor",
     "scraped_at": "2026-05-10T20:07:42.296146+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -137829,7 +137685,7 @@
     "primary_url": "https://enterkomputer.com/detail/193030/LG-34WR50QK-B-34-UltraWide-QHD-100Hz-HDR10-Curved-Monitor",
     "scraped_at": "2026-05-10T20:07:45.752661+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -137903,7 +137759,7 @@
     "primary_url": "https://enterkomputer.com/detail/194551/LG-UltraGear-34GS95QE-B-34-WQHD-OLED-240Hz-HDR400-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:07:52.622099+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -137944,7 +137800,7 @@
     "primary_url": "https://enterkomputer.com/detail/184139/LG-34-34WQ500-B-UltraWide-FHD-VESA-Display-HDR-IPS-Monitor-with-AMD-FreeSync",
     "scraped_at": "2026-05-10T20:07:56.051241+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 75,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -137985,7 +137841,7 @@
     "primary_url": "https://enterkomputer.com/detail/186043/LG-35-35WN75CN-B-UltraWide-QHD-HDR-Curved-Monitor-100Hz",
     "scraped_at": "2026-05-10T20:07:59.525928+00:00",
     "specs": {
-      "size_inch": 35,
+      "size_inch": 35.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -138026,7 +137882,7 @@
     "primary_url": "https://enterkomputer.com/detail/195176/LG-Smart-Display-43SQ700S-W-43-4K-UHD-IPS-Monitor-with-webOS",
     "scraped_at": "2026-05-10T20:08:02.990870+00:00",
     "specs": {
-      "size_inch": 43,
+      "size_inch": 43.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -138140,7 +137996,7 @@
     "primary_url": "https://enterkomputer.com/detail/191073/LG-UltraGear-45GS95QE-B-45-WQHD-OLED-240Hz-HDR400-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:08:13.358143+00:00",
     "specs": {
-      "size_inch": 45,
+      "size_inch": 45.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -138173,7 +138029,7 @@
     "primary_url": "https://enterkomputer.com/detail/188752/LG-45-45GR95QE-B-UltraGear-WQHD-OLED-Curved-Gaming-Monitor-240Hz-with-G-SYNC-Compatible",
     "scraped_at": "2026-05-10T20:08:16.800518+00:00",
     "specs": {
-      "size_inch": 45,
+      "size_inch": 45.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -138206,7 +138062,7 @@
     "primary_url": "https://enterkomputer.com/detail/182994/LG-48-48GQ900-B-UltraGear-UHD-4K-OLED-120Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:08:20.276826+00:00",
     "specs": {
-      "size_inch": 48,
+      "size_inch": 48.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -138239,7 +138095,7 @@
     "primary_url": "https://enterkomputer.com/detail/186545/LG-49-49WQ95C-W-UltraWide-Dual-QHD-IPS-144Hz-Curved-Monitor",
     "scraped_at": "2026-05-10T20:08:23.702949+00:00",
     "specs": {
-      "size_inch": 49,
+      "size_inch": 49.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -138280,7 +138136,7 @@
     "primary_url": "https://enterkomputer.com/detail/162057/LG-32-32LM550-TV",
     "scraped_at": "2026-05-10T20:08:27.126391+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true
     },
@@ -138312,7 +138168,7 @@
     "primary_url": "https://enterkomputer.com/detail/197274/LG-32-32LR650BPSA-HD-Smart-TV-HDR10-with-webOS",
     "scraped_at": "2026-05-10T20:08:30.630011+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true
     },
@@ -138344,7 +138200,7 @@
     "primary_url": "https://enterkomputer.com/detail/164005/LG-43-43LM5500-Full-HD-TV",
     "scraped_at": "2026-05-10T20:08:34.067104+00:00",
     "specs": {
-      "size_inch": 43,
+      "size_inch": 43.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true
     },
@@ -138376,7 +138232,7 @@
     "primary_url": "https://enterkomputer.com/detail/200618/LG-UltraWide-49U950A-B-49-Inch-DQHD-Nano-IPS-144Hz-HDR400-USB-C-PD-90W-Curved-Monitor",
     "scraped_at": "2026-05-10T20:08:37.529194+00:00",
     "specs": {
-      "size_inch": 49,
+      "size_inch": 49.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -138409,7 +138265,7 @@
     "primary_url": "https://enterkomputer.com/detail/196891/LG-50UA7500-50-UHD-Smart-TV-AI-HDR10-Pro",
     "scraped_at": "2026-05-10T20:08:40.969437+00:00",
     "specs": {
-      "size_inch": 50,
+      "size_inch": 50.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -138442,7 +138298,7 @@
     "primary_url": "https://enterkomputer.com/detail/187618/LG-50-50UR7500-UHD-4K-Smart-TV",
     "scraped_at": "2026-05-10T20:08:44.411162+00:00",
     "specs": {
-      "size_inch": 50,
+      "size_inch": 50.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -138475,7 +138331,7 @@
     "primary_url": "https://enterkomputer.com/detail/187617/LG-55-55UR7500-UHD-4K-Smart-TV",
     "scraped_at": "2026-05-10T20:08:47.849604+00:00",
     "specs": {
-      "size_inch": 55,
+      "size_inch": 55.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -138508,7 +138364,7 @@
     "primary_url": "https://enterkomputer.com/detail/196892/LG-65UA7350-65-UHD-Smart-TV-AI-HDR10-Pro",
     "scraped_at": "2026-05-10T20:08:51.308047+00:00",
     "specs": {
-      "size_inch": 65,
+      "size_inch": 65.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -138541,7 +138397,7 @@
     "primary_url": "https://enterkomputer.com/detail/195802/LG-Smart-TV-65-65UR7500-4K-UHD-HDR10-with-webOS",
     "scraped_at": "2026-05-10T20:08:54.748393+00:00",
     "specs": {
-      "size_inch": 65,
+      "size_inch": 65.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -138574,7 +138430,7 @@
     "primary_url": "https://enterkomputer.com/detail/199146/LG-86UA7550-86-inch-4K-HDR10-Pro-Smart-TV-AI",
     "scraped_at": "2026-05-10T20:08:58.183606+00:00",
     "specs": {
-      "size_inch": 86,
+      "size_inch": 86.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -138607,7 +138463,7 @@
     "primary_url": "https://enterkomputer.com/detail/196248/LG-86-86UT8050PSB-UHD-4K-HDR10-Pro-Smart-TV-AI",
     "scraped_at": "2026-05-10T20:09:01.927458+00:00",
     "specs": {
-      "size_inch": 86,
+      "size_inch": 86.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -138941,7 +138797,7 @@
     "primary_url": "https://enterkomputer.com/detail/194600/MSI-Pro-MP225V-2145-FHD-100Hz-Productivity-Monitor",
     "scraped_at": "2026-05-10T20:09:36.444879+00:00",
     "specs": {
-      "size_inch": 21,
+      "size_inch": 21.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -139327,7 +139183,7 @@
     "primary_url": "https://enterkomputer.com/detail/190224/MSI-Pro-MP273U-27-UHD-4K-IPS-60Hz-Productivity-Monitor",
     "scraped_at": "2026-05-10T20:10:11.034896+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -139360,7 +139216,7 @@
     "primary_url": "https://enterkomputer.com/detail/188136/MSI-Pro-MP273AW-27-FHD-IPS-100Hz-Monitor",
     "scraped_at": "2026-05-10T20:10:14.483554+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -139401,7 +139257,7 @@
     "primary_url": "https://enterkomputer.com/detail/191616/MSI-PRO-MP273QP-E2-27-WQHD-IPS-100Hz-HDR400-Productivity-Monitor-Built-in-Speaker",
     "scraped_at": "2026-05-10T20:10:18.003482+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -139442,7 +139298,7 @@
     "primary_url": "https://enterkomputer.com/detail/192821/MSI-PRO-MP273QW-E2-27-WQHD-IPS-100Hz-HDR400-Monitor-Built-in-Speaker",
     "scraped_at": "2026-05-10T20:10:21.421579+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -139483,7 +139339,7 @@
     "primary_url": "https://enterkomputer.com/detail/191614/MSI-PRO-MP275-E2-27-FHD-IPS-120Hz-HDR-Productivity-Monitor-Built-in-Speaker",
     "scraped_at": "2026-05-10T20:10:24.878065+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -139524,7 +139380,7 @@
     "primary_url": "https://enterkomputer.com/detail/191615/MSI-PRO-MP275W-E2-27-FHD-IPS-120Hz-HDR-Productivity-Monitor-Built-in-Speaker",
     "scraped_at": "2026-05-10T20:10:28.382306+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -139565,7 +139421,7 @@
     "primary_url": "https://enterkomputer.com/detail/188138/MSI-Pro-MP275Q-27-QHD-100Hz-Productivity-Monitor",
     "scraped_at": "2026-05-10T20:10:31.854107+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -139688,7 +139544,7 @@
     "primary_url": "https://enterkomputer.com/detail/188949/MSI-Modern-MD272QXPW-27-WQHD-IPS-100Hz-Monitor-with-USB-C",
     "scraped_at": "2026-05-10T20:10:42.314555+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -139729,7 +139585,7 @@
     "primary_url": "https://enterkomputer.com/detail/198492/MSI-Modern-MD272UPHW-27-UHD-IPS-HDR400-USB-C-PD-98W-Monitor",
     "scraped_at": "2026-05-10T20:10:45.743801+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -139770,7 +139626,7 @@
     "primary_url": "https://enterkomputer.com/detail/191617/MSI-Modern-MD342CQP-34-UWQHD-120Hz-HDR-Curved-Monitor-Built-in-Speaker",
     "scraped_at": "2026-05-10T20:10:49.172489+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -139885,7 +139741,7 @@
     "primary_url": "https://enterkomputer.com/detail/195515/MSI-MAG-244C-24-FHD-180Hz-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:10:59.463104+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -140156,7 +140012,7 @@
     "primary_url": "https://enterkomputer.com/detail/198491/MSI-MAG-274QPF-E20-27-WQHD-Rapid-IPS-200Hz-HDR400-USB-C-PD-15W-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:11:23.452656+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 200,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -140238,7 +140094,7 @@
     "primary_url": "https://enterkomputer.com/detail/195086/MSI-MAG-274F-27-FHD-Rapid-IPS-200Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:11:30.353366+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 200,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -140271,7 +140127,7 @@
     "primary_url": "https://enterkomputer.com/detail/200998/MSI-MAG-275F-E20-27-inch-FHD-Rapid-IPS-200Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:11:33.781444+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 200,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -140312,7 +140168,7 @@
     "primary_url": "https://enterkomputer.com/detail/192609/MSI-MAG-274URFW-27-4K-UHD-Rapid-IPS-160Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:11:37.230025+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 160,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -140353,7 +140209,7 @@
     "primary_url": "https://enterkomputer.com/detail/196667/MSI-MPG-274URDFW-E16M-27-Dual-Mode-4K-UHD-160Hz-or-FHD-320Hz-Rapid-IPS-Mini-LED-HDR1000-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:11:40.667337+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 160,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -140394,7 +140250,7 @@
     "primary_url": "https://enterkomputer.com/detail/190226/MSI-MAG-275QF-27-WQHD-Rapid-IPS-180Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:11:44.075989+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -140435,7 +140291,7 @@
     "primary_url": "https://enterkomputer.com/detail/196203/MSI-MAG-275CQF-E18-27-WQHD-HDR-180Hz-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:11:47.503421+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -140476,7 +140332,7 @@
     "primary_url": "https://enterkomputer.com/detail/192820/MSI-MAG-276CXF-27-FHD-280Hz-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:11:50.929758+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 280,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -140509,7 +140365,7 @@
     "primary_url": "https://enterkomputer.com/detail/196668/MSI-MAG-272QPW-QD-OLED-X28-27-WQHD-QD-OLED-280Hz-HDR400-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:11:54.351942+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 280,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -140575,7 +140431,7 @@
     "primary_url": "https://enterkomputer.com/detail/179991/MSI-MPG-ARTYMIS-273CQR-QD-27-WQHD-165Hz-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:12:01.439641+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 165,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -140970,7 +140826,7 @@
     "primary_url": "https://enterkomputer.com/detail/190694/MSI-MAG-342CQR-E2-34-UWQHD-180Hz-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:12:39.400347+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -141003,7 +140859,7 @@
     "primary_url": "https://enterkomputer.com/detail/190228/MSI-MAG-345CQR-34-UWQHD-180Hz-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:12:42.821778+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -141036,7 +140892,7 @@
     "primary_url": "https://enterkomputer.com/detail/199101/MSI-MAG-401QR-40-inch-UWQHD-IPS-155Hz-HDR400-USB-C-PD-65W-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:12:46.321326+00:00",
     "specs": {
-      "size_inch": 40,
+      "size_inch": 40.0,
       "refresh_hz": 155,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -141077,7 +140933,7 @@
     "primary_url": "https://enterkomputer.com/detail/190230/MSI-MPG-491CQP-QD-OLED-49-DQHD-OLED-144Hz-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:12:49.763681+00:00",
     "specs": {
-      "size_inch": 49,
+      "size_inch": 49.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -141399,7 +141255,7 @@
     "primary_url": "https://enterkomputer.com/detail/194198/Philips-24E1N1300A-238-FHD-IPS-100Hz-USB-C-Monitor",
     "scraped_at": "2026-05-10T20:17:14.809001+00:00",
     "specs": {
-      "size_inch": 23,
+      "size_inch": 23.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -141564,7 +141420,7 @@
     "primary_url": "https://enterkomputer.com/detail/173200/Philips-271V8-27-FHD-IPS-75Hz",
     "scraped_at": "2026-05-10T20:17:32.023371+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 75,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -141605,7 +141461,7 @@
     "primary_url": "https://enterkomputer.com/detail/194908/Philips-27E1N1100A-27-FHD-IPS-100Hz-Monitor-Response-Time-4ms",
     "scraped_at": "2026-05-10T20:17:35.440668+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -141638,7 +141494,7 @@
     "primary_url": "https://enterkomputer.com/detail/194200/Philips-27E1N1300A-27-FHD-IPS-100Hz-USB-C-Monitor",
     "scraped_at": "2026-05-10T20:17:38.869539+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -141671,7 +141527,7 @@
     "primary_url": "https://enterkomputer.com/detail/194199/Philips-27E1N1600AE-27-QHD-IPS-100Hz-HDR10-USB-C-Monitor",
     "scraped_at": "2026-05-10T20:17:42.310787+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -141704,7 +141560,7 @@
     "primary_url": "https://enterkomputer.com/detail/200609/Philips-27E1N1800A-27-Inch-4K-UHD-IPS-HDR10-Monitor-Built-in-Speakers",
     "scraped_at": "2026-05-10T20:17:45.757724+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -141737,7 +141593,7 @@
     "primary_url": "https://enterkomputer.com/detail/193987/Philips-27E2N1500-27-QHD-IPS-120Hz-Monitor",
     "scraped_at": "2026-05-10T20:17:49.207369+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -141770,7 +141626,7 @@
     "primary_url": "https://enterkomputer.com/detail/200610/Philips-27E2N1500L-27-Inch-QHD-IPS-HDR10-Monitor",
     "scraped_at": "2026-05-10T20:17:52.654082+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "QHD"
@@ -141803,7 +141659,7 @@
     "primary_url": "https://enterkomputer.com/detail/194201/Philips-Evnia-27M2N3200A-27-FHD-Fast-IPS-180Hz-HDR10GamingMonitor",
     "scraped_at": "2026-05-10T20:17:56.067285+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -141836,7 +141692,7 @@
     "primary_url": "https://enterkomputer.com/detail/195398/Philips-Evnia-27M2N5510J-27-QHD-IPS-180Hz-HDR400-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:17:59.506896+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -141869,7 +141725,7 @@
     "primary_url": "https://enterkomputer.com/detail/200611/Philips-Evnia-27M3N3540Q-27-Inch-QHD-Fast-IPS-210Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:18:02.950842+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 210,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -141902,7 +141758,7 @@
     "primary_url": "https://enterkomputer.com/detail/200925/Philips-27E2G2200-27-inch-FHD-IPS-144Hz-HDR10-Monitor",
     "scraped_at": "2026-05-10T20:18:06.404381+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -141935,7 +141791,7 @@
     "primary_url": "https://enterkomputer.com/detail/194202/Philips-Evnia-34M2C3500L-34-WQHD-180Hz-HDR10-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:18:09.826938+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -141968,7 +141824,7 @@
     "primary_url": "https://enterkomputer.com/detail/176128/Philips-345E2AE-34-QHD-IPS-UltraWide-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:18:13.233095+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": true,
       "resolution": "QHD"
@@ -142009,7 +141865,7 @@
     "primary_url": "https://enterkomputer.com/detail/191630/Philips-Evnia-49M2C8900-49-Dual-QHD-QD-OLED-240Hz-HDR400-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:18:16.655599+00:00",
     "specs": {
-      "size_inch": 49,
+      "size_inch": 49.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -142042,7 +141898,7 @@
     "primary_url": "https://enterkomputer.com/detail/201173/Samsung-UA50U8000F-50-inch-Crystal-UHD-4K-Smart-TV",
     "scraped_at": "2026-05-10T20:18:20.102489+00:00",
     "specs": {
-      "size_inch": 50,
+      "size_inch": 50.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -142083,7 +141939,7 @@
     "primary_url": "https://enterkomputer.com/detail/170872/Samsung-185-S19A330-LED-HDMI",
     "scraped_at": "2026-05-10T20:18:23.556542+00:00",
     "specs": {
-      "size_inch": 18,
+      "size_inch": 18.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true
     },
@@ -142123,7 +141979,7 @@
     "primary_url": "https://enterkomputer.com/detail/188294/Samsung-22-S22C310-FHD-IPS-75Hz-with-AMD-FreeSync",
     "scraped_at": "2026-05-10T20:18:26.988267+00:00",
     "specs": {
-      "size_inch": 22,
+      "size_inch": 22.0,
       "refresh_hz": 75,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -142164,7 +142020,7 @@
     "primary_url": "https://enterkomputer.com/detail/192976/Samsung-Essential-S22D300-22-FHD-IPS-100Hz-Response-Time-5ms",
     "scraped_at": "2026-05-10T20:18:30.452913+00:00",
     "specs": {
-      "size_inch": 22,
+      "size_inch": 22.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -142205,7 +142061,7 @@
     "primary_url": "https://enterkomputer.com/detail/174373/Samsung-24-S24A400-FHD-Professional-Monitor-with-2MP-Webcam",
     "scraped_at": "2026-05-10T20:18:33.880463+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -142246,7 +142102,7 @@
     "primary_url": "https://enterkomputer.com/detail/187174/Samsung-24-S24C310-FHD-IPS-75Hz-with-AMD-FreeSync",
     "scraped_at": "2026-05-10T20:18:37.324498+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 75,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -142287,7 +142143,7 @@
     "primary_url": "https://enterkomputer.com/detail/186919/Samsung-24-S24C366-FHD-Curved-Monitor-with-FreeSync",
     "scraped_at": "2026-05-10T20:18:40.743196+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 75,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -142328,7 +142184,7 @@
     "primary_url": "https://enterkomputer.com/detail/193849/Samsung-Essential-S24D300-24-FHD-IPS-100Hz-Monitor",
     "scraped_at": "2026-05-10T20:18:44.241617+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -142369,7 +142225,7 @@
     "primary_url": "https://enterkomputer.com/detail/193743/Samsung-24-S24D366-FHD-100Hz-Curved-Monitor-with-AMDFreeSync",
     "scraped_at": "2026-05-10T20:18:47.713925+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -142410,7 +142266,7 @@
     "primary_url": "https://enterkomputer.com/detail/194739/Samsung-Essential-S24F320-24-FHD-IPS-120Hz-Monitor",
     "scraped_at": "2026-05-10T20:18:51.119214+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -142451,7 +142307,7 @@
     "primary_url": "https://enterkomputer.com/detail/198931/Samsung-Essential-S24F330-24-FHD-100Hz-Monitor",
     "scraped_at": "2026-05-10T20:18:54.587620+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -142492,7 +142348,7 @@
     "primary_url": "https://enterkomputer.com/detail/178720/Samsung-25-S25BG400-Odyssey-G4-FHD-IPS-Gaming-Monitor-240Hz",
     "scraped_at": "2026-05-10T20:18:58.011634+00:00",
     "specs": {
-      "size_inch": 25,
+      "size_inch": 25.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -142533,7 +142389,7 @@
     "primary_url": "https://enterkomputer.com/detail/183741/Samsung-27-S27C310-FHD-IPS-Monitor",
     "scraped_at": "2026-05-10T20:19:01.563699+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -142574,7 +142430,7 @@
     "primary_url": "https://enterkomputer.com/detail/196148/Samsung-S27D300-27-FHD-IPS-100Hz-Response-Time-5ms",
     "scraped_at": "2026-05-10T20:19:05.032617+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -142615,7 +142471,7 @@
     "primary_url": "https://enterkomputer.com/detail/194706/Samsung-Essential-S27D396-27-FHD-100Hz-Curved-Monitor-Built-in-Speaker",
     "scraped_at": "2026-05-10T20:19:08.493560+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -142656,7 +142512,7 @@
     "primary_url": "https://enterkomputer.com/detail/195948/Samsung-Essential-S27F320-27-FHD-IPS-120Hz-Monitor",
     "scraped_at": "2026-05-10T20:19:11.924310+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -142697,7 +142553,7 @@
     "primary_url": "https://enterkomputer.com/detail/169854/Samsung-27-F27T450F-LED-Wide-Screen",
     "scraped_at": "2026-05-10T20:19:15.412587+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true
     },
@@ -142737,7 +142593,7 @@
     "primary_url": "https://enterkomputer.com/detail/160634/SAMSUNG-27-LC27R500-CURVED-LED-Wide-Screen",
     "scraped_at": "2026-05-10T20:19:18.852098+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true
     },
@@ -142769,7 +142625,7 @@
     "primary_url": "https://enterkomputer.com/detail/178287/SAMSUNG-27-S27A600-QHD-IPS-Monitor-with-USB-C",
     "scraped_at": "2026-05-10T20:19:22.303209+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "QHD"
@@ -142810,7 +142666,7 @@
     "primary_url": "https://enterkomputer.com/detail/172679/SAMSUNG-27-S27A700-4K-UHD-Monitor",
     "scraped_at": "2026-05-10T20:19:25.732670+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -142851,7 +142707,7 @@
     "primary_url": "https://enterkomputer.com/detail/172678/SAMSUNG-27-S27A800-4K-UHD-Monitor",
     "scraped_at": "2026-05-10T20:19:29.187306+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -142892,7 +142748,7 @@
     "primary_url": "https://enterkomputer.com/detail/185972/SAMSUNG-27-M5-S27CM501-FHD-Smart-Monitor-Streaming-TV-White-Color",
     "scraped_at": "2026-05-10T20:19:32.620302+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -142925,7 +142781,7 @@
     "primary_url": "https://enterkomputer.com/detail/195355/SAMSUNG-27-M5-S27DM500-FHD-Smart-Monitor-Streaming-TV",
     "scraped_at": "2026-05-10T20:19:36.048315+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -142966,7 +142822,7 @@
     "primary_url": "https://enterkomputer.com/detail/190739/SAMSUNG-27-M5-S27DM501-FHD-Smart-Monitor-Streaming-TV-White-Color",
     "scraped_at": "2026-05-10T20:19:39.492845+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -142999,7 +142855,7 @@
     "primary_url": "https://enterkomputer.com/detail/200186/SAMSUNG-27-M5-27FM501-FHD-Smart-Monitor-with-Smart-TV-Experience",
     "scraped_at": "2026-05-10T20:19:42.971528+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -143040,7 +142896,7 @@
     "primary_url": "https://enterkomputer.com/detail/180255/SAMSUNG-27-S27B800-ViewFinity-4K-IPS-with-USB-Type-C",
     "scraped_at": "2026-05-10T20:19:46.378740+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -143073,7 +142929,7 @@
     "primary_url": "https://enterkomputer.com/detail/191071/Samsung-ViewFinity-S6-S27D604-27-QHD-IPS-100Hz-HDR10-USB-C-Monitor",
     "scraped_at": "2026-05-10T20:19:49.787828+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -143114,7 +142970,7 @@
     "primary_url": "https://enterkomputer.com/detail/191072/Samsung-ViewFinity-S7-S27D700-27-4K-UHD-IPS-HDR10-Monitor",
     "scraped_at": "2026-05-10T20:19:53.226754+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -143155,7 +143011,7 @@
     "primary_url": "https://enterkomputer.com/detail/191070/Samsung-ViewFinity-S8-S27D804-27-4K-UHD-IPS-HDR10-USB-C-Monitor",
     "scraped_at": "2026-05-10T20:19:56.668435+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -143196,7 +143052,7 @@
     "primary_url": "https://enterkomputer.com/detail/197174/Samsung-ViewFinity-S9-S27C900-27-5K-IPS-Pantone-Validated-Smart-Monitor-with-Samsung-Smart-Calibration",
     "scraped_at": "2026-05-10T20:20:00.130583+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true
     },
@@ -143236,7 +143092,7 @@
     "primary_url": "https://enterkomputer.com/detail/178721/SAMSUNG-27-S27BG400-Odyssey-G4-FHD-IPS-Gaming-Monitor-240Hz",
     "scraped_at": "2026-05-10T20:20:03.788646+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -143277,7 +143133,7 @@
     "primary_url": "https://enterkomputer.com/detail/198916/Samsung-Odyssey-G5-S27FG530-27-QHD-IPS-200Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:20:07.260191+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 200,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -143318,7 +143174,7 @@
     "primary_url": "https://enterkomputer.com/detail/189092/Samsung-27-S27DG502-Odyssey-G5-QHD-IPS-180Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:20:10.750979+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -143351,7 +143207,7 @@
     "primary_url": "https://enterkomputer.com/detail/190484/Samsung-27-S27DG602-Odyssey-OLED-G6-QHD-360Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:20:14.221071+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 360,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -143392,7 +143248,7 @@
     "primary_url": "https://enterkomputer.com/detail/195376/Samsung-Odyssey-OLED-G6-S27DG610-27-QHD-OLED-240Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:20:17.714736+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -143433,7 +143289,7 @@
     "primary_url": "https://enterkomputer.com/detail/195375/Samsung-Odyssey-G7-S27DG702-27-4K-UHD-IPS-144Hz-HDR400-Gaming-Monitor-Built-in-Speaker",
     "scraped_at": "2026-05-10T20:20:21.186153+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -143474,7 +143330,7 @@
     "primary_url": "https://enterkomputer.com/detail/183632/Samsung-27-S27BG652-Odyssey-G6-WQHD-Curved-Gaming-Monitor-240Hz",
     "scraped_at": "2026-05-10T20:20:24.617609+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -143515,7 +143371,7 @@
     "primary_url": "https://enterkomputer.com/detail/183634/Samsung-28-S28BG700-Odyssey-G7-UHD-IPS-Gaming-Monitor-144Hz-G-Sync-Compatible-with-Smart-TV-Experience-Promo-Terbatas-Gift-Logitech-G403-Hero",
     "scraped_at": "2026-05-10T20:20:28.041785+00:00",
     "specs": {
-      "size_inch": 28,
+      "size_inch": 28.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -143556,7 +143412,7 @@
     "primary_url": "https://enterkomputer.com/detail/169853/Samsung-32-C32R500-Curved-LED-Wide-Screen",
     "scraped_at": "2026-05-10T20:20:31.499376+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true
     },
@@ -143588,7 +143444,7 @@
     "primary_url": "https://enterkomputer.com/detail/196432/SAMSUNG-Essential-S32D396-32-FHD-100Hz-Curved-Monitor-Built-in-Speaker",
     "scraped_at": "2026-05-10T20:20:34.913412+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -143629,7 +143485,7 @@
     "primary_url": "https://enterkomputer.com/detail/190194/Samsung-32-M7-S32DM700-UHD-Smart-Monitor-Streaming-TV",
     "scraped_at": "2026-05-10T20:20:38.491575+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -143662,7 +143518,7 @@
     "primary_url": "https://enterkomputer.com/detail/196996/Samsung-Vision-AI-M7-S32FM700-32-4K-Smart-Monitor-HDR10-with-Built-in-Speaker-Black",
     "scraped_at": "2026-05-10T20:20:41.955228+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -143703,7 +143559,7 @@
     "primary_url": "https://enterkomputer.com/detail/196995/Samsung-Vision-AI-M7-S32FM701-32-4K-Smart-Monitor-HDR10-with-Built-in-Speaker-White",
     "scraped_at": "2026-05-10T20:20:45.396533+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -143736,7 +143592,7 @@
     "primary_url": "https://enterkomputer.com/detail/197176/Samsung-Vision-AI-M8-S32FM803-32-4K-Smart-Monitor-HDR10-with-Built-in-Speaker",
     "scraped_at": "2026-05-10T20:20:48.899772+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -143769,7 +143625,7 @@
     "primary_url": "https://enterkomputer.com/detail/195374/Samsung-Smart-M8-S32DM801-32-4K-UHD-HDR10-USB-C-Monitor-Built-in-Speaker",
     "scraped_at": "2026-05-10T20:20:52.322767+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -143810,7 +143666,7 @@
     "primary_url": "https://enterkomputer.com/detail/180254/SAMSUNG-32-S32B800-ViewFinity-4K-IPS-with-USB-Type-C",
     "scraped_at": "2026-05-10T20:20:55.757443+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -143851,7 +143707,7 @@
     "primary_url": "https://enterkomputer.com/detail/191068/Samsung-ViewFinity-S7-S32D700-32-4K-UHD-HDR10-Monitor-Black",
     "scraped_at": "2026-05-10T20:20:59.201456+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -143892,7 +143748,7 @@
     "primary_url": "https://enterkomputer.com/detail/191069/Samsung-ViewFinity-S7-S32D701-32-4K-UHD-HDR10-Monitor-White",
     "scraped_at": "2026-05-10T20:21:02.690155+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -143933,7 +143789,7 @@
     "primary_url": "https://enterkomputer.com/detail/191067/Samsung-ViewFinity-S8-S32D804-32-4K-UHD-HDR10-USB-C-Monitor",
     "scraped_at": "2026-05-10T20:21:06.147336+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -143974,7 +143830,7 @@
     "primary_url": "https://enterkomputer.com/detail/183633/SAMSUNG-32-S32BG652-Odyssey-G6-WQHD-Curved-Gaming-Monitor-240Hz",
     "scraped_at": "2026-05-10T20:21:09.589063+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -144015,7 +143871,7 @@
     "primary_url": "https://enterkomputer.com/detail/183636/SAMSUNG-32-S32BG700-Odyssey-G7-UHD-IPS-Gaming-Monitor-144Hz-G-Sync-Compatible-with-Smart-TV-Experience",
     "scraped_at": "2026-05-10T20:21:13.081010+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -144056,7 +143912,7 @@
     "primary_url": "https://enterkomputer.com/detail/181154/SAMSUNG-32-S32BG852-Odyssey-Neo-G8-UHD-240Hz-MiniLED-Curved-Monitor",
     "scraped_at": "2026-05-10T20:21:16.516559+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -144097,7 +143953,7 @@
     "primary_url": "https://enterkomputer.com/detail/190107/Samsung-32-S32DG502-Odyssey-G5-QHD-IPS-180Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:21:20.042186+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -144138,7 +143994,7 @@
     "primary_url": "https://enterkomputer.com/detail/197223/Samsung-Odyssey-G7-S32DG702-32-4K-UHD-Fast-IPS-144Hz-HDR400-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:21:23.487657+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -144179,7 +144035,7 @@
     "primary_url": "https://enterkomputer.com/detail/194909/Samsung-Odyssey-OLED-G8-S32DG802-32-4K-UHD-OLED-240Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:21:27.016941+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -144220,7 +144076,7 @@
     "primary_url": "https://enterkomputer.com/detail/185609/SAMSUNG-34-S34C500-ViewFinity-Ultra-WQHD-HDR-100Hz",
     "scraped_at": "2026-05-10T20:21:30.580061+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -144261,7 +144117,7 @@
     "primary_url": "https://enterkomputer.com/detail/187450/SAMSUNG-34-S34C650-Ultra-WQHD-Professional-Curved-Monitor-with-USB-C",
     "scraped_at": "2026-05-10T20:21:34.004278+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "QHD"
@@ -144302,7 +144158,7 @@
     "primary_url": "https://enterkomputer.com/detail/170882/SAMSUNG-34-C34G55-Odyssey-G5-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:21:37.454326+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": true
     },
@@ -144342,7 +144198,7 @@
     "primary_url": "https://enterkomputer.com/detail/184158/SAMSUNG-34-S34BG850-OLED-Ultra-WQHD-Curved-Smart-Gaming-Monitor-175Hz",
     "scraped_at": "2026-05-10T20:21:40.924066+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 175,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -144383,7 +144239,7 @@
     "primary_url": "https://enterkomputer.com/detail/196433/Samsung-Odyssey-OLED-G8-S34DG850-34-Ultra-WQHD-175Hz-HDR10-Curved-Gaming-Monitor-Built-in-Speaker",
     "scraped_at": "2026-05-10T20:21:44.402140+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 175,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -144424,7 +144280,7 @@
     "primary_url": "https://enterkomputer.com/detail/190635/SAMSUNG-43-M7-S43DM702-UHD-Smart-Monitor-Streaming-TV",
     "scraped_at": "2026-05-10T20:21:47.847002+00:00",
     "specs": {
-      "size_inch": 43,
+      "size_inch": 43.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -144457,7 +144313,7 @@
     "primary_url": "https://enterkomputer.com/detail/197175/Samsung-Vision-AI-M7-S43FM702-43-4K-Smart-Monitor-HDR10-with-Built-in-Speaker",
     "scraped_at": "2026-05-10T20:21:51.270549+00:00",
     "specs": {
-      "size_inch": 43,
+      "size_inch": 43.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -144490,7 +144346,7 @@
     "primary_url": "https://enterkomputer.com/detail/184159/SAMSUNG-43-S43CG700-Odyssey-Neo-G7-4K-Gaming-Monitor-144Hz",
     "scraped_at": "2026-05-10T20:21:54.686912+00:00",
     "specs": {
-      "size_inch": 43,
+      "size_inch": 43.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -144523,7 +144379,7 @@
     "primary_url": "https://enterkomputer.com/detail/199203/Samsung-43-43U8500F-Crystal-UHD-4K-Smart-TV",
     "scraped_at": "2026-05-10T20:21:58.124520+00:00",
     "specs": {
-      "size_inch": 43,
+      "size_inch": 43.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -144556,7 +144412,7 @@
     "primary_url": "https://enterkomputer.com/detail/187614/Samsung-43-43CU7000-Crystal-UHD-4K-Smart-TV",
     "scraped_at": "2026-05-10T20:22:01.568438+00:00",
     "specs": {
-      "size_inch": 43,
+      "size_inch": 43.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -144589,7 +144445,7 @@
     "primary_url": "https://enterkomputer.com/detail/187615/Samsung-43-43CU8000-Crystal-UHD-4K-Smart-TV",
     "scraped_at": "2026-05-10T20:22:05.013378+00:00",
     "specs": {
-      "size_inch": 43,
+      "size_inch": 43.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -144622,7 +144478,7 @@
     "primary_url": "https://enterkomputer.com/detail/183538/SAMSUNG-49-S49A950U-Super-Ultra-wide-Dual-QHD-120Hz-MiniLED-Curved-Monitor",
     "scraped_at": "2026-05-10T20:22:08.537515+00:00",
     "specs": {
-      "size_inch": 49,
+      "size_inch": 49.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -144663,7 +144519,7 @@
     "primary_url": "https://enterkomputer.com/detail/188296/SAMSUNG-49-S49C950-ViewFinity-S9-Ultra-wide-Dual-QHD-120Hz-Curved-Monitor",
     "scraped_at": "2026-05-10T20:22:11.956447+00:00",
     "specs": {
-      "size_inch": 49,
+      "size_inch": 49.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -144704,7 +144560,7 @@
     "primary_url": "https://enterkomputer.com/detail/191138/SAMSUNG-49-S49CG954-Odyssey-G9-Dual-QHD-Curved-Gaming-Monitor-240Hz",
     "scraped_at": "2026-05-10T20:22:15.373598+00:00",
     "specs": {
-      "size_inch": 49,
+      "size_inch": 49.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -144745,7 +144601,7 @@
     "primary_url": "https://enterkomputer.com/detail/195371/Samsung-Odyssey-OLED-G9-S49DG910-49-Dual-QHD-OLED-144Hz-HDR400-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:22:18.834134+00:00",
     "specs": {
-      "size_inch": 49,
+      "size_inch": 49.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -144778,7 +144634,7 @@
     "primary_url": "https://enterkomputer.com/detail/195370/Samsung-Odyssey-OLED-G9-S49DG930-49-Dual-QHD-OLED-240Hz-HDR10-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:22:22.254396+00:00",
     "specs": {
-      "size_inch": 49,
+      "size_inch": 49.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -144811,7 +144667,7 @@
     "primary_url": "https://enterkomputer.com/detail/196983/SAMSUNG-S49FG912-49-Odyssey-G6-DQHD-144Hz-HDR600-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:22:25.692292+00:00",
     "specs": {
-      "size_inch": 49,
+      "size_inch": 49.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -144844,7 +144700,7 @@
     "primary_url": "https://enterkomputer.com/detail/187925/SAMSUNG-57-S57CG952-Odyssey-Neo-G9-Dual-UHD-240Hz-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:22:29.102405+00:00",
     "specs": {
-      "size_inch": 57,
+      "size_inch": 57.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -144877,7 +144733,7 @@
     "primary_url": "https://enterkomputer.com/detail/193283/Samsung-50-50DU7000-Crystal-UHD-4K-Smart-TV",
     "scraped_at": "2026-05-10T20:22:32.582025+00:00",
     "specs": {
-      "size_inch": 50,
+      "size_inch": 50.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -145003,7 +144859,7 @@
     "primary_url": "https://enterkomputer.com/detail/199887/VenomRX-Spectra-View-SV19FHD-19-inch-HD-60Hz-Monitor",
     "scraped_at": "2026-05-10T20:22:46.254446+00:00",
     "specs": {
-      "size_inch": 19,
+      "size_inch": 19.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -145036,7 +144892,7 @@
     "primary_url": "https://enterkomputer.com/detail/199886/VenomRX-Spectra-View-SV22FHD-22-inch-FHD-75Hz-Monitor",
     "scraped_at": "2026-05-10T20:22:49.767774+00:00",
     "specs": {
-      "size_inch": 22,
+      "size_inch": 22.0,
       "refresh_hz": 75,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -145069,7 +144925,7 @@
     "primary_url": "https://enterkomputer.com/detail/199551/ViewSonic-VA1650-16-Inch-FHD-IPS-USB-C-Lightweight-Portable-Monitor",
     "scraped_at": "2026-05-10T20:22:53.265807+00:00",
     "specs": {
-      "size_inch": 16,
+      "size_inch": 16.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -145143,7 +144999,7 @@
     "primary_url": "https://enterkomputer.com/detail/192778/ViewSonic-VX1654-16-FHD-IPS-144Hz-Portable-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:23:00.207674+00:00",
     "specs": {
-      "size_inch": 16,
+      "size_inch": 16.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -145176,7 +145032,7 @@
     "primary_url": "https://enterkomputer.com/detail/197933/ViewSonic-VX1754-17-FHD-IPS-144Hz-Portable-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:23:03.664628+00:00",
     "specs": {
-      "size_inch": 17,
+      "size_inch": 17.0,
       "refresh_hz": 144,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -145209,7 +145065,7 @@
     "primary_url": "https://enterkomputer.com/detail/169136/ViewSonic-16-TD1655-FHD-Touchscreen",
     "scraped_at": "2026-05-10T20:23:07.100052+00:00",
     "specs": {
-      "size_inch": 16,
+      "size_inch": 16.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -145242,7 +145098,7 @@
     "primary_url": "https://enterkomputer.com/detail/158251/ViewSonic-16-TD1630-3-WXGA-Touchscreen",
     "scraped_at": "2026-05-10T20:23:10.548296+00:00",
     "specs": {
-      "size_inch": 16,
+      "size_inch": 16.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true
     },
@@ -145282,7 +145138,7 @@
     "primary_url": "https://enterkomputer.com/detail/189590/ViewSonic-22-TD2223-2-FHD-IR-Touchscreen",
     "scraped_at": "2026-05-10T20:23:13.988746+00:00",
     "specs": {
-      "size_inch": 22,
+      "size_inch": 22.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -145315,7 +145171,7 @@
     "primary_url": "https://enterkomputer.com/detail/165239/ViewSonic-22-TD2230-FHD-Touchscreen",
     "scraped_at": "2026-05-10T20:23:17.428843+00:00",
     "specs": {
-      "size_inch": 22,
+      "size_inch": 22.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -145348,7 +145204,7 @@
     "primary_url": "https://enterkomputer.com/detail/171006/ViewSonic-24-TD2423-FHD-IR-Touchscreen",
     "scraped_at": "2026-05-10T20:23:20.878980+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -145381,7 +145237,7 @@
     "primary_url": "https://enterkomputer.com/detail/167189/ViewSonic-24-TD2455-FHD-Touchscreen",
     "scraped_at": "2026-05-10T20:23:24.322009+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -145414,7 +145270,7 @@
     "primary_url": "https://enterkomputer.com/detail/187421/ViewSonic-24-TD2465-Frameless-Touch-Monitor-FHD",
     "scraped_at": "2026-05-10T20:23:27.764602+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -145447,7 +145303,7 @@
     "primary_url": "https://enterkomputer.com/detail/178219/ViewSonic-27-TD2760-FHD-Touchscreen",
     "scraped_at": "2026-05-10T20:23:31.238901+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -145601,7 +145457,7 @@
     "primary_url": "https://enterkomputer.com/detail/199559/ViewSonic-22-VA22E2-H-100Hz-FHD",
     "scraped_at": "2026-05-10T20:23:44.999112+00:00",
     "specs": {
-      "size_inch": 22,
+      "size_inch": 22.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -145642,7 +145498,7 @@
     "primary_url": "https://enterkomputer.com/detail/188935/ViewSonic-22-VA2215-H-100Hz-FHD",
     "scraped_at": "2026-05-10T20:23:48.455221+00:00",
     "specs": {
-      "size_inch": 22,
+      "size_inch": 22.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -145675,7 +145531,7 @@
     "primary_url": "https://enterkomputer.com/detail/167588/ViewSonic-24-VA2432-H-FHD-100Hz-IPS-Frameless-Design",
     "scraped_at": "2026-05-10T20:23:51.932924+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -145716,7 +145572,7 @@
     "primary_url": "https://enterkomputer.com/detail/185459/ViewSonic-24-VA2432-H-W-FHD-100Hz-IPS-Frameless-Design",
     "scraped_at": "2026-05-10T20:23:55.410610+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -145782,7 +145638,7 @@
     "primary_url": "https://enterkomputer.com/detail/195676/ViewSonic-24-VA2432A-H-FHD-IPS-120Hz-Monitor-Frameless-Design",
     "scraped_at": "2026-05-10T20:24:02.335555+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -145897,7 +145753,7 @@
     "primary_url": "https://enterkomputer.com/detail/188542/ViewSonic-24-VA2436-H-PN-FHD-IPS-100Hz-Monitor",
     "scraped_at": "2026-05-10T20:24:12.633884+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -146160,7 +146016,7 @@
     "primary_url": "https://enterkomputer.com/detail/186118/ViewSonic-OMNI-24-VX2479-HD-PRO-FHD-IPS-180Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:24:36.803311+00:00",
     "specs": {
-      "size_inch": 24,
+      "size_inch": 24.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -146324,7 +146180,7 @@
     "primary_url": "https://enterkomputer.com/detail/191875/ViewSonic-Gaming-XG2536-25-FHD-IPS-280Hz-HDR10-USB-C-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:24:50.588868+00:00",
     "specs": {
-      "size_inch": 25,
+      "size_inch": 25.0,
       "refresh_hz": 280,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -146365,7 +146221,7 @@
     "primary_url": "https://enterkomputer.com/detail/194208/ViewSonic-VA270A-H-27-FHD-IPS-120Hz-Monitor",
     "scraped_at": "2026-05-10T20:24:54.028895+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -146398,7 +146254,7 @@
     "primary_url": "https://enterkomputer.com/detail/190094/ViewSonic-VA270-H-27-FHD-IPS-100Hz-Monitor",
     "scraped_at": "2026-05-10T20:24:57.455186+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -146439,7 +146295,7 @@
     "primary_url": "https://enterkomputer.com/detail/191249/ViewSonic-VA2708-2K-MHD-27-QHD-SuperClear-IPS-100Hz-HDR10-Monitor-with-Built-in-Speakers",
     "scraped_at": "2026-05-10T20:25:01.113278+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -146472,7 +146328,7 @@
     "primary_url": "https://enterkomputer.com/detail/168232/ViewSonic-27-VA2732-H-LED",
     "scraped_at": "2026-05-10T20:25:04.578769+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true
     },
@@ -146512,7 +146368,7 @@
     "primary_url": "https://enterkomputer.com/detail/194211/ViewSonic-VA2732-H-W-27-FHD-IPS-100Hz-Frameless-Monitor",
     "scraped_at": "2026-05-10T20:25:08.046062+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -146553,7 +146409,7 @@
     "primary_url": "https://enterkomputer.com/detail/176307/ViewSonic-27-VP2756-2K-QHD-IPS-with-60W-USB-C",
     "scraped_at": "2026-05-10T20:25:11.529529+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "QHD"
@@ -146594,7 +146450,7 @@
     "primary_url": "https://enterkomputer.com/detail/177824/ViewSonic-27-VP2756-4K-UHD-IPS-with-60W-USB-C",
     "scraped_at": "2026-05-10T20:25:14.977630+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -146627,7 +146483,7 @@
     "primary_url": "https://enterkomputer.com/detail/182817/ViewSonic-ColorPro-27-VP2776-QHD-IPS-165Hz-Professional-Monitor",
     "scraped_at": "2026-05-10T20:25:18.426862+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 165,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -146668,7 +146524,7 @@
     "primary_url": "https://enterkomputer.com/detail/194751/ViewSonic-VX2757A-HD-PRO-27-FHD-IPS-180Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:25:21.853618+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -146709,7 +146565,7 @@
     "primary_url": "https://enterkomputer.com/detail/187751/ViewSonic-OMNI-VX2758A-2K-PRO-2-27-QHD-IPS-185Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:25:25.340439+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 185,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -146750,7 +146606,7 @@
     "primary_url": "https://enterkomputer.com/detail/191521/ViewSonic-OMNI-27-VX2758A-2K-PRO-3-QHD-IPS-240Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:25:28.810050+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -146791,7 +146647,7 @@
     "primary_url": "https://enterkomputer.com/detail/194215/ViewSonic-VX2779A-HD-PRO-27-FHD-IPS-240Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:25:32.249680+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 240,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -146824,7 +146680,7 @@
     "primary_url": "https://enterkomputer.com/detail/197418/ViewSonic-Gaming-27-XG2709-FHD-IPS-180Hz-HDR10-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:25:35.674244+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -146857,7 +146713,7 @@
     "primary_url": "https://enterkomputer.com/detail/195395/ViewSonic-XG275D1-4K-27-UHD-Fast-IPS-160Hz-HDR10-USB-C-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:25:39.115153+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 160,
       "refresh_hz_inferred": false,
       "resolution": "4K"
@@ -146898,7 +146754,7 @@
     "primary_url": "https://enterkomputer.com/detail/182810/ViewSonic-32-VA3209-MH-FHD-IPS-Monitor-Built-In-Speaker",
     "scraped_at": "2026-05-10T20:25:42.592568+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -146972,7 +146828,7 @@
     "primary_url": "https://enterkomputer.com/detail/178218/ViewSonic-32-VX3276-MHD-3-FHD-IPS-Entertainment-Monitor",
     "scraped_at": "2026-05-10T20:25:49.463803+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -147013,7 +146869,7 @@
     "primary_url": "https://enterkomputer.com/detail/191248/ViewSonic-VX3418-2KPC-34-UWQHD-180Hz-HDR10-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:25:52.876526+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -147046,7 +146902,7 @@
     "primary_url": "https://enterkomputer.com/detail/197690/ViewSonic-VX3418C-2K-34-UWQHD-180Hz-HDR10-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:25:56.372018+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -147087,7 +146943,7 @@
     "primary_url": "https://enterkomputer.com/detail/186069/Xiaomi-A22i-2145-FHD-75Hz-Monitor",
     "scraped_at": "2026-05-10T20:25:59.841143+00:00",
     "specs": {
-      "size_inch": 21,
+      "size_inch": 21.0,
       "refresh_hz": 75,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -147243,7 +147099,7 @@
     "primary_url": "https://enterkomputer.com/detail/187226/Xiaomi-A27i-27-FHD-100Hz-Monitor",
     "scraped_at": "2026-05-10T20:26:13.671085+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 100,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -147276,7 +147132,7 @@
     "primary_url": "https://enterkomputer.com/detail/200813/Xiaomi-A27Qi-2026-27-Inch-2K-IPS-120Hz-Monitor",
     "scraped_at": "2026-05-10T20:26:17.101873+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 120,
       "refresh_hz_inferred": false
     },
@@ -147316,7 +147172,7 @@
     "primary_url": "https://enterkomputer.com/detail/195667/Xiaomi-A27Ui-27-4K-UHD-IPS-USB-C-Monitor",
     "scraped_at": "2026-05-10T20:26:20.518392+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -147357,7 +147213,7 @@
     "primary_url": "https://enterkomputer.com/detail/188195/Xiaomi-G27i-27-FHD-IPS-165Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:26:23.954361+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 165,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -147390,7 +147246,7 @@
     "primary_url": "https://enterkomputer.com/detail/198108/Xiaomi-G27i-2026-27-FHD-Fast-IPS-200Hz-HDR400-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:26:27.379506+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 200,
       "refresh_hz_inferred": false,
       "resolution": "FHD"
@@ -147431,7 +147287,7 @@
     "primary_url": "https://enterkomputer.com/detail/191251/Xiaomi-G27Qi-27-QHD-Fast-IPS-180Hz-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:26:30.837431+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -147472,7 +147328,7 @@
     "primary_url": "https://enterkomputer.com/detail/191250/Xiaomi-G-Pro-27i-27-QHD-Fast-IPS-180Hz-HDR1000-Mini-LED-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:26:34.285134+00:00",
     "specs": {
-      "size_inch": 27,
+      "size_inch": 27.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -147513,7 +147369,7 @@
     "primary_url": "https://enterkomputer.com/detail/190110/Xiaomi-34-G34WQi-WQHD-180Hz-Curved-Gaming-Monitor",
     "scraped_at": "2026-05-10T20:26:37.714311+00:00",
     "specs": {
-      "size_inch": 34,
+      "size_inch": 34.0,
       "refresh_hz": 180,
       "refresh_hz_inferred": false,
       "resolution": "QHD"
@@ -147546,7 +147402,7 @@
     "primary_url": "https://enterkomputer.com/detail/200471/Xiaomi-TV-A-Pro-32-inch-2026-Smart-TV-HD",
     "scraped_at": "2026-05-10T20:26:41.174749+00:00",
     "specs": {
-      "size_inch": 32,
+      "size_inch": 32.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true
     },
@@ -147578,7 +147434,7 @@
     "primary_url": "https://enterkomputer.com/detail/197867/Xiaomi-TV-A-43-FHD-2025",
     "scraped_at": "2026-05-10T20:26:44.649190+00:00",
     "specs": {
-      "size_inch": 43,
+      "size_inch": 43.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "FHD"
@@ -147611,7 +147467,7 @@
     "primary_url": "https://enterkomputer.com/detail/199686/Xiaomi-TV-A-Pro-43-inch-2026-4K-QLED-HDR10",
     "scraped_at": "2026-05-10T20:26:48.087395+00:00",
     "specs": {
-      "size_inch": 43,
+      "size_inch": 43.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -147644,7 +147500,7 @@
     "primary_url": "https://enterkomputer.com/detail/193446/Xiaomi-Google-TV-A-55-4K-UHD",
     "scraped_at": "2026-05-10T20:26:51.540374+00:00",
     "specs": {
-      "size_inch": 55,
+      "size_inch": 55.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -147677,7 +147533,7 @@
     "primary_url": "https://enterkomputer.com/detail/186702/Xiaomi-TV-A-Pro-55-4K-UHD",
     "scraped_at": "2026-05-10T20:26:54.976549+00:00",
     "specs": {
-      "size_inch": 55,
+      "size_inch": 55.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"
@@ -147710,7 +147566,7 @@
     "primary_url": "https://enterkomputer.com/detail/199930/Xiaomi-TV-A-Pro-55-2026-4K-QLED",
     "scraped_at": "2026-05-10T20:26:58.410527+00:00",
     "specs": {
-      "size_inch": 55,
+      "size_inch": 55.0,
       "refresh_hz": 60,
       "refresh_hz_inferred": true,
       "resolution": "4K"

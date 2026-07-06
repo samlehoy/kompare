@@ -123,8 +123,6 @@ export default {
           gpu_vendor: reqData.gpu_vendor || null,
           include_optional_addons: !!reqData.include_optional_addons,
           optional_addon_slots: reqData.selected_optional_addons || null,
-          budget_strategy: reqData.budget_strategy || "balanced",
-          performance_priority: reqData.performance_priority || null,
           allocation_overrides: reqData.allocation_overrides || null
         });
 
@@ -168,7 +166,8 @@ export default {
         if (request.method !== "GET") return makeResponse({ error: "Method not allowed" }, 405);
         const list = Object.entries(core.USE_CASE_PROFILES).map(([k, v]) => ({
           key: k,
-          allocation_pct: v
+          allocation_pct: v,
+          budget_range: core.USE_CASE_BUDGET_RANGES[k] || null
         }));
         return makeResponse({ use_cases: list });
       }
@@ -182,9 +181,7 @@ export default {
         if (request.method !== "GET") return makeResponse({ error: "Method not allowed" }, 405);
         return makeResponse({
           slots: core.ALLOCATION_PRESET_SLOTS,
-          profiles: core.USE_CASE_PROFILES,
-          priority_shifts: core.PERFORMANCE_PRIORITY_ALLOCATION_SHIFTS,
-          strategy_shifts: core.BUDGET_STRATEGY_ALLOCATION_SHIFTS
+          profiles: core.USE_CASE_PROFILES
         });
       }
 

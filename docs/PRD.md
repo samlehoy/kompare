@@ -71,6 +71,10 @@ Gemini remains part of the technical direction, but its role is focused on PC bu
 - Preset ranges shall be Entry-level `Rp 7.000.000 - Rp 12.000.000`, Mid-range `Rp 12.000.000 - Rp 22.000.000`, and High-end `Rp 22.000.000 - Rp 40.000.000`.
 - Custom budget shall display as an infinity symbol on the landing page.
 
+#### FR-3.1: Per-Use-Case Budget Ranges
+
+Each use case defines a recommended budget range. The frontend displays a budget slider bounded by these ranges. Budgets below the minimum trigger a visible warning but do not block the request. The `/api/build/use-cases` endpoint includes `budget_range` per use case.
+
 ### FR-4 Build From Zero
 
 - The build endpoint shall accept budget, use case, soft CPU brand preference, soft GPU vendor preference, and selected optional add-on slots.
@@ -180,6 +184,11 @@ Legacy generic product, comparison, best-value, broad chat, and generic image-id
 
 ```json
 {
+  "use_case": "gaming",
+  "budget_idr": 15000000,
+  "total_idr": 14600000,
+  "remaining_idr": 400000,
+  "budget_band": "mid_range",
   "components": {
     "cpu": {},
     "motherboard": {},
@@ -196,8 +205,27 @@ Legacy generic product, comparison, best-value, broad chat, and generic image-id
     "monitor": null,
     "ups": null
   },
+  "budget_usage": {
+    "used_percent": 97.3,
+    "target_min_percent": 96.7,
+    "target_max_percent": 100,
+    "status": "target_met"
+  },
+  "near_budget_upgrades": [
+    {
+      "slot": "gpu",
+      "current": { "name": "GeForce RTX 4060" },
+      "upgrade": { "name": "GeForce RTX 4060 Ti" },
+      "new_total_idr": 15400000,
+      "over_budget_idr": 400000,
+      "over_budget_percent": 2.7,
+      "reason": "Higher graphics tier improves gaming frame rate."
+    }
+  ],
+  "budget_range_warning": null,
   "missing_slots": [],
-  "compatibility_issues": []
+  "compatibility_issues": [],
+  "preferences": { "cpu_brand": null, "gpu_vendor": null }
 }
 ```
 

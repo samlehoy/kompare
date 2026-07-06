@@ -9,7 +9,9 @@ import {
   REQUIRED_BUILD_SLOTS,
   budgetBandFor,
   pickMotherboard,
-  pickRam
+  pickRam,
+  cpuTierScore,
+  gpuTierScore
 } from './pc-builder-core.js';
 
 const CORS_HEADERS = {
@@ -36,8 +38,8 @@ const COMPACT_SPEC_KEYS = new Set([
   "socket", "ram_type", "memory_type", "type", "cores", "vram_gb", "recommended_psu_w", "wattage_w", "capacity_gb", "interface", "form_factor", "max_form_factor"
 ]);
 
-function _slotBudgetLimit(slot, budgetIdr, useCase) {
-  const profile = USE_CASE_PROFILES[useCase] || USE_CASE_PROFILES.gaming;
+function _slotBudgetLimit(slot, budgetIdr, useCase, allocationOverrides = null) {
+  const profile = allocationOverrides || USE_CASE_PROFILES[useCase] || USE_CASE_PROFILES.gaming;
   const pct = profile[slot] || 0;
   return Math.max(1, Math.floor(budgetIdr * (pct / 100) * 1.8));
 }
@@ -109,6 +111,13 @@ function _platformCompatibleCandidates(candidatesBySlot) {
   return result;
 }
 
+function _componentTierScore(comp) {
+  const cat = (comp.category || '').toLowerCase();
+  if (cat === 'cpu') return cpuTierScore(comp);
+  if (cat === 'gpu') return gpuTierScore(comp);
+  return 0;
+}
+
 function _candidateView(comp) {
   const specs = {};
   const rawSpecs = comp.specs || {};
@@ -117,6 +126,7 @@ function _candidateView(comp) {
       specs[key] = rawSpecs[key];
     }
   }
+  const tier = _componentTierScore(comp);
   return {
     sku: comp.sku || comp.id,
     category: comp.category,
@@ -124,7 +134,8 @@ function _candidateView(comp) {
     brand: comp.brand || null,
     price_idr: comp.price_idr || 0,
     specs,
-    retrieval_score: comp.retrieval_score || null
+    retrieval_score: comp.retrieval_score || null,
+    ...(tier > 0 ? { performance_tier: tier } : {})
   };
 }
 
@@ -826,7 +837,7 @@ export async function handleAiRecommend(request, env) {
       const vector = vectors[i];
       
       const matches = await queryQdrant(env, request.headers, vector, category, 36);
-      const budgetLimit = _slotBudgetLimit(slot, budgetIdr, useCase);
+      const budgetLimit = _slotBudgetLimit(slot, budgetIdr, useCase, deterministicKwargs.allocation_overrides);
       const slotCandidates = [];
 
       for (const match of matches) {
@@ -891,7 +902,9 @@ export async function handleAiRecommend(request, env) {
   for (const slot of AI_REQUIRED_SLOTS) {
     const list = finalCandidatesBySlot[slot] || [];
     const baselineComp = baselineComponents[slot];
-    const sliceList = list.slice(0, 3);
+    // Re-rank by performance tier before slicing so the AI sees the best parts.
+    const ranked = [...list].sort((a, b) => _componentTierScore(b) - _componentTierScore(a));
+    const sliceList = ranked.slice(0, 3);
     
     const deduped = [];
     const seenSkus = new Set();
@@ -1023,12 +1036,20 @@ export async function handleAiRecommend(request, env) {
 
     const finalBuild = composeBuild(byCat, budgetIdr, useCase, {
       ...deterministicKwargs,
-      _apply_budget_optimizer: false
+      _apply_budget_optimizer: true
     });
 
-    for (const slot of REQUIRED_BUILD_SLOTS) {
-      if (repaired[slot]) {
-        finalBuild.components[slot] = repaired[slot];
+    // Compare AI picks vs tier-optimized composeBuild.
+    // Use whichever achieves better budget usage (closer to 96.7% target).
+    const deterministicTotal = _totalPrice(finalBuild.components);
+    const aiTotal = _totalPrice(repaired);
+    const useAiPicks = aiTotal >= deterministicTotal;
+
+    if (useAiPicks) {
+      for (const slot of REQUIRED_BUILD_SLOTS) {
+        if (repaired[slot]) {
+          finalBuild.components[slot] = repaired[slot];
+        }
       }
     }
     finalBuild.total_idr = _totalPrice(finalBuild.components);

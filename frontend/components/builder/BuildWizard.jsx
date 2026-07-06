@@ -35,19 +35,13 @@ const AI_PROFILE_OPTIONS = [
   { value: 'gemini_free', label: 'Gemini free tier' },
 ];
 
-const BUDGET_STRATEGY_OPTIONS = [
-  { value: 'value', label: 'Value-for-money' },
-  { value: 'balanced', label: 'Balanced spending' },
-  { value: 'maximize', label: 'Maximize budget usage' },
-];
-
-const PERFORMANCE_PRIORITY_OPTIONS = [
-  { value: 'gaming', label: 'Best for gaming' },
-  { value: 'productivity', label: 'Best for productivity' },
-  { value: 'best_value', label: 'Best value' },
-  { value: 'balanced', label: 'Balanced build' },
-  { value: 'upgrade_friendly', label: 'Upgrade-friendly build' },
-];
+const LOCAL_USE_CASE_BUDGET_RANGES = {
+  gaming:           { min_idr: 7_000_000,  max_idr: 40_000_000 },
+  productivity:     { min_idr: 5_000_000,  max_idr: 30_000_000 },
+  content_creation: { min_idr: 8_000_000,  max_idr: 40_000_000 },
+  office:           { min_idr: 4_000_000,  max_idr: 15_000_000 },
+  student:          { min_idr: 5_000_000,  max_idr: 20_000_000 },
+};
 
 const RECOMMENDATION_MODES = [
   {
@@ -100,18 +94,6 @@ const LOCAL_ALLOCATION_PRESET_METADATA = {
   content_creation: { cpu: 24, gpu: 26, ram: 12, motherboard: 10, ssd: 13, psu: 7, case: 4, cpu_cooler: 3, fan_cooler: 1 },
   office: { cpu: 28, gpu: 0, ram: 12, motherboard: 18, ssd: 20, psu: 8, case: 8, cpu_cooler: 5, fan_cooler: 1 },
   student: { cpu: 22, gpu: 16, ram: 12, motherboard: 14, ssd: 14, psu: 8, case: 8, cpu_cooler: 5, fan_cooler: 1 },
-  },
-  priorityShifts: {
-  gaming: { cpu: 2, gpu: 4, motherboard: -1, ssd: -2, case: -2, fan_cooler: -1 },
-  productivity: { cpu: 5, gpu: -7, ram: 4, ssd: 4, case: -3, cpu_cooler: -1, fan_cooler: -2 },
-  best_value: { cpu: -1, gpu: -2, ram: 2, ssd: 2, psu: 1, cpu_cooler: -1, fan_cooler: -1 },
-  balanced: {},
-  upgrade_friendly: { cpu: -2, gpu: -6, ram: -1, motherboard: 5, ssd: -2, psu: 4, case: 3, fan_cooler: -1 },
-  },
-  strategyShifts: {
-  value: { cpu: -1, gpu: -2, ram: 1, ssd: 2, psu: 1, cpu_cooler: -1 },
-  balanced: {},
-  maximize: { cpu: 2, gpu: 3, ram: -1, motherboard: -1, ssd: -2, case: -2, cpu_cooler: 1 },
   },
 };
 
@@ -170,8 +152,6 @@ function normalizeAllocationPresetMetadata(metadata) {
   return {
     slots: Array.isArray(metadata.slots) ? metadata.slots : LOCAL_ALLOCATION_PRESET_METADATA.slots,
     profiles,
-    priorityShifts: metadata.priorityShifts || metadata.priority_shifts || LOCAL_ALLOCATION_PRESET_METADATA.priorityShifts,
-    strategyShifts: metadata.strategyShifts || metadata.strategy_shifts || LOCAL_ALLOCATION_PRESET_METADATA.strategyShifts,
   };
 }
 
@@ -183,42 +163,24 @@ function optionLabel(options, value) {
   return options.find((option) => option.value === value)?.label || value;
 }
 
-function suggestedAllocationLabel(useCase, budgetStrategy, performancePriority) {
-  return [
-    optionLabel(USE_CASE_OPTIONS, useCase),
-    optionLabel(BUDGET_STRATEGY_OPTIONS, budgetStrategy),
-    optionLabel(PERFORMANCE_PRIORITY_OPTIONS, performancePriority),
-  ].join(' + ');
+function suggestedAllocationLabel(useCase) {
+  return optionLabel(USE_CASE_OPTIONS, useCase);
 }
 
 function allocationTotal(allocations) {
   return ALLOCATION_SLOTS.reduce((total, slot) => total + Number(allocations[slot.value] || 0), 0);
 }
 
-function applyAllocationShift(profile, shift = {}) {
-  const next = { ...profile };
-  ALLOCATION_SLOTS.forEach((slot) => {
-    next[slot.value] = cleanAllocationValue((next[slot.value] || 0) + (shift[slot.value] || 0));
-  });
-  return next;
-}
 
-function preferredAllocationSlots(performancePriority) {
-  if (performancePriority === 'productivity') return ['cpu', 'ram', 'ssd'];
-  if (performancePriority === 'upgrade_friendly') return ['motherboard', 'psu', 'case'];
-  if (performancePriority === 'best_value') return ['gpu', 'ssd', 'ram'];
-  return ['gpu', 'cpu'];
-}
 
-function normalizeAllocationProfile(profile, performancePriority) {
+function normalizeAllocationProfile(profile) {
   const next = {};
   ALLOCATION_SLOTS.forEach((slot) => {
     next[slot.value] = cleanAllocationValue(profile[slot.value] || 0);
   });
 
   let total = allocationTotal(next);
-  const preferredSlots = preferredAllocationSlots(performancePriority);
-  const addSlots = [...preferredSlots, ...ALLOCATION_SLOTS.map((slot) => slot.value)];
+  const addSlots = ['gpu', 'cpu', ...ALLOCATION_SLOTS.map((slot) => slot.value)];
   const reduceSlots = [...ALLOCATION_SLOTS]
     .map((slot) => slot.value)
     .sort((left, right) => (next[right] || 0) - (next[left] || 0));
@@ -240,16 +202,9 @@ function normalizeAllocationProfile(profile, performancePriority) {
   return next;
 }
 
-function suggestedAllocationProfile(useCase, budgetStrategy, performancePriority, metadata = LOCAL_ALLOCATION_PRESET_METADATA) {
+function suggestedAllocationProfile(useCase, metadata = LOCAL_ALLOCATION_PRESET_METADATA) {
   const useCaseProfile = allocationProfileForUseCase(useCase, metadata);
-  const priorityProfile = applyAllocationShift(
-    useCaseProfile,
-    metadata.priorityShifts[performancePriority],
-  );
-  return normalizeAllocationProfile(
-    applyAllocationShift(priorityProfile, metadata.strategyShifts[budgetStrategy]),
-    performancePriority,
-  );
+  return normalizeAllocationProfile(useCaseProfile);
 }
 
 function cleanAllocationValue(value) {
@@ -263,14 +218,14 @@ export default function BuildWizard() {
   const [useCase, setUseCase] = useState('gaming');
   const [cpuBrand, setCpuBrand] = useState('');
   const [gpuVendor, setGpuVendor] = useState('');
-  const [budgetStrategy, setBudgetStrategy] = useState('balanced');
-  const [performancePriority, setPerformancePriority] = useState('gaming');
+  const [budgetRanges, setBudgetRanges] = useState(LOCAL_USE_CASE_BUDGET_RANGES);
+
   const [recommendationMode, setRecommendationMode] = useState('fast');
   const [aiProfile, setAiProfile] = useState('local_qwen');
   const [allocationPresetMetadata, setAllocationPresetMetadata] = useState(LOCAL_ALLOCATION_PRESET_METADATA);
   const [allocationPresetSource, setAllocationPresetSource] = useState('local');
   const [advancedAllocationEnabled, setAdvancedAllocationEnabled] = useState(false);
-  const [allocationOverrides, setAllocationOverrides] = useState(() => suggestedAllocationProfile('gaming', 'balanced', 'gaming'));
+  const [allocationOverrides, setAllocationOverrides] = useState(() => suggestedAllocationProfile('gaming'));
   const [allocationMode, setAllocationMode] = useState('suggested');
   const [pendingSuggestedAllocation, setPendingSuggestedAllocation] = useState(null);
   const [allocationError, setAllocationError] = useState('');
@@ -289,7 +244,7 @@ export default function BuildWizard() {
 
   const loading = Boolean(loadingMode);
   const currentAllocationTotal = allocationTotal(allocationOverrides);
-  const currentSuggestionLabel = suggestedAllocationLabel(useCase, budgetStrategy, performancePriority);
+  const currentSuggestionLabel = suggestedAllocationLabel(useCase);
 
   useEffect(() => {
     let cancelled = false;
@@ -301,7 +256,7 @@ export default function BuildWizard() {
         setAllocationPresetSource('backend');
         setAllocationOverrides((current) => {
           if (allocationMode === 'custom') return current;
-          return suggestedAllocationProfile(useCase, budgetStrategy, performancePriority, normalized);
+          return suggestedAllocationProfile(useCase, normalized);
         });
       })
       .catch(() => {
@@ -311,6 +266,18 @@ export default function BuildWizard() {
     return () => {
       cancelled = true;
     };
+  }, []);
+
+  useEffect(() => {
+    api.listUseCases?.().then((data) => {
+      if (data?.use_cases) {
+        const ranges = {};
+        for (const uc of data.use_cases) {
+          if (uc.budget_range) ranges[uc.key] = uc.budget_range;
+        }
+        if (Object.keys(ranges).length > 0) setBudgetRanges(ranges);
+      }
+    }).catch(() => {});
   }, []);
 
   async function submitBuild() {
@@ -344,8 +311,7 @@ export default function BuildWizard() {
         useCase,
         cpuBrand,
         gpuVendor,
-        budgetStrategy,
-        performancePriority,
+
         aiProfile: aiAssisted ? aiProfile : undefined,
         allocationOverrides: advancedAllocationEnabled ? allocationOverrides : undefined,
         includeOptionalAddons: optionalAddonList.length > 0,
@@ -384,13 +350,8 @@ export default function BuildWizard() {
     }));
   }
 
-  function syncSuggestedAllocation({ nextUseCase = useCase, nextBudgetStrategy = budgetStrategy, nextPerformancePriority = performancePriority } = {}) {
-    const nextAllocation = suggestedAllocationProfile(
-      nextUseCase,
-      nextBudgetStrategy,
-      nextPerformancePriority,
-      allocationPresetMetadata,
-    );
+  function syncSuggestedAllocation({ nextUseCase = useCase } = {}) {
+    const nextAllocation = suggestedAllocationProfile(nextUseCase, allocationPresetMetadata);
     if (allocationMode === 'custom') {
       setPendingSuggestedAllocation(nextAllocation);
     } else {
@@ -400,32 +361,16 @@ export default function BuildWizard() {
     setAllocationError('');
   }
 
-  const USE_CASE_TO_PRIORITY = {
-    gaming: 'gaming',
-    productivity: 'productivity',
-    content_creation: 'productivity',
-    office: 'best_value',
-    student: 'best_value',
-  };
-
   function handleUseCaseChange(event) {
     const nextUseCase = event.target.value;
-    const nextPerformancePriority = USE_CASE_TO_PRIORITY[nextUseCase] || 'balanced';
     setUseCase(nextUseCase);
-    setPerformancePriority(nextPerformancePriority);
-    syncSuggestedAllocation({ nextUseCase, nextPerformancePriority });
-  }
-
-  function handleBudgetStrategyChange(event) {
-    const nextBudgetStrategy = event.target.value;
-    setBudgetStrategy(nextBudgetStrategy);
-    syncSuggestedAllocation({ nextBudgetStrategy });
+    syncSuggestedAllocation({ nextUseCase });
   }
 
   function toggleAdvancedAllocation(event) {
     const enabled = event.target.checked;
     setAdvancedAllocationEnabled(enabled);
-    setAllocationOverrides(suggestedAllocationProfile(useCase, budgetStrategy, performancePriority, allocationPresetMetadata));
+    setAllocationOverrides(suggestedAllocationProfile(useCase, allocationPresetMetadata));
     setAllocationMode('suggested');
     setPendingSuggestedAllocation(null);
     setAllocationError('');
@@ -442,7 +387,7 @@ export default function BuildWizard() {
   }
 
   function resetAllocation() {
-    setAllocationOverrides(suggestedAllocationProfile(useCase, budgetStrategy, performancePriority, allocationPresetMetadata));
+    setAllocationOverrides(suggestedAllocationProfile(useCase, allocationPresetMetadata));
     setAllocationMode('suggested');
     setPendingSuggestedAllocation(null);
     setAllocationError('');
@@ -485,6 +430,8 @@ export default function BuildWizard() {
   }
 
   const parsedBudget = parseIDR(budget);
+  const currentRange = budgetRanges[useCase] || LOCAL_USE_CASE_BUDGET_RANGES.gaming;
+  const budgetBelowMin = parsedBudget > 0 && parsedBudget < currentRange.min_idr;
   const buildComponents = activeBuildComponents(build);
   const buildBudgetIdr = activeBuildBudget(build);
   const buildUseCase = activeBuildUseCase(build, useCase);
@@ -531,6 +478,27 @@ export default function BuildWizard() {
           value={useCase}
           onChange={handleUseCaseChange}
         />
+        <div className="budget-slider-group">
+          <input
+            type="range"
+            className="retro-slider"
+            aria-label="Budget slider"
+            min={currentRange.min_idr}
+            max={currentRange.max_idr}
+            step={500_000}
+            value={Math.min(Math.max(parsedBudget || currentRange.min_idr, currentRange.min_idr), currentRange.max_idr)}
+            onChange={(e) => setBudget(String(Number(e.target.value)))}
+          />
+          <div className="budget-slider-labels">
+            <small>{formatIDR(currentRange.min_idr)}</small>
+            <small>{formatIDR(currentRange.max_idr)}</small>
+          </div>
+          {budgetBelowMin && (
+            <p className="budget-range-warning" role="alert">
+              ⚠️ Below recommended minimum for {optionLabel(USE_CASE_OPTIONS, useCase)} ({formatIDR(currentRange.min_idr)}). Results may not be optimal.
+            </p>
+          )}
+        </div>
         <RetroSelect
           label="CPU"
           name="cpu-brand"

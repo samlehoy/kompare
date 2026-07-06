@@ -7,6 +7,14 @@ export const USE_CASE_PROFILES = {
   student:          { cpu: 22, gpu: 16, ram: 12, motherboard: 14, ssd: 14, psu: 8, case: 8, cpu_cooler: 5, fan_cooler: 1 }
 };
 
+export const USE_CASE_BUDGET_RANGES = {
+  gaming:           { min_idr: 7_000_000,  max_idr: 40_000_000 },
+  productivity:     { min_idr: 5_000_000,  max_idr: 30_000_000 },
+  content_creation: { min_idr: 8_000_000,  max_idr: 40_000_000 },
+  office:           { min_idr: 4_000_000,  max_idr: 15_000_000 },
+  student:          { min_idr: 5_000_000,  max_idr: 20_000_000 },
+};
+
 export const ALLOCATION_PRESET_SLOTS = [
   "cpu", "gpu", "ram", "motherboard", "ssd", "psu", "case", "cpu_cooler", "fan_cooler"
 ];
@@ -20,6 +28,177 @@ export const BUDGET_BANDS = [
   { key: "high_end", label: "High-end", min_idr: 22000000, max_idr: 40000000, summary: "High-refresh 1440p and creator workload budget." },
   { key: "custom_high", label: "Custom high-budget", min_idr: 40000001, max_idr: null, summary: "Performance-tier budget where catalog availability controls the ceiling." }
 ];
+
+// Component tier maps — higher score = better performance.
+// Based on consensus benchmark rankings (PassMark, Cinebench, 3DMark).
+// Grouped by family + generation for easy maintenance.
+// Update when new CPU/GPU generations launch (~1-2x per year).
+const CPU_TIER_MAP = {
+  // AMD Ryzen — Zen 5
+  'Ryzen 9 9':  93,
+  'Ryzen 7 9':  85,
+  'Ryzen 5 9':  73,
+  // AMD Ryzen — Zen 4
+  'Ryzen 9 7':  88,
+  'Ryzen 7 7':  80,
+  'Ryzen 5 7':  65,
+  // AMD Ryzen — Zen 3
+  'Ryzen 9 5':  78,
+  'Ryzen 7 5':  68,
+  'Ryzen 5 5':  55,
+  // AMD Ryzen — Zen 2
+  'Ryzen 7 3':  45,
+  'Ryzen 5 3':  30,
+  'Ryzen 3 3':  20,
+  // AMD Ryzen — Zen+/Zen
+  'Ryzen 3 4':  28,
+  // AMD Budget
+  'Athlon 3':    8,
+  'Bristol':     5,
+  // Intel — Arrow Lake (LGA 1851)
+  'Core Ultra 9 2': 95,
+  'Core Ultra 7 2': 87,
+  'Core Ultra 5 2': 75,
+  // Intel — 14th Gen (Raptor Lake Refresh)
+  'Core i9-14':  90,
+  'Core i7-14':  84,
+  'Core i5-14':  72,
+  'Core i3-14':  45,
+  // Intel — 13th Gen
+  'Core i9-13':  88,
+  'Core i7-13':  82,
+  'Core i5-13':  70,
+  'Core i3-13':  43,
+  // Intel — 12th Gen
+  'Core i9-12':  82,
+  'Core i7-12':  78,
+  'Core i5-12':  65,
+  'Core i3-12':  40,
+  // Intel — 11th Gen
+  'Core i9-11':  60,
+  'Core i7-11':  55,
+  'Core i5-11':  48,
+  'Core i3-11':  30,
+  // Intel — 10th Gen
+  'Core i9-10':  52,
+  'Core i7-10':  48,
+  'Core i5-10':  40,
+  'Core i3-10':  25,
+  // Intel Budget
+  'Pentium G7':  15,
+  'Pentium G6':  10,
+};
+
+const GPU_TIER_MAP = {
+  // NVIDIA — Blackwell (50-series)
+  'RTX 5090':          98,
+  'RTX 5080':          90,
+  'RTX 5070 Ti':       82,
+  'RTX 5070':          77,
+  'RTX 5060 Ti':       68,
+  'RTX 5060':          62,
+  // NVIDIA — Ada (40-series)
+  'RTX 4090':          95,
+  'RTX 4080 SUPER':    85,
+  'RTX 4080':          83,
+  'RTX 4070 Ti SUPER': 78,
+  'RTX 4070 Ti':       76,
+  'RTX 4070 SUPER':    73,
+  'RTX 4070':          70,
+  'RTX 4060 Ti':       60,
+  'RTX 4060':          55,
+  // NVIDIA — Ampere (30-series)
+  'RTX 3060':          45,
+  // NVIDIA — Turing
+  'GTX 1660 SUPER':    30,
+  'GTX 1660 Ti':       30,
+  'GTX 1650':          22,
+  // NVIDIA — Legacy
+  'GT 1030':           10,
+  'GT 730':             5,
+  'GT 710':             3,
+  // AMD — RDNA 4
+  'RX 9070 XT':        80,
+  'RX 9070':           75,
+  'RX 9070 GRE':       70,
+  'RX 9060 XT':        60,
+  // AMD — RDNA 3
+  'RX 7900 XTX':       88,
+  'RX 7900 XT':        83,
+  'RX 7800 XT':        72,
+  'RX 7700 XT':        68,
+  'RX 7600':           50,
+  // AMD — RDNA 2
+  'RX 6900 XT':        70,
+  'RX 6600 XT':        38,
+  'RX 6600':           35,
+  'RX 6500 XT':        18,
+  'RX 6400':           15,
+  // Intel Arc
+  'Arc B580':          48,
+};
+
+function _cpuTierScore(component) {
+  const family = (component.specs || {}).family || '';
+  const name = component.name || '';
+
+  // AMD: family + first digit of model number → "Ryzen 7 7"
+  if (family.startsWith('Ryzen') || family.startsWith('Athlon')) {
+    const modelMatch = name.match(/\b(\d)\d{2,3}[A-Za-z]*/);
+    if (modelMatch) {
+      const key = `${family} ${modelMatch[1]}`;
+      if (CPU_TIER_MAP[key] !== undefined) return CPU_TIER_MAP[key];
+    }
+  }
+
+  // Intel Core Ultra: family + first digit of model → "Core Ultra 7 2"
+  if (family.startsWith('Core Ultra')) {
+    const modelMatch = name.match(/\b(\d)\d{1,2}[A-Za-z]*/);
+    if (modelMatch) {
+      const key = `${family} ${modelMatch[1]}`;
+      if (CPU_TIER_MAP[key] !== undefined) return CPU_TIER_MAP[key];
+    }
+  }
+
+  // Intel Core iN: "Core iN-" + first 2 digits of model → "Core i7-14"
+  if (family.startsWith('Core i')) {
+    const modelMatch = name.match(/i[3579]-(\d{2})\d{2,3}/);
+    if (modelMatch) {
+      const key = `${family}-${modelMatch[1]}`;
+      if (CPU_TIER_MAP[key] !== undefined) return CPU_TIER_MAP[key];
+    }
+  }
+
+  // Bristol Ridge
+  if (family === 'Bristol Ridge' || name.includes('A8-') || name.includes('A6-')) {
+    return CPU_TIER_MAP['Bristol'] || 5;
+  }
+
+  // Pentium
+  if (family === 'Pentium') {
+    const modelMatch = name.match(/G(\d)/);
+    if (modelMatch) {
+      const key = `Pentium G${modelMatch[1]}`;
+      if (CPU_TIER_MAP[key] !== undefined) return CPU_TIER_MAP[key];
+    }
+  }
+
+  return 0;
+}
+
+// Sort keys by length descending so "RTX 5070 Ti" matches before "RTX 5070".
+const _GPU_TIER_KEYS = Object.keys(GPU_TIER_MAP).sort((a, b) => b.length - a.length);
+
+function _gpuTierScore(component) {
+  const name = component.name || '';
+  for (const key of _GPU_TIER_KEYS) {
+    if (name.includes(key)) return GPU_TIER_MAP[key];
+  }
+  return 0;
+}
+
+export const cpuTierScore = _cpuTierScore;
+export const gpuTierScore = _gpuTierScore;
 
 export const PRIORITY_UPGRADE_ORDER = {
   gaming: ["gpu", "cpu", "ram", "psu", "cpu_cooler", "motherboard", "ssd", "case", "fan_cooler"],
@@ -869,7 +1048,7 @@ function _priceFitScore(component, budget) {
 
 function _valueScore(performance_units, component) {
   const price_million = Math.max((component.price_idr || 0) / 1000000, 0.1);
-  return Math.min((performance_units / price_million) * 3.0, 25.0);
+  return Math.min((performance_units / price_million) * 1.5, 40.0);
 }
 
 function _socketRunwayScore(socket) {
@@ -940,7 +1119,7 @@ function _gpuModelTierBonus(component, target_specs) {
 function _performancePriorityBonus(component, slot, target_specs) {
   const priority = (target_specs || {}).performance_priority;
   if (slot === "cpu") return _cpuGamingTierBonus(component, target_specs);
-  if (slot === "gpu") return _gpuModelTierBonus(component, target_specs);
+
   if (priority === "upgrade_friendly" && (slot === "motherboard" || slot === "psu" || slot === "case")) return 18.0;
   if (priority === "productivity" && (slot === "cpu" || slot === "ram" || slot === "ssd")) return 14.0;
   return 0.0;
@@ -948,6 +1127,279 @@ function _performancePriorityBonus(component, slot, target_specs) {
 
 const _PSU_RATING_SCORE = { Titanium: 10, Platinum: 8, Gold: 6, Silver: 4, Bronze: 3, White: 1 };
 const _PSU_MODULAR_SCORE = { full: 3, semi: 2, none: 0 };
+
+// ─── SPL PSU Tier List ───────────────────────────────────────────────────────
+// Source: https://docs.google.com/spreadsheets/d/1akCHL7Vhzk_EhrpIGkz8zTEvYfLDcaSpZRB6Xt6JWkc/
+// Tier score: numeric quality weight used in _psuQualityScore().
+// Entries are keyed by "brand series" patterns (lowercased, normalized).
+const _SPL_TIER_SCORE = {
+  "A+": 50, "A": 45, "A-": 40,
+  "B+": 35, "B": 30, "B-": 25,
+  "C+": 20, "C": 15, "C-": 10,
+  "D": 5, "D-": 3,
+  "E": 2,
+  "F": -10,
+};
+
+// PSU_TIER_MAP: "brand series" → SPL tier letter.
+// Matched against our catalog brands. Only series available in Indonesia are mapped.
+// When multiple wattage variants have different tiers, the most common tier is used.
+const _PSU_TIER_MAP = {
+  // ── Seasonic ──
+  "seasonic prime tx": "A+", "seasonic prime titanium": "A+",
+  "seasonic prime gx": "A+", "seasonic prime px": "A",
+  "seasonic prime platinum": "A", "seasonic prime gold": "A",
+  "seasonic focus gx": "A", "seasonic focus gold": "A",
+  "seasonic focus px": "A", "seasonic focus platinum": "A",
+  "seasonic focus gm": "A", "seasonic focus plus gold": "A",
+  "seasonic focus plus platinum": "A",
+  "seasonic vertex gx": "A-", "seasonic vertex gold": "A-",
+  "seasonic vertex px": "A-", "seasonic vertex platinum": "A-",
+  "seasonic core gx": "A-", "seasonic core gc": "C+", "seasonic core gm": "C+",
+  "seasonic g12 gc": "C+", "seasonic g12 gm": "C+",
+  "seasonic b12 bc": "C", "seasonic b12": "C",
+  "seasonic s12iii": "F", "seasonic a12": "F",
+
+  // ── Corsair ──
+  "corsair ax": "A+", "corsair axi": "A+", "corsair ax-i": "A+",
+  "corsair hx": "A+", "corsair hxi": "A+", "corsair hx-i": "A+",
+  "corsair rmx": "A+", "corsair rm-x": "A+", "corsair rmx shift": "A+",
+  "corsair rmi": "A+", "corsair rm-i": "A+",
+  "corsair sf platinum": "A+", "corsair sf-l": "A",
+  "corsair sf gold": "A", "corsair sf": "A",
+  "corsair rm": "B+", "corsair rme": "B+", "corsair rm-e": "B+",
+  "corsair tx": "B", "corsair txm": "B+", "corsair tx-m": "B+",
+  "corsair cx-f": "B", "corsair cx": "C+",
+  "corsair cxm": "C+", "corsair cx-m": "C+",
+  "corsair cv": "D", "corsair vs": "D",
+
+  // ── be quiet! ──
+  "be quiet dark power pro": "A+", "be quiet dark power": "A",
+  "be quiet straight power": "A",
+  "be quiet pure power 12": "A", "be quiet pure power 11 fm": "B+",
+  "be quiet pure power 11": "B", "be quiet pure power 13": "B+",
+  "be quiet pure power": "B",
+  "be quiet power zone": "B+",
+  "be quiet system power 11": "C", "be quiet system power 10": "E",
+  "be quiet system power 9": "C-", "be quiet system power": "C",
+  "be quiet sfx-l": "B",
+
+  // ── Super Flower ──
+  "super flower leadex vii": "A+", "super flower leadex vi": "A-",
+  "super flower leadex v": "A-", "super flower leadex iii": "A-",
+  "super flower leadex ii": "A", "super flower leadex se": "A",
+  "super flower leadex gold": "A-", "super flower leadex platinum": "A",
+  "super flower leadex titanium": "A+", "super flower leadex": "A-",
+  "super flower legion gx": "B", "super flower combat": "C",
+  "super flower zillion db": "E", "super flower zillion dw": "E",
+  "super flower zillion": "E",
+
+  // ── FSP (FSP Group) ──
+  "fsp hydro g pro": "A-", "fsp hydro gt pro": "A-",
+  "fsp hydro pti pro": "A-", "fsp hydro ti pro": "A-",
+  "fsp hydro g": "B+", "fsp hydro ge": "B", "fsp hydro gd": "B-",
+  "fsp hydro": "B",
+  "fsp dagger pro": "B+", "fsp dagger sfx": "B+", "fsp dagger": "B",
+  "fsp vita gm": "B", "fsp vita": "B-",
+  "fsp hv pro": "E", "fsp hexa": "E", "fsp hyper k": "E",
+  "fsp hyper": "E", "fsp sfx pro": "B",
+
+  // ── Cooler Master ──
+  "cooler master v sfx": "A-", "cooler master v platinum": "A",
+  "cooler master v gold": "B+",
+  "cooler master mwe v3": "B", "cooler master mwe v2 gold": "B+",
+  "cooler master mwe v2 bronze": "B", "cooler master mwe v2 white": "C",
+  "cooler master mwe v2": "B", "cooler master mwe gold": "B+",
+  "cooler master mwe bronze": "C", "cooler master mwe white": "D-",
+  "cooler master mwe": "C",
+  "cooler master gx iii": "B+", "cooler master gx ii": "B+",
+  "cooler master gx": "B+",
+  "cooler master reactor": "B+", "cooler master maker": "B+",
+  "cooler master masterwatt": "C", "cooler master elite nex": "E",
+  "cooler master elite": "E",
+
+  // ── Thermaltake ──
+  "thermaltake toughpower gf1": "A+", "thermaltake toughpower gf3": "A",
+  "thermaltake toughpower gf2": "A-", "thermaltake toughpower gf": "B",
+  "thermaltake toughpower pf3": "A-", "thermaltake toughpower pf1": "B+",
+  "thermaltake toughpower tf1": "A+",
+  "thermaltake toughpower grand": "C+", "thermaltake toughpower gold": "B-",
+  "thermaltake toughpower sfx": "F",
+  "thermaltake toughpower gx1": "C+", "thermaltake toughpower gx2": "C+",
+  "thermaltake toughpower gx3": "C",
+  "thermaltake toughpower": "B-",
+  "thermaltake smart bm2": "C+", "thermaltake smart bm3": "C",
+  "thermaltake smart bm1": "E", "thermaltake smart bm": "C",
+  "thermaltake smart bx1": "E", "thermaltake smart pro": "C",
+  "thermaltake smart se": "D", "thermaltake smart rgb": "E",
+  "thermaltake smart": "E",
+  "thermaltake litepower": "F", "thermaltake tr2 s": "F",
+
+  // ── LIAN LI ──
+  "lian li sp": "B",
+  "lian li edge": "A+",
+  "lian li performance": "A",
+
+  // ── MSI ──
+  "msi meg ai": "A+", "msi meg": "A",
+  "msi mpg a1000g": "A-", "msi mpg a850g": "A-", "msi mpg a750g": "A-",
+  "msi mpg a-gl": "B-", "msi mpg a-g": "A-", "msi mpg": "B",
+  "msi mag a-g": "B+", "msi mag a850gl": "B+",
+  "msi mag a750gl": "B+", "msi mag a650gl": "B+",
+  "msi mag a-gl": "B+", "msi mag": "C",
+
+  // ── Antec ──
+  "antec hcg": "A", "antec signature": "A+",
+  "antec earthwatts gold pro": "B+",
+  "antec neoeco gold": "B+", "antec neoeco platinum": "A-",
+  "antec neoeco": "B",
+  "antec atom": "C-",
+  "antec csk bronze": "C", "antec csk": "C-",
+  "antec vp": "E",
+
+  // ── ADATA XPG ──
+  "adata xpg core reactor": "A+", "adata xpg cybercore": "A+",
+  "adata xpg fusion": "A+",
+  "adata xpg pylon": "C+",
+  "adata xpg kyber": "B-",
+  "adata xpg probe": "E",
+
+  // ── Phanteks ──
+  "phanteks amp gh platinum": "B+", "phanteks amp gh": "B",
+  "phanteks amp": "A-", "phanteks revolt pro": "A",
+  "phanteks revolt sfx": "B-",
+
+  // ── NZXT ──
+  "nzxt c gold": "A", "nzxt c platinum": "A+", "nzxt c": "A",
+  "nzxt e": "A",
+
+  // ── DeepCool ──
+  "deepcool pq": "A-", "deepcool px": "B+",
+  "deepcool pk": "C+", "deepcool pm": "C",
+  "deepcool pf": "C+",
+  "deepcool gamestorm dq": "A", "deepcool gamestorm pq": "A-",
+  "deepcool gamestorm ps": "B+", "deepcool gamestorm pf": "C+",
+  "deepcool gamestorm": "C",
+
+  // ── Fractal Design ──
+  "fractal ion": "A", "fractal ion sfx": "A",
+  "fractal ion gold": "A", "fractal ion platinum": "A",
+  "fractal terra gold sfx": "A", "fractal terra": "A",
+  "fractal anode": "C+",
+
+  // ── ASUS ──
+  "asus rog strix": "A", "asus rog thor": "A", "asus rog loki": "A",
+  "asus tuf": "B", "asus prime": "B+",
+
+  // ── Gigabyte ──
+  "gigabyte aorus": "B+", "gigabyte ud": "B",
+  "gigabyte p": "C",
+
+  // ── Montech ──
+  "montech titan gold": "A", "montech gamma ii": "C+",
+  "montech century": "A-", "montech beta": "C",
+
+  // ── Enermax ──
+  "enermax revolution df": "A-", "enermax revolution d.f": "A-",
+  "enermax platigemini": "A", "enermax maxtytan": "A-",
+  "enermax marblebron": "C-", "enermax maxpro": "E",
+
+  // ── ASRock ──
+  "asrock taichi": "A+", "asrock phantom gaming": "A+",
+  "asrock steel legend": "A", "asrock": "B+",
+
+  // ── Zalman ──
+  "zalman teramax": "B+", "zalman acrux": "B",
+  "zalman ebt": "C+", "zalman tx": "C-",
+  "zalman megamax": "E", "zalman gigamax": "E",
+  "zalman gvm": "E", "zalman gv2": "F",
+  "zalman wattbitt": "F", "zalman wattgiga": "E",
+
+  // ── 1stPlayer ──
+  "1stplayer ngdp": "A-", "1stplayer armour": "B",
+  "1stplayer steampunk": "C+", "1stplayer dk premium": "C-",
+  "1stplayer ack": "E", "1stplayer pro": "E",
+  "1stplayer black sir": "E", "1stplayer fk": "F",
+
+  // ── Aerocool ──
+  "aerocool premier": "A", "aerocool project 7": "A-",
+  "aerocool integrator gold": "B-",
+  "aerocool lux": "E", "aerocool kcas": "E",
+  "aerocool cylon": "F", "aerocool united power": "F",
+  "aerocool vp": "E", "aerocool vx": "F",
+
+  // ── PCCooler ──
+  "pccooler gp": "C+", "pccooler gi": "B-",
+  "pccooler kf": "E", "pccooler hw": "F",
+
+  // ── Thermalright ──
+  "thermalright sp": "B", "thermalright kg": "B",
+  "thermalright tg": "E",
+
+  // ── Aigo ──
+  "aigo vk": "F", "aigo ak": "E", "aigo id": "E",
+  "aigo warrior": "E",
+
+  // ── GALAX ──
+  "galax omega glx": "B-", "galax omega": "C+",
+
+  // ── GameMax ──
+  "gamemax vp": "E", "gamemax gp": "E", "gamemax gx": "C-",
+  "gamemax rgb": "E",
+
+  // ── Gamdias ──
+  "gamdias helios": "C+", "gamdias astrape": "E",
+};
+
+/**
+ * Look up the SPL tier score for a PSU.
+ * Matching strategy: extract brand + series tokens from the name,
+ * try progressively shorter prefixes until a match is found.
+ * @param {object} psu - component object
+ * @returns {number} tier score (default 12 for unknown)
+ */
+function _psuTierScore(psu) {
+  const raw = (psu.name || "").toLowerCase()
+    .replace(/[()[\],\/\-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  // Known brand aliases → normalized form
+  const brandNorm = [
+    [/^be quiet!?\s/, "be quiet "],
+    [/^1st\s*player\s/, "1stplayer "],
+    [/^adata\s+xpg\s/, "adata xpg "],
+    [/^super\s+flower\s/, "super flower "],
+    [/^cooler\s+master\s/, "cooler master "],
+    [/^fractal\s+design\s/, "fractal "],
+    [/^lian\s+li\s/, "lian li "],
+    [/^fsp\s+(group\s+)?/, "fsp "],
+    [/^digital\s+alliance\s/, "digital alliance "],
+    [/^deepcool\s+gamestorm\s/, "deepcool gamestorm "],
+  ];
+
+  let name = raw;
+  for (const [re, replacement] of brandNorm) {
+    name = name.replace(re, replacement);
+  }
+
+  // Split concatenated series+number tokens: "RM750" → "RM 750", "CX650" → "CX 650"
+  name = name.replace(/([a-z])(\d)/g, "$1 $2");
+
+  const tokens = name.split(" ");
+  // Try progressively shorter prefixes (max 5 tokens, min 2)
+  const maxLen = Math.min(tokens.length, 5);
+  for (let len = maxLen; len >= 2; len--) {
+    const key = tokens.slice(0, len).join(" ");
+    if (_PSU_TIER_MAP[key] !== undefined) {
+      return _SPL_TIER_SCORE[_PSU_TIER_MAP[key]] ?? 12;
+    }
+  }
+
+  // No match — return neutral-low score (below any tier B and above E)
+  return 12;
+}
+
 
 export const UPGRADE_PRIORITY_SCORES = {
   weak_gaming_gpu: 96,
@@ -966,7 +1418,12 @@ function _componentPerformanceUnits(component, slot, target_specs = null) {
   const category = (slot === "cpu_cooler" || slot === "fan_cooler") ? "cooler" : slot;
 
   if (category === "cpu") {
-    return (specs.cores || 0) * 8 + (specs.threads || 0) * 2 + (specs.tdp_w || 0) / 20 + _socketRunwayScore(specs.socket) + _cpuGamingTierBonus(component, target_specs);
+    const tier = _cpuTierScore(component);
+    if (tier > 0) {
+      return tier * 1.5 + (specs.cores || 0) * 3 + _socketRunwayScore(specs.socket) * 0.5
+        + _cpuGamingTierBonus(component, target_specs);
+    }
+    return (specs.cores || 0) * 8 + _socketRunwayScore(specs.socket) + _cpuGamingTierBonus(component, target_specs);
   }
   if (category === "gpu") {
     const current_vram = (target_specs || {}).current_vram_gb || 0;
@@ -974,7 +1431,11 @@ function _componentPerformanceUnits(component, slot, target_specs = null) {
     const upgrade_gain = (current_vram && vram > current_vram) ? (vram - current_vram) * 5 : 0;
     const psu_target = specs.recommended_psu_w || 0;
     const efficiency_bonus = psu_target ? Math.max(0, 900 - psu_target) / 120 : 0;
-    return vram * 10 + upgrade_gain + efficiency_bonus + _gamingGpuFitScore(component, target_specs) + _gpuModelTierBonus(component, target_specs);
+    const tier = _gpuTierScore(component);
+    if (tier > 0) {
+      return tier * 1.5 + vram * 5 + upgrade_gain + _gamingGpuFitScore(component, target_specs);
+    }
+    return vram * 10 + upgrade_gain + efficiency_bonus + _gamingGpuFitScore(component, target_specs);
   }
   if (category === "motherboard") {
     const ff = CASE_FF_RANK[specs.form_factor || "ATX"] || 3;
@@ -996,7 +1457,7 @@ function _componentPerformanceUnits(component, slot, target_specs = null) {
     return (specs.capacity_gb || 0) / 128 + (specs.interface === "SATA" ? 8 : 0);
   }
   if (category === "psu") {
-    return (specs.wattage_w || 0) / 40 + (_PSU_RATING_SCORE[specs.rating || ""] || 0) * 2 + (_PSU_MODULAR_SCORE[specs.modular || ""] !== undefined ? _PSU_MODULAR_SCORE[specs.modular || ""] : 1);
+    return (specs.wattage_w || 0) / 40 + (_PSU_RATING_SCORE[specs.rating || ""] || 0) * 2 + (_PSU_MODULAR_SCORE[specs.modular || ""] !== undefined ? _PSU_MODULAR_SCORE[specs.modular || ""] : 1) + _psuTierScore(component);
   }
   if (category === "cooler") {
     if (slot === "fan_cooler" || specs.type === "fan") return (specs.fan_size_mm || 0) / 8;
@@ -1174,7 +1635,8 @@ function _psuQualityScore(psu, min_watts) {
   const headroom_score = Math.min(w / Math.max(min_watts, 1), 1.5) * 5;
   const rating_score = _PSU_RATING_SCORE[specs.rating || ""] || 0;
   const modular_score = _PSU_MODULAR_SCORE[specs.modular || ""] !== undefined ? _PSU_MODULAR_SCORE[specs.modular || ""] : 1;
-  return headroom_score + rating_score + modular_score + _availabilityScore(psu) / 6 + _freshnessScore(psu) / 3;
+  const tier_score = _psuTierScore(psu);
+  return headroom_score + rating_score + modular_score + tier_score + _availabilityScore(psu) / 6 + _freshnessScore(psu) / 3;
 }
 
 export function pickPsu(psus, budget, min_watts) {
@@ -1625,7 +2087,7 @@ function _replacementCandidates(catalog, build, slot, budget, useCase, cpu_brand
     if (slot === "cpu_cooler") next_build.cooler = candidate;
     if (_hasErrorCompatibility(validateBuild(next_build))) continue;
     const candidate_score = _strategyCandidateScore(candidate, slot, Math.max(max_price, candidate_price, 1), useCase);
-    if (candidate_score <= current_score + 4 && _componentPerformanceUnits(candidate, slot, target) <= _componentPerformanceUnits(current || {}, slot, target)) continue;
+    if (candidate_score <= current_score + 2 && _componentPerformanceUnits(candidate, slot, target) <= _componentPerformanceUnits(current || {}, slot, target)) continue;
     candidates.push(candidate);
   }
 
@@ -1842,7 +2304,7 @@ export function composeBuild(components, budget, useCase, {
 
   // CPU
   let cpu_budget = alloc.cpu;
-  if (useCase === "gaming" && budget >= 22000000) cpu_budget = Math.max(cpu_budget, Math.floor(budget * 0.24));
+  if (useCase === "gaming" && budget >= 22000000 && !allocation_overrides) cpu_budget = Math.max(cpu_budget, Math.floor(budget * 0.24));
   slot_budgets.cpu = cpu_budget;
   const cpu = pickCpu(components.cpu || [], cpu_budget, cpu_brand, useCase, initial_scoring_priority);
   build.cpu = cpu;
@@ -1874,7 +2336,7 @@ export function composeBuild(components, budget, useCase, {
   // GPU
   const base_gpu_budget = nextSlotBudget("gpu");
   let gpu_budget = base_gpu_budget;
-  if (useCase === "gaming" && budget >= 22000000) gpu_budget = Math.max(gpu_budget, Math.floor(budget * 0.42));
+  if (useCase === "gaming" && budget >= 22000000 && !allocation_overrides) gpu_budget = Math.max(gpu_budget, Math.floor(budget * 0.42));
   slot_budgets.gpu = gpu_budget;
   slot_targets.gpu = { use_case: useCase, performance_priority: initial_scoring_priority };
   if (useCase === "office" && cpu && cpu.specs && cpu.specs.has_igpu) {
@@ -2013,11 +2475,17 @@ export function composeBuild(components, budget, useCase, {
     ? _findNearBudgetUpgradeCombos(components, build, budget, useCase, cpu_brand, gpu_vendor)
     : [];
 
+  const budgetRange = USE_CASE_BUDGET_RANGES[useCase];
+  const budget_range_warning = (budgetRange && budget < budgetRange.min_idr)
+    ? { code: "budget_below_use_case_min", min_idr: budgetRange.min_idr, use_case: useCase }
+    : null;
+
   return {
     use_case: useCase, budget_idr: budget, total_idr: total, remaining_idr: budget - total, budget_band: budgetBandFor(budget),
     budget_usage, budget_warnings, upgrade_suggestions, alternative_options, performance_balance,
     components: build, optional_addons, missing_slots, unavailable_optional_addons, compatibility_warnings, compatibility_issues: issues,
     near_budget_upgrades,
+    budget_range_warning,
     preferences: { cpu_brand, gpu_vendor }, unmet_preferences
   };
 }
@@ -2067,66 +2535,99 @@ const rawCuratedRam = [
     "sku": "RAM-DDR4-16-3200-VAL",
     "name": "Team T-Force Vulcan Z 16GB (2x8GB) DDR4-3200",
     "brand": "Team",
-    "price_idr": 900000,
+    "price_idr": 1200000,
     "specs": { "type": "DDR4", "capacity_gb": 16, "speed_mhz": 3200, "modules": 2 }
   },
   {
     "sku": "RAM-DDR4-32-3200-VAL",
     "name": "Team T-Force Vulcan Z 32GB (2x16GB) DDR4-3200",
     "brand": "Team",
-    "price_idr": 1700000,
+    "price_idr": 2400000,
     "specs": { "type": "DDR4", "capacity_gb": 32, "speed_mhz": 3200, "modules": 2 }
   },
   {
     "sku": "RAM-DDR4-16-3600-PERF",
     "name": "Klevv Bolt XR 16GB (2x8GB) DDR4-3600",
     "brand": "Klevv",
-    "price_idr": 1100000,
+    "price_idr": 1400000,
     "specs": { "type": "DDR4", "capacity_gb": 16, "speed_mhz": 3600, "modules": 2 }
   },
   {
     "sku": "RAM-DDR4-32-3600-PERF",
     "name": "Klevv Bolt XR 32GB (2x16GB) DDR4-3600",
     "brand": "Klevv",
-    "price_idr": 2100000,
+    "price_idr": 2800000,
     "specs": { "type": "DDR4", "capacity_gb": 32, "speed_mhz": 3600, "modules": 2 }
   },
   {
     "sku": "RAM-DDR5-16-5600-VAL",
-    "name": "Team T-Force Vulcan 16GB (2x8GB) DDR5-5600",
-    "brand": "Team",
-    "price_idr": 1250000,
+    "name": "Kingston FURY Beast 16GB (2x8GB) DDR5-5600",
+    "brand": "Kingston",
+    "price_idr": 3200000,
     "specs": { "type": "DDR5", "capacity_gb": 16, "speed_mhz": 5600, "modules": 2 }
   },
   {
     "sku": "RAM-DDR5-32-5600-VAL",
-    "name": "Team T-Force Vulcan 32GB (2x16GB) DDR5-5600",
-    "brand": "Team",
-    "price_idr": 2250000,
+    "name": "Kingston FURY Beast RGB 32GB (2x16GB) DDR5-5600",
+    "brand": "Kingston",
+    "price_idr": 5550000,
     "specs": { "type": "DDR5", "capacity_gb": 32, "speed_mhz": 5600, "modules": 2 }
   },
   {
     "sku": "RAM-DDR5-32-6000-PERF",
-    "name": "G.Skill Trident Z5 32GB (2x16GB) DDR5-6000",
+    "name": "G.Skill Ripjaws S5 32GB (2x16GB) DDR5-6000",
     "brand": "G.Skill",
-    "price_idr": 2950000,
+    "price_idr": 9690000,
     "specs": { "type": "DDR5", "capacity_gb": 32, "speed_mhz": 6000, "modules": 2 }
   },
   {
     "sku": "RAM-DDR5-32-6400-PERF",
-    "name": "G.Skill Trident Z5 RGB 32GB (2x16GB) DDR5-6400",
-    "brand": "G.Skill",
-    "price_idr": 3400000,
+    "name": "Kingston FURY Beast 32GB (2x16GB) DDR5-6400",
+    "brand": "Kingston",
+    "price_idr": 6450000,
     "specs": { "type": "DDR5", "capacity_gb": 32, "speed_mhz": 6400, "modules": 2 }
   },
   {
     "sku": "RAM-DDR5-64-6000-HEDT",
-    "name": "G.Skill Trident Z5 64GB (2x32GB) DDR5-6000",
+    "name": "G.Skill Flare X5 64GB (2x32GB) DDR5-6000",
     "brand": "G.Skill",
-    "price_idr": 5800000,
+    "price_idr": 16500000,
     "specs": { "type": "DDR5", "capacity_gb": 64, "speed_mhz": 6000, "modules": 2 }
   }
 ];
+
+// Price sanity floors: any component priced below these thresholds is flagged
+// as a price outlier (clearance, discontinued, or data error).
+// Key format: "category_specType_capacityGb" or "category_specType"
+const COMPONENT_PRICE_FLOORS = {
+  ram_DDR5_64: 8000000,
+  ram_DDR5_48: 6000000,
+  ram_DDR5_32: 5000000,
+  ram_DDR5_16: 2500000,
+  ram_DDR4_32: 1800000,
+  ram_DDR4_16: 900000,
+};
+
+function _priceFloorKey(component) {
+  const cat = component.category;
+  const s = component.specs || {};
+  if (cat === 'ram' && s.type && s.capacity_gb) {
+    return `${cat}_${s.type}_${s.capacity_gb}`;
+  }
+  return null;
+}
+
+function _applyPriceFloorFlags(component) {
+  const key = _priceFloorKey(component);
+  if (!key) return component;
+  const floor = COMPONENT_PRICE_FLOORS[key];
+  if (floor && (component.price_idr || 0) < floor) {
+    const flags = new Set(component.quality_flags || []);
+    flags.add('price_outlier_low');
+    return { ...component, quality_flags: [...flags] };
+  }
+  return component;
+}
 
 let processedComponents = [];
 const componentMap = new Map();
@@ -2146,7 +2647,8 @@ export function initCatalog(rawComponents) {
 
   processedComponents = rawComponents.map(c => {
     const sku = c.sku || c.id;
-    return { ...c, price_idr: (sku && sku in priceOverrides) ? priceOverrides[sku] : c.price_idr };
+    const withPrice = { ...c, price_idr: (sku && sku in priceOverrides) ? priceOverrides[sku] : c.price_idr };
+    return _applyPriceFloorFlags(withPrice);
   });
 
   for (const c of processedComponents) {
@@ -2162,7 +2664,8 @@ export function initCatalog(rawComponents) {
     sku: r.sku, name: r.name, brand: r.brand, category: "ram", subcategory: r.specs.type,
     price_idr: r.price_idr, image_path: null, product_url: null, specs: r.specs, source: "curated"
   }));
-  for (const r of curatedRamCatalog) {
+  for (let r of curatedRamCatalog) {
+    r = _applyPriceFloorFlags(r);
     if (!componentMap.has(r.sku)) {
       componentMap.set(r.sku, r);
       componentsByCategory["ram"].push(r);

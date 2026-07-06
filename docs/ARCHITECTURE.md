@@ -113,7 +113,8 @@ kompare/
 │   └── public/               # Static assets
 │
 ├── data/
-│   └── components.json       # Master component catalog (~3200 items)
+│   ├── components.json       # Master component catalog (~6400 items)
+│   └── components.backup.json # Pre-cleaning backup (auto-generated)
 │
 ├── docs/                     # Documentation
 ├── dev.ps1                   # Dev server orchestrator (PowerShell)
@@ -293,9 +294,9 @@ Component Catalog              Qdrant Cloud
        └──────────────────────────────┘
 ```
 
-**Embedding model**: `@cf/baai/bge-large-en-v1.5` (384 dimensions)
+**Embedding model**: `@cf/baai/bge-large-en-v1.5` (1024 dimensions)
 **Collection**: `kompare_components_gemini` on Qdrant Cloud
-**Batch size**: 50 texts per embedding call
+**Batch size**: 32 texts per embedding call, concurrency 4
 **Search**: 36 candidates per slot, filtered by category + budget limit
 
 ### AI Ranker Prompt
@@ -381,6 +382,113 @@ The core deterministic engine handles:
 | office | 28% | 0% | 12% | 18% | 20% | 8% | 8% | 5% | 1% |
 | student | 22% | 16% | 12% | 14% | 14% | 8% | 8% | 5% | 1% |
 
+### Per-Use-Case Budget Ranges
+
+| Use Case | Min (IDR) | Max (IDR) |
+|---|---|---|
+| gaming | 7.000.000 | 40.000.000 |
+| productivity | 5.000.000 | 30.000.000 |
+| content_creation | 8.000.000 | 40.000.000 |
+| office | 4.000.000 | 15.000.000 |
+| student | 5.000.000 | 20.000.000 |
+
+These ranges are soft guidelines exposed via `/api/build/use-cases`. The frontend slider shows the recommended range; the text input accepts any value ≥ Rp 3jt. Budgets below the use-case minimum trigger a `budget_range_warning` in the `composeBuild` response.
+
+---
+
+## Data Sources & Part Ranking
+
+### Primary Component Catalog
+
+**Source**: [EnterKomputer](https://www.enterkomputer.com/) (Indonesian PC parts retailer)
+
+The master catalog (`data/components.json`) is scraped from EnterKomputer and contains ~6400 components across 11 categories:
+
+| Category | Description |
+|---|---|
+| `cpu` | Processors (Intel & AMD) |
+| `gpu` | Graphics cards (NVIDIA, AMD, Intel) |
+| `ram` | Memory modules (DDR4 & DDR5) |
+| `motherboard` | Motherboards (AM4, AM5, LGA 1700, LGA 1851, etc.) |
+| `ssd` | Solid state drives (NVMe & SATA) |
+| `psu` | Power supplies |
+| `case` | PC cases |
+| `cooler` / `cpu_cooler` | CPU coolers (air & liquid) |
+| `fan_cooler` | Case fans |
+| `hdd` | Hard disk drives |
+| `monitor` | Monitors |
+| `ups` | Uninterruptible power supplies |
+
+Each component entry includes: SKU, name, brand, price (IDR), detailed specs, stock status, source URL, and scrape timestamp.
+
+### Part Ranking Sources
+
+The deterministic engine uses **tiered ranking data** to prefer higher-quality components over generic specs matching. Rankings are sourced from industry-standard community tier lists:
+
+| Component | Ranking Source | Integration |
+|---|---|---|
+| **PSU** | [SPL PSU Tier List](https://docs.google.com/spreadsheets/d/1akCHL7Vhzk_EhrpIGkz8zTEvYfLDcaSpZRB6Xt6JWkc/) | `_PSU_TIER_MAP` in `pc-builder-core.js` — ~200 brand+series entries mapped to tiers A+ through F |
+| **CPU** | Performance ranking by core count, clock speed, socket generation, and cache hierarchy | `_CPU_RANK` table in `pc-builder-core.js` |
+| **GPU** | Performance ranking by VRAM, architecture, and compute capability | `_GPU_RANK` table in `pc-builder-core.js` |
+
+#### PSU SPL Tier Scoring
+
+The PSU tier system (from SPL's electrical testing data) assigns quality scores that **dominate** the PSU selection:
+
+| SPL Tier | Score | Meaning |
+|---|---|---|
+| A+ | +50 | Best-in-class (e.g., Corsair RMx, Seasonic Prime TX) |
+| A | +45 | Excellent (e.g., Seasonic Focus GX, be quiet! Straight Power) |
+| A- | +40 | Very good (e.g., FSP Hydro G Pro, Enermax Revolution D.F.) |
+| B+ | +35 | Good (e.g., Cooler Master MWE Gold V2) |
+| B | +30 | Above average |
+| B- | +25 | Decent |
+| C+ | +20 | Acceptable |
+| C / C- | +15 / +10 | Below average |
+| D | +5 | Avoid if possible |
+| E | +2 | Bad |
+| F | **-10** | Dangerous / e-waste (e.g., Aerocool Cylon, Seasonic S12III) |
+
+This ensures a Tier A+ Gold PSU always scores higher than a Tier F Gold PSU, even though both carry the same 80+ rating.
+
+### Data Quality Pipeline
+
+To prevent stale/clearance/discontinued prices from corrupting build recommendations, the catalog goes through a multi-layered quality pipeline:
+
+```
+data/components.json (raw scraped data)
+       │
+       │ 1. IQR-based statistical cleaning (clean-data.mjs)
+       │    Groups by: category + spec tier (e.g., ram_DDR5_32GB)
+       │    Flags: entries below Q1 - 1.5*IQR or 35% of median
+       │    Result: stock_status → "price_outlier", quality_flags += ["price_outlier_low"]
+       │
+       │ 2. Runtime price floor check (initCatalog → _applyPriceFloorFlags)
+       │    Hardcoded COMPONENT_PRICE_FLOORS per category+spec
+       │    Catches anything the statistical method misses
+       │
+       │ 3. Stock status filter (STOCK_OK whitelist)
+       │    Only "in_stock", "ready", "available" pass through
+       │    "price_outlier" entries are excluded from all pipelines
+       │
+       ▼
+  Clean, verified components used for builds
+```
+
+**Cleaning tool**: `clean-data.mjs` (IQR outlier detection)
+- `--dry-run` → preview flagged entries
+- `--apply` → write flags to `components.json` (auto-creates backup)
+
+### Curated Fallback Catalog
+
+For categories where the scraped catalog may have gaps, hardcoded curated entries are injected at `initCatalog()` time:
+
+| Curated List | Purpose |
+|---|---|
+| `rawCuratedRam` | 9 hand-picked RAM kits (DDR4/DDR5) with market-accurate pricing |
+
+Curated entries also pass through `_applyPriceFloorFlags` to catch outdated prices.
+
 ---
 
 ## Data Flow: Component Catalog
@@ -396,17 +504,14 @@ data/components.json
        │ ensureCatalog(env)
        ▼
   core.initCatalog(list)
+       ├── _applyPriceFloorFlags()  → flag low-price outliers
+       ├── inject rawCuratedRam     → add curated entries
        │
        │ loadComponents()
        │ componentsByCategoryMap()
        ▼
   In-memory catalog ready for all endpoints
 ```
-
-The catalog contains ~3200 components from Indonesian retailers (EnterKomputer) with:
-- Category (cpu, gpu, ram, motherboard, ssd, psu, case, cooler, hdd, monitor, ups)
-- SKU, name, price (IDR), specs, stock status
-- Marketplace links
 
 ---
 

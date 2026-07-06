@@ -59,6 +59,9 @@ Current tier ranges:
 Fields:
 
 - Budget
+- Budget slider showing recommended range per use case
+- Range labels below slider (min and max in IDR)
+- Warning message when budget is below use-case minimum
 - Use case
 - CPU brand preference
 - GPU vendor preference
@@ -163,6 +166,27 @@ Each card should show:
 Missing catalog recommendations should render as explicit unavailable states.
 
 Swap dialogs should list compatible alternatives for the active build context. Candidates that create hard CPU socket, RAM generation, or case fit errors should be filtered out before the user chooses them. Warning-level candidates may appear with a clear compatibility note.
+
+## Near-Budget Upgrade Suggestions
+
+When the backend returns `near_budget_upgrades` (up to 3 entries), the results page renders a dedicated section between the part list and optional add-ons.
+
+Each near-budget upgrade card shows:
+
+- Slot label
+- Current component name
+- Upgrade component name with arrow indicator
+- Cost delta (over-budget amount)
+- New total price
+- Percentage over budget
+- Reason for upgrade
+
+Behavior:
+
+- Only combos within 3.3% over the original budget are shown.
+- All suggested upgrades pass compatibility validation.
+- The section is hidden when no near-budget upgrades exist.
+- Heading reads: "Slightly over budget, but worth it?"
 
 ## PC Build Advisor
 

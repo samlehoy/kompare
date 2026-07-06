@@ -149,15 +149,15 @@ describe('build wizard', () => {
 
     expect(api.recommendBuild).toHaveBeenCalledWith(expect.objectContaining({
       allocationOverrides: {
-        cpu: 20,
-        gpu: 37,
+        cpu: 18,
+        gpu: 33,
         ram: 7,
-        motherboard: 9,
-        ssd: 8,
+        motherboard: 10,
+        ssd: 10,
         psu: 8,
-        case: 5,
+        case: 7,
         cpu_cooler: 5,
-        fan_cooler: 1,
+        fan_cooler: 2,
       },
     }));
   });
@@ -167,13 +167,13 @@ describe('build wizard', () => {
 
     await userEvent.click(screen.getByLabelText(/Use advanced allocation/i));
 
-    expect(screen.getByRole('spinbutton', { name: 'CPU allocation percent' })).toHaveValue(20);
-    expect(screen.getByRole('spinbutton', { name: 'GPU allocation percent' })).toHaveValue(37);
+    expect(screen.getByRole('spinbutton', { name: 'CPU allocation percent' })).toHaveValue(18);
+    expect(screen.getByRole('spinbutton', { name: 'GPU allocation percent' })).toHaveValue(33);
 
     await userEvent.selectOptions(screen.getByLabelText('Use case'), 'productivity');
 
-    expect(screen.getByRole('spinbutton', { name: 'CPU allocation percent' })).toHaveValue(31);
-    expect(screen.getByRole('spinbutton', { name: 'GPU allocation percent' })).toHaveValue(10);
+    expect(screen.getByRole('spinbutton', { name: 'CPU allocation percent' })).toHaveValue(27);
+    expect(screen.getByRole('spinbutton', { name: 'GPU allocation percent' })).toHaveValue(17);
   });
 
   test('hydrates advanced allocation presets from backend metadata when available', async () => {
@@ -182,12 +182,6 @@ describe('build wizard', () => {
       profiles: {
         gaming: { cpu: 10, gpu: 40, ram: 8, motherboard: 9, ssd: 10, psu: 8, case: 7, cpu_cooler: 5, fan_cooler: 3 },
       },
-      priority_shifts: {
-        gaming: { cpu: 1, gpu: 2 },
-      },
-      strategy_shifts: {
-        balanced: {},
-      },
     });
 
     render(<BuildWizard />);
@@ -195,8 +189,8 @@ describe('build wizard', () => {
     expect(await screen.findByText('Backend allocation presets loaded.')).toBeVisible();
     await userEvent.click(screen.getByLabelText(/Use advanced allocation/i));
 
-    expect(screen.getByRole('spinbutton', { name: 'CPU allocation percent' })).toHaveValue(11);
-    expect(screen.getByRole('spinbutton', { name: 'GPU allocation percent' })).toHaveValue(39);
+    expect(screen.getByRole('spinbutton', { name: 'CPU allocation percent' })).toHaveValue(10);
+    expect(screen.getByRole('spinbutton', { name: 'GPU allocation percent' })).toHaveValue(40);
   });
 
   test('protects manual allocation edits until the user applies a new suggested split', async () => {
@@ -213,8 +207,8 @@ describe('build wizard', () => {
 
     await userEvent.click(screen.getByRole('button', { name: 'Apply suggested allocation' }));
 
-    expect(screen.getByRole('spinbutton', { name: 'CPU allocation percent' })).toHaveValue(31);
-    expect(screen.getByRole('spinbutton', { name: 'GPU allocation percent' })).toHaveValue(10);
+    expect(screen.getByRole('spinbutton', { name: 'CPU allocation percent' })).toHaveValue(27);
+    expect(screen.getByRole('spinbutton', { name: 'GPU allocation percent' })).toHaveValue(17);
     expect(screen.queryByText('Suggested allocation changed. Apply suggested split?')).not.toBeInTheDocument();
   });
 
@@ -229,7 +223,7 @@ describe('build wizard', () => {
 
     expect(api.recommendBuild).not.toHaveBeenCalled();
     expect(api.recommendAiBuild).not.toHaveBeenCalled();
-    expect(screen.getByRole('alert')).toHaveTextContent('Advanced allocation must total 100%. Current total is 101%.');
+    expect(screen.getByRole('alert')).toHaveTextContent('Advanced allocation must total 100%. Current total is 103%.');
   });
 
   test('makes optional add-ons individually selectable instead of ambiguous', async () => {
@@ -268,5 +262,39 @@ describe('build wizard', () => {
     expect(await screen.findByText('Selected 1TB HDD')).toBeVisible();
     expect(screen.queryByText('Unselected gaming monitor')).not.toBeInTheDocument();
     expect(screen.queryByText('Unselected UPS')).not.toBeInTheDocument();
+  });
+
+  test('budget slider renders with gaming range by default', () => {
+    render(<BuildWizard />);
+
+    const slider = screen.getByRole('slider', { name: 'Budget slider' });
+    expect(slider).toHaveAttribute('min', '7000000');
+    expect(slider).toHaveAttribute('max', '40000000');
+  });
+
+  test('budget slider range updates when use case changes', async () => {
+    render(<BuildWizard />);
+
+    await userEvent.selectOptions(screen.getByLabelText('Use case'), 'office');
+
+    const slider = screen.getByRole('slider', { name: 'Budget slider' });
+    expect(slider).toHaveAttribute('min', '4000000');
+    expect(slider).toHaveAttribute('max', '15000000');
+  });
+
+  test('shows warning when budget is below use case minimum', async () => {
+    render(<BuildWizard />);
+
+    await userEvent.type(screen.getByLabelText('Budget (IDR)'), '4000000');
+
+    expect(screen.getByRole('alert')).toHaveTextContent(/below recommended minimum/i);
+  });
+
+  test('does not show budget range warning when budget is within range', async () => {
+    render(<BuildWizard />);
+
+    await userEvent.type(screen.getByLabelText('Budget (IDR)'), '15000000');
+
+    expect(screen.queryByText(/below recommended minimum/i)).not.toBeInTheDocument();
   });
 });
