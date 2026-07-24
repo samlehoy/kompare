@@ -87,7 +87,7 @@ function _slotFromPartsLine(line) {
 
 function _parsePartsList(parts_list) {
   const parts = {};
-  const lines = (parts_list || "").split(/\r?\n/);
+  const lines = (parts_list || "").split(/[;\r\n]+/);
   for (const line of lines) {
     const [slot, value] = _slotFromPartsLine(line);
     if (slot && BUILD_AUDIT_INPUT_SLOTS.has(slot) && value && !parts[slot]) {

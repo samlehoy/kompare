@@ -12,15 +12,15 @@ export default function ReadmeContent() {
         <li><strong>Upgrade:</strong> Have an existing rig? Enter the parts you already own, and the planner will prioritize upgrades or fill in missing components while ensuring compatibility.</li>
         <li><strong>Audit:</strong> Before you buy, audit your cart screenshot or typed parts list to catch bottlenecks and compatibility risks.</li>
         <li><strong>Advisor (After Build):</strong> Once you have a generated build or upgrade result, ask grounded follow-up questions to customize the parts further!</li>
-        <li><strong>Marketplace:</strong> Coming soon! Browse the catalog of EnterKomputer parts directly.</li>
+        <li><strong>Marketplace:</strong> Recommended parts include EnterKomputer links; direct catalog browsing is planned for a future release.</li>
       </ol>
 
       <h3 style={{ marginTop: '24px', borderBottom: '1px dotted #ccc', paddingBottom: '4px' }}>Tech Stack</h3>
       <ul style={{ lineHeight: '1.6', paddingLeft: '24px' }}>
         <li><strong>Frontend:</strong> Next.js (App Router), React, Zustand (state management), Playwright & Vitest for testing.</li>
-        <li><strong>Backend:</strong> Python, FastAPI, Pydantic, pytest.</li>
+        <li><strong>Backend:</strong> Cloudflare Worker (JavaScript), Cloudflare KV, Qdrant Cloud, and Workers AI.</li>
         <li><strong>AI Providers:</strong> Google Gemini API (Free Tier) and Local AI profiles via LM Studio (Qwen3.6) + Qdrant Vector Database.</li>
-        <li><strong>Data Sources:</strong> Local JSON component catalogs, meticulously curated for the Indonesian market with EnterKomputer pricing.</li>
+        <li><strong>Data Sources:</strong> A cleaned component catalog cached in Cloudflare KV, with EnterKomputer marketplace data and IDR pricing.</li>
       </ul>
       
       <p style={{ marginTop: '24px', marginBottom: 0, fontStyle: 'italic', textAlign: 'center', color: '#666' }}>

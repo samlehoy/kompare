@@ -20,7 +20,7 @@ export default function ControlPanel() {
       </nav>
       <div className="control-panel-status">
         <strong>READY</strong>
-        <span>FastAPI backend stays connected through /api.</span>
+        <span>Cloudflare Worker stays connected through /api.</span>
       </div>
     </div>
   );
