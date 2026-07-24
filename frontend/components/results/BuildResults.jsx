@@ -107,7 +107,10 @@ function textFromIssue(issue) {
 }
 
 function IssueList({ issues, title }) {
-  const items = (issues || []).map(textFromIssue).filter(Boolean);
+  const items = (issues || []).flatMap((issue) => {
+    const text = textFromIssue(issue);
+    return text ? [text] : [];
+  });
   if (items.length === 0) return null;
 
   return (
@@ -237,12 +240,12 @@ export default function BuildResults({
   const selectedOptionalAddonSet = Array.isArray(selectedOptionalAddons)
     ? new Set(selectedOptionalAddons)
     : null;
-  const optionalAddons = OPTIONAL_ADDON_ORDER
-    .map((slot) => [slot, result.optionalAddons?.[slot]])
-    .filter(([slot, component]) => (
-      Boolean(component)
-      && (!selectedOptionalAddonSet || selectedOptionalAddonSet.has(slot))
-    ));
+  const optionalAddons = OPTIONAL_ADDON_ORDER.flatMap((slot) => {
+    const component = result.optionalAddons?.[slot];
+    if (!component) return [];
+    if (selectedOptionalAddonSet && !selectedOptionalAddonSet.has(slot)) return [];
+    return [[slot, component]];
+  });
 
   return (
     <section className="build-results" aria-label={mode === 'upgrade' ? 'Upgrade recommendation results' : 'Build recommendation results'}>

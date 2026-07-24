@@ -45,23 +45,25 @@ function componentSku(component) {
 
 function evidenceSpecs(specs) {
   if (Array.isArray(specs)) {
-    return specs
-      .map((spec, index) => ({
+    return specs.flatMap((spec, index) => {
+      const normalized = {
         key: `${spec?.label || spec?.key || index}`,
         label: spec?.label || spec?.key || `Spec ${index + 1}`,
         value: spec?.value,
-      }))
-      .filter((spec) => spec.value !== null && spec.value !== undefined && spec.value !== '');
+      };
+      return normalized.value !== null && normalized.value !== undefined && normalized.value !== '' ? [normalized] : [];
+    });
   }
 
   if (!specs || typeof specs !== 'object') return [];
-  return Object.entries(specs)
-    .filter(([, value]) => value !== null && value !== undefined && value !== '')
-    .map(([key, value]) => ({
+  return Object.entries(specs).flatMap(([key, value]) => {
+    if (value === null || value === undefined || value === '') return [];
+    return [{
       key,
       label: key.replace(/_/g, ' '),
       value,
-    }));
+    }];
+  });
 }
 
 function rationaleItems(rationale) {
@@ -172,10 +174,10 @@ export default function AdvisorConsole({
               <section className="advisor-detail-section" aria-label="Evidence used">
                 <h3>Evidence used</h3>
                 <div className="advisor-evidence-list">
-                  {message.evidenceCards.map((card, index) => {
+                  {message.evidenceCards.map((card) => {
                     const specs = evidenceSpecs(card.specs);
                     const rationale = rationaleItems(card.rationale);
-                    const key = `${card.slot || 'evidence'}-${card.name || index}`;
+                    const key = `${card.slot || 'evidence'}-${card.name || card.label || 'unlabeled'}-${card.price_idr || 'noprice'}`;
 
                     return (
                       <article key={key} className="advisor-evidence-card">
@@ -212,12 +214,12 @@ export default function AdvisorConsole({
               <section className="advisor-detail-section" aria-label="Cost-saving swaps">
                 <h3>Cost-saving swaps</h3>
                 <div className="advisor-savings-list">
-                  {message.costSavingSuggestions.map((suggestion, index) => {
+                  {message.costSavingSuggestions.map((suggestion) => {
                     const candidate = suggestion.candidate || {};
                     const current = suggestion.current || {};
                     const candidateLabel = componentName(candidate);
                     const currentLabel = componentName(current);
-                    const key = `${suggestion.slot || 'saving'}-${componentSku(candidate) || candidateLabel}-${index}`;
+                    const key = `${suggestion.slot || 'saving'}-${componentSku(candidate) || candidateLabel}-${componentSku(current) || currentLabel}`;
 
                     return (
                       <article key={key} className="advisor-saving-card">

@@ -1472,14 +1472,21 @@ textarea {
   grid-column: initial;
 }
 
-.modal-backdrop {
+.modal-layer {
   position: fixed;
   inset: 0;
   z-index: 20;
   display: grid;
   place-items: center;
   padding: 24px;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background: rgba(0, 0, 0, 0.45);
+  cursor: pointer;
 }
 
 .modal-window {
@@ -1995,8 +2002,13 @@ textarea {
     text-align: left;
   }
 
-  .modal-backdrop {
+  .modal-layer {
     padding: 12px;
+    align-items: start;
+  }
+
+  .modal-backdrop {
+    padding: 0;
     align-items: start;
   }
 

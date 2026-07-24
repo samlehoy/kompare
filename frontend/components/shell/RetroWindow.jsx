@@ -73,11 +73,52 @@ export default function RetroWindow({ windowId, title, children, as: Element = '
         >
           <div className="retro-window-titlebar" style={{ cursor: (isDesktop && !isMaximized) ? 'move' : 'default', flexShrink: 0 }}>
             <h1 id={titleId}>{title}</h1>
-            <div className="window-controls" aria-hidden="true">
-              <span onClick={handleMinimize} style={{ cursor: 'pointer' }}>_</span>
-              {isDesktop && <span onClick={handleMaximize} style={{ cursor: 'pointer' }}>[]</span>}
-              <span onClick={handleClose} style={{ cursor: 'pointer' }}>x</span>
-            </div>
+             <div className="window-controls">
+               <button
+                 type="button"
+                 aria-label="Minimize window"
+                 onClick={handleMinimize}
+                 onKeyDown={(e) => {
+                   if (e.key === 'Enter' || e.key === ' ') {
+                     e.preventDefault();
+                     handleMinimize(e);
+                   }
+                 }}
+                 style={{ cursor: 'pointer', background: 'transparent', border: 'none', color: 'inherit', font: 'inherit', padding: 0 }}
+               >
+                 _
+               </button>
+               {isDesktop && (
+                 <button
+                   type="button"
+                   aria-label="Maximize window"
+                   onClick={handleMaximize}
+                   onKeyDown={(e) => {
+                     if (e.key === 'Enter' || e.key === ' ') {
+                       e.preventDefault();
+                       handleMaximize(e);
+                     }
+                   }}
+                   style={{ cursor: 'pointer', background: 'transparent', border: 'none', color: 'inherit', font: 'inherit', padding: 0 }}
+                 >
+                   []
+                 </button>
+               )}
+               <button
+                 type="button"
+                 aria-label="Close window"
+                 onClick={handleClose}
+                 onKeyDown={(e) => {
+                   if (e.key === 'Enter' || e.key === ' ') {
+                     e.preventDefault();
+                     handleClose(e);
+                   }
+                 }}
+                 style={{ cursor: 'pointer', background: 'transparent', border: 'none', color: 'inherit', font: 'inherit', padding: 0 }}
+               >
+                 x
+               </button>
+             </div>
           </div>
           <div className="retro-window-body" style={{ overflow: 'auto', flex: 1, minHeight: 0 }}>{children}</div>
         </Rnd>

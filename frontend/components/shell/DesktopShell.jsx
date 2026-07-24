@@ -48,7 +48,7 @@ export default function DesktopShell({ children }) {
     <div className="desktop-shell" data-testid="desktop-shell">
       <nav className="desktop-icons" aria-label="Desktop applications">
         {DESKTOP_ICONS.map((icon) => (
-          <button key={icon.label} onClick={() => openWindow(icon.id)} className="desktop-icon" style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: 'white' }}>
+          <button key={icon.label} type="button" onClick={() => openWindow(icon.id)} className="desktop-icon" style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: 'white' }}>
             <span className="desktop-icon-glyph" aria-hidden="true">{icon.icon || icon.glyph}</span>
             <span>{icon.label}</span>
           </button>
@@ -69,13 +69,14 @@ export default function DesktopShell({ children }) {
         })}
       </main>
       <nav className="taskbar" aria-label="Taskbar">
-        <button className="start-button">START</button>
+        <button type="button" className="start-button">START</button>
         <div className="taskbar-programs">
           {windows.map((win) => {
             const meta = WINDOW_REGISTRY[win.componentId];
             return (
               <button
                 key={win.id}
+                type="button"
                 onClick={() => handleTaskbarClick(win.id)}
                 className={`taskbar-button ${activeWindowId === win.id ? 'is-active' : ''}`}
               >

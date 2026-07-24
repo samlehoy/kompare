@@ -190,10 +190,12 @@ export default function SwapModal({
   }
 
   function handleBackdropClick(event) {
-    if (event.target === event.currentTarget && !confirming) {
+    if (!confirming) {
       onClose();
     }
   }
+
+
 
   function trapTabFocus(event) {
     const dialog = dialogRef.current;
@@ -235,7 +237,11 @@ export default function SwapModal({
   }
 
   return (
-    <div className="modal-backdrop" onClick={handleBackdropClick}>
+    <div className="modal-layer">
+      {/* Backdrop is a mouse-only convenience for closing the dialog.
+          Keyboard users close via the Escape key, so it stays aria-hidden
+          and out of the tab order (standard modal pattern). */}
+      <div className="modal-backdrop" aria-hidden="true" onClick={handleBackdropClick} />
       <div
         ref={dialogRef}
         className="modal-window"

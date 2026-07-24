@@ -33,7 +33,10 @@ function coerceText(value) {
   if (value === null || value === undefined) return '';
   if (typeof value === 'string') return value;
   if (typeof value === 'number' || typeof value === 'boolean') return String(value);
-  if (Array.isArray(value)) return value.map(coerceText).filter(Boolean).join(', ');
+  if (Array.isArray(value)) return value.flatMap((item) => {
+    const text = coerceText(item);
+    return text ? [text] : [];
+  }).join(', ');
 
   const preferredValue = value.name ?? value.model ?? value.value ?? value.component;
   if (preferredValue !== undefined && preferredValue !== value) {
@@ -41,12 +44,10 @@ function coerceText(value) {
     if (preferredText) return preferredText;
   }
 
-  const entries = Object.entries(value)
-    .map(([key, entryValue]) => {
-      const text = coerceText(entryValue);
-      return text ? `${key.replace(/_/g, ' ')}: ${text}` : '';
-    })
-    .filter(Boolean);
+  const entries = Object.entries(value).flatMap(([key, entryValue]) => {
+    const text = coerceText(entryValue);
+    return text ? [`${key.replace(/_/g, ' ')}: ${text}`] : [];
+  });
   if (entries.length > 0) return entries.join(', ');
 
   try {
@@ -63,51 +64,51 @@ function normalizeDetectedParts(value) {
     ? value.map((part, index) => ({ part, fallbackSlot: part?.slot || `part-${index}` }))
     : Object.entries(value).map(([slot, part]) => ({ part, fallbackSlot: slot }));
 
-  return parts
-    .map(({ part, fallbackSlot }, index) => {
-      const item = typeof part === 'object' && part !== null ? part : { name: part };
-      const slot = item.slot || fallbackSlot;
-      const specs = item.extracted_specs || item.specs || item.attributes || {};
-      const name = coerceText(item.name ?? item.component ?? item.value ?? item.model);
-
-      return {
-        key: `${slot}-${name || index}`,
-        slot,
-        slotLabel: item.slot_label || item.label || slotLabel(slot),
-        name,
-        confidence: item.confidence,
-        source: item.source,
-        specs,
-      };
-    })
-    .filter((part) => part.slot || part.name);
+  return parts.flatMap(({ part, fallbackSlot }, index) => {
+    const item = typeof part === 'object' && part !== null ? part : { name: part };
+    const slot = item.slot || fallbackSlot;
+    const specs = item.extracted_specs || item.specs || item.attributes || {};
+    const name = coerceText(item.name ?? item.component ?? item.value ?? item.model);
+    const normalized = {
+      key: `${slot}-${name || index}`,
+      slot,
+      slotLabel: item.slot_label || item.label || slotLabel(slot),
+      name,
+      confidence: item.confidence,
+      source: item.source,
+      specs,
+    };
+    return normalized.slot || normalized.name ? [normalized] : [];
+  });
 }
 
 function normalizeTextList(value) {
   if (!value) return [];
   const list = Array.isArray(value) ? value : Object.values(value);
-  return list.map(coerceText).filter(Boolean);
+  return list.flatMap((item) => {
+    const text = coerceText(item);
+    return text ? [text] : [];
+  });
 }
 
 function normalizeIssues(value) {
   if (!value) return [];
   const list = Array.isArray(value) ? value : Object.values(value);
-  return list
-    .map((issue, index) => {
-      if (typeof issue === 'string') {
-        return { key: issue, title: issue, message: '', severity: '' };
-      }
+  return list.flatMap((issue, index) => {
+    if (typeof issue === 'string') {
+      return [{ key: issue, title: issue, message: '', severity: '' }];
+    }
 
-      const title = issue?.title || issue?.slot || issue?.severity || `Issue ${index + 1}`;
-      return {
-        key: `${coerceText(title)}-${coerceText(issue?.message) || index}`,
-        title: coerceText(title),
-        message: coerceText(issue?.message || issue?.description),
-        recommendation: coerceText(issue?.recommendation || issue?.next_step),
-        severity: coerceText(issue?.severity),
-      };
-    })
-    .filter((issue) => issue.title || issue.message);
+    const title = issue?.title || issue?.slot || issue?.severity || `Issue ${index + 1}`;
+    const normalized = {
+      key: `${coerceText(title)}-${coerceText(issue?.message) || index}`,
+      title: coerceText(title),
+      message: coerceText(issue?.message || issue?.description),
+      recommendation: coerceText(issue?.recommendation || issue?.next_step),
+      severity: coerceText(issue?.severity),
+    };
+    return normalized.title || normalized.message ? [normalized] : [];
+  });
 }
 
 function formatConfidence(value) {
@@ -119,19 +120,21 @@ function formatConfidence(value) {
 
 function specEntries(slot, specs) {
   if (!specs || typeof specs !== 'object') return [];
-  return Object.entries(specs)
-    .map(([key, value]) => {
-      if (value === null || value === undefined || value === '') return null;
-      const formattedValue = Array.isArray(value)
-        ? value.map(coerceText).filter(Boolean).join(', ')
-        : (typeof value === 'object' ? coerceText(value) : formatSpecValue(key, value));
-      return {
-        key,
-        label: specLabel(slot, key),
-        value: formattedValue,
-      };
-    })
-    .filter((spec) => spec?.value);
+  return Object.entries(specs).flatMap(([key, value]) => {
+    if (value === null || value === undefined || value === '') return [];
+    const formattedValue = Array.isArray(value)
+      ? value.flatMap((item) => {
+          const text = coerceText(item);
+          return text ? [text] : [];
+        }).join(', ')
+      : (typeof value === 'object' ? coerceText(value) : formatSpecValue(key, value));
+    const spec = {
+      key,
+      label: specLabel(slot, key),
+      value: formattedValue,
+    };
+    return spec.value ? [spec] : [];
+  });
 }
 
 function statusLabel(status) {
@@ -228,9 +231,9 @@ export default function BuildAudit() {
       setResult(null);
       setError(errorMessage(nextError));
     } finally {
-      if (requestSequence.current === requestId) {
-        setLoading(false);
-      }
+      // Always reset loading when this request completes, even if a newer
+      // request has started; the newer request will set it back to true.
+      setLoading(false);
     }
   }
 
