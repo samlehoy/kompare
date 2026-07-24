@@ -195,10 +195,4 @@ npm run build
 
 ## Documentation
 
-For more detailed guides and architecture playbooks, refer to:
-
-- [AI Pipeline Architecture](docs/AI_PIPELINE.md)
-- [Product Requirements (PRD)](docs/PRD.md)
-- [UI Specification](docs/UI_SPEC.md)
-- [Catalog & Price Playbook](docs/CATALOG_PLAYBOOK.md)
-- [Project Brief](docs/BRIEF.md)
+Detailed guides, architecture, product spec, and playbooks are kept in the local `docs/` directory (not tracked in this repository).

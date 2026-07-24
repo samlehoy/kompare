@@ -152,3 +152,6 @@ frontend.err
 out/
 .wrangler/
 
+# Docs (kept local/private, not pushed to remote)
+docs/
+
