@@ -17,6 +17,20 @@
 The frontend is a Next.js static export from `frontend/out/`. The backend is
 deployed independently from `backend_worker/`.
 
+### Current Verified Release
+
+| Item | Value |
+|---|---|
+| Source commit | `2374d86` |
+| Pages deployment | `9986d4cf-7f12-4c3e-b9cc-59c785fcfc86` |
+| Immutable frontend | `https://9986d4cf.kompare.pages.dev` |
+| Worker version | `6c548266-285d-4ca9-b09f-8724eaa5884c` |
+
+The release passed 48 frontend unit tests, 26 serial Playwright tests, static
+export, Worker health, real Gemini AI recommendation, deterministic Upgrade,
+and intercepted quota-fallback acceptance. See
+[PROJECT_STATUS.md](PROJECT_STATUS.md) for the complete evidence table.
+
 ## 2. Secret Safety
 
 - Keep local Worker secrets in the gitignored `.dev.vars` file or local environment variables.

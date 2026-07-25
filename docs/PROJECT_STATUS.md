@@ -21,9 +21,9 @@ Kompare adalah **PC Builder** untuk pasar PC Indonesia — bantu user **build da
 |---|---|
 | MVP Core (build / upgrade / audit / advisor / swap) | ✅ **Selesai dan production verified** |
 | AI `POST /build/ai-recommend` | ✅ **Primary Builder path, production verified** |
-| Production release | 🟡 AI-primary source release sedang dipromosikan; Worker sehat dan acceptance sebelumnya lulus |
+| Production release | ✅ **AI-primary release `main@2374d86` aktif dan production verified** |
 | Frontend health (React Doctor) | 🟡 76/100 — lihat [`frontend/REACT_DOCTOR_BACKLOG.md`](../frontend/REACT_DOCTOR_BACKLOG.md) |
-| Backlog & out-of-scope | Lihat bagian 4 & 5 |
+| Backlog & out-of-scope | Lihat bagian 6 & 7 |
 
 ---
 
@@ -65,7 +65,33 @@ Terimplementasi penuh: route `index.js:132` → `handleAiRecommend` (`ai-recomme
 
 ---
 
-## 5. Post-MVP Backlog / Belum Digarap
+## 5. Release Aktif — AI-Primary
+
+| Item | Nilai terverifikasi |
+|---|---|
+| Release commit | `2374d8671666ce0bf21fefce2301a4f91ba9f8b1` (`2374d86`) |
+| Remote branches | `origin/main` dan `origin/development-branch` menunjuk ke SHA yang sama |
+| Pages deployment | `9986d4cf-7f12-4c3e-b9cc-59c785fcfc86` — `https://9986d4cf.kompare.pages.dev` |
+| Primary frontend | `https://kompare.pages.dev` |
+| Worker version | `6c548266-285d-4ca9-b09f-8724eaa5884c` |
+| Worker health | ✅ `status: ok`, 6.476 komponen dimuat |
+| Frontend unit tests | ✅ 48/48 |
+| Browser tests | ✅ 26/26 (serial Playwright run) |
+| Production build | ✅ Next.js static export berhasil |
+| Production routes | ✅ `/`, `/builder`, `/upgrade`, `/audit` HTTP 200 |
+| Real Gemini smoke | ✅ `ai_assisted: true`, `fallback: false`, `json_ranker`, `@cf/baai/bge-m3`, 9 slot, 0 compatibility issues |
+| Safe fallback acceptance | ✅ `Gemini quota fallback` tampil dan 9 slot tetap tersedia |
+| Upgrade acceptance | ✅ Form budget/CPU/GPU aktif; endpoint production menghasilkan upgrade priorities |
+| Production provider contract | ✅ Tidak ada provider selector, Settings UI, atau browser provider override headers |
+
+Git-based Pages deployment yang otomatis terpicu dari Git masih gagal karena
+konflik dependency npm. Deployment production aktif di atas dibuat melalui
+direct static upload dari release SHA yang sama; ini tetap dicatat sebagai
+operational debt, bukan kegagalan functional release.
+
+---
+
+## 6. Post-MVP Backlog / Belum Digarap
 
 | Item | Sumber | Catatan |
 |---|---|---|
@@ -77,7 +103,7 @@ Terimplementasi penuh: route `index.js:132` → `handleAiRecommend` (`ai-recomme
 
 ---
 
-## 6. Out-of-Scope (Bukan Goal Sekarang)
+## 7. Out-of-Scope (Bukan Goal Sekarang)
 
 | Item | Sumber | Catatan |
 |---|---|---|
@@ -88,10 +114,10 @@ Terimplementasi penuh: route `index.js:132` → `handleAiRecommend` (`ai-recomme
 
 ---
 
-## 7. Prioritas Berikutnya (Usulan)
+## 8. Prioritas Berikutnya (Usulan)
 
-1. Rapikan **Git-based Pages auto-build**, agar tidak bergantung pada direct static deploy manual.
-2. Design `POST /build/ai-upgrade` setelah release AI-primary stabil.
-3. Rencanakan **n8n operations automation** untuk catalog pipeline, monitoring, alerts, reports, dan approval.
+1. Rapikan **Git-based Pages auto-build**, agar release tidak bergantung pada direct static deploy manual.
+2. Susun implementation plan **n8n operations automation** untuk scheduled catalog update, validation, KV/Qdrant sync, health/smoke alerts, reports, dan approval gate.
+3. Design `POST /build/ai-upgrade` sebagai ekspansi produk berikutnya; jangan mengubah deterministic compatibility authority.
 4. Bereskan sisa **React Doctor backlog** (medium/low).
-5. Optimasi latency **Local Qwen** bila local profile tetap dipertahankan untuk demo.
+5. Optimasi latency **Local Qwen** bila local profile tetap dipertahankan untuk demo development.
