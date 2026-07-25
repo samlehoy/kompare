@@ -24,13 +24,12 @@ Kompare is a cloud-deployed **AI-assisted PC Builder** for the Indonesian PC mar
 │     ├── AuditTool        → Build Audit (Image Upload)           │
 │     ├── UpgradeAdvisor   → Upgrade Recommendations              │
 │     ├── Marketplace      → Component Browser                    │
-│     └── ApiKeySettings   → LM Studio / Gemini Config            │
+│     └── Local dev tools  → optional LM Studio / Gemini testing  │
 │                                                                 │
-│   lib/api.js  → Centralized API client with BYOK headers        │
+│   lib/api.js  → Centralized API client; overrides disabled prod │
 └─────────────────────┬───────────────────────────────────────────┘
                       │ HTTP (cross-origin dev / same-origin prod)
-                      │ Custom headers: X-Gemini-Api-Key,
-                      │   X-LMStudio-Base-Url, X-Qdrant-*
+                      │ Development-only provider override headers
                       ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │              BACKEND (Cloudflare Worker)                         │
@@ -56,8 +55,7 @@ Kompare is a cloud-deployed **AI-assisted PC Builder** for the Indonesian PC mar
 │  semantic      │ │      e.g., Qwen 2.5 27B                     │
 │  component     │ │                                              │
 │  retrieval     │ │  Selected at runtime via:                    │
-│                │ │    • X-Gemini-Api-Key header (cloud)          │
-│                │ │    • X-LMStudio-Base-Url header (local)       │
+│                │ │    • Provider headers accepted in local dev   │
 └────────────────┘ └──────────────────────────────────────────────┘
 ```
 
@@ -70,7 +68,7 @@ Kompare is a cloud-deployed **AI-assisted PC Builder** for the Indonesian PC mar
 | **Catalog Storage** | Cloudflare KV | `KOMPARE_DATA` namespace |
 | **Vector DB** | Qdrant Cloud | Semantic search for components |
 | **Embedding** | Cloudflare Workers AI | `@cf/baai/bge-m3` model |
-| **AI Ranking** | Gemini 2.5 Flash / LM Studio | Switchable at request time |
+| **AI Ranking** | Gemini 2.5 Flash | Production uses `gemini_free`; LM Studio is development-only |
 | **Dev Server** | `dev.ps1` (PowerShell) | Manages both frontend + backend locally |
 | **Styling** | Vanilla CSS | `98.css` base + custom retro theme |
 
@@ -105,7 +103,7 @@ kompare/
 │   │   ├── ui/               # Reusable UI primitives
 │   │   └── readme/           # In-app documentation
 │   ├── lib/
-│   │   ├── api.js            # API client + BYOK header injection
+│   │   ├── api.js            # API client; local provider headers disabled in production
 │   │   ├── allocation.js     # Budget allocation helpers
 │   │   ├── format.js         # IDR currency formatting
 │   │   ├── slots.js          # Slot labels, ordering, spec pills
@@ -334,7 +332,9 @@ Every fallback path sets `ai_assisted: false` and `fallback_reason` in the respo
 
 ## Local AI Model Support (LM Studio)
 
-The backend supports **runtime switching** between Gemini (cloud) and LM Studio (local):
+The backend supports **development-only runtime switching** between Gemini
+(cloud) and LM Studio (local). Production frontend builds do not register the
+Settings window and do not inject provider override headers from localStorage:
 
 ```
 Frontend                          Backend (callGemini)
