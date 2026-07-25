@@ -221,6 +221,6 @@ If a change only touches documentation, still verify that intentional file moves
 
 ## Deployment
 
-- **Frontend**: Promote to `main`, build the static export, then direct-deploy to Cloudflare Pages while Git-based builds remain blocked. Follow [DEPLOY_PROD_RUNBOOK.md](DEPLOY_PROD_RUNBOOK.md).
+- **Frontend**: Push ke `main` memicu native Cloudflare Pages Git build (root `frontend`, `npm run build`, output `out`, Node 22 via `frontend/.node-version`); branch lain memicu preview deployment. Direct upload `frontend/out` hanya untuk emergency fallback. Follow [DEPLOY_PROD_RUNBOOK.md](DEPLOY_PROD_RUNBOOK.md).
 - **Backend**: Manual deploy via `npx wrangler deploy` from `backend_worker/` directory.
 - **Data updates**: Upload new `components.json` to Cloudflare KV, then re-sync Qdrant vectors.

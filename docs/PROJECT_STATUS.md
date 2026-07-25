@@ -83,11 +83,16 @@ Terimplementasi penuh: route `index.js:132` → `handleAiRecommend` (`ai-recomme
 | Safe fallback acceptance | ✅ `Gemini quota fallback` tampil dan 9 slot tetap tersedia |
 | Upgrade acceptance | ✅ Form budget/CPU/GPU aktif; endpoint production menghasilkan upgrade priorities |
 | Production provider contract | ✅ Tidak ada provider selector, Settings UI, atau browser provider override headers |
+| Native Git Pages build | ✅ Preview `a6ea7b88` + production `433bdd7b` sukses via Git build (Node 22.22.0 dari `frontend/.node-version`) |
 
-Git-based Pages deployment yang otomatis terpicu dari Git masih gagal karena
-konflik dependency npm. Deployment production aktif di atas dibuat melalui
-direct static upload dari release SHA yang sama; ini tetap dicatat sebagai
-operational debt, bukan kegagalan functional release.
+Native Git-based Pages deployment pulih per rilis `b393694`. Root cause
+kegagalan historis bukan konflik dependency, melainkan (1) build config usang
+(`npx @cloudflare/next-on-pages@1`, output `.vercel/output/static`) dan
+(2) budget Git LFS GitHub habis karena `data/vector_index/` (~400 MB) ikut
+ter-clone setiap build. Perbaikan: build config dashboard dikoreksi
+(`npm run build`, output `out`, root `frontend`), artefak vector index lokal
+di-untrack dari git, dan Node dipin via `frontend/.node-version`. Direct
+static upload `frontend/out` kini hanya emergency fallback.
 
 ---
 
@@ -97,7 +102,6 @@ operational debt, bukan kegagalan functional release.
 |---|---|---|
 | `POST /build/ai-upgrade` | PRODUCT, AI_PIPELINE | **Belum di `backend_worker`**; fitur tambahan setelah build-from-zero stabil. |
 | Local Qwen latency polish | AI_PIPELINE appendix | ~55s; timeout/progress copy masih open. |
-| Git-based Pages auto-build | Deployment runbook | Masih gagal karena dependency conflict; production saat ini memakai direct static deploy `frontend/out`. |
 | Frontend health backlog (15 issue) | React Doctor | `missing deps`, `plain <img>`, `state-in-handlers`, giant component. |
 | n8n operations automation | Product decision | Plan only: scheduled catalog jobs, validation, KV/Qdrant sync, alerts, smoke tests, reports, and approval gates. Never place n8n in the user request path. |
 
@@ -116,8 +120,7 @@ operational debt, bukan kegagalan functional release.
 
 ## 8. Prioritas Berikutnya (Usulan)
 
-1. Rapikan **Git-based Pages auto-build**, agar release tidak bergantung pada direct static deploy manual.
-2. Susun implementation plan **n8n operations automation** untuk scheduled catalog update, validation, KV/Qdrant sync, health/smoke alerts, reports, dan approval gate.
-3. Design `POST /build/ai-upgrade` sebagai ekspansi produk berikutnya; jangan mengubah deterministic compatibility authority.
-4. Bereskan sisa **React Doctor backlog** (medium/low).
-5. Optimasi latency **Local Qwen** bila local profile tetap dipertahankan untuk demo development.
+1. Susun implementation plan **n8n operations automation** untuk scheduled catalog update, validation, KV/Qdrant sync, health/smoke alerts, reports, dan approval gate.
+2. Design `POST /build/ai-upgrade` sebagai ekspansi produk berikutnya; jangan mengubah deterministic compatibility authority.
+3. Bereskan sisa **React Doctor backlog** (medium/low).
+4. Optimasi latency **Local Qwen** bila local profile tetap dipertahankan untuk demo development.

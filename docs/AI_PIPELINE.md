@@ -91,6 +91,10 @@ Suggested local files:
 - `data/vector_index/metadata.jsonl`
 - `data/vector_index/manifest.json`
 
+`data/vector_index/` is gitignored (previously Git LFS); these are local
+generated artifacts and must not be committed — CI/Pages clones do not
+download them.
+
 The manifest should record:
 
 - source catalog hash
