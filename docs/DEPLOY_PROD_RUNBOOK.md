@@ -59,14 +59,19 @@ remote branches identify the same release commit.
 git switch development-branch
 git push origin development-branch
 git fetch origin
+git merge-base --is-ancestor origin/main development-branch
 git switch main
 git merge --ff-only origin/main
 git merge --ff-only development-branch
 git push origin main
+git fetch origin
+git rev-parse origin/development-branch
+git rev-parse origin/main
 ```
 
-Stop if either merge cannot fast-forward. Inspect branch divergence instead of
-creating an unplanned merge commit or force-pushing.
+Stop if the ancestry check or either merge fails. Inspect branch divergence
+instead of creating an unplanned merge commit or force-pushing. The final two
+`rev-parse` commands must print the same SHA.
 
 ## 5. Deploy the Frontend
 
@@ -107,7 +112,7 @@ Verify both the immutable deployment URL and `https://kompare.pages.dev`.
 - `/`, `/builder`, `/upgrade`, and `/audit` return HTTP 200.
 - Builder defaults to AI-assisted recommendations using `gemini_free`.
 - A successful AI result displays `AI-assisted`, contains all nine required slots, and reports no hard compatibility issues.
-- A simulated or naturally occurring AI failure safely returns a deterministic nine-slot build and displays the fallback marker.
+- The Playwright acceptance route interception simulates an AI failure without changing production secrets; it must return a deterministic nine-slot build and display the fallback marker.
 - Manual Fast compatibility mode remains functional.
 - Upgrade, audit, advisor, and component swap flows return valid results.
 - EnterKomputer links and selected optional add-ons render correctly.

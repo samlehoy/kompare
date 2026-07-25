@@ -183,9 +183,14 @@ Endpoints are served under `/api/*`. See [ARCHITECTURE.md](ARCHITECTURE.md) for 
 | POST | `/build/swap` | Component replacement and compatibility re-check |
 | POST | `/build/advisor` | Constrained advisor for follow-up questions |
 | POST | `/build/audit` | Cart screenshot / typed parts-list audit mapped to slots |
-| POST | `/build/ai-recommend` | **Experimental** AI-assisted build using retrieval + deterministic validation |
+| POST | `/build/ai-recommend` | Primary AI-assisted build path using retrieval + deterministic validation and fallback |
 
 Planned (not yet implemented): `POST /build/ai-upgrade`. Legacy generic product / comparison / best-value / broad chat / image-identification endpoints are not part of the API surface.
+
+The Builder defaults to AI-assisted recommendations with `gemini_free` in
+production. Provider selection is a development-only control for testing Local
+Qwen. Deterministic compatibility remains the final authority, automatic
+safety fallback, and manually selectable Fast compatibility mode.
 
 ---
 
@@ -325,3 +330,4 @@ Planned (not yet implemented): `POST /build/ai-upgrade`. Legacy generic product 
 | Future marketplaces | Shopee and Tokopedia can be added later. |
 | Source data | Keep `products_cleaned.csv` as scraper output; generate runtime data from it. |
 | Legacy product JSON | `catalog.json` and `sample_products.json` removed from runtime data. |
+| Primary Builder path | AI-assisted with `gemini_free`; deterministic validation remains authoritative and provides automatic/manual fallback. |

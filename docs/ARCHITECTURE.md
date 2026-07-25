@@ -543,7 +543,7 @@ data/components.json
 | Component | Platform | URL |
 |-----------|----------|-----|
 | Backend Worker | Cloudflare Workers | `kompare-backend-api.muttaqien0111.workers.dev` |
-| Frontend | Cloudflare Pages | Connected to GitHub `development-branch` |
+| Frontend | Cloudflare Pages | Production branch `main`; direct static upload while Git builds are blocked |
 | Vector DB | Qdrant Cloud | `c0224a0e-d76c-49ea-a87e-043a3...` |
 | Catalog KV | Cloudflare KV | `KOMPARE_DATA` namespace |
 
@@ -553,6 +553,10 @@ data/components.json
 # Deploy backend worker
 cd backend_worker && npx wrangler deploy
 
-# Frontend deploys automatically via Cloudflare Pages on git push
-git push origin development-branch
+# Promote the verified development branch, build, and direct-deploy the static export.
+# See DEPLOY_PROD_RUNBOOK.md for the complete acceptance and rollback procedure.
+git switch main
+git merge --ff-only development-branch
+npm --prefix frontend run build
+npx wrangler pages deploy frontend/out --project-name kompare --branch main
 ```

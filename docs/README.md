@@ -23,6 +23,7 @@ Each topic is authoritative in exactly one doc; others link to it.
 - **Architecture / API handlers / deployment** → ARCHITECTURE (PRODUCT lists API contracts, links here for internals).
 - **AI pipeline / local model setup** → AI_PIPELINE.
 - **Production release / rollback procedure** → DEPLOY_PROD_RUNBOOK.
+- **Status and priority of post-release n8n operations automation** → PROJECT_STATUS.
 - **Agent invariants** → AGENTS stays self-contained by design.
 
 ## Documentation Rule

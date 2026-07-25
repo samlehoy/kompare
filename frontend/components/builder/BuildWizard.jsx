@@ -35,6 +35,10 @@ const AI_PROFILE_OPTIONS = [
   { value: 'gemini_free', label: 'Gemini free tier' },
 ];
 
+function isProductionEnvironment() {
+  return process.env.NODE_ENV === 'production';
+}
+
 const LOCAL_USE_CASE_BUDGET_RANGES = {
   gaming:           { min_idr: 7_000_000,  max_idr: 40_000_000 },
   productivity:     { min_idr: 5_000_000,  max_idr: 30_000_000 },
@@ -220,8 +224,8 @@ export default function BuildWizard() {
   const [gpuVendor, setGpuVendor] = useState('');
   const [budgetRanges, setBudgetRanges] = useState(LOCAL_USE_CASE_BUDGET_RANGES);
 
-  const [recommendationMode, setRecommendationMode] = useState('fast');
-  const [aiProfile, setAiProfile] = useState('local_qwen');
+  const [recommendationMode, setRecommendationMode] = useState('ai');
+  const [aiProfile, setAiProfile] = useState('gemini_free');
   const [allocationPresetMetadata, setAllocationPresetMetadata] = useState(LOCAL_ALLOCATION_PRESET_METADATA);
   const [allocationPresetSource, setAllocationPresetSource] = useState('local');
   const [advancedAllocationEnabled, setAdvancedAllocationEnabled] = useState(false);
@@ -312,7 +316,7 @@ export default function BuildWizard() {
         cpuBrand,
         gpuVendor,
 
-        aiProfile: aiAssisted ? aiProfile : undefined,
+        aiProfile: aiAssisted ? (isProductionEnvironment() ? 'gemini_free' : aiProfile) : undefined,
         allocationOverrides: advancedAllocationEnabled ? allocationOverrides : undefined,
         includeOptionalAddons: optionalAddonList.length > 0,
         selectedOptionalAddons: optionalAddonList,
@@ -612,7 +616,7 @@ export default function BuildWizard() {
             ))}
           </div>
         </fieldset>
-        {recommendationMode === 'ai' && (
+        {recommendationMode === 'ai' && !isProductionEnvironment() && (
           <RetroSelect
             label="AI profile"
             name="ai-profile"

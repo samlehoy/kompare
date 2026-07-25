@@ -159,6 +159,7 @@ test('build wizard generates a full PC recommendation', async ({ page }) => {
   await expect(page.getByRole('group', { name: 'Recommendation mode' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Generate build', exact: true })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Generate with AI', exact: true })).toHaveCount(0);
+  await page.getByRole('radio', { name: /Fast compatibility/ }).check();
   await page.getByLabel('Budget (IDR)').fill('20.000.000');
   await page.getByLabel('Use case').selectOption('content_creation');
   await page.getByLabel('CPU').selectOption('AMD');
@@ -250,6 +251,7 @@ test('build wizard disables generation controls while a request is pending', asy
 
   await page.goto('/builder');
   await page.getByLabel('Budget (IDR)').fill('20.000.000');
+  await page.getByRole('radio', { name: /Fast compatibility/ }).check();
 
   const generateButton = page.getByRole('button', { name: 'Generate build', exact: true });
   await generateButton.click();
@@ -299,6 +301,7 @@ test('build result opens swap candidates in a retro modal', async ({ page }) => 
 
   await page.goto('/builder');
   await page.getByLabel('Budget (IDR)').fill('20.000.000');
+  await page.getByRole('radio', { name: /Fast compatibility/ }).check();
   await page.getByRole('button', { name: 'Generate build', exact: true }).click();
 
   const swapOpener = page.locator('.part-row').filter({ hasText: 'VGA / GPU' }).getByRole('button', { name: 'Swap' });
@@ -386,6 +389,7 @@ test('build wizard ignores stale swap responses after a newer build request', as
 
   await page.goto('/builder');
   await page.getByLabel('Budget (IDR)').fill('20.000.000');
+  await page.getByRole('radio', { name: /Fast compatibility/ }).check();
   await page.getByRole('button', { name: 'Generate build', exact: true }).click();
   await page.locator('.part-row').filter({ hasText: 'VGA / GPU' }).getByRole('button', { name: 'Swap' }).click();
 
@@ -480,6 +484,7 @@ test('advisor answers against the active build context', async ({ page }) => {
 
   await page.goto('/builder');
   await page.getByLabel('Budget (IDR)').fill('20.000.000');
+  await page.getByRole('radio', { name: /Fast compatibility/ }).check();
   await page.getByRole('button', { name: 'Generate build', exact: true }).click();
   await page.getByLabel('Ask the PC Build Advisor').fill('Any compatibility risks?');
   await page.getByRole('button', { name: 'Ask' }).click();
@@ -554,6 +559,7 @@ test('advisor does not send stale history after a newer build replaces context',
 
   await page.goto('/builder');
   await page.getByLabel('Budget (IDR)').fill('20.000.000');
+  await page.getByRole('radio', { name: /Fast compatibility/ }).check();
   await page.getByRole('button', { name: 'Generate build', exact: true }).click();
   await page.getByLabel('Ask the PC Build Advisor').fill('Is this first build balanced?');
   await page.getByRole('button', { name: 'Ask' }).click();

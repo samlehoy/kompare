@@ -16,7 +16,7 @@ Phase 2 adds a retrieval-augmented generation flow:
 6. Validate the AI-proposed build with deterministic compatibility rules.
 7. Return structured build output, rationale, warnings, and marketplace links.
 
-Current local progress covers the full build-from-zero foundation: component chunk generation, local vector index generation and manifest/status checks, retrieval, Gemini candidate ranking, the experimental `POST /build/ai-recommend` route, provider profiles, LM Studio local-model adapters, Qdrant sync/smoke utilities, request-time `ai_profile` selection, backend-owned allocation presets, and a Build from zero UI selector for Local Qwen versus Gemini.
+Current progress covers the full build-from-zero foundation: component chunk generation, local vector index generation and manifest/status checks, retrieval, Gemini candidate ranking, the primary `POST /build/ai-recommend` route, provider profiles, LM Studio local-model adapters, Qdrant sync/smoke utilities, backend-owned allocation presets, and development-only provider selection for Local Qwen versus Gemini.
 
 This should be presented as:
 
@@ -139,7 +139,7 @@ These are non-negotiable:
 
 ## Possible API Shape
 
-Keep the current API stable and use explicit experimental routes:
+Keep the current API stable and use explicit AI-assisted routes:
 
 | Method | Endpoint | Purpose |
 |---|---|---|
@@ -198,7 +198,7 @@ Avoid adding a generic chatbot or product search page.
 5. Inspect cache/index progress without calling Gemini:
    `python -m backend.utils.ai_rag_index --status --chunks data/vector_chunks.jsonl --index-dir data/vector_index --model gemini-embedding-001`
 6. Start the backend and frontend with `.\dev.ps1`.
-7. Call `POST /build/ai-recommend` for the experimental AI-assisted Build from zero path.
+7. Call `POST /build/ai-recommend` for the primary AI-assisted Build from zero path.
 8. Regenerate the four-budget comparison report:
    `python -m backend.utils.ai_build_comparison --output data/ai_comparison_report.json`
 
@@ -262,13 +262,13 @@ Before shipping Phase 2:
 4. Add tests for retrieval quality and stale index handling.
 5. Add Gemini ranking prompt with strict JSON schema.
 6. Add deterministic validation gate for AI-selected builds.
-7. Add an experimental `/build/ai-recommend` endpoint.
+7. Add an `/build/ai-recommend` endpoint.
 8. Add UI badge, rationale display, and fallback messaging.
-9. Decide whether to promote AI-assisted mode further into the primary builder flow.
+9. Promote AI-assisted mode into the primary builder flow while retaining deterministic authority.
 
 ## Current Status
 
-Phase 2 is now implemented as an experimental backend-first path with a complete local RAG foundation:
+Phase 2 is implemented as the primary Builder path with a complete local RAG foundation:
 
 - Local component chunk generation exists.
 - Local vector index storage, resume cache, manifest/status checks, and stale-manifest checks exist.
@@ -285,7 +285,7 @@ Phase 2 is now implemented as an experimental backend-first path with a complete
   - Gemini quota fallback is explicit as `gemini_quota_exceeded`
 - AI-assisted and deterministic outputs can be compared across entry-level, mid-range, high-end, and custom budgets with the reusable report command. The latest local Qwen report at `data/ai_comparison_report.json` shows `ai_assisted: true`, `fallback: false`, `ranker_mode: json_ranker`, and no hard compatibility errors for all four scenarios.
 - Build from zero now uses one `Generate build` action controlled by the `Recommendation mode` choice.
-- Build from zero now exposes an `AI profile` selector for `local_qwen` and `gemini_free` only when `Recommendation mode` is `AI-assisted`; the frontend sends this as `ai_profile` only for the AI-assisted request.
+- Production Build from zero defaults to AI-assisted with `gemini_free` and hides provider selection. Development exposes an `AI profile` selector for `local_qwen` and `gemini_free` while AI-assisted mode is selected.
 - The AI-assisted loading state now tells users the local AI is ranking real catalog candidates, checking compatibility, and may take about a minute.
 - Build results show AI-assisted metadata and deterministic fallback messaging when the response includes it.
 - UI fallback copy now explains safety fallback reasons instead of exposing raw fallback codes.
@@ -316,7 +316,7 @@ Phase 2 is now implemented as an experimental backend-first path with a complete
   - `AI-assisted` + `local_qwen` + `Generate build`: HTTP 200, `ai_assisted: true`, `fallback: false`, `retrieval.profile: local_qwen`, `ranker_mode: json_ranker`, 0 compatibility warnings, 0 compatibility issues.
   - `AI-assisted` + `gemini_free` + `Generate build`: HTTP 200, `fallback: true`, `fallback_reason: ai_ranker_rejected`, 0 compatibility warnings, 0 compatibility issues.
 
-The deterministic PC Builder remains the primary reliable path. Deterministic fallback behavior is still part of the intended safety net because Gemini quota, API errors, stale indexes, or invalid AI selections should never break the normal builder flow.
+AI-assisted is the primary user path. The deterministic PC Builder remains the compatibility authority, automatic safety fallback, and manually selectable Fast compatibility mode because Gemini quota, API errors, stale indexes, or invalid AI selections must never break the builder flow.
 
 ## Next Steps
 
@@ -336,8 +336,8 @@ The deterministic PC Builder remains the primary reliable path. Deterministic fa
    - marketplace link availability
 6. Rerun the deterministic preset quality audit after allocation, ranking, parser, or catalog changes:
    `python -m backend.utils.preset_quality_audit --output data/preset_quality_report.json`
-7. Decide whether Phase 2 remains an experimental mode or becomes part of the primary Build from zero workflow.
-8. Decide how to present Gemini fallback in the demo: as a safety guardrail, or as an optional path only when Gemini produces an accepted AI-ranked build.
+7. Design `POST /build/ai-upgrade` after the AI-primary Builder release is stable.
+8. Preserve explicit Gemini fallback copy as a safety guardrail in demos and production acceptance.
 9. Design `/build/ai-upgrade` only after the Build from zero AI-assisted flow is stable.
 
 ---

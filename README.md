@@ -109,15 +109,12 @@ npm install
 cd ..
 ```
 
-### 2. Configure Local Reference Environment (.env)
+### 2. Configure Local Worker Secrets
 
-To reference API keys locally, copy the example environment file at the root:
+Keep local Worker secrets in the gitignored `backend_worker/.dev.vars` file or
+your local environment. Never commit `.dev.vars`, `.env`, credentials, or API
+key values. The local file may define:
 
-```powershell
-Copy-Item .env.example .env
-```
-
-Open `.env` and fill in:
 * `QDRANT_URL` & `QDRANT_API_KEY` (Qdrant Cloud endpoint & access key)
 * `GEMINI_API_KEY` (along with `GEMINI_API_KEY_1` to `GEMINI_API_KEY_4` rotation keys)
 
@@ -126,15 +123,15 @@ Open `.env` and fill in:
 Secrets must be registered in Cloudflare Workers securely via Wrangler so they are not committed to Git:
 
 ```powershell
-# Set Qdrant API credentials
-echo "your_qdrant_api_key" | npx wrangler secret put QDRANT_API_KEY --cwd backend_worker
+# Wrangler prompts for each value without placing it in shell history.
+npx wrangler secret put QDRANT_API_KEY --cwd backend_worker
 
 # Set Gemini API key rotation pool
-echo "key_primary" | npx wrangler secret put GEMINI_API_KEY --cwd backend_worker
-echo "key_rot_1" | npx wrangler secret put GEMINI_API_KEY_1 --cwd backend_worker
-echo "key_rot_2" | npx wrangler secret put GEMINI_API_KEY_2 --cwd backend_worker
-echo "key_rot_3" | npx wrangler secret put GEMINI_API_KEY_3 --cwd backend_worker
-echo "key_rot_4" | npx wrangler secret put GEMINI_API_KEY_4 --cwd backend_worker
+npx wrangler secret put GEMINI_API_KEY --cwd backend_worker
+npx wrangler secret put GEMINI_API_KEY_1 --cwd backend_worker
+npx wrangler secret put GEMINI_API_KEY_2 --cwd backend_worker
+npx wrangler secret put GEMINI_API_KEY_3 --cwd backend_worker
+npx wrangler secret put GEMINI_API_KEY_4 --cwd backend_worker
 ```
 
 Deploy the Worker to production:
@@ -195,4 +192,5 @@ npm run build
 
 ## Documentation
 
-Detailed guides, architecture, product spec, and playbooks are kept in the local `docs/` directory (not tracked in this repository).
+Version-controlled guides, architecture, product status, and operational
+playbooks are indexed in [`docs/README.md`](docs/README.md).

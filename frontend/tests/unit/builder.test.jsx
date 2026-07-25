@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom/vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { beforeEach, describe, expect, test, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 import BuildWizard from '@/components/builder/BuildWizard.jsx';
 import { api } from '@/lib/api.js';
 
@@ -59,6 +59,38 @@ describe('build wizard', () => {
     api.listAllocationPresets.mockRejectedValue(new Error('metadata unavailable'));
   });
 
+  afterEach(() => {
+    vi.unstubAllEnvs();
+  });
+
+  test('defaults production users to AI-assisted recommendations with Gemini', () => {
+    render(<BuildWizard />);
+
+    expect(screen.getByRole('radio', { name: /AI-assisted/i })).toBeChecked();
+    expect(screen.getByLabelText('AI profile')).toHaveValue('gemini_free');
+  });
+
+  test('hides provider selection and submits Gemini in production', async () => {
+    vi.stubEnv('NODE_ENV', 'production');
+    api.recommendAiBuild.mockResolvedValue({
+      budget_idr: 20_000_000,
+      total_idr: 0,
+      components: {},
+    });
+
+    render(<BuildWizard />);
+
+    expect(screen.getByRole('radio', { name: /AI-assisted/i })).toBeChecked();
+    expect(screen.queryByLabelText('AI profile')).not.toBeInTheDocument();
+
+    await userEvent.type(screen.getByLabelText('Budget (IDR)'), '20000000');
+    await userEvent.click(screen.getByRole('button', { name: 'Generate build' }));
+
+    expect(api.recommendAiBuild).toHaveBeenCalledWith(expect.objectContaining({
+      aiProfile: 'gemini_free',
+    }));
+  });
+
   test('shows a catalog-aware progress message while AI build ranking is running', async () => {
     const request = deferred();
     api.recommendAiBuild.mockReturnValue(request.promise);
@@ -74,12 +106,16 @@ describe('build wizard', () => {
     expect(screen.getByRole('status')).toHaveTextContent('can take about a minute');
   });
 
-  test('uses one generate action and hides AI profile until AI-assisted mode is selected', async () => {
+  test('uses one generate action and shows AI profile only in AI-assisted mode', async () => {
     render(<BuildWizard />);
 
     expect(screen.getByRole('button', { name: 'Generate build' })).toBeVisible();
     expect(screen.queryByRole('button', { name: /^Generate$/ })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Generate with AI' })).not.toBeInTheDocument();
+    expect(screen.getByLabelText('AI profile')).toBeVisible();
+
+    await userEvent.click(screen.getByRole('radio', { name: /Fast compatibility/i }));
+
     expect(screen.queryByLabelText('AI profile')).not.toBeInTheDocument();
 
     await userEvent.click(screen.getByRole('radio', { name: /AI-assisted/i }));
@@ -110,6 +146,7 @@ describe('build wizard', () => {
     render(<BuildWizard />);
 
     await userEvent.type(screen.getByLabelText('Budget (IDR)'), '20000000');
+    await userEvent.click(screen.getByRole('radio', { name: /Fast compatibility/i }));
     await userEvent.click(screen.getByRole('button', { name: 'Generate build' }));
 
     expect(api.recommendBuild).toHaveBeenCalledWith(expect.objectContaining({
@@ -129,6 +166,7 @@ describe('build wizard', () => {
     render(<BuildWizard />);
 
     await userEvent.type(screen.getByLabelText('Budget (IDR)'), '30000000');
+    await userEvent.click(screen.getByRole('radio', { name: /Fast compatibility/i }));
     await userEvent.click(screen.getByRole('button', { name: 'Generate build' }));
 
     expect(api.recommendBuild).toHaveBeenLastCalledWith(expect.not.objectContaining({
@@ -216,6 +254,7 @@ describe('build wizard', () => {
     render(<BuildWizard />);
 
     await userEvent.type(screen.getByLabelText('Budget (IDR)'), '30000000');
+    await userEvent.click(screen.getByRole('radio', { name: /Fast compatibility/i }));
     await userEvent.click(screen.getByLabelText(/Use advanced allocation/i));
     await userEvent.clear(screen.getByRole('spinbutton', { name: 'CPU allocation percent' }));
     await userEvent.type(screen.getByRole('spinbutton', { name: 'CPU allocation percent' }), '21');
@@ -240,6 +279,7 @@ describe('build wizard', () => {
     expect(screen.queryByText('Include optional add-ons')).not.toBeInTheDocument();
 
     await userEvent.type(screen.getByLabelText('Budget (IDR)'), '20000000');
+    await userEvent.click(screen.getByRole('radio', { name: /Fast compatibility/i }));
     await userEvent.click(screen.getByLabelText(/Hard Drive \/ HDD/i));
     await userEvent.click(screen.getByLabelText(/UPS/i));
     await userEvent.click(screen.getByRole('button', { name: 'Generate build' }));
@@ -256,6 +296,7 @@ describe('build wizard', () => {
     render(<BuildWizard />);
 
     await userEvent.type(screen.getByLabelText('Budget (IDR)'), '20000000');
+    await userEvent.click(screen.getByRole('radio', { name: /Fast compatibility/i }));
     await userEvent.click(screen.getByLabelText(/Hard Drive \/ HDD/i));
     await userEvent.click(screen.getByRole('button', { name: 'Generate build' }));
 
