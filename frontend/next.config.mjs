@@ -2,6 +2,7 @@ const apiTarget = process.env.NEXT_PUBLIC_API_PROXY_TARGET || 'http://localhost:
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
   async rewrites() {
     if (process.env.NODE_ENV === 'production') {
       return [];
