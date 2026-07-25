@@ -551,7 +551,7 @@ function _buildMetadata(profileName, current_hash, candidates_by_slot, selected_
   const meta = {
     profile: profileName,
     llm_model: "gemini-2.5-flash",
-    embedding_model: "@cf/baai/bge-small-en-v1.5",
+    embedding_model: "@cf/baai/bge-m3",
     vector_backend: "qdrant",
     vector_collection: collection,
     ranker_mode: ranker_mode,

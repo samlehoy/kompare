@@ -12,7 +12,7 @@ const DESKTOP_ICONS = [
   { id: 'settings', label: 'Settings', icon: <img src="/icons/Folder_32x32_4.png" alt="Settings" width="32" height="32" /> },
   { id: 'marketplace', label: 'Marketplace', icon: <img src="/icons/Explorer100_32x32_4.png" alt="Marketplace" width="32" height="32" /> },
   { id: 'readme', label: 'Readme', icon: <img src="/icons/HelpBook_32x32_4.png" alt="Readme" width="32" height="32" /> },
-];
+].filter((icon) => process.env.NODE_ENV !== 'production' || icon.id !== 'settings');
 
 function TaskbarClock() {
   const [time, setTime] = useState(null);

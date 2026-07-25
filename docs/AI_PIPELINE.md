@@ -76,7 +76,11 @@ Keep chunks short and buyer-relevant. Avoid embedding raw scrape noise, unrelate
 
 ## Embedding Strategy
 
-Use Gemini embeddings through the Google Gen AI SDK. The current Python SDK exposes `client.models.embed_content(...)` for text embeddings with embedding models such as `gemini-embedding-001`.
+Production query embeddings use Cloudflare Workers AI
+`@cf/baai/bge-m3`, matching the vectors stored in the production Qdrant
+collection `kompare_components_gemini`. Local index utilities may use their
+documented profile-specific model, but those artifacts are not the production
+query path.
 
 Embedding output should be stored locally with the chunk ID and enough metadata to recover the source component.
 
@@ -97,7 +101,9 @@ The manifest should record:
 
 ## Recommendation Flow
 
-Phase 2 should not replace the existing deterministic builder immediately. Add it as an optional AI-assisted mode.
+AI-assisted is the default production user path. The deterministic builder
+remains the compatibility authority, automatic fallback, and manually
+selectable Fast compatibility mode.
 
 Recommended flow:
 
@@ -156,7 +162,7 @@ Additional fields may include:
   "retrieval": {
     "profile": "gemini_free",
     "vector_backend": "local_json",
-    "embedding_model": "gemini-embedding-001",
+    "embedding_model": "@cf/baai/bge-m3",
     "chunk_count_considered": 120,
     "top_k_per_slot": 12
   },
@@ -396,11 +402,11 @@ Instruct: Retrieve relevant PC component catalog entries for an Indonesian custo
 Query: ...
 ```
 
-## Provider Order
+## Local Development Provider Order
 
 ```text
-1. LM Studio / local_qwen
-2. Gemini API
+1. Explicit development selection: LM Studio / `local_qwen`
+2. Default development and production selection: Gemini API / `gemini_free`
 3. Deterministic Kompare fallback
 ```
 

@@ -59,7 +59,7 @@ Terimplementasi penuh: route `index.js:132` → `handleAiRecommend` (`ai-recomme
 | Live smoke Worker production | ✅ Gemini `ai_assisted: true`, `fallback: false`, `json_ranker`, 9 slot, 0 compatibility issues |
 | Browser AI success | ✅ Marker `AI-assisted` tampil pada hasil production nyata |
 | Browser safe fallback | ✅ Marker `Gemini quota fallback` tampil; hasil deterministik tetap 9 slot |
-| Docs vs code | Perlu sinkronisasi model embedding/provider profile pada deep-dive AI |
+| Docs vs code | ✅ Production embedding/provider facts synchronized with Worker runtime |
 | Positioning | AI-assisted adalah default user path; `gemini_free` adalah profile production. Deterministic validation tetap authority dan safety fallback. |
 | Production UI | Provider selector disembunyikan; development tetap dapat memilih `local_qwen` untuk pengujian lokal. |
 

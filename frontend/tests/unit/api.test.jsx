@@ -91,6 +91,36 @@ describe('api client', () => {
     }
   });
 
+  test('ignores browser provider overrides in production', async () => {
+    const originalNodeEnv = process.env.NODE_ENV;
+    const values = new Map([
+      ['kompare_user_gemini_key', 'browser-gemini-key'],
+      ['kompare_user_lmstudio_url', 'https://local-model.example'],
+      ['kompare_user_qdrant_url', 'https://vector.example'],
+      ['kompare_user_qdrant_key', 'browser-vector-key'],
+    ]);
+    vi.stubGlobal('localStorage', {
+      getItem: (key) => values.get(key) || null,
+    });
+    process.env.NODE_ENV = 'production';
+
+    try {
+      await api.health();
+
+      expect(fetch).toHaveBeenCalledWith('/api/health', expect.not.objectContaining({
+        headers: expect.objectContaining({
+          'X-Gemini-Api-Key': expect.anything(),
+          'X-LMStudio-Base-Url': expect.anything(),
+          'X-Qdrant-Url': expect.anything(),
+          'X-Qdrant-Api-Key': expect.anything(),
+        }),
+      }));
+    } finally {
+      process.env.NODE_ENV = originalNodeEnv;
+      vi.unstubAllGlobals();
+    }
+  });
+
   test('supports direct backend base URLs for long AI requests', async () => {
     const originalBase = process.env.NEXT_PUBLIC_API_BASE_URL;
     process.env.NEXT_PUBLIC_API_BASE_URL = 'http://127.0.0.1:8000/';

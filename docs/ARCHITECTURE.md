@@ -69,7 +69,7 @@ Kompare is a cloud-deployed **AI-assisted PC Builder** for the Indonesian PC mar
 | **Backend** | Cloudflare Workers | Serverless, edge-deployed |
 | **Catalog Storage** | Cloudflare KV | `KOMPARE_DATA` namespace |
 | **Vector DB** | Qdrant Cloud | Semantic search for components |
-| **Embedding** | Cloudflare Workers AI | `bge-large-en-v1.5` model |
+| **Embedding** | Cloudflare Workers AI | `@cf/baai/bge-m3` model |
 | **AI Ranking** | Gemini 2.5 Flash / LM Studio | Switchable at request time |
 | **Dev Server** | `dev.ps1` (PowerShell) | Manages both frontend + backend locally |
 | **Styling** | Vanilla CSS | `98.css` base + custom retro theme |
@@ -288,16 +288,15 @@ Component Catalog              Qdrant Cloud
        │  seed-qdrant                 │
        ▼                              │
   Cloudflare Workers AI        queryQdrant()
-  (bge-large-en-v1.5)         7 parallel searches
-  384-dim vectors              (1 per required slot)
+  (@cf/baai/bge-m3)           parallel slot searches
+  dense vectors                (filtered per category)
        │                              │
        └──────────────────────────────┘
 ```
 
-**Embedding model**: `@cf/baai/bge-large-en-v1.5` (1024 dimensions)
+**Embedding model**: `@cf/baai/bge-m3`
 **Collection**: `kompare_components_gemini` on Qdrant Cloud
-**Batch size**: 32 texts per embedding call, concurrency 4
-**Search**: 36 candidates per slot, filtered by category + budget limit
+**Search**: 12 candidates per slot, filtered by category; deterministic budget and compatibility gates run before acceptance
 
 ### AI Ranker Prompt
 

@@ -225,6 +225,27 @@ test('build wizard posts AI requests and marks AI-assisted results', async ({ pa
   expect(requests.build).toEqual([]);
 });
 
+test('build wizard keeps a complete deterministic build when Gemini quota falls back', async ({ page }) => {
+  await page.route('**/api/build/ai-recommend', async (route) => {
+    await route.fulfill({
+      json: {
+        ...buildRecommendation,
+        ai_assisted: false,
+        fallback: true,
+        fallback_reason: 'gemini_quota_exceeded',
+      },
+    });
+  });
+  await page.goto('/builder');
+
+  await page.getByLabel('Budget (IDR)').fill('20.000.000');
+  await page.getByRole('button', { name: 'Generate build', exact: true }).click();
+
+  await expect(page.getByLabel('Recommendation source').getByText('Gemini quota fallback')).toBeVisible();
+  await expect(page.locator('[data-part-slot]')).toHaveCount(9);
+  await expect(page.getByText('AMD Ryzen 5 7600')).toBeVisible();
+});
+
 test('build wizard disables generation controls while a request is pending', async ({ page }) => {
   let releaseBuild;
   let resolveBuildRoute;

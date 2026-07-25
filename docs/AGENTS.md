@@ -95,7 +95,7 @@ Vector/RAG data:
 
 The AI-assisted build recommendation (`/api/build/ai-recommend`) follows this pipeline:
 
-1. **Embedding Generation**: Cloudflare Workers AI (`@cf/baai/bge-small-en-v1.5`) generates query embeddings.
+1. **Embedding Generation**: Cloudflare Workers AI (`@cf/baai/bge-m3`) generates query embeddings.
 2. **Vector Retrieval**: Qdrant Cloud returns candidate components per slot.
 3. **LLM Ranking**: Gemini API ranks candidates by value, compatibility, and use-case fit.
 4. **Deterministic Validation**: `pc-builder-core.js` validates compatibility (socket, RAM type, PSU wattage, form factor).
@@ -221,6 +221,6 @@ If a change only touches documentation, still verify that intentional file moves
 
 ## Deployment
 
-- **Frontend**: Auto-deploys via GitHub push to `main` branch → Cloudflare Pages.
+- **Frontend**: Promote to `main`, build the static export, then direct-deploy to Cloudflare Pages while Git-based builds remain blocked. Follow [DEPLOY_PROD_RUNBOOK.md](DEPLOY_PROD_RUNBOOK.md).
 - **Backend**: Manual deploy via `npx wrangler deploy` from `backend_worker/` directory.
 - **Data updates**: Upload new `components.json` to Cloudflare KV, then re-sync Qdrant vectors.
