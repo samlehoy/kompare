@@ -69,6 +69,28 @@ describe('api client', () => {
     }));
   });
 
+  test('uses the production Worker when exporting the frontend without an API env var', async () => {
+    const originalNodeEnv = process.env.NODE_ENV;
+    const originalBase = process.env.NEXT_PUBLIC_API_BASE_URL;
+    process.env.NODE_ENV = 'production';
+    delete process.env.NEXT_PUBLIC_API_BASE_URL;
+
+    try {
+      vi.resetModules();
+      const { api: productionApi } = await import('@/lib/api.js');
+      await productionApi.health();
+      expect(fetch).toHaveBeenCalledWith(
+        'https://kompare-backend-api.muttaqien0111.workers.dev/api/health',
+        expect.any(Object)
+      );
+    } finally {
+      process.env.NODE_ENV = originalNodeEnv;
+      if (originalBase === undefined) delete process.env.NEXT_PUBLIC_API_BASE_URL;
+      else process.env.NEXT_PUBLIC_API_BASE_URL = originalBase;
+      vi.resetModules();
+    }
+  });
+
   test('supports direct backend base URLs for long AI requests', async () => {
     const originalBase = process.env.NEXT_PUBLIC_API_BASE_URL;
     process.env.NEXT_PUBLIC_API_BASE_URL = 'http://127.0.0.1:8000/';

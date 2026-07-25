@@ -1,5 +1,7 @@
 const configuredBase = process.env.NEXT_PUBLIC_API_BASE_URL?.trim();
-let BASE = configuredBase ? configuredBase.replace(/\/+$/, '') : '/api';
+const productionFallback = 'https://kompare-backend-api.muttaqien0111.workers.dev';
+const apiBase = configuredBase || (process.env.NODE_ENV === 'production' ? productionFallback : '');
+let BASE = apiBase ? apiBase.replace(/\/+$/, '') : '/api';
 if (BASE && BASE.startsWith('http') && !BASE.endsWith('/api')) {
   BASE = `${BASE}/api`;
 }
