@@ -542,7 +542,7 @@ data/components.json
 | Component | Platform | URL |
 |-----------|----------|-----|
 | Backend Worker | Cloudflare Workers | `kompare-backend-api.muttaqien0111.workers.dev` |
-| Frontend | Cloudflare Pages | Production branch `main`; direct static upload while Git builds are blocked |
+| Frontend | Cloudflare Pages | Git build from root `frontend`; `main` production, other branches preview |
 | Vector DB | Qdrant Cloud | `c0224a0e-d76c-49ea-a87e-043a3...` |
 | Catalog KV | Cloudflare KV | `KOMPARE_DATA` namespace |
 
@@ -552,10 +552,13 @@ data/components.json
 # Deploy backend worker
 cd backend_worker && npx wrangler deploy
 
-# Promote the verified development branch, build, and direct-deploy the static export.
-# See DEPLOY_PROD_RUNBOOK.md for the complete acceptance and rollback procedure.
+# Native Pages Git integration builds frontend/ with Node 22 and outputs frontend/out.
+# Promote the verified development branch after its preview deployment passes.
 git switch main
 git merge --ff-only development-branch
+git push origin main
+
+# Emergency fallback only; see DEPLOY_PROD_RUNBOOK.md.
 npm --prefix frontend run build
 npx wrangler pages deploy frontend/out --project-name kompare --branch main
 ```

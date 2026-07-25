@@ -89,10 +89,41 @@ instead of creating an unplanned merge commit or force-pushing. The final two
 
 ## 5. Deploy the Frontend
 
-Git-based Cloudflare Pages builds currently fail during dependency resolution
-with npm `ERESOLVE`. Until that operational debt is fixed, a failed automatic
-build does not block release when the direct production deployment and all
-acceptance checks pass.
+### Native Git Build Configuration
+
+Cloudflare Pages dashboard is the source of truth for the Git-integrated build:
+
+| Setting | Value |
+|---|---|
+| Git repository | `samlehoy/kompare` |
+| Production branch | `main` |
+| Root directory | `frontend` |
+| Build command | `npm run build` |
+| Build output directory | `out` |
+| Node version | `22` via `NODE_VERSION=22` and `frontend/.node-version` |
+
+The install step must resolve `frontend/package-lock.json` with `npm ci` or the
+Pages build system's equivalent clean lockfile install. Do not use
+`--legacy-peer-deps`; the repository dependency graph passes `npm ci` without
+it. Branches other than `main`, especially `development-branch`, are preview
+deployments.
+
+Normal release flow:
+
+1. Push the verified commit to `development-branch`.
+2. Confirm the native Pages preview build succeeds and verify its immutable URL.
+3. Fast-forward the same commit to `main`.
+4. Confirm the native Pages production build succeeds and verify `kompare.pages.dev`.
+
+If a native build fails, capture the complete build log, effective root/build
+settings, Node/npm versions, and source commit before changing dependencies.
+Do not add a root package wrapper or dependency bypass while the frontend
+lockfile installs cleanly.
+
+### Emergency Direct Upload
+
+Direct upload is the rollback/emergency path only. Build from the promoted
+`main` commit, then deploy the static export directly:
 
 Build from the promoted `main` commit, then deploy the static export directly:
 
@@ -102,9 +133,9 @@ npx wrangler pages deploy frontend/out --project-name kompare --branch main
 npx wrangler pages deployment list --project-name kompare
 ```
 
-Record the deployment ID, immutable deployment URL, branch, and source commit
-in [PROJECT_STATUS.md](PROJECT_STATUS.md). Verify that the newest successful
-production deployment corresponds to the release commit.
+Record emergency deployment details in [PROJECT_STATUS.md](PROJECT_STATUS.md)
+and explain why native Git deployment could not be used. Verify the deployment
+corresponds to the intended source commit.
 
 ## 6. Deploy the Worker
 
@@ -166,11 +197,11 @@ Run health and affected endpoint checks immediately after rollback.
 
 ### Git-Based Pages Build Fails with `ERESOLVE`
 
-1. Confirm the local lockfile and install state have not changed unexpectedly.
-2. Preserve the failed deployment as evidence; do not add broad permanent dependency-bypass flags without reviewing the conflict.
-3. Build `frontend/out/` from the promoted `main` commit.
-4. Direct-deploy the static export and run the full acceptance checklist.
-5. Track dependency resolution and restoration of Git-based deployment as post-release operational work.
+1. Confirm Pages uses root directory `frontend`, Node 22, build command `npm run build`, and output `out`.
+2. Run `npm --prefix frontend ci` locally and preserve the complete remote failure log.
+3. Clear/retry the Pages build cache only after recording the failed source commit and effective settings.
+4. Do not add `--legacy-peer-deps`, a root `package.json`, or a wrapper script unless the same lockfile fails locally with the same error.
+5. If production recovery is urgent, direct-deploy `frontend/out` and run the full acceptance checklist, then keep the native-build incident open.
 
 ### Direct Pages Deployment Fails
 
