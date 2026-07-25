@@ -118,6 +118,7 @@ Thumbs.db
 # Project data
 data/uploads/
 data/cache/
+data/vector_index/
 data/last_session.json
 data/last_build.json
 data/user_products.json
