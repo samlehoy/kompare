@@ -38,7 +38,7 @@ tests/               Vitest and Playwright coverage
 
 Frontend requests use `/api/*` by default. `next.config.mjs` rewrites those requests to `NEXT_PUBLIC_API_PROXY_TARGET` when set, or `http://localhost:8000` by default.
 
-For local AI/RAG demos, prefer setting `NEXT_PUBLIC_API_BASE_URL` to the FastAPI origin. This makes the browser call FastAPI directly and avoids the Next dev proxy timing out on long local-model requests.
+For local AI/RAG demos, set `NEXT_PUBLIC_API_BASE_URL` to the Cloudflare Worker origin. This makes the browser call the Worker directly and avoids the Next dev proxy timing out on long model requests.
 
 When running through the root `.\dev.ps1` helper, the script sets both `NEXT_PUBLIC_API_PROXY_TARGET` and `NEXT_PUBLIC_API_BASE_URL` to the backend port it selected for that session.
 
