@@ -210,9 +210,12 @@ Behavior:
 
 ## Phase 2 AI-Assisted Recommendation UI
 
-Future vector/RAG recommendation work should reuse the existing build and upgrade result surfaces.
+AI-assisted retrieval is the primary production Builder path and reuses the
+existing build result surfaces. Production defaults to `gemini_free` and does
+not expose provider selection; development may show the provider selector for
+Local Qwen testing.
 
-If AI-assisted retrieval is enabled, the UI should show:
+The UI shows:
 
 - A subtle "AI-assisted" badge on the result.
 - Whether the result used local vector retrieval.
@@ -220,7 +223,8 @@ If AI-assisted retrieval is enabled, the UI should show:
 - Deterministic compatibility status in the existing summary panel.
 - Clear fallback messaging when Gemini or the local vector index is unavailable.
 
-The UI should not add a generic product search page or broad shopping chatbot. Manual deterministic build mode should remain available.
+The UI must not add a generic product search page or broad shopping chatbot.
+Manual Fast compatibility mode and automatic deterministic fallback remain available.
 
 ## Build Summary
 

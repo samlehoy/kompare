@@ -170,11 +170,11 @@ Additional fields may include:
 
 ## UI Implications
 
-Phase 2 UI should be subtle:
+The AI-primary UI remains subtle:
 
 - Add an "AI-assisted" badge to generated results.
 - Add a "Recommendation mode" control to the Build from zero form so the user chooses between Fast compatibility and AI-assisted before pressing the single "Generate build" action.
-- Show the "AI profile" selector only when AI-assisted mode is selected, so Local Qwen + Qdrant and Gemini free tier are not confused with the deterministic path.
+- In production, hide provider selection and always send `gemini_free`. In development, show the "AI profile" selector only when AI-assisted mode is selected so Local Qwen + Qdrant can still be tested.
 - Show "Retrieved candidates reviewed" in the rationale panel.
 - Keep compatibility warnings in the existing summary panel.
 - Keep manual deterministic build mode available.
@@ -214,7 +214,7 @@ The AI build route accepts optional request-time profile selection:
 
 Use `"ai_profile": "local_qwen"` only after LM Studio and Qdrant are running and the Qdrant collection has been synced.
 
-The Build from zero UI now exposes a "Recommendation mode" control. Fast compatibility calls the deterministic route. AI-assisted reveals the "AI profile" select and sends `ai_profile` to `POST /build/ai-recommend`.
+The Build from zero UI exposes a "Recommendation mode" control. Fast compatibility calls the deterministic route. AI-assisted production requests always send `ai_profile: gemini_free` without exposing a provider selector; development reveals the selector and sends the selected profile to `POST /build/ai-recommend`.
 
 The generated vector files are local artifacts and are ignored by git:
 
