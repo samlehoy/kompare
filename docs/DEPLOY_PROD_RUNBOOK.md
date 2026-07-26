@@ -23,11 +23,17 @@ Values below are mirrored from [PROJECT_STATUS.md](PROJECT_STATUS.md), which is
 the source of truth for release status. Update both together or this table goes
 stale.
 
+Do not record the Pages deployment UUID here. Every push to `main` — including a
+push that only edits this file — mints a new one, so any UUID written down is
+stale before it is read. Query the live value instead:
+
+```powershell
+npx wrangler pages deployment list --project-name kompare
+```
+
 | Item | Value |
 |---|---|
-| Frontend source commit | `a21223f` |
-| Pages deployment | `5a99b1fa-c5ab-4907-b3fd-e50b0fb1bef3` |
-| Immutable frontend | `https://5a99b1fa.kompare.pages.dev` |
+| Frontend source last changed at | `a21223f` |
 | Worker source commit | `5af9c2b` |
 | Worker version | `663864f9-ce55-4620-853a-a31ad5ed7878` |
 

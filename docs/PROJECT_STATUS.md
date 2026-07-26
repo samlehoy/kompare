@@ -69,8 +69,8 @@ Terimplementasi penuh: route `index.js:132` → `handleAiRecommend` (`ai-recomme
 
 | Item | Nilai terverifikasi |
 |---|---|
-| Frontend release commit | `a21223f` |
-| Pages deployment | `5a99b1fa-c5ab-4907-b3fd-e50b0fb1bef3` — `https://5a99b1fa.kompare.pages.dev` |
+| Frontend source terakhir berubah di | `a21223f` |
+| Pages deployment aktif | Volatil — setiap push ke `main` membuat ID baru. Query: `npx wrangler pages deployment list --project-name kompare` |
 | Primary frontend | `https://kompare.pages.dev` |
 | Worker release commit | `5af9c2b` (perbaikan kebocoran Qdrant key) |
 | Worker version | `663864f9-ce55-4620-853a-a31ad5ed7878` |
