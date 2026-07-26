@@ -14,6 +14,22 @@ const DESKTOP_ICONS = [
   { id: 'readme', label: 'Readme', icon: <img src="/icons/HelpBook_32x32_4.png" alt="Readme" width="32" height="32" /> },
 ];
 
+const APP_VERSION = process.env.NEXT_PUBLIC_APP_VERSION || '0.0.0';
+const BUILD_COMMIT = process.env.NEXT_PUBLIC_BUILD_COMMIT || 'local';
+
+function TaskbarVersion() {
+  return (
+    <span
+      className="taskbar-version"
+      data-testid="taskbar-version"
+      title={`Kompare v${APP_VERSION} — build ${BUILD_COMMIT}`}
+    >
+      v{APP_VERSION}
+      <span className="taskbar-version-commit">{BUILD_COMMIT}</span>
+    </span>
+  );
+}
+
 function TaskbarClock() {
   const [time, setTime] = useState(null);
 
@@ -85,6 +101,7 @@ export default function DesktopShell({ children }) {
             );
           })}
         </div>
+        <TaskbarVersion />
         <TaskbarClock />
       </nav>
     </div>

@@ -43,6 +43,20 @@ describe('DesktopShell', () => {
     expect(screen.getByRole('button', { name: 'Settings' })).toBeVisible();
   });
 
+  test('shows the build version and commit next to the taskbar clock', async () => {
+    vi.stubEnv('NEXT_PUBLIC_APP_VERSION', '1.2.3');
+    vi.stubEnv('NEXT_PUBLIC_BUILD_COMMIT', 'abc1234');
+    vi.resetModules();
+    const { default: DesktopShell } = await import('@/components/shell/DesktopShell.jsx');
+
+    render(<DesktopShell><div>Desktop content</div></DesktopShell>);
+
+    const version = screen.getByTestId('taskbar-version');
+    expect(version).toBeVisible();
+    expect(version).toHaveTextContent('v1.2.3');
+    expect(version).toHaveTextContent('abc1234');
+  });
+
   test('opens provider settings from the Settings desktop button', async () => {
     vi.stubEnv('NODE_ENV', 'production');
     vi.stubGlobal('localStorage', {

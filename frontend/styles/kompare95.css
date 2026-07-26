@@ -304,6 +304,7 @@ textarea {
 
 .start-button,
 .taskbar-button,
+.taskbar-version,
 .taskbar-clock {
   border: 2px solid var(--win95-black);
   background: var(--win95-silver);
@@ -353,6 +354,19 @@ textarea {
   min-width: 70px;
   padding: 8px 10px;
   text-align: center;
+}
+
+.taskbar-version {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: baseline;
+  gap: 6px;
+  padding: 8px 10px;
+  white-space: nowrap;
+}
+
+.taskbar-version-commit {
+  font-weight: 400;
 }
 
 .retro-field {
@@ -2058,6 +2072,11 @@ textarea {
 
   .taskbar-clock {
     min-width: 58px;
+  }
+
+  /* Keep the version readable on phones by dropping the build hash, not the version. */
+  .taskbar-version-commit {
+    display: none;
   }
 }
 
