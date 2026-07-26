@@ -583,8 +583,12 @@ function _fallbackResponse(byCategory, budget, useCase, reason, deterministicKwa
 }
 
 async function queryQdrant(env, headers, vector, category, top_k) {
-  const qdrantUrl = headers.get("X-Qdrant-Url") || headers.get("x-qdrant-url") || env.QDRANT_URL;
-  const qdrantApiKey = headers.get("X-Qdrant-Api-Key") || headers.get("x-qdrant-api-key") || env.QDRANT_API_KEY;
+  const overrideUrl = headers.get("X-Qdrant-Url") || headers.get("x-qdrant-url");
+  const overrideApiKey = headers.get("X-Qdrant-Api-Key") || headers.get("x-qdrant-api-key");
+  const qdrantUrl = overrideUrl || env.QDRANT_URL;
+  // A caller-supplied endpoint must carry its own credential; the server key is
+  // only ever sent to the server's own Qdrant URL.
+  const qdrantApiKey = overrideUrl ? overrideApiKey : (overrideApiKey || env.QDRANT_API_KEY);
   const collection = headers.get("X-Qdrant-Collection") || headers.get("x-qdrant-collection") || env.QDRANT_COLLECTION || "kompare_components_gemini";
 
   if (!qdrantUrl) {
