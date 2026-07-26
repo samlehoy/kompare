@@ -70,7 +70,7 @@ describe('build wizard', () => {
     expect(screen.getByLabelText('AI profile')).toHaveValue('gemini_free');
   });
 
-  test('hides provider selection and submits Gemini in production', async () => {
+  test('shows and submits the selected AI profile in production', async () => {
     vi.stubEnv('NODE_ENV', 'production');
     api.recommendAiBuild.mockResolvedValue({
       budget_idr: 20_000_000,
@@ -80,14 +80,15 @@ describe('build wizard', () => {
 
     render(<BuildWizard />);
 
-    expect(screen.getByRole('radio', { name: /AI-assisted/i })).toBeChecked();
-    expect(screen.queryByLabelText('AI profile')).not.toBeInTheDocument();
+    const profile = screen.getByLabelText('AI profile');
+    expect(profile).toBeVisible();
+    await userEvent.selectOptions(profile, 'local_qwen');
 
     await userEvent.type(screen.getByLabelText('Budget (IDR)'), '20000000');
     await userEvent.click(screen.getByRole('button', { name: 'Generate build' }));
 
     expect(api.recommendAiBuild).toHaveBeenCalledWith(expect.objectContaining({
-      aiProfile: 'gemini_free',
+      aiProfile: 'local_qwen',
     }));
   });
 

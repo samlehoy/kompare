@@ -35,10 +35,6 @@ const AI_PROFILE_OPTIONS = [
   { value: 'gemini_free', label: 'Gemini free tier' },
 ];
 
-function isProductionEnvironment() {
-  return process.env.NODE_ENV === 'production';
-}
-
 const LOCAL_USE_CASE_BUDGET_RANGES = {
   gaming:           { min_idr: 7_000_000,  max_idr: 40_000_000 },
   productivity:     { min_idr: 5_000_000,  max_idr: 30_000_000 },
@@ -316,7 +312,7 @@ export default function BuildWizard() {
         cpuBrand,
         gpuVendor,
 
-        aiProfile: aiAssisted ? (isProductionEnvironment() ? 'gemini_free' : aiProfile) : undefined,
+        aiProfile: aiAssisted ? aiProfile : undefined,
         allocationOverrides: advancedAllocationEnabled ? allocationOverrides : undefined,
         includeOptionalAddons: optionalAddonList.length > 0,
         selectedOptionalAddons: optionalAddonList,
@@ -616,7 +612,7 @@ export default function BuildWizard() {
             ))}
           </div>
         </fieldset>
-        {recommendationMode === 'ai' && !isProductionEnvironment() && (
+        {recommendationMode === 'ai' && (
           <RetroSelect
             label="AI profile"
             name="ai-profile"
