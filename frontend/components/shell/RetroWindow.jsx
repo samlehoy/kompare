@@ -4,7 +4,17 @@ import { useId, useState, useEffect, useRef } from 'react';
 import { Rnd } from 'react-rnd';
 import { useWindowStore } from '@/store/useWindowStore';
 
-export default function RetroWindow({ windowId, title, children, as: Element = 'section', className = '', style = {} }) {
+export default function RetroWindow({
+  windowId,
+  title,
+  children,
+  as: Element = 'section',
+  className = '',
+  style = {},
+  onClose,
+  onMinimize,
+  onMaximize,
+}) {
   const titleId = `${useId()}-title`;
   const [isDesktop, setIsDesktop] = useState(true);
 
@@ -32,17 +42,81 @@ export default function RetroWindow({ windowId, title, children, as: Element = '
 
   const handleMinimize = (e) => {
     e.stopPropagation();
-    if (windowId) toggleMinimize(windowId);
+    if (onMinimize) onMinimize(e);
+    else if (windowId) toggleMinimize(windowId);
   };
 
   const handleMaximize = (e) => {
     e.stopPropagation();
-    if (windowId) toggleMaximize(windowId);
+    if (onMaximize) onMaximize(e);
+    else if (windowId) toggleMaximize(windowId);
   };
 
   const handleClose = (e) => {
     e.stopPropagation();
-    if (windowId) closeWindow(windowId);
+    if (onClose) onClose(e);
+    else if (windowId) closeWindow(windowId);
+  };
+
+  const hasMinimize = Boolean(onMinimize || windowId);
+  const hasMaximize = Boolean(onMaximize || (windowId && isDesktop));
+  const hasClose = Boolean(onClose || windowId);
+  const hasControls = hasMinimize || hasMaximize || hasClose;
+
+  const renderControls = () => {
+    if (!hasControls) return null;
+    return (
+      <div className="window-controls">
+        {hasMinimize && (
+          <button
+            type="button"
+            aria-label="Minimize window"
+            className="retro-window-control-btn retro-window-control-btn--minimize"
+            onClick={handleMinimize}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handleMinimize(e);
+              }
+            }}
+          >
+            <span className="retro-window-control-glyph" aria-hidden="true" />
+          </button>
+        )}
+        {hasMaximize && (
+          <button
+            type="button"
+            aria-label={isMaximized ? 'Restore window' : 'Maximize window'}
+            className={`retro-window-control-btn retro-window-control-btn--maximize${isMaximized ? ' is-restore' : ''}`}
+            onClick={handleMaximize}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handleMaximize(e);
+              }
+            }}
+          >
+            <span className="retro-window-control-glyph" aria-hidden="true" />
+          </button>
+        )}
+        {hasClose && (
+          <button
+            type="button"
+            aria-label="Close window"
+            className="retro-window-control-btn retro-window-control-btn--close"
+            onClick={handleClose}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handleClose(e);
+              }
+            }}
+          >
+            <span className="retro-window-control-glyph" aria-hidden="true" />
+          </button>
+        )}
+      </div>
+    );
   };
 
   return (
@@ -73,52 +147,7 @@ export default function RetroWindow({ windowId, title, children, as: Element = '
         >
           <div className="retro-window-titlebar" style={{ cursor: (isDesktop && !isMaximized) ? 'move' : 'default', flexShrink: 0 }}>
             <h1 id={titleId}>{title}</h1>
-             <div className="window-controls">
-               <button
-                 type="button"
-                 aria-label="Minimize window"
-                 onClick={handleMinimize}
-                 onKeyDown={(e) => {
-                   if (e.key === 'Enter' || e.key === ' ') {
-                     e.preventDefault();
-                     handleMinimize(e);
-                   }
-                 }}
-                 style={{ cursor: 'pointer', background: 'transparent', border: 'none', color: 'inherit', font: 'inherit', padding: 0 }}
-               >
-                 _
-               </button>
-               {isDesktop && (
-                 <button
-                   type="button"
-                   aria-label="Maximize window"
-                   onClick={handleMaximize}
-                   onKeyDown={(e) => {
-                     if (e.key === 'Enter' || e.key === ' ') {
-                       e.preventDefault();
-                       handleMaximize(e);
-                     }
-                   }}
-                   style={{ cursor: 'pointer', background: 'transparent', border: 'none', color: 'inherit', font: 'inherit', padding: 0 }}
-                 >
-                   []
-                 </button>
-               )}
-               <button
-                 type="button"
-                 aria-label="Close window"
-                 onClick={handleClose}
-                 onKeyDown={(e) => {
-                   if (e.key === 'Enter' || e.key === ' ') {
-                     e.preventDefault();
-                     handleClose(e);
-                   }
-                 }}
-                 style={{ cursor: 'pointer', background: 'transparent', border: 'none', color: 'inherit', font: 'inherit', padding: 0 }}
-               >
-                 x
-               </button>
-             </div>
+            {renderControls()}
           </div>
           <div className="retro-window-body" style={{ overflow: 'auto', flex: 1, minHeight: 0 }}>{children}</div>
         </Rnd>
@@ -126,6 +155,7 @@ export default function RetroWindow({ windowId, title, children, as: Element = '
         <Element style={{ ...style, display: isMinimized ? 'none' : 'flex', flexDirection: 'column', maxHeight: 'calc(100vh - 42px)' }} className={`retro-window ${className}`.trim()} aria-labelledby={titleId}>
           <div className="retro-window-titlebar" style={{ flexShrink: 0 }}>
             <h1 id={titleId}>{title}</h1>
+            {renderControls()}
           </div>
           <div className="retro-window-body" style={{ overflow: 'auto', flex: 1, minHeight: 0 }}>{children}</div>
         </Element>

@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { describe, expect, test, vi } from 'vitest';
 import { RetroButton, RetroInput, RetroSelect, RetroTextarea } from '@/components/ui/FormControls.jsx';
 import StatusPanel from '@/components/ui/StatusPanel.jsx';
+import RetroWindow from '@/components/shell/RetroWindow.jsx';
 
 describe('retro form controls', () => {
   test('button exposes loading state without losing accessible name', () => {
@@ -96,3 +97,40 @@ describe('status panel', () => {
     expect(panel).toHaveAttribute('aria-live', 'assertive');
   });
 });
+
+describe('RetroWindow control buttons', () => {
+  test('renders control buttons with callbacks when passed', async () => {
+    const handleClose = vi.fn();
+    const handleMinimize = vi.fn();
+    const handleMaximize = vi.fn();
+
+    render(
+      <RetroWindow
+        title="TEST.EXE"
+        onClose={handleClose}
+        onMinimize={handleMinimize}
+        onMaximize={handleMaximize}
+      >
+        <div>Content</div>
+      </RetroWindow>
+    );
+
+    const minimizeBtn = screen.getByRole('button', { name: 'Minimize window' });
+    const maximizeBtn = screen.getByRole('button', { name: 'Maximize window' });
+    const closeBtn = screen.getByRole('button', { name: 'Close window' });
+
+    expect(minimizeBtn).toBeInTheDocument();
+    expect(maximizeBtn).toBeInTheDocument();
+    expect(closeBtn).toBeInTheDocument();
+
+    await userEvent.click(closeBtn);
+    expect(handleClose).toHaveBeenCalledTimes(1);
+
+    await userEvent.click(minimizeBtn);
+    expect(handleMinimize).toHaveBeenCalledTimes(1);
+
+    await userEvent.click(maximizeBtn);
+    expect(handleMaximize).toHaveBeenCalledTimes(1);
+  });
+});
+
