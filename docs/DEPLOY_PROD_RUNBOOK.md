@@ -23,24 +23,23 @@ Values below are mirrored from [PROJECT_STATUS.md](PROJECT_STATUS.md), which is
 the source of truth for release status. Update both together or this table goes
 stale.
 
-Do not record the Pages deployment UUID here. Every push to `main` — including a
-push that only edits this file — mints a new one, so any UUID written down is
-stale before it is read. Query the live value instead:
+Do not record commit SHAs, deployment UUIDs, or test counts here. Every push to
+`main` — including a push that only edits this file — changes them, so anything
+written down is stale before it is read. Query the live values instead:
 
 ```powershell
 npx wrangler pages deployment list --project-name kompare
+npx wrangler versions list --cwd backend_worker
 ```
 
-| Item | Value |
-|---|---|
-| Frontend source last changed at | `a21223f` |
-| Worker source commit | `5af9c2b` |
-| Worker version | `663864f9-ce55-4620-853a-a31ad5ed7878` |
+The running build also prints itself: the app taskbar shows `v<version>
+<commit>` at the bottom right.
 
-The release passed 51 frontend unit tests, static export, Worker health, and a
-real Gemini AI recommendation returning `ai_assisted: true` with nine slots and
-zero compatibility issues. See [PROJECT_STATUS.md](PROJECT_STATUS.md) for the
-complete evidence table.
+A release is verified when the whole frontend unit suite passes, the static
+export succeeds, the Worker reports healthy with a non-zero catalog, and a real
+Gemini recommendation returns `ai_assisted: true` with nine slots and zero
+compatibility issues. See [PROJECT_STATUS.md](PROJECT_STATUS.md) for the full
+checklist.
 
 ## 2. Secret Safety
 

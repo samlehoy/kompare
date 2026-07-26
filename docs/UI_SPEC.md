@@ -283,4 +283,4 @@ Future marketplace names should appear as additional per-component links, not as
 - EnterKomputer links render when component URLs exist.
 - The advisor can answer questions about the active build or upgrade result with referenced parts and evidence cards.
 - The build-audit panel accepts cart screenshot and/or typed parts-list input and can apply supported results to upgrade fields.
-- Responsive Playwright tests pass for mobile, tablet, and desktop viewports.
+- Responsive Playwright tests pass for mobile, tablet, and desktop viewports across `/`, `/builder`, `/upgrade`, and `/audit` — see `kompare95-shell.spec.js`.

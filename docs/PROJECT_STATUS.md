@@ -67,23 +67,27 @@ Terimplementasi penuh: route `index.js:132` → `handleAiRecommend` (`ai-recomme
 
 ## 5. Release Aktif — AI-Primary
 
-| Item | Nilai terverifikasi |
+> **Tidak ada SHA, ID deployment, atau jumlah test di tabel ini.** Semua angka
+> itu basi pada commit yang menuliskannya — kita sudah membuktikannya. Yang
+> tercatat adalah *apa yang harus benar* plus perintah untuk memeriksanya.
+
+| Item | Cara memastikan |
 |---|---|
-| Frontend source terakhir berubah di | `a21223f` |
-| Pages deployment aktif | Volatil — setiap push ke `main` membuat ID baru. Query: `npx wrangler pages deployment list --project-name kompare` |
+| Frontend & Worker sinkron dengan `main` | `git rev-parse origin/main origin/development-branch` — harus sama |
+| Pages deployment aktif | `npx wrangler pages deployment list --project-name kompare` |
 | Primary frontend | `https://kompare.pages.dev` |
-| Worker release commit | `5af9c2b` (perbaikan kebocoran Qdrant key) |
-| Worker version | `663864f9-ce55-4620-853a-a31ad5ed7878` |
-| Worker health | ✅ `status: ok`, 6.476 komponen dimuat |
-| Frontend unit tests | ✅ 51/51 |
-| Browser tests | ✅ 26/26 (serial Playwright run) |
+| Versi Worker aktif | `npx wrangler versions list --cwd backend_worker` |
+| Build yang sedang live | Terlihat di taskbar kanan bawah aplikasi (`v<versi> <commit>`) |
+| Worker health | `Invoke-RestMethod .../api/health` → `status: ok`, catalog count bukan nol |
+| Frontend unit tests | ✅ seluruh suite lulus (`npm --prefix frontend test -- --run`) |
+| Browser tests | ✅ seluruh suite lulus (`npm --prefix frontend run test:ui`) |
 | Production build | ✅ Next.js static export berhasil |
 | Production routes | ✅ `/`, `/builder`, `/upgrade`, `/audit` HTTP 200 |
 | Real Gemini smoke | ✅ `ai_assisted: true`, `fallback: false`, `json_ranker`, `@cf/baai/bge-m3`, 9 slot, 0 compatibility issues |
 | Safe fallback acceptance | ✅ `Gemini quota fallback` tampil dan 9 slot tetap tersedia |
 | Upgrade acceptance | ✅ Form budget/CPU/GPU aktif; endpoint production menghasilkan upgrade priorities |
 | Production provider contract | Settings, `gemini_free`, `local_qwen`, dan browser provider override headers tersedia di semua deployment; security hardening masih backlog. |
-| Native Git Pages build | ✅ Preview `a6ea7b88` + production `433bdd7b` sukses via Git build (Node 22.22.0 dari `frontend/.node-version`) |
+| Native Git Pages build | ✅ Preview dan production sukses via Git build (Node 22 dari `frontend/.node-version`) |
 
 Native Git-based Pages deployment pulih per rilis `b393694`. Root cause
 kegagalan historis bukan konflik dependency, melainkan (1) build config usang
@@ -103,6 +107,7 @@ static upload `frontend/out` kini hanya emergency fallback.
 | `POST /build/ai-upgrade` | PRODUCT, AI_PIPELINE | **Belum di `backend_worker`**; fitur tambahan setelah build-from-zero stabil. |
 | Provider override security hardening | Security review 2026-07-26 | **Sebagian dikerjakan.** ✅ Selesai di `5af9c2b`: secret Qdrant server tidak lagi dikirim ke endpoint yang ditentukan pemanggil — URL Qdrant custom wajib membawa kunci sendiri. **Masih accepted risk:** provider credentials di `localStorage` terekspos bila frontend mengalami XSS; URL LM Studio dan Qdrant yang dikontrol user dapat memicu SSRF; belum ada validasi URL, pembatasan protocol/host, request limits, secret-safe logging, atau rate/abuse controls. Sisa risiko diterima sementara demi Gemini BYOK dan Local Qwen/LM Studio. |
 | Admin endpoint auth (`seed-qdrant`, `embed`) | Security review 2026-07-26 | **Belum dikerjakan.** `ai-recommend.js:1218` dan `:1314` memakai `env.GEMINI_API_KEY` sebagai token admin dan menerimanya lewat query string `?token=`, sehingga secret masuk ke URL dan log. Bila `GEMINI_API_KEY` tidak diset, token jatuh ke literal `"kompare-admin-token"` yang tertulis di kode — siapa pun bisa menulis ulang index vektor production. Butuh secret admin terpisah, dikirim lewat header, tanpa fallback literal. |
+| `clean-data.mjs` hilang | Audit docs 2026-07-26 | **Belum dikerjakan.** Langkah pertama pipeline kualitas data (IQR outlier detection) didokumentasikan di [ARCHITECTURE.md](ARCHITECTURE.md) tapi script-nya tidak pernah ada di repo. Efeknya sudah menempel: 57 komponen bertanda `price_outlier` di `data/components.json`. Reseed dari CSV akan menghapus tanda itu tanpa cara membuatnya kembali. Perlu ditulis ulang atau tandanya dipindah ke sumber yang bisa direproduksi. |
 | Local Qwen latency polish | AI_PIPELINE appendix | ~55s; timeout/progress copy masih open. |
 | Frontend health backlog (15 issue) | React Doctor | `missing deps`, `plain <img>`, `state-in-handlers`, giant component. |
 | n8n operations automation | Product decision | Plan only: scheduled catalog jobs, validation, KV/Qdrant sync, alerts, smoke tests, reports, and approval gates. Never place n8n in the user request path. |

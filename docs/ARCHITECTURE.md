@@ -21,10 +21,10 @@ Kompare is a cloud-deployed **AI-assisted PC Builder** for the Indonesian PC mar
 │     ├── BuildResults     → Result Display + Near-Budget Upgrades│
 │     ├── SwapModal        → Component Swap UI                    │
 │     ├── AdvisorConsole   → AI Chat Advisor                      │
-│     ├── AuditTool        → Build Audit (Image Upload)           │
-│     ├── UpgradeAdvisor   → Upgrade Recommendations              │
+│     ├── BuildAudit       → Build Audit (Image Upload)           │
+│     ├── UpgradePlanner   → Upgrade Recommendations              │
 │     ├── Marketplace      → Component Browser                    │
-│     └── Settings         → provider profiles and overrides      │
+│     └── ApiKeySettings   → provider profiles and overrides      │
 │                                                                 │
 │   lib/api.js  → Centralized API client; forwards overrides      │
 └─────────────────────┬───────────────────────────────────────────┘
@@ -70,7 +70,8 @@ Kompare is a cloud-deployed **AI-assisted PC Builder** for the Indonesian PC mar
 | **Embedding** | Cloudflare Workers AI | `@cf/baai/bge-m3` model |
 | **AI Ranking** | Gemini 2.5 Flash | `gemini_free` is the default; user-configured LM Studio / `local_qwen` is selectable in all deployments |
 | **Dev Server** | `dev.ps1` (PowerShell) | Manages both frontend + backend locally |
-| **Styling** | Vanilla CSS | `98.css` base + custom retro theme |
+| **Styling** | Vanilla CSS | Hand-written retro theme in `kompare95.css`; no CSS framework |
+| **Window shell** | `react-rnd` | Drag and resize for the desktop windows |
 
 ## Project File Structure
 
@@ -89,30 +90,35 @@ kompare/
 │   ├── app/                  # Next.js App Router
 │   │   ├── layout.jsx        # Root layout
 │   │   ├── page.jsx          # Single entry point → ControlPanel
-│   │   └── providers.jsx     # React context providers
+│   │   ├── builder/          # /builder route
+│   │   ├── upgrade/          # /upgrade route
+│   │   └── audit/            # /audit route
 │   ├── components/
-│   │   ├── shell/            # App shell, sidebar, settings
+│   │   ├── shell/            # Desktop shell, retro window, settings
 │   │   ├── builder/          # BuildWizard form
 │   │   ├── results/          # BuildResults display
 │   │   ├── swap/             # SwapModal component
 │   │   ├── advisor/          # AdvisorConsole AI chat
-│   │   ├── audit/            # AuditTool image upload
-│   │   ├── upgrade/          # UpgradeAdvisor
+│   │   ├── audit/            # BuildAudit.jsx image upload
+│   │   ├── upgrade/          # UpgradePlanner.jsx
 │   │   ├── marketplace/      # Component browser
 │   │   ├── control-panel/    # Main ControlPanel layout
 │   │   ├── ui/               # Reusable UI primitives
 │   │   └── readme/           # In-app documentation
 │   ├── lib/
 │   │   ├── api.js            # API client; browser provider headers in all deployments
-│   │   ├── allocation.js     # Budget allocation helpers
 │   │   ├── format.js         # IDR currency formatting
 │   │   ├── slots.js          # Slot labels, ordering, spec pills
 │   │   └── storage.js        # localStorage helpers
 │   └── public/               # Static assets
 │
-├── data/
-│   ├── components.json       # Master component catalog (~6400 items)
-│   └── components.backup.json # Pre-cleaning backup (auto-generated)
+├── data/                     # See CATALOG_PLAYBOOK.md for the role of each file
+│   ├── components.json       # Runtime component catalog (~6400 items)
+│   ├── components.backup.json # Pre-cleaning backup (auto-generated)
+│   ├── price_overrides.json  # Runtime SKU price overlay
+│   ├── curated_ram.json      # Optional RAM seed fallback
+│   ├── products_cleaned.csv  # Scraper-output source data (not runtime)
+│   └── *_report.json         # Generated validation and quality reports
 │
 ├── docs/                     # Documentation
 ├── dev.ps1                   # Dev server orchestrator (PowerShell)
@@ -489,9 +495,14 @@ data/components.json (raw scraped data)
   Clean, verified components used for builds
 ```
 
-**Cleaning tool**: `clean-data.mjs` (IQR outlier detection)
-- `--dry-run` → preview flagged entries
-- `--apply` → write flags to `components.json` (auto-creates backup)
+**Cleaning tool**: `clean-data.mjs` (IQR outlier detection), invoked with
+`--dry-run` to preview and `--apply` to write flags.
+
+> ⚠️ **This script is not in the repository and never has been.** Its output is
+> already baked into `data/components.json` — 57 entries currently carry
+> `price_outlier` — but the tool that produced them cannot be rerun. Reseeding
+> the catalog from the source CSV would drop those flags with no way to
+> regenerate them. Tracked in [PROJECT_STATUS.md](PROJECT_STATUS.md).
 
 ### Curated Fallback Catalog
 

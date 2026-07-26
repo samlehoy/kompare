@@ -30,13 +30,13 @@ It should not be presented as unconstrained AI freely choosing parts.
 data/components.json
         |
         v
-chunk_components.py
+ai_rag_chunks.py
         |
         v
 data/vector_chunks.jsonl
         |
         v
-embed_components.py
+ai_rag_index.py
         |
         v
 data/vector_index/
@@ -198,19 +198,19 @@ Avoid adding a generic chatbot or product search page.
 ## Developer Runbook
 
 1. Generate local chunks:
-   `python -m backend.utils.ai_rag_chunks --components data/components.json --output data/vector_chunks.jsonl`
+   `python -m backend_legacy.utils.ai_rag_chunks --components data/components.json --output data/vector_chunks.jsonl`
 2. Generate local vectors:
-   `python -m backend.utils.ai_rag_index --components data/components.json --chunks data/vector_chunks.jsonl --index-dir data/vector_index --model gemini-embedding-001`
+   `python -m backend_legacy.utils.ai_rag_index --components data/components.json --chunks data/vector_chunks.jsonl --index-dir data/vector_index --model gemini-embedding-001`
 3. For free-tier-safe incremental generation, run one batch at a time:
-   `python -m backend.utils.ai_rag_index --components data/components.json --chunks data/vector_chunks.jsonl --index-dir data/vector_index --model gemini-embedding-001 --max-batches 1`
+   `python -m backend_legacy.utils.ai_rag_index --components data/components.json --chunks data/vector_chunks.jsonl --index-dir data/vector_index --model gemini-embedding-001 --max-batches 1`
 4. For paced generation, add a delay between batches:
-   `python -m backend.utils.ai_rag_index --components data/components.json --chunks data/vector_chunks.jsonl --index-dir data/vector_index --model gemini-embedding-001 --delay-seconds 65`
+   `python -m backend_legacy.utils.ai_rag_index --components data/components.json --chunks data/vector_chunks.jsonl --index-dir data/vector_index --model gemini-embedding-001 --delay-seconds 65`
 5. Inspect cache/index progress without calling Gemini:
-   `python -m backend.utils.ai_rag_index --status --chunks data/vector_chunks.jsonl --index-dir data/vector_index --model gemini-embedding-001`
+   `python -m backend_legacy.utils.ai_rag_index --status --chunks data/vector_chunks.jsonl --index-dir data/vector_index --model gemini-embedding-001`
 6. Start the backend and frontend with `.\dev.ps1`.
 7. Call `POST /build/ai-recommend` for the primary AI-assisted Build from zero path.
 8. Regenerate the four-budget comparison report:
-   `python -m backend.utils.ai_build_comparison --output data/ai_comparison_report.json`
+   `python -m backend_legacy.utils.ai_build_comparison --output data/ai_comparison_report.json`
 
 The AI build route accepts optional request-time profile selection:
 
@@ -317,11 +317,11 @@ Phase 2 is implemented as the primary Builder path with a complete local RAG fou
 - The local Qdrant path selects CPU first, then skips incompatible motherboard hits to match the CPU socket, then skips incompatible RAM hits to match the motherboard RAM generation before running the same deterministic validation gate.
 - The local Qdrant path injects deterministic baseline candidates into sparse retrieval results and can step down to cheaper compatible candidates when the full build would exceed budget.
 - Budget allocation is now driven solely by `use_case`. The `budget_strategy` and `performance_priority` parameters have been removed from `composeBuild`. When no manual allocation override is supplied, Fast compatibility and the AI-assisted deterministic baseline use the use-case allocation profile; valid 100% manual overrides remain authoritative.
-- The deterministic preset quality pass can now be rerun with `python -m backend.utils.preset_quality_audit --output data/preset_quality_report.json`. The latest report checks Rp 5m through Rp 60m core-tower budgets across all use cases, with no hard compatibility errors or missing required slots.
+- The deterministic preset quality pass can now be rerun with `python -m backend_legacy.utils.preset_quality_audit --output data/preset_quality_report.json`. The latest report checks Rp 5m through Rp 60m core-tower budgets across all use cases, with no hard compatibility errors or missing required slots.
 - A live local Qwen smoke test returned `ai_assisted: true`, `fallback: false`, `ranker_mode: json_ranker`, and no compatibility warnings for a Rp 20.000.000 gaming build.
 - A direct local Qwen timing check for a Rp 20.000.000 gaming build took about 55.54 seconds, so the UI copy now sets the expectation that local AI can take about a minute.
-- The frontend API client now supports `NEXT_PUBLIC_API_BASE_URL`; `dev.ps1` sets it to the active FastAPI origin so long local-model requests bypass the Next dev proxy timeout.
-- A final live UI demo pass on `/builder` completed against the real FastAPI backend:
+- The frontend API client now supports `NEXT_PUBLIC_API_BASE_URL`; `dev.ps1` sets it to the local Worker origin so long local-model requests bypass the Next dev proxy timeout.
+- A final live UI demo pass on `/builder` completed against a real backend. These results predate the move to the Cloudflare Worker and are kept as historical evidence for the `local_qwen` path:
   - `Fast compatibility` + `Generate build`: HTTP 200, `fallback: false`, 0 compatibility warnings, 0 compatibility issues.
   - `AI-assisted` + `local_qwen` + `Generate build`: HTTP 200, `ai_assisted: true`, `fallback: false`, `retrieval.profile: local_qwen`, `ranker_mode: json_ranker`, 0 compatibility warnings, 0 compatibility issues.
   - `AI-assisted` + `gemini_free` + `Generate build`: HTTP 200, `fallback: true`, `fallback_reason: ai_ranker_rejected`, 0 compatibility warnings, 0 compatibility issues.
@@ -332,9 +332,9 @@ AI-assisted is the primary user path. The deterministic PC Builder remains the c
 
 1. Measure local Qwen ranker latency across the remaining common budgets and decide whether to keep the current 90-second timeout, add richer progress details, or test a faster local chat model for demos. A Rp 20.000.000 gaming run currently takes about 55.54 seconds.
 2. Run the local readiness command before long sync, demo, or comparison runs:
-   `python -m backend.utils.local_ai_readiness --profile local_qwen --timeout 90 --fail-on-error`
+   `python -m backend_legacy.utils.local_ai_readiness --profile local_qwen --timeout 90 --fail-on-error`
 3. Smoke-test local Qwen retrieval against Qdrant after any resync:
-   `python -m backend.utils.qdrant_smoke --profile local_qwen --category gpu --query "RTX 4060 under 6 juta" --top-k 5`
+   `python -m backend_legacy.utils.qdrant_smoke --profile local_qwen --category gpu --query "RTX 4060 under 6 juta" --top-k 5`
 4. Call `POST /build/ai-recommend` with `"ai_profile": "local_qwen"` and confirm the response returns `ai_assisted: true`, `fallback: false`, and `ranker_mode: json_ranker` after deterministic validation. If fallback is used, verify that the fallback reason is explicit and compatibility warnings remain empty for accepted builds.
 5. Rerun the four-budget AI-assisted versus deterministic comparison with `local_qwen` after dataset, embedding, prompt, timeout, or repair-rule changes:
    - budget safety
@@ -345,7 +345,7 @@ AI-assisted is the primary user path. The deterministic PC Builder remains the c
    - casing fit
    - marketplace link availability
 6. Rerun the deterministic preset quality audit after allocation, ranking, parser, or catalog changes:
-   `python -m backend.utils.preset_quality_audit --output data/preset_quality_report.json`
+   `python -m backend_legacy.utils.preset_quality_audit --output data/preset_quality_report.json`
 7. Design `POST /build/ai-upgrade` after the AI-primary Builder release is stable.
 8. Preserve explicit Gemini fallback copy as a safety guardrail in demos and production acceptance.
 9. Design `/build/ai-upgrade` only after the Build from zero AI-assisted flow is stable.

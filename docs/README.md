@@ -26,6 +26,21 @@ Each topic is authoritative in exactly one doc; others link to it.
 - **Status and priority of post-release n8n operations automation** → PROJECT_STATUS.
 - **Agent invariants** → AGENTS stays self-contained by design.
 
+## These docs are checked, not trusted
+
+`frontend/tests/unit/docs.test.js` runs with the frontend unit suite and in CI.
+It fails when anything here names a file, directory, `python -m` command,
+internal link, or `/api` endpoint that does not exist. Rename something in the
+codebase and the check tells you which document still points at the old name.
+
+Deliberate exceptions — files named precisely because they were removed,
+gitignored build artifacts — live in one short list inside that test, and each
+one carries a written reason.
+
+**Never write commit SHAs, deployment IDs, or test counts into these docs.**
+They are stale on the commit that records them; we have watched it happen.
+Record what must be true, and the command that proves it.
+
 ## Documentation Rule
 
 When development changes product direction, data contracts, AI/RAG behavior, or user-visible flows, update:

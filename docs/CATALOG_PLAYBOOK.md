@@ -33,7 +33,7 @@ The current data flow is:
 
 ```text
 data/products_cleaned.csv
-  -> python -m backend.utils.seed_components --fail-on-validation
+  -> python -m backend_legacy.utils.seed_components --fail-on-validation
   -> data/components.json
   -> data/component_catalog_report.json
   -> PC Builder recommendations
@@ -119,13 +119,13 @@ Use `data/price_overrides.json` when only changing RAM prices.
 Use `data/curated_ram.json` only as a fallback source when adding a temporary RAM SKU or when scrape coverage is weak. After editing curated RAM, regenerate components with `--include-curated-ram`:
 
 ```powershell
-python -m backend.utils.seed_components --include-curated-ram --fail-on-validation
+python -m backend_legacy.utils.seed_components --include-curated-ram --fail-on-validation
 ```
 
 Then verify:
 
 ```powershell
-python -c "from backend import services; [print(r['sku'], r['name'], r['price_idr']) for r in services.load_components() if r.get('category') == 'ram']"
+python -c "from backend_legacy import services; [print(r['sku'], r['name'], r['price_idr']) for r in services.load_components() if r.get('category') == 'ram']"
 ```
 
 ## Regenerating Components From Source CSV
@@ -133,7 +133,7 @@ python -c "from backend import services; [print(r['sku'], r['name'], r['price_id
 Use this only when you intentionally want to rebuild `data/components.json` from the raw scrape.
 
 ```powershell
-python -m backend.utils.seed_components --input data/products_cleaned.csv --output data/components.json --report data/component_catalog_report.json --limit-per-category 0 --fail-on-validation
+python -m backend_legacy.utils.seed_components --input data/products_cleaned.csv --output data/components.json --report data/component_catalog_report.json --limit-per-category 0 --fail-on-validation
 ```
 
 Current source:
@@ -166,11 +166,11 @@ The former monitor `refresh_hz` gap was resolved on 2026-05-14 by preserving exp
 
 The former CPU `cores` gap was resolved on 2026-05-14 by preferring explicit core counts in product names and adding deterministic support for EPYC, Threadripper, Athlon, Bristol Ridge, and legacy Core 2 Duo naming.
 
-When future reports expose new parser backlog items, fix them in `backend/utils/component_specs.py` or the catalog filter in `backend/utils/seed_components.py`, then rerun:
+When future reports expose new parser backlog items, fix them in `backend_legacy/utils/component_specs.py` or the catalog filter in `backend_legacy/utils/seed_components.py`, then rerun:
 
 ```powershell
-python -m backend.utils.seed_components --fail-on-validation
-python -m pytest backend/tests/test_component_catalog_pipeline.py -q
+python -m backend_legacy.utils.seed_components --fail-on-validation
+python -m pytest backend_legacy/tests/test_component_catalog_pipeline.py -q
 ```
 
 ## Adding A New Component SKU
@@ -221,7 +221,7 @@ Be careful: manual edits to `data/components.json` can be overwritten by `seed_c
 |---|---|---|
 | Override does not apply | Wrong SKU or invalid JSON | Verify SKU and parse `price_overrides.json`. |
 | Builder still picks old price | Backend process has stale state after code changes | Retry request or restart dev server. |
-| RAM change not in build | Edited `curated_ram.json` but did not regenerate components with the fallback flag | Run `python -m backend.utils.seed_components --include-curated-ram --fail-on-validation`. |
+| RAM change not in build | Edited `curated_ram.json` but did not regenerate components with the fallback flag | Run `python -m backend_legacy.utils.seed_components --include-curated-ram --fail-on-validation`. |
 | New component skipped | Missing compatibility spec fields | Add the required fields for that category. |
 | Source CSV has unrelated products | Expected source-state issue | Let `seed_components.py` filter them, then review `data/component_catalog_report.json`; use notebooks only when parser rules need investigation. |
 
