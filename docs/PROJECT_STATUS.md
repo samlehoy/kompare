@@ -101,7 +101,7 @@ static upload `frontend/out` kini hanya emergency fallback.
 | Item | Sumber | Catatan |
 |---|---|---|
 | `POST /build/ai-upgrade` | PRODUCT, AI_PIPELINE | **Belum di `backend_worker`**; fitur tambahan setelah build-from-zero stabil. |
-| Provider override security hardening | Security review | **Belum dikerjakan:** validasi/allowlist URL LM Studio dan Qdrant, mitigasi SSRF, larangan memasangkan custom Qdrant URL dengan secret server, secret-safe logging, rate limiting, dan abuse controls. |
+| Provider override security hardening | Security review, [unified provider spec](specs/2026-07-26-unified-ai-provider-settings.md) | **Belum dikerjakan dan merupakan accepted risk:** provider credentials di `localStorage` terekspos bila frontend mengalami XSS; URL LM Studio dan Qdrant yang dikontrol user dapat memicu SSRF; belum ada validasi URL, pembatasan protocol/host, request limits, aturan pairing credential (termasuk custom Qdrant URL tanpa custom key yang dapat memakai secret Qdrant server), secret-safe logging, atau rate/abuse controls. Risiko-risiko ini diterima sementara demi Gemini BYOK dan Local Qwen/LM Studio. |
 | Local Qwen latency polish | AI_PIPELINE appendix | ~55s; timeout/progress copy masih open. |
 | Frontend health backlog (15 issue) | React Doctor | `missing deps`, `plain <img>`, `state-in-handlers`, giant component. |
 | n8n operations automation | Product decision | Plan only: scheduled catalog jobs, validation, KV/Qdrant sync, alerts, smoke tests, reports, and approval gates. Never place n8n in the user request path. |
