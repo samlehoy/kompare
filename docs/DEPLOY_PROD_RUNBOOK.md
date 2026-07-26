@@ -19,17 +19,22 @@ deployed independently from `backend_worker/`.
 
 ### Current Verified Release
 
+Values below are mirrored from [PROJECT_STATUS.md](PROJECT_STATUS.md), which is
+the source of truth for release status. Update both together or this table goes
+stale.
+
 | Item | Value |
 |---|---|
-| Source commit | `2374d86` |
-| Pages deployment | `9986d4cf-7f12-4c3e-b9cc-59c785fcfc86` |
-| Immutable frontend | `https://9986d4cf.kompare.pages.dev` |
-| Worker version | `6c548266-285d-4ca9-b09f-8724eaa5884c` |
+| Frontend source commit | `a21223f` |
+| Pages deployment | `5a99b1fa-c5ab-4907-b3fd-e50b0fb1bef3` |
+| Immutable frontend | `https://5a99b1fa.kompare.pages.dev` |
+| Worker source commit | `5af9c2b` |
+| Worker version | `663864f9-ce55-4620-853a-a31ad5ed7878` |
 
-The release passed 48 frontend unit tests, 26 serial Playwright tests, static
-export, Worker health, real Gemini AI recommendation, deterministic Upgrade,
-and intercepted quota-fallback acceptance. See
-[PROJECT_STATUS.md](PROJECT_STATUS.md) for the complete evidence table.
+The release passed 51 frontend unit tests, static export, Worker health, and a
+real Gemini AI recommendation returning `ai_assisted: true` with nine slots and
+zero compatibility issues. See [PROJECT_STATUS.md](PROJECT_STATUS.md) for the
+complete evidence table.
 
 ## 2. Secret Safety
 
@@ -64,28 +69,83 @@ Invoke-RestMethod -Uri "https://kompare-backend-api.muttaqien0111.workers.dev/ap
 
 Expected health evidence includes `status: ok` and a non-zero `components_loaded` count.
 
-## 4. Promote Development to Main
+## 4. Branch Workflow
 
-Release work starts on `development-branch`. Keep promotion linear so both
-remote branches identify the same release commit.
+Gunakan aturan sederhana berikut:
+
+| Situasi | Branch | Efek push |
+|---|---|---|
+| Development dan testing normal | `development-branch` | Cloudflare Pages preview |
+| Release yang sudah lolos preview | `main` | Cloudflare Pages production |
+| Hotfix production yang mendesak | `main` | Cloudflare Pages production |
+
+`main` selalu merepresentasikan production. `development-branch` adalah tempat
+testing sebelum release. Pull Request tidak wajib untuk workflow solo; gunakan
+PR untuk perubahan besar, berisiko, atau ketika perlu review tambahan.
+
+### Release Normal
+
+1. Kerjakan perubahan di `development-branch`.
+2. Jalankan test dan build lokal.
+3. Push ke `development-branch`.
+4. Tunggu preview selesai dan cek URL preview.
+5. Jika preview valid, fast-forward `main` ke commit yang sama.
+6. Push `main` untuk memulai production deployment.
+7. Cek URL production dan health Worker.
+8. Pastikan `development-branch` kembali sinkron dengan `main`.
 
 ```powershell
+# 1. Push perubahan ke preview
 git switch development-branch
+git pull --ff-only origin development-branch
+git add <file-yang-diubah>
+git commit -m "feat: deskripsi perubahan"
 git push origin development-branch
+
+# 2. Setelah preview berhasil, promote commit yang sama ke production
 git fetch origin
-git merge-base --is-ancestor origin/main development-branch
 git switch main
-git merge --ff-only origin/main
+git pull --ff-only origin main
 git merge --ff-only development-branch
 git push origin main
+
+# 3. Pastikan kedua branch identik setelah release
 git fetch origin
+git switch development-branch
+git merge --ff-only origin/main
+git push origin development-branch
 git rev-parse origin/development-branch
 git rev-parse origin/main
 ```
 
-Stop if the ancestry check or either merge fails. Inspect branch divergence
-instead of creating an unplanned merge commit or force-pushing. The final two
-`rev-parse` commands must print the same SHA.
+Dua perintah `git rev-parse` terakhir harus menghasilkan SHA yang sama. Jika
+`git merge --ff-only` gagal, branch telah menyimpang. Berhenti, periksa
+perbedaannya, dan jangan membuat merge commit atau force-push tanpa keputusan
+eksplisit.
+
+### Hotfix Production
+
+Untuk hotfix yang benar-benar mendesak, perubahan boleh dibuat langsung di
+`main`:
+
+```powershell
+git switch main
+git pull --ff-only origin main
+git add <file-yang-diubah>
+git commit -m "fix: deskripsi hotfix"
+git push origin main
+```
+
+Setelah production terverifikasi, sinkronkan hotfix ke development:
+
+```powershell
+git fetch origin
+git switch development-branch
+git merge --ff-only origin/main
+git push origin development-branch
+```
+
+Jangan memulai pekerjaan development baru sebelum sinkronisasi ini selesai.
 
 ## 5. Deploy the Frontend
 
@@ -108,12 +168,9 @@ Pages build system's equivalent clean lockfile install. Do not use
 it. Branches other than `main`, especially `development-branch`, are preview
 deployments.
 
-Normal release flow:
-
-1. Push the verified commit to `development-branch`.
-2. Confirm the native Pages preview build succeeds and verify its immutable URL.
-3. Fast-forward the same commit to `main`.
-4. Confirm the native Pages production build succeeds and verify `kompare.pages.dev`.
+Normal release flow is documented in [Branch Workflow](#4-branch-workflow):
+preview first on `development-branch`, then fast-forward the verified commit to
+`main` for production. A push to `main` is the production release action.
 
 If a native build fails, capture the complete build log, effective root/build
 settings, Node/npm versions, and source commit before changing dependencies.
@@ -121,9 +178,6 @@ Do not add a root package wrapper or dependency bypass while the frontend
 lockfile installs cleanly.
 
 ### Emergency Direct Upload
-
-Direct upload is the rollback/emergency path only. Build from the promoted
-`main` commit, then deploy the static export directly:
 
 Build from the promoted `main` commit, then deploy the static export directly:
 
@@ -163,8 +217,8 @@ Verify both the immutable deployment URL and `https://kompare.pages.dev`.
 - EnterKomputer links and selected optional add-ons render correctly.
 - The Worker health endpoint remains healthy with a non-zero catalog count.
 
-Functional contract failures block release. Record known non-functional debt,
-such as the failed Git-based Pages build, separately.
+Functional contract failures block release. Record known non-functional debt
+separately; a successful native Git Pages build is required for a normal release.
 
 ## 8. Rollback
 
@@ -195,13 +249,14 @@ Run health and affected endpoint checks immediately after rollback.
 
 ## 9. Troubleshooting
 
-### Git-Based Pages Build Fails with `ERESOLVE`
+### Git-Based Pages Build Fails
 
 1. Confirm Pages uses root directory `frontend`, Node 22, build command `npm run build`, and output `out`.
 2. Run `npm --prefix frontend ci` locally and preserve the complete remote failure log.
-3. Clear/retry the Pages build cache only after recording the failed source commit and effective settings.
-4. Do not add `--legacy-peer-deps`, a root `package.json`, or a wrapper script unless the same lockfile fails locally with the same error.
-5. If production recovery is urgent, direct-deploy `frontend/out` and run the full acceptance checklist, then keep the native-build incident open.
+3. Check whether the failure occurs during clone, install, build, or deploy.
+4. For a clone failure, check Git LFS usage. Do not commit generated `data/vector_index/` artifacts.
+5. Do not add `--legacy-peer-deps`, a root `package.json`, or a wrapper script unless the same lockfile fails locally with the same error.
+6. If production recovery is urgent, direct-deploy `frontend/out`, run the full acceptance checklist, and record the emergency deployment.
 
 ### Direct Pages Deployment Fails
 

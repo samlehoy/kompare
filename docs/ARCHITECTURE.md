@@ -359,10 +359,15 @@ The same request path forwards `X-Gemini-Api-Key`, `X-LMStudio-Base-Url`,
 production. `gemini_free` remains the default profile; `local_qwen` remains
 available when the user configures LM Studio and Qdrant.
 
-Provider override hardening is deliberately post-MVP debt, not a completed
-security boundary. The backlog includes LM Studio/Qdrant URL validation and
-allowlisting, SSRF mitigation, preventing custom Qdrant URLs from being paired
-with server secrets, secret-safe logging, rate limiting, and abuse controls.
+A caller-supplied `X-Qdrant-Url` must carry its own `X-Qdrant-Api-Key`. The
+server Qdrant secret is only ever sent to the server's own Qdrant URL, so a
+custom endpoint cannot harvest it.
+
+Beyond that pairing rule, provider override hardening is deliberately post-MVP
+debt, not a completed security boundary. The backlog includes LM Studio/Qdrant
+URL validation and allowlisting, SSRF mitigation, secret-safe logging, rate
+limiting, and abuse controls. See [PROJECT_STATUS.md](PROJECT_STATUS.md) for
+the current state of each item.
 
 Model detection: `GET /api/lm-studio/detect` queries `{lmStudioUrl}/v1/models` to identify the loaded model dynamically.
 
