@@ -210,10 +210,12 @@ Behavior:
 
 ## Phase 2 AI-Assisted Recommendation UI
 
-AI-assisted retrieval is the primary production Builder path and reuses the
-existing build result surfaces. Production defaults to `gemini_free` and does
-not expose provider selection; development may show the provider selector for
-Local Qwen testing.
+AI-assisted retrieval is the primary Builder path in every deployment and
+reuses the existing build result surfaces. AI-assisted mode always exposes the
+AI Profile selector and defaults to `gemini_free`; users may select
+`local_qwen` after configuring LM Studio and Qdrant in Settings. Settings,
+Gemini BYOK, and custom Qdrant URL/key overrides are available in local,
+preview, and production builds.
 
 The UI shows:
 

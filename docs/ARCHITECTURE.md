@@ -24,12 +24,12 @@ Kompare is a cloud-deployed **AI-assisted PC Builder** for the Indonesian PC mar
 │     ├── AuditTool        → Build Audit (Image Upload)           │
 │     ├── UpgradeAdvisor   → Upgrade Recommendations              │
 │     ├── Marketplace      → Component Browser                    │
-│     └── Local dev tools  → optional LM Studio / Gemini testing  │
+│     └── Settings         → provider profiles and overrides      │
 │                                                                 │
-│   lib/api.js  → Centralized API client; overrides disabled prod │
+│   lib/api.js  → Centralized API client; forwards overrides      │
 └─────────────────────┬───────────────────────────────────────────┘
                       │ HTTP (cross-origin dev / same-origin prod)
-                      │ Development-only provider override headers
+                      │ Browser provider override headers
                       ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │              BACKEND (Cloudflare Worker)                         │
@@ -55,7 +55,7 @@ Kompare is a cloud-deployed **AI-assisted PC Builder** for the Indonesian PC mar
 │  semantic      │ │      e.g., Qwen 2.5 27B                     │
 │  component     │ │                                              │
 │  retrieval     │ │  Selected at runtime via:                    │
-│                │ │    • Provider headers accepted in local dev   │
+│                │ │    • Provider headers accepted everywhere     │
 └────────────────┘ └──────────────────────────────────────────────┘
 ```
 
@@ -68,7 +68,7 @@ Kompare is a cloud-deployed **AI-assisted PC Builder** for the Indonesian PC mar
 | **Catalog Storage** | Cloudflare KV | `KOMPARE_DATA` namespace |
 | **Vector DB** | Qdrant Cloud | Semantic search for components |
 | **Embedding** | Cloudflare Workers AI | `@cf/baai/bge-m3` model |
-| **AI Ranking** | Gemini 2.5 Flash | Production uses `gemini_free`; LM Studio is development-only |
+| **AI Ranking** | Gemini 2.5 Flash | `gemini_free` is the default; user-configured LM Studio / `local_qwen` is selectable in all deployments |
 | **Dev Server** | `dev.ps1` (PowerShell) | Manages both frontend + backend locally |
 | **Styling** | Vanilla CSS | `98.css` base + custom retro theme |
 
@@ -103,7 +103,7 @@ kompare/
 │   │   ├── ui/               # Reusable UI primitives
 │   │   └── readme/           # In-app documentation
 │   ├── lib/
-│   │   ├── api.js            # API client; local provider headers disabled in production
+│   │   ├── api.js            # API client; browser provider headers in all deployments
 │   │   ├── allocation.js     # Budget allocation helpers
 │   │   ├── format.js         # IDR currency formatting
 │   │   ├── slots.js          # Slot labels, ordering, spec pills
@@ -332,9 +332,9 @@ Every fallback path sets `ai_assisted: false` and `fallback_reason` in the respo
 
 ## Local AI Model Support (LM Studio)
 
-The backend supports **development-only runtime switching** between Gemini
-(cloud) and LM Studio (local). Production frontend builds do not register the
-Settings window and do not inject provider override headers from localStorage:
+The backend supports runtime switching between Gemini (cloud) and LM Studio
+(local) in all deployments. The Settings window is registered everywhere,
+and the frontend can inject browser provider override headers from localStorage:
 
 ```
 Frontend                          Backend (callGemini)
@@ -353,6 +353,16 @@ kompare_user_lmstudio_url         X-LMStudio-Base-Url
                                    → POST to Gemini API (generativelanguage.googleapis.com)
                                    → Return with _lm_studio: false
 ```
+
+The same request path forwards `X-Gemini-Api-Key`, `X-LMStudio-Base-Url`,
+`X-Qdrant-Url`, and `X-Qdrant-Api-Key` overrides in local, preview, and
+production. `gemini_free` remains the default profile; `local_qwen` remains
+available when the user configures LM Studio and Qdrant.
+
+Provider override hardening is deliberately post-MVP debt, not a completed
+security boundary. The backlog includes LM Studio/Qdrant URL validation and
+allowlisting, SSRF mitigation, preventing custom Qdrant URLs from being paired
+with server secrets, secret-safe logging, rate limiting, and abuse controls.
 
 Model detection: `GET /api/lm-studio/detect` queries `{lmStudioUrl}/v1/models` to identify the loaded model dynamically.
 

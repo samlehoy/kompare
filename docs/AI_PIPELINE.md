@@ -16,7 +16,7 @@ Phase 2 adds a retrieval-augmented generation flow:
 6. Validate the AI-proposed build with deterministic compatibility rules.
 7. Return structured build output, rationale, warnings, and marketplace links.
 
-Current progress covers the full build-from-zero foundation: component chunk generation, local vector index generation and manifest/status checks, retrieval, Gemini candidate ranking, the primary `POST /build/ai-recommend` route, provider profiles, LM Studio local-model adapters, Qdrant sync/smoke utilities, backend-owned allocation presets, and development-only provider selection for Local Qwen versus Gemini.
+Current progress covers the full build-from-zero foundation: component chunk generation, local vector index generation and manifest/status checks, retrieval, Gemini candidate ranking, the primary `POST /build/ai-recommend` route, provider profiles, LM Studio local-model adapters, Qdrant sync/smoke utilities, backend-owned allocation presets, and provider selection for Local Qwen versus Gemini in all deployments.
 
 This should be presented as:
 
@@ -184,7 +184,7 @@ The AI-primary UI remains subtle:
 
 - Add an "AI-assisted" badge to generated results.
 - Add a "Recommendation mode" control to the Build from zero form so the user chooses between Fast compatibility and AI-assisted before pressing the single "Generate build" action.
-- In production, hide provider selection and always send `gemini_free`. In development, show the "AI profile" selector only when AI-assisted mode is selected so Local Qwen + Qdrant can still be tested.
+- In all deployments, show the "AI profile" selector only when AI-assisted mode is selected. Default to `gemini_free`, while allowing `local_qwen` through user-configured LM Studio and Qdrant settings. Gemini BYOK and custom Qdrant URL/key overrides are also available in all deployments.
 - Show "Retrieved candidates reviewed" in the rationale panel.
 - Keep compatibility warnings in the existing summary panel.
 - Keep manual deterministic build mode available.
@@ -224,7 +224,7 @@ The AI build route accepts optional request-time profile selection:
 
 Use `"ai_profile": "local_qwen"` only after LM Studio and Qdrant are running and the Qdrant collection has been synced.
 
-The Build from zero UI exposes a "Recommendation mode" control. Fast compatibility calls the deterministic route. AI-assisted production requests always send `ai_profile: gemini_free` without exposing a provider selector; development reveals the selector and sends the selected profile to `POST /build/ai-recommend`.
+The Build from zero UI exposes a "Recommendation mode" control. Fast compatibility calls the deterministic route. AI-assisted requests in every deployment default to `ai_profile: gemini_free`, expose the selector, and send the selected profile to `POST /build/ai-recommend`.
 
 The generated vector files are local artifacts and are ignored by git:
 
@@ -295,7 +295,7 @@ Phase 2 is implemented as the primary Builder path with a complete local RAG fou
   - Gemini quota fallback is explicit as `gemini_quota_exceeded`
 - AI-assisted and deterministic outputs can be compared across entry-level, mid-range, high-end, and custom budgets with the reusable report command. The latest local Qwen report at `data/ai_comparison_report.json` shows `ai_assisted: true`, `fallback: false`, `ranker_mode: json_ranker`, and no hard compatibility errors for all four scenarios.
 - Build from zero now uses one `Generate build` action controlled by the `Recommendation mode` choice.
-- Production Build from zero defaults to AI-assisted with `gemini_free` and hides provider selection. Development exposes an `AI profile` selector for `local_qwen` and `gemini_free` while AI-assisted mode is selected.
+- Build from zero defaults to AI-assisted with `gemini_free` in every deployment and exposes an `AI profile` selector for `local_qwen` and `gemini_free` while AI-assisted mode is selected.
 - The AI-assisted loading state now tells users the local AI is ranking real catalog candidates, checking compatibility, and may take about a minute.
 - Build results show AI-assisted metadata and deterministic fallback messaging when the response includes it.
 - UI fallback copy now explains safety fallback reasons instead of exposing raw fallback codes.
@@ -406,11 +406,11 @@ Instruct: Retrieve relevant PC component catalog entries for an Indonesian custo
 Query: ...
 ```
 
-## Local Development Provider Order
+## Provider Order
 
 ```text
-1. Explicit development selection: LM Studio / `local_qwen`
-2. Default development and production selection: Gemini API / `gemini_free`
+1. Explicit user selection: LM Studio / `local_qwen`
+2. Default selection: Gemini API / `gemini_free`
 3. Deterministic Kompare fallback
 ```
 

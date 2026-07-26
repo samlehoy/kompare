@@ -60,8 +60,8 @@ Terimplementasi penuh: route `index.js:132` → `handleAiRecommend` (`ai-recomme
 | Browser AI success | ✅ Marker `AI-assisted` tampil pada hasil production nyata |
 | Browser safe fallback | ✅ Marker `Gemini quota fallback` tampil; hasil deterministik tetap 9 slot |
 | Docs vs code | ✅ Production embedding/provider facts synchronized with Worker runtime |
-| Positioning | AI-assisted adalah default user path; `gemini_free` adalah profile production. Deterministic validation tetap authority dan safety fallback. |
-| Production UI | Provider selector disembunyikan; development tetap dapat memilih `local_qwen` untuk pengujian lokal. |
+| Positioning | AI-assisted adalah default user path; `gemini_free` adalah profile default, sementara `local_qwen` dapat dipilih pengguna. Deterministic validation tetap authority dan safety fallback. |
+| Production UI | Settings dan provider selector tersedia di local, preview, dan production. Browser dapat mengirim Gemini BYOK, LM Studio, dan custom Qdrant overrides. |
 
 ---
 
@@ -82,7 +82,7 @@ Terimplementasi penuh: route `index.js:132` → `handleAiRecommend` (`ai-recomme
 | Real Gemini smoke | ✅ `ai_assisted: true`, `fallback: false`, `json_ranker`, `@cf/baai/bge-m3`, 9 slot, 0 compatibility issues |
 | Safe fallback acceptance | ✅ `Gemini quota fallback` tampil dan 9 slot tetap tersedia |
 | Upgrade acceptance | ✅ Form budget/CPU/GPU aktif; endpoint production menghasilkan upgrade priorities |
-| Production provider contract | ✅ Tidak ada provider selector, Settings UI, atau browser provider override headers |
+| Production provider contract | Settings, `gemini_free`, `local_qwen`, dan browser provider override headers tersedia di semua deployment; security hardening masih backlog. |
 | Native Git Pages build | ✅ Preview `a6ea7b88` + production `433bdd7b` sukses via Git build (Node 22.22.0 dari `frontend/.node-version`) |
 
 Native Git-based Pages deployment pulih per rilis `b393694`. Root cause
@@ -101,6 +101,7 @@ static upload `frontend/out` kini hanya emergency fallback.
 | Item | Sumber | Catatan |
 |---|---|---|
 | `POST /build/ai-upgrade` | PRODUCT, AI_PIPELINE | **Belum di `backend_worker`**; fitur tambahan setelah build-from-zero stabil. |
+| Provider override security hardening | Security review | **Belum dikerjakan:** validasi/allowlist URL LM Studio dan Qdrant, mitigasi SSRF, larangan memasangkan custom Qdrant URL dengan secret server, secret-safe logging, rate limiting, dan abuse controls. |
 | Local Qwen latency polish | AI_PIPELINE appendix | ~55s; timeout/progress copy masih open. |
 | Frontend health backlog (15 issue) | React Doctor | `missing deps`, `plain <img>`, `state-in-handlers`, giant component. |
 | n8n operations automation | Product decision | Plan only: scheduled catalog jobs, validation, KV/Qdrant sync, alerts, smoke tests, reports, and approval gates. Never place n8n in the user request path. |
@@ -122,5 +123,6 @@ static upload `frontend/out` kini hanya emergency fallback.
 
 1. Susun implementation plan **n8n operations automation** untuk scheduled catalog update, validation, KV/Qdrant sync, health/smoke alerts, reports, dan approval gate.
 2. Design `POST /build/ai-upgrade` sebagai ekspansi produk berikutnya; jangan mengubah deterministic compatibility authority.
-3. Bereskan sisa **React Doctor backlog** (medium/low).
-4. Optimasi latency **Local Qwen** bila local profile tetap dipertahankan untuk demo development.
+3. Kerjakan **provider override security hardening**: validasi/allowlist URL LM Studio dan Qdrant, mitigasi SSRF, pemisahan custom Qdrant URL dari secret server, secret-safe logging, rate limiting, dan abuse controls.
+4. Bereskan sisa **React Doctor backlog** (medium/low).
+5. Optimasi latency **Local Qwen** bila local profile tetap dipertahankan.

@@ -65,7 +65,7 @@ Upgrade users type existing components manually. The only upload flow is the sco
 - Frontend: Next.js App Router, React 19, Zustand, Vitest, Playwright, custom retro CSS.
 - Backend: Cloudflare Worker (JavaScript ES Modules), KV storage, Workers AI.
 - Tests: Vitest and Playwright for frontend.
-- AI providers: Google Gemini API (key pool with rotation), Cloudflare Workers AI (BGE embeddings), Local Qwen through LM Studio (optional dev mode).
+- AI providers: Google Gemini API (key pool with rotation), Cloudflare Workers AI (BGE embeddings), Local Qwen through user-configured LM Studio.
 - Vector DB: Qdrant Cloud (collection: `kompare_components_gemini`).
 - Market: Indonesia, IDR pricing, id-ID formatting.
 - Database: Cloudflare KV for component catalog. Qdrant Cloud for vector search.
