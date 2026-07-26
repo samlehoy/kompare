@@ -91,8 +91,7 @@ describe('api client', () => {
     }
   });
 
-  test('ignores browser provider overrides in production', async () => {
-    const originalNodeEnv = process.env.NODE_ENV;
+  test('forwards browser provider overrides in production', async () => {
     const values = new Map([
       ['kompare_user_gemini_key', 'browser-gemini-key'],
       ['kompare_user_lmstudio_url', 'https://local-model.example'],
@@ -102,21 +101,21 @@ describe('api client', () => {
     vi.stubGlobal('localStorage', {
       getItem: (key) => values.get(key) || null,
     });
-    process.env.NODE_ENV = 'production';
+    vi.stubEnv('NODE_ENV', 'production');
 
     try {
       await api.health();
 
-      expect(fetch).toHaveBeenCalledWith('/api/health', expect.not.objectContaining({
+      expect(fetch).toHaveBeenCalledWith('/api/health', expect.objectContaining({
         headers: expect.objectContaining({
-          'X-Gemini-Api-Key': expect.anything(),
-          'X-LMStudio-Base-Url': expect.anything(),
-          'X-Qdrant-Url': expect.anything(),
-          'X-Qdrant-Api-Key': expect.anything(),
+          'X-Gemini-Api-Key': 'browser-gemini-key',
+          'X-LMStudio-Base-Url': 'https://local-model.example',
+          'X-Qdrant-Url': 'https://vector.example',
+          'X-Qdrant-Api-Key': 'browser-vector-key',
         }),
       }));
     } finally {
-      process.env.NODE_ENV = originalNodeEnv;
+      vi.unstubAllEnvs();
       vi.unstubAllGlobals();
     }
   });

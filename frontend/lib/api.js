@@ -56,18 +56,20 @@ export async function request(path, options = {}) {
   const { headers, body, ...rest } = options;
   const hasBody = body !== undefined;
   const isFormData = isFormDataBody(body);
-  const allowBrowserProviderOverrides = process.env.NODE_ENV !== 'production';
+  const canReadLocalStorage = typeof window !== 'undefined'
+    && typeof localStorage !== 'undefined'
+    && typeof localStorage.getItem === 'function';
 
-  const userKey = allowBrowserProviderOverrides && typeof window !== 'undefined' && typeof localStorage !== 'undefined' && typeof localStorage.getItem === 'function'
+  const userKey = canReadLocalStorage
     ? localStorage.getItem('kompare_user_gemini_key')
     : null;
-  const userLMStudioUrl = allowBrowserProviderOverrides && typeof window !== 'undefined' && typeof localStorage !== 'undefined' && typeof localStorage.getItem === 'function'
+  const userLMStudioUrl = canReadLocalStorage
     ? localStorage.getItem('kompare_user_lmstudio_url')
     : null;
-  const userQdrantUrl = allowBrowserProviderOverrides && typeof window !== 'undefined' && typeof localStorage !== 'undefined' && typeof localStorage.getItem === 'function'
+  const userQdrantUrl = canReadLocalStorage
     ? localStorage.getItem('kompare_user_qdrant_url')
     : null;
-  const userQdrantKey = allowBrowserProviderOverrides && typeof window !== 'undefined' && typeof localStorage !== 'undefined' && typeof localStorage.getItem === 'function'
+  const userQdrantKey = canReadLocalStorage
     ? localStorage.getItem('kompare_user_qdrant_key')
     : null;
 
