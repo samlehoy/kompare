@@ -35,7 +35,8 @@ The frontend's `lib/api.js` reads `NEXT_PUBLIC_API_BASE_URL` (set at Cloudflare 
 
 Visible frontend routes:
 
-- `/` - PC Builder marketing landing page.
+- `/` - PC Builder marketing landing page. No desktop chrome; static content only.
+- `/app` - the Kompare 95 desktop shell.
 - `/builder` - full PC build from zero.
 - `/upgrade` - upgrade recommendations from manually typed existing parts.
 - `/audit` - cart screenshot and typed parts-list audit for PC build compatibility.

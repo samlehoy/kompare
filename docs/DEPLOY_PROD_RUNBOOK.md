@@ -213,7 +213,8 @@ not print secret values while diagnosing failures.
 
 Verify both the immutable deployment URL and `https://kompare.pages.dev`.
 
-- `/`, `/builder`, `/upgrade`, and `/audit` return HTTP 200.
+- `/`, `/app`, `/builder`, `/upgrade`, and `/audit` return HTTP 200.
+- `/` renders the marketing landing, not the desktop shell.
 - Builder defaults to AI-assisted recommendations using `gemini_free`.
 - A successful AI result displays `AI-assisted`, contains all nine required slots, and reports no hard compatibility issues.
 - The Playwright acceptance route interception simulates an AI failure without changing production secrets; it must return a deterministic nine-slot build and display the fallback marker.

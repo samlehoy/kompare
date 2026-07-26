@@ -16,7 +16,8 @@ Kompare is a cloud-deployed **AI-assisted PC Builder** for the Indonesian PC mar
 ┌─────────────────────────────────────────────────────────────────┐
 │                   FRONTEND (Next.js + React)                    │
 │                                                                 │
-│   app/page.jsx → ControlPanel (shell)                           │
+│   app/page.jsx  → LandingPage  (marketing, no shell)            │
+│   app/app/page.jsx → DesktopShell                               │
 │     ├── BuildWizard      → Build Recommender UI                 │
 │     ├── BuildResults     → Result Display + Near-Budget Upgrades│
 │     ├── SwapModal        → Component Swap UI                    │
@@ -102,7 +103,8 @@ kompare/
 │   │   ├── audit/            # BuildAudit.jsx image upload
 │   │   ├── upgrade/          # UpgradePlanner.jsx
 │   │   ├── marketplace/      # Component browser
-│   │   ├── control-panel/    # Main ControlPanel layout
+│   │   ├── landing/          # LandingPage, the marketing surface at /
+│   │   ├── control-panel/    # ControlPanel — registered but no icon opens it
 │   │   ├── ui/               # Reusable UI primitives
 │   │   └── readme/           # In-app documentation
 │   ├── lib/

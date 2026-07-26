@@ -143,7 +143,7 @@ SSD is the required primary storage slot; HDD is optional bulk storage.
 
 ### FR-7 Frontend
 
-- Visible routes: `/`, `/builder`, `/upgrade`, `/audit` only. (Detail in [UI_SPEC.md](UI_SPEC.md).)
+- Visible routes: `/` (marketing landing), `/app` (desktop shell), `/builder`, `/upgrade`, `/audit`. (Detail in [UI_SPEC.md](UI_SPEC.md).)
 - Builder renders component cards, cost summary, compatibility notes, optional add-ons, marketplace links; cards prefer backend `selection_rationale`.
 - Upgrade uses manual text inputs. Audit exposes the multimodal audit panel; detected parts applicable to upgrade fields.
 

@@ -82,7 +82,7 @@ Terimplementasi penuh: route `index.js:132` → `handleAiRecommend` (`ai-recomme
 | Frontend unit tests | ✅ seluruh suite lulus (`npm --prefix frontend test -- --run`) |
 | Browser tests | ✅ seluruh suite lulus (`npm --prefix frontend run test:ui`) |
 | Production build | ✅ Next.js static export berhasil |
-| Production routes | ✅ `/`, `/builder`, `/upgrade`, `/audit` HTTP 200 |
+| Production routes | ✅ `/`, `/app`, `/builder`, `/upgrade`, `/audit` HTTP 200 |
 | Real Gemini smoke | ✅ `ai_assisted: true`, `fallback: false`, `json_ranker`, `@cf/baai/bge-m3`, 9 slot, 0 compatibility issues |
 | Safe fallback acceptance | ✅ `Gemini quota fallback` tampil dan 9 slot tetap tersedia |
 | Upgrade acceptance | ✅ Form budget/CPU/GPU aktif; endpoint production menghasilkan upgrade priorities |

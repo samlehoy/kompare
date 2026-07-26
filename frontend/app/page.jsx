@@ -1,5 +1,5 @@
-import DesktopShell from '@/components/shell/DesktopShell.jsx';
+import LandingPage from '@/components/landing/LandingPage.jsx';
 
 export default function HomePage() {
-  return <DesktopShell />;
+  return <LandingPage />;
 }

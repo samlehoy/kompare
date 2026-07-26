@@ -3,8 +3,10 @@ import { create } from 'zustand';
 let nextZIndex = 100;
 
 export const useWindowStore = create((set) => ({
-  windows: [{ id: 'init-readme', componentId: 'readme', zIndex: 100, isMinimized: false, isMaximized: false }],
-  activeWindowId: 'init-readme',
+  // The desktop starts empty; each route opens the window it is responsible
+  // for. Seeding README here meant /builder opened the wizard on top of it.
+  windows: [],
+  activeWindowId: null,
 
   openWindow: (componentId) => set((state) => {
     const existing = state.windows.find(w => w.componentId === componentId);

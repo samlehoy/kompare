@@ -25,8 +25,9 @@ looks for `CLAUDE.md` at the repository root, not inside `docs/`.
 
 - Deterministic compatibility checks are the source of truth. AI ranks and
   explains; it never invents SKUs, prices, or links.
-- Visible routes are `/`, `/builder`, `/upgrade`, `/audit` only. Do not revive
-  generic browse, compare, chat, or image-identification flows.
+- Visible routes are `/` (marketing landing), `/app` (desktop shell),
+  `/builder`, `/upgrade`, `/audit`. Do not revive generic browse, compare,
+  chat, or image-identification flows — that is what this rule protects.
 - Missing catalog data is reported as missing, never fabricated.
 - `backend_legacy/` is historical Python reference. Production is
   `backend_worker/`.

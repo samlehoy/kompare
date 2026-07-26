@@ -11,6 +11,7 @@ The interface should be practical and component-focused rather than a broad shop
 | Route | Purpose |
 |---|---|
 | `/` | PC Builder marketing landing with budget tier cards and flow selection. |
+| `/app` | The Kompare 95 desktop shell, with icons for every flow. |
 | `/builder` | Build-from-zero form and full component recommendation result. |
 | `/upgrade` | Manual existing-part form and upgrade recommendation result. |
 | `/audit` | Dedicated Audit a PC Build page for cart screenshots and typed parts lists. |
@@ -19,22 +20,33 @@ No visible route should lead to generic product browsing, generic comparison, be
 
 ## Navigation
 
-Primary navigation contains only:
+The landing page links to the three flows and to `/app`. Inside `/app`, the
+desktop icons are the navigation and cover only:
 
-- PC Builder
 - Build from zero
 - Upgrade
 - Audit build
+- Marketplace, Settings, and Readme as supporting windows
 
 ## Landing Page
+
+`/` is the marketing surface and carries no desktop chrome — no taskbar, no
+window frames, no desktop icons. It uses the same Windows 95 visual language as
+the app (raised panels, pixel headings) laid out as a landing page, so the two
+do not read as different products.
 
 The landing page includes:
 
 - Clear PC Builder positioning.
-- Two primary actions: Start from zero and Upgrade my PC.
-- Mode cards for full tower and existing PC flows.
+- Two primary actions: Rakit dari nol and Upgrade PC lama.
+- Flow cards for the build, upgrade, and audit flows.
 - Budget tier cards for entry-level, mid-range, high-end, and custom budget.
+- A link into `/app` for people who already know the product.
 - Copy that emphasizes compatibility, balanced performance, upgrade flexibility, and EnterKomputer links.
+
+Tier ranges are duplicated in `LandingPage.jsx` rather than fetched, so the page
+renders instantly from the static export. They must match `BUDGET_TIERS` in
+`pc-builder-core.js`.
 
 Budget tier cards should show:
 
@@ -52,7 +64,7 @@ Current tier ranges:
 | Entry-level | Rp 7.000.000 - Rp 12.000.000 |
 | Mid-range | Rp 12.000.000 - Rp 22.000.000 |
 | High-end | Rp 22.000.000 - Rp 40.000.000 |
-| Custom budget | ♾️ |
+| Custom budget | Bebas ∞ |
 
 ## Build From Zero Form
 
