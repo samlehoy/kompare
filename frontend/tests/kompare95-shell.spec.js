@@ -79,12 +79,12 @@ test('landing sells the product and routes into every flow', async ({ page }) =>
 
   // The landing is the marketing surface: no desktop chrome here.
   await expect(page.getByTestId('desktop-shell')).toHaveCount(0);
-  await expect(page.getByRole('heading', { name: 'Rakit PC tanpa salah beli.' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Build a PC without buying the wrong part.' })).toBeVisible();
 
-  for (const [name, path] of [['Rakit dari nol', '/builder'], ['Upgrade PC lama', '/upgrade']]) {
+  for (const [name, path] of [['Start from zero', '/builder'], ['Upgrade my PC', '/upgrade']]) {
     await expect(page.getByRole('link', { name, exact: true }).first()).toHaveAttribute('href', path);
   }
 
-  await page.getByRole('link', { name: 'Buka desktop Kompare' }).click();
+  await page.getByRole('link', { name: 'Open the Kompare desktop' }).click();
   await expect(page.getByTestId('desktop-shell')).toBeVisible();
 });

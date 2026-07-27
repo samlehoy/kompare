@@ -9,59 +9,68 @@ import Link from 'next/link';
 const TIERS = [
   {
     label: 'Entry-level',
-    range: 'Rp 7 – 12 juta',
-    summary: 'Rakitan pemula untuk kerja, kuliah, dan esports ringan.',
-    goal: 'Harian + esports ringan',
-    upgrade: 'Platform sederhana, gampang di-upgrade nanti.',
+    range: 'Rp 7–12 million',
+    summary: 'A starter tower for office work, study, and light esports.',
+    goal: 'Everyday + light esports',
+    upgrade: 'Simple platform that stays easy to upgrade later.',
   },
   {
     label: 'Mid-range',
-    range: 'Rp 12 – 22 juta',
-    summary: 'Seimbang untuk 1080p ultra, dengan ruang ke 1440p.',
-    goal: '1080p ultra / 1440p awal',
-    upgrade: 'Menyeimbangkan nilai GPU, RAM, dan headroom PSU.',
+    range: 'Rp 12–22 million',
+    summary: 'Balanced for 1080p ultra, with room to reach 1440p.',
+    goal: '1080p ultra / entry 1440p',
+    upgrade: 'Balances GPU value, RAM, and PSU headroom.',
   },
   {
     label: 'High-end',
-    range: 'Rp 22 – 40 juta',
-    summary: 'Gaming refresh tinggi dan beban kerja kreator.',
+    range: 'Rp 22–40 million',
+    summary: 'High-refresh gaming and creator workloads.',
     goal: '1440p high-refresh',
-    upgrade: 'Pendinginan lebih kuat dan umur platform lebih panjang.',
+    upgrade: 'Stronger cooling and a longer platform runway.',
   },
   {
     label: 'Custom',
     // Text infinity, not the emoji: the emoji renders small and pale beside
     // the other cards' bold rupiah ranges. The word carries the meaning; the
     // symbol alone left the card looking empty.
-    range: 'Bebas ∞',
-    summary: 'Tentukan angkamu sendiri, pemeriksaannya tetap sama.',
-    goal: 'Sesuai budget kamu',
-    upgrade: 'Cek kompatibilitas penuh di angka berapa pun.',
+    range: 'Any budget ∞',
+    summary: 'Name your own number. The same checks still run.',
+    goal: 'Whatever you set',
+    upgrade: 'Full compatibility checks at any number.',
   },
 ];
 
 const FLOWS = [
   {
     href: '/builder',
-    title: 'Rakit dari nol',
-    detail: 'Masukkan budget dan kebutuhan, terima sembilan komponen yang dijamin cocok satu sama lain.',
+    title: 'Start from zero',
+    detail: 'Give a budget and a workload, get nine parts that are guaranteed to fit together.',
   },
   {
     href: '/upgrade',
-    title: 'Upgrade PC lama',
-    detail: 'Ketik komponen yang sudah kamu punya, lihat bagian mana yang paling berdampak diganti duluan.',
+    title: 'Upgrade my PC',
+    detail: 'Type the parts you already own and see which one is worth replacing first.',
   },
   {
     href: '/audit',
-    title: 'Audit sebelum beli',
-    detail: 'Unggah screenshot keranjang atau tempel daftar partmu, temukan masalah sebelum uang keluar.',
+    title: 'Audit before you buy',
+    detail: 'Upload a cart screenshot or paste a parts list, and catch the problem before the money leaves.',
   },
 ];
 
 const GUARANTEES = [
-  ['Kompatibilitas dicek mesin, bukan ditebak AI', 'Soket CPU, generasi RAM, daya PSU, dan muat casing diperiksa aturan pasti. AI hanya mengurutkan dan menjelaskan.'],
-  ['Tidak ada komponen karangan', 'Setiap part berasal dari katalog nyata. Kalau stok tidak ada, ditulis tidak ada — bukan dikarang.'],
-  ['Harga dan link Indonesia', 'Harga rupiah dari EnterKomputer, lengkap dengan tautan ke halaman produknya.'],
+  [
+    'Compatibility is checked, not guessed',
+    'CPU socket, RAM generation, PSU headroom, and case fit are settled by fixed rules. AI only ranks and explains.',
+  ],
+  [
+    'No invented parts',
+    'Every part comes from a real catalog. When something is unavailable it says so, instead of making one up.',
+  ],
+  [
+    'Indonesian prices and links',
+    'Rupiah pricing from EnterKomputer, with a link straight to the product page.',
+  ],
 ];
 
 export default function LandingPage() {
@@ -69,41 +78,43 @@ export default function LandingPage() {
     <div className="landing">
       <header className="landing-hero">
         <p className="landing-eyebrow">KOMPARE 95</p>
-        <h1>Rakit PC tanpa salah beli.</h1>
+        <h1>Build a PC without buying the wrong part.</h1>
         <p className="landing-lede">
-          Masukkan budgetmu. Kompare menyusun rakitan lengkap dari katalog PC Indonesia,
-          memeriksa setiap komponen benar-benar cocok, lalu menjelaskan alasannya.
+          Enter your budget. Kompare assembles a complete build from the Indonesian PC
+          catalog, checks that every part actually fits the others, and explains why it
+          picked them.
         </p>
         <div className="landing-cta">
           <Link className="landing-button landing-button--primary" href="/builder">
-            Rakit dari nol
+            Start from zero
           </Link>
           <Link className="landing-button" href="/upgrade">
-            Upgrade PC lama
+            Upgrade my PC
           </Link>
         </div>
         <p className="landing-subcta">
-          Sudah tahu jalannya? <Link href="/app">Buka desktop Kompare</Link>
+          Already know your way around? <Link href="/app">Open the Kompare desktop</Link>
         </p>
       </header>
 
       <section className="landing-section" aria-labelledby="landing-flows">
-        <h2 id="landing-flows">Tiga cara memakainya</h2>
+        <h2 id="landing-flows">Three ways to use it</h2>
         <div className="landing-flow-grid">
           {FLOWS.map((flow) => (
             <Link key={flow.href} className="landing-card landing-card--flow" href={flow.href}>
               <strong>{flow.title}</strong>
               <span>{flow.detail}</span>
-              <em aria-hidden="true">Mulai →</em>
+              <em aria-hidden="true">Open →</em>
             </Link>
           ))}
         </div>
       </section>
 
       <section className="landing-section" aria-labelledby="landing-tiers">
-        <h2 id="landing-tiers">Pilih kelas budget</h2>
+        <h2 id="landing-tiers">Pick a budget class</h2>
         <p className="landing-section-lede">
-          Setiap kelas punya target performa yang jelas, supaya harapanmu sesuai dengan yang bisa dibeli.
+          Each class states a performance target up front, so what you expect matches what
+          the money can actually buy.
         </p>
         <div className="landing-tier-grid">
           {TIERS.map((tier) => (
@@ -114,11 +125,11 @@ export default function LandingPage() {
               <dl>
                 <dt>Target</dt>
                 <dd>{tier.goal}</dd>
-                <dt>Upgrade</dt>
+                <dt>Upgrade path</dt>
                 <dd>{tier.upgrade}</dd>
               </dl>
               <Link className="landing-button landing-button--small" href="/builder">
-                Rakit di kelas ini
+                Build at this tier
               </Link>
             </article>
           ))}
@@ -126,7 +137,7 @@ export default function LandingPage() {
       </section>
 
       <section className="landing-section" aria-labelledby="landing-guarantees">
-        <h2 id="landing-guarantees">Yang kami jamin</h2>
+        <h2 id="landing-guarantees">What we guarantee</h2>
         <div className="landing-guarantee-grid">
           {GUARANTEES.map(([title, detail]) => (
             <div key={title} className="landing-card landing-card--guarantee">
@@ -138,13 +149,11 @@ export default function LandingPage() {
       </section>
 
       <footer className="landing-footer">
-        <p>
-          Kompare — PC Builder untuk pasar Indonesia. Data komponen dari EnterKomputer.
-        </p>
+        <p>Kompare — a PC Builder for the Indonesian market. Component data from EnterKomputer.</p>
         <p>
           <Link href="/app">Desktop</Link>
           {' · '}
-          <Link href="/builder">Rakit</Link>
+          <Link href="/builder">Build</Link>
           {' · '}
           <Link href="/upgrade">Upgrade</Link>
           {' · '}

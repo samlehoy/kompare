@@ -6,6 +6,10 @@ Kompare should feel like a modern PC Part Picker-style tool with a focused marke
 
 The interface should be practical and component-focused rather than a broad shopping catalog.
 
+All user-facing copy is in English, including the landing page. Only the data is
+Indonesian: rupiah pricing, `id-ID` number formatting, and local marketplace
+links.
+
 ## Visible Routes
 
 | Route | Purpose |
@@ -38,7 +42,7 @@ do not read as different products.
 The landing page includes:
 
 - Clear PC Builder positioning.
-- Two primary actions: Rakit dari nol and Upgrade PC lama.
+- Two primary actions: Start from zero and Upgrade my PC.
 - Flow cards for the build, upgrade, and audit flows.
 - Budget tier cards for entry-level, mid-range, high-end, and custom budget.
 - A link into `/app` for people who already know the product.
@@ -61,10 +65,10 @@ Current tier ranges:
 
 | Tier | Displayed Range |
 |---|---|
-| Entry-level | Rp 7.000.000 - Rp 12.000.000 |
-| Mid-range | Rp 12.000.000 - Rp 22.000.000 |
-| High-end | Rp 22.000.000 - Rp 40.000.000 |
-| Custom budget | Bebas ∞ |
+| Entry-level | Rp 7–12 million |
+| Mid-range | Rp 12–22 million |
+| High-end | Rp 22–40 million |
+| Custom budget | Any budget ∞ |
 
 ## Build From Zero Form
 
